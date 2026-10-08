@@ -107,3 +107,6 @@ body{background:#fff}section.alt{background:var(--bg);border-block:0}
 .prizes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.prize{background:var(--dark);color:#fff;border-radius:var(--r);padding:20px}
 .prize:nth-child(2){background:var(--cyan)}.prize b{display:block;font:600 2.6rem 'Space Grotesk';line-height:1}.prize strong{display:block;margin:6px 0}.prize small{opacity:.8;line-height:1.35;display:block}
 @media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr)}.prizes{grid-template-columns:1fr}}
+
+/* v5: quiet network background */
+#net{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
