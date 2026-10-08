@@ -2,67 +2,87 @@
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UNLOCK: The AI & Young Professionals Summit & Innovation Challenge</title>
-<meta name="description" content="AI innovation challenge and grand expo at UiTM Shah Alam, with iCEP. 7 Dec 2026.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="description" content="AI workplace innovation challenge and grand expo at UiTM Shah Alam, with iCEP. Summit on 7 Dec 2026.">
 <meta property="og:title" content="UNLOCK: The AI & Young Professionals Summit & Innovation Challenge">
-<meta property="og:description" content="3-week online incubation, Grand Finale on 7 Dec 2026 at UiTM Shah Alam. Register now.">
+<meta property="og:description" content="3-week virtual incubation, Grand Finale on 7 Dec 2026 at UiTM Shah Alam. Register now.">
 <meta property="og:type" content="website"><meta name="theme-color" content="#150061">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%93%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<!-- HOSTING: static HTML/CSS/JS on GitHub Pages is served from GitHub's global CDN, so thousands of
-     visitors at once will not crash it. Only the live counters call Google (see google-apps-script.gs). -->
+<!-- HOSTING: static files on GitHub Pages are served from GitHub's global CDN, so thousands of visitors will not crash it. -->
 <script>if(sessionStorage.getItem('unlocked'))document.documentElement.classList.add('is-open')</script>
 </head><body data-page="index">
 <a class="skip" href="#about">Skip to content</a>
 <div id="navMount"></div>
 <main>
 
-<!-- 1. HOME -->
+<!-- HOME -->
 <section id="home" class="hero"><div class="dots"></div><div class="mesh"></div>
 <div class="wrap hero-in">
-  <img class="hero-logo" src="assets/logo.png" alt="UNLOCK: The AI & Young Professionals Summit">
+  <div class="logo3d" id="logo3d"></div>
   <span class="chip"><i class="pulse"></i><span id="heroChip">Registration open</span></span>
   <h1 id="heroTitle">UNLOCK: Create Beyond Boundaries</h1>
   <p class="lead" id="heroSub"></p>
-  <form class="ask" id="askForm"><span class="mono">&gt;</span><input id="askInput" placeholder="Ask UNLOCK: who can join, fees, dates..." aria-label="Ask a question"><button class="btn primary" type="submit">Ask</button></form>
+  <form class="ask" id="askForm"><span class="mono">&gt;</span><input id="askInput" placeholder="Ask UNLOCK anything: who can join, dates, prizes..." aria-label="Ask a question"><button class="btn primary" type="submit">Ask</button></form>
   <div class="chips" id="askChips"></div>
   <div class="answer card" id="askOut" hidden><span class="mono label">Answer</span><p id="askText"></p></div>
-  <div class="actions"><a class="btn primary" data-register href="#" target="_blank" rel="noopener">Register now</a><a class="btn" href="#about">Learn more</a><a class="btn" href="#sponsors">See open spots</a></div>
+  <div class="actions"><a class="btn primary" href="#register">Register now</a><a class="btn" href="#about">Learn more</a><a class="btn brown" href="#sponsors">See open spots</a></div>
   <div class="card" style="margin-top:44px;max-width:560px"><span class="mono label">Grand Finale countdown</span><div class="count" id="countdown"></div></div>
 </div></section>
+<div class="ticker" aria-hidden="true"><div id="ticker"></div></div>
+<section class="wrap stats" id="stats"></section>
 
-<!-- 2. ABOUT -->
+<!-- ABOUT -->
 <section id="about" class="wrap"><span class="mono label">About</span><h2>About UNLOCK</h2>
   <p class="lead" id="aboutSummary"></p>
-  <div class="grid3"><div class="card"><h3>Objectives</h3><ul id="objectives"></ul></div>
-  <div class="card"><h3>Vision and mission</h3><p id="vision"></p><p id="mission"></p></div>
-  <div class="card"><h3>Prize pools</h3><ul id="prizes"></ul></div></div>
-  <h2>Industry challenge tracks</h2><div class="tracks" id="tracks"></div>
+  <div class="grid3"><div class="card accent"><h3>The cohort</h3><ul id="cohort"></ul></div>
+  <div class="card"><h3>Objectives</h3><ul id="objectives"></ul></div>
+  <div class="card"><h3>Vision and mission</h3><p id="vision"></p><p id="mission"></p></div></div>
+  <h2>6 industry challenge tracks</h2><div class="trks" id="tracks"></div>
 </section>
 
-<!-- 3. TIMELINE -->
-<section id="timeline" class="alt"><div class="wrap"><span class="mono label">Timeline</span><h2>General timeline</h2><ol class="steps big" id="timelineList"></ol></div></section>
+<!-- REGISTER -->
+<section id="register" class="alt"><div class="wrap"><span class="mono label">Register</span><h2>Register your team</h2>
+  <p class="lead">Only the team leader registers, once. Members must not fill in the main form, to avoid duplicate teams.</p>
+  <div class="grid3 two"><div class="card accent"><h3>Student Category</h3><p>For active university students (undergraduate and postgraduate).</p><a class="btn primary" id="stuForm" href="#" target="_blank" rel="noopener">Student registration form</a></div>
+  <div class="card accent brown-top"><h3>Young Professional Category</h3><p>For early-career working adults.</p><a class="btn primary" id="proForm" href="#" target="_blank" rel="noopener">Professional registration form</a></div></div>
+  <div class="grid3 two"><div class="card"><h3>Have this ready</h3><ul id="prepare"></ul></div><div class="card"><h3>What happens next</h3><ol class="steps" id="regSteps"></ol></div></div>
+</div></section>
 
-<!-- 4. RULES & FAQ (edit in content.json) -->
-<section id="faq" class="wrap"><span class="mono label">Rules</span><h2>Rules and FAQ</h2>
-  <div class="card"><h3>Rules</h3><ul id="rules"></ul></div>
-  <h2>Frequently asked questions</h2><div id="faqList"></div>
+<!-- TIMELINE -->
+<section id="timeline" class="wrap"><span class="mono label">Timeline</span><h2>General timeline</h2><ol class="steps big" id="timelineList"></ol></section>
+
+<!-- SUMMIT -->
+<section id="summit" class="alt"><div class="wrap"><span class="mono label">Grand Finale</span><h2>UNLOCK Summit, 7 December 2026</h2>
+  <div class="grid3 two" id="zones"></div>
+  <h3 class="sub">UNLOCK Passport</h3><p id="passportText" class="muted"></p><div class="passport" id="passport"></div>
+  <div class="card brown-card"><span class="mono label">Vote</span><p id="peoples"></p></div>
+</div></section>
+
+<!-- JUDGING, PRIZES, SUBMISSIONS -->
+<section id="awards" class="wrap"><span class="mono label">Awards</span><h2>Judging and prizes</h2>
+  <div class="grid3 two"><div class="card"><h3>Judging criteria (100%)</h3><div id="criteria"></div></div>
+  <div><div class="prizes" id="prizeGrid"></div><div class="card" style="margin-top:18px"><h3>What each team submits</h3><ul id="submitList"></ul></div></div></div>
 </section>
 
-<!-- 5. SPONSORS & LIVE TRACKER -->
-<section id="sponsors" class="alt"><div class="wrap"><span class="mono label">Live registration</span><h2>Sponsors and live spots</h2>
-  <div class="card"><div id="counters"></div></div>
-  <h2>Partners</h2><div class="logos" id="sponsorList"></div></div>
+<!-- RULES & FAQ -->
+<section id="faq" class="alt"><div class="wrap"><span class="mono label">Rules</span><h2>Rules and regulations</h2><div class="grid3" id="rules"></div>
+  <h2>Frequently asked questions</h2><div id="faqList"></div></div></section>
+
+<!-- SPONSORS & LIVE TRACKER -->
+<section id="sponsors" class="wrap"><span class="mono label">Live registration</span><h2>Sponsors and live team spots</h2>
+  <div class="card accent"><div id="counters"></div></div>
+  <h2>Partners</h2><div class="logos" id="sponsorList"></div>
 </section>
 
-<!-- 6. CONTACTS -->
-<section id="contact" class="wrap"><span class="mono label">Contact</span><h2>Contacts and socials</h2>
+<!-- CONTACTS -->
+<section id="contact" class="alt"><div class="wrap"><span class="mono label">Contact</span><h2>Contacts and socials</h2>
 <div class="grid3">
   <div class="card"><h3>Contact</h3><p id="cPhone"></p><p id="cEmail"></p><p id="cLoc"></p></div>
   <div class="card"><h3>WhatsApp group</h3><p>Join at the end of your registration. The link appears after you submit the form.</p><a class="btn primary" id="waLink" href="#" target="_blank" rel="noopener">Open WhatsApp group</a></div>
   <div class="card"><h3>Follow us</h3><p><a id="igLink" href="#" target="_blank" rel="noopener">Instagram</a></p><p><a id="ttLink" href="#" target="_blank" rel="noopener">TikTok</a></p><p><a id="ytLink" href="#" target="_blank" rel="noopener">YouTube livestream</a></p></div>
-</div></section>
+</div></div></section>
 
 </main>
 <div id="footMount"></div>
