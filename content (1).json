@@ -1,0 +1,40 @@
+{
+  "logo": "assets/logo.png",
+  "registerUrl": "PASTE_YOUR_GOOGLE_FORM_LINK_HERE",
+  "eventDate": "2026-12-07T09:00:00+08:00",
+  "hero": {
+    "title": "UNLOCK: Create Beyond Boundaries",
+    "subtitle": "The AI & Young Professionals Summit & Innovation Challenge",
+    "status": "Registration open",
+    "prompts": ["Who can join?", "How big can a team be?", "Are fees refundable?", "How do I join the WhatsApp group?"]
+  },
+  "about": {
+    "summary": "UNLOCK is an AI innovation competition and grand expo run with iCEP at UiTM Shah Alam. It starts with a 3-week online incubation sprint (7, 14 and 21 Nov) and ends with the Grand Finale Summit on 7 Dec 2026.",
+    "objectives": ["EDIT: Build practical AI skills for students and young professionals", "EDIT: Turn ideas into working prototypes", "EDIT: Connect talent with industry"],
+    "vision": "EDIT: your vision statement here.",
+    "mission": "EDIT: your mission statement here.",
+    "prizes": ["EDIT: Champion prize", "EDIT: First runner-up prize", "EDIT: Second runner-up prize"],
+    "tracks": ["Customer Experience & Support", "HR & Talent Operations", "Data & Marketing", "Productivity & Decision-Making", "Sustainability & ESG"]
+  },
+  "timeline": [
+    { "date": "7 Nov", "title": "Week 1", "detail": "Kickoff, soft launch and Applied AI Literacy." },
+    { "date": "14 Nov", "title": "Week 2", "detail": "System architecture and wireframing." },
+    { "date": "21 Nov", "title": "Week 3", "detail": "Prototype and finalist selection. Top 3 Students and Top 3 Professionals pitch live." },
+    { "date": "7 Dec 2026", "title": "Grand Finale Summit", "detail": "Dewan Annex / Dewan Seroja, UiTM Shah Alam." }
+  ],
+  "rules": ["Open to Malaysian university students (undergraduate and postgraduate) and young professionals.", "Team size: 1 to 5 members.", "Registration fees are non-refundable."],
+  "faqs": [
+    { "q": "Who can join?", "a": "Malaysian university students (undergraduate and postgraduate) and young professionals can join." },
+    { "q": "How big can a team be?", "a": "A team can have 1 to 5 members." },
+    { "q": "Are registration fees refundable?", "a": "No. Registration fees are non-refundable." },
+    { "q": "How will my project be judged?", "a": "EDIT: list your judging criteria here." },
+    { "q": "How do I join the WhatsApp group?", "a": "After you submit the registration form, the group link appears on the confirmation page. Tap it to join." }
+  ],
+  "sponsors": [
+    { "name": "UiTM Shah Alam", "role": "Host university", "logo": "" },
+    { "name": "iCEP", "role": "Anchor Industry Partner & Strategic Advisory Lead", "logo": "" }
+  ],
+  "live": { "appsScriptUrl": "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE", "studentCap": 100, "professionalCap": 100 },
+  "contact": { "phone": "EDIT: +60 00-000 0000", "email": "EDIT: email@example.com", "location": "UiTM Shah Alam, Selangor" },
+  "social": { "whatsapp": "#", "instagram": "#", "tiktok": "#", "youtube": "#" }
+}

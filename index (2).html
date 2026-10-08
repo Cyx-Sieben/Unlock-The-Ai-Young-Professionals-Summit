@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UNLOCK: The AI & Young Professionals Summit & Innovation Challenge</title>
+<meta name="description" content="AI innovation challenge and grand expo at UiTM Shah Alam, with iCEP. 7 Dec 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:title" content="UNLOCK: The AI & Young Professionals Summit & Innovation Challenge">
+<meta property="og:description" content="3-week online incubation, Grand Finale on 7 Dec 2026 at UiTM Shah Alam. Register now.">
+<meta property="og:type" content="website"><meta name="theme-color" content="#6D5DFE">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%93%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<!-- HOSTING: static HTML/CSS/JS on GitHub Pages is served from GitHub's global CDN, so thousands of
+     visitors at once will not crash it. Only the live counters call Google (see google-apps-script.gs). -->
+<script>if(sessionStorage.getItem('unlocked'))document.documentElement.classList.add('is-open')</script>
+</head><body data-page="index">
+<a class="skip" href="#about">Skip to content</a>
+<div id="navMount"></div>
+<main>
+
+<!-- 1. HOME -->
+<section id="home" class="hero"><div class="dots"></div><div class="mesh"></div>
+<div class="wrap hero-in">
+  <span class="chip"><i class="pulse"></i><span id="heroChip">Registration open</span></span>
+  <h1 id="heroTitle">UNLOCK: Create Beyond Boundaries</h1>
+  <p class="lead" id="heroSub"></p>
+  <form class="ask" id="askForm"><span class="mono">&gt;</span><input id="askInput" placeholder="Ask UNLOCK: who can join, fees, dates..." aria-label="Ask a question"><button class="btn primary" type="submit">Ask</button></form>
+  <div class="chips" id="askChips"></div>
+  <div class="answer card" id="askOut" hidden><span class="mono label">Answer</span><p id="askText"></p></div>
+  <div class="actions"><a class="btn primary" data-register href="#" target="_blank" rel="noopener">Register now</a><a class="btn" href="#about">Learn more</a><a class="btn" href="#sponsors">See open spots</a></div>
+  <div class="card" style="margin-top:44px;max-width:560px"><span class="mono label">Grand Finale countdown</span><div class="count" id="countdown"></div></div>
+</div></section>
+
+<!-- 2. ABOUT -->
+<section id="about" class="wrap"><span class="mono label">About</span><h2>About UNLOCK</h2>
+  <p class="lead" id="aboutSummary"></p>
+  <div class="grid3"><div class="card"><h3>Objectives</h3><ul id="objectives"></ul></div>
+  <div class="card"><h3>Vision and mission</h3><p id="vision"></p><p id="mission"></p></div>
+  <div class="card"><h3>Prize pools</h3><ul id="prizes"></ul></div></div>
+  <h2>Industry challenge tracks</h2><div class="tracks" id="tracks"></div>
+</section>
+
+<!-- 3. TIMELINE -->
+<section id="timeline" class="alt"><div class="wrap"><span class="mono label">Timeline</span><h2>General timeline</h2><ol class="steps big" id="timelineList"></ol></div></section>
+
+<!-- 4. RULES & FAQ (edit in content.json) -->
+<section id="faq" class="wrap"><span class="mono label">Rules</span><h2>Rules and FAQ</h2>
+  <div class="card"><h3>Rules</h3><ul id="rules"></ul></div>
+  <h2>Frequently asked questions</h2><div id="faqList"></div>
+</section>
+
+<!-- 5. SPONSORS & LIVE TRACKER -->
+<section id="sponsors" class="alt"><div class="wrap"><span class="mono label">Live registration</span><h2>Sponsors and live spots</h2>
+  <div class="card"><div id="counters"></div></div>
+  <h2>Partners</h2><div class="logos" id="sponsorList"></div></div>
+</section>
+
+<!-- 6. CONTACTS -->
+<section id="contact" class="wrap"><span class="mono label">Contact</span><h2>Contacts and socials</h2>
+<div class="grid3">
+  <div class="card"><h3>Contact</h3><p id="cPhone"></p><p id="cEmail"></p><p id="cLoc"></p></div>
+  <div class="card"><h3>WhatsApp group</h3><p>Join at the end of your registration. The link appears after you submit the form.</p><a class="btn primary" id="waLink" href="#" target="_blank" rel="noopener">Open WhatsApp group</a></div>
+  <div class="card"><h3>Follow us</h3><p><a id="igLink" href="#" target="_blank" rel="noopener">Instagram</a></p><p><a id="ttLink" href="#" target="_blank" rel="noopener">TikTok</a></p><p><a id="ytLink" href="#" target="_blank" rel="noopener">YouTube livestream</a></p></div>
+</div></section>
+
+</main>
+<div id="footMount"></div>
+<script src="script.js"></script>
+</body></html>
