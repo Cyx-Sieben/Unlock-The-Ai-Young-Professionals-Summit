@@ -118,28 +118,15 @@ function extra(c) {
 const countObs = new IntersectionObserver((es, o) => es.forEach(e => { if (!e.isIntersecting) return; o.unobserve(e.target); const b = e.target, n = +b.dataset.n, t0 = performance.now();
   const step = t => { const p = Math.min((t - t0) / 1400, 1); b.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }), { threshold: .5 });
 
-// ---- 3D hero logo: stacked layers, mouse tilt, and an intro every 3 minutes ----
+// ---- 3D hero logo: stacked layers with a gentle mouse tilt ----
 const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 (function logo3d() {
   const box = $('logo3d'); if (!box) return;
   let h = ''; for (let i = 5; i >= 1; i--) h += `<img class="ly" src="${LOGO}" alt="" style="transform:translateZ(${-i * 3}px);filter:brightness(${1 - i * .09})">`;
-  box.innerHTML = `<div class="rig" id="rig">${h}<img class="front" src="${LOGO}" alt="UNLOCK: The AI & Young Professionals Summit"><img class="alt" src="assets/logo-alt.png" alt=""></div>`;
-  const rig = $('rig'), alt = rig.querySelector('.alt');
-  if (!calm) rig.style.opacity = 0;
+  box.innerHTML = `<div class="rig" id="rig">${h}<img class="front" src="${LOGO}" alt="UNLOCK: The AI & Young Professionals Summit"></div>`;
+  const rig = $('rig');
   document.addEventListener('mousemove', e => { if (rig.getAnimations().length) return; const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
     rig.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 10}deg)`; });
-  function intro() { if (calm) return; const T = 9000; rig.style.opacity = '';
-    // come in from the left with a spin, then leave to the right
-    rig.animate([{ transform: 'translateX(-115vw) rotateY(0deg)', opacity: 0, easing: 'cubic-bezier(.22,.8,.24,1)' },
-      { transform: 'translateX(0) rotateY(360deg)', opacity: 1, offset: .3 },
-      { transform: 'translateX(0) rotateY(360deg)', opacity: 1, offset: .7, easing: 'cubic-bezier(.6,0,.8,.4)' },
-      { transform: 'translateX(115vw) rotateY(400deg)', opacity: 0 }], { duration: T, easing: 'linear' });
-    // white-blue becomes blue-white while it is in the middle
-    alt.animate([{ opacity: 0 }, { opacity: 0, offset: .3 }, { opacity: 1, offset: .42 }, { opacity: 1 }], { duration: T });
-    setTimeout(() => rig.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 1400, easing: 'ease-out' }), T);
-  }
-  setTimeout(intro, $('gate') && !$('gate').classList.contains('done') ? 2200 : 900);
-  setInterval(intro, 180000); // every 3 minutes
 })();
 
 // ---- 3D title: Transformers-style morph, slow spin every 2 minutes ----
@@ -150,8 +137,29 @@ function titleFx(t) {
   const chars = [...h.querySelectorAll('.ch')], pool = '<>/[]{}=+*^?#01';
   function morph() { if (calm) return;
     h.animate([{ transform: 'perspective(900px) rotateY(0deg)' }, { transform: 'perspective(900px) rotateY(360deg)' }], { duration: 3800, easing: 'cubic-bezier(.65,0,.35,1)' });
-    chars.forEach((c, i) => setTimeout(() => { const o = c.textContent;
+    chars.forEach((c, i) => setTimeout(() => { const o = c.textContent; c.style.width = c.offsetWidth + 'px'; c.style.textAlign = 'center';
       c.animate([{ transform: 'rotateX(0) scale(1)' }, { transform: 'rotateX(180deg) scale(1.25) translateZ(40px)', offset: .5 }, { transform: 'rotateX(360deg) scale(1)' }], { duration: 1400, easing: 'cubic-bezier(.45,0,.2,1)' });
-      let n = 0; const iv = setInterval(() => { c.textContent = n++ < 9 ? pool[Math.random() * pool.length | 0] : o; if (n > 9) clearInterval(iv); }, 70); }, i * 45)); }
+      let n = 0; const iv = setInterval(() => { c.textContent = n++ < 9 ? pool[Math.random() * pool.length | 0] : o; if (n > 9) { clearInterval(iv); c.style.width = ''; } }, 70); }, i * 45)); }
   setTimeout(morph, 4500); setInterval(morph, 120000); // every 2 minutes
 }
+
+// ---- Hero background: a quiet network of nodes that gently links up near the cursor ----
+(function net() {
+  const cv = $('net'); if (!cv || calm) return;
+  const ctx = cv.getContext('2d'), hero = cv.parentElement; let W, H, pts = [], mx = -999, my = -999, on = true;
+  const size = () => { const r = hero.getBoundingClientRect(), d = devicePixelRatio || 1; W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+    pts = Array.from({ length: Math.round(Math.min(64, W * H / 22000)) }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .22, vy: (Math.random() - .5) * .22, b: Math.random() < .2 })); };
+  size(); addEventListener('resize', size);
+  hero.addEventListener('mousemove', e => { const r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
+  hero.addEventListener('mouseleave', () => mx = -999);
+  new IntersectionObserver(es => on = es[0].isIntersecting).observe(cv);
+  (function draw() { requestAnimationFrame(draw); if (!on || document.hidden) return; ctx.clearRect(0, 0, W, H);
+    for (const p of pts) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
+    for (let i = 0; i < pts.length; i++) { const a = pts[i];
+      for (let j = i + 1; j < pts.length; j++) { const b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < 130) { ctx.strokeStyle = `rgba(${a.b || b.b ? '140,109,70' : '38,32,138'},${(1 - d / 130) * .2})`; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); } }
+      const dm = Math.hypot(a.x - mx, a.y - my);
+      if (dm < 170) { ctx.strokeStyle = `rgba(140,109,70,${(1 - dm / 170) * .5})`; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mx, my); ctx.stroke(); }
+      ctx.fillStyle = a.b ? 'rgba(140,109,70,.75)' : 'rgba(38,32,138,.5)'; ctx.beginPath(); ctx.arc(a.x, a.y, a.b ? 2.4 : 1.6, 0, 7); ctx.fill(); }
+  })();
+})();
