@@ -40,7 +40,7 @@ document.addEventListener('mousemove', e => { const c = e.target.closest && e.ta
 // ---- Fill pages from content.json (each block only runs if that element exists) ----
 const set = (id, v, html) => { const el = $(id); if (el) el[html ? 'innerHTML' : 'textContent'] = v; };
 const list = (id, items, fn) => set(id, items.map(fn).join(''), true);
-fetch('content.json').then(r => r.json()).then(c => {
+fetch('content.json?v=' + Date.now()).then(r => r.json()).then(c => {
   LOGO = c.logo || LOGO;
   document.querySelectorAll('[data-register]').forEach(a => a.href = c.registerUrl);
   set('heroTitle', c.hero.title); set('heroSub', c.hero.subtitle); set('heroChip', c.hero.status);
