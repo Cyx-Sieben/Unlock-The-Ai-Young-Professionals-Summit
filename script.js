@@ -7,15 +7,13 @@ const here = document.body.dataset.page;
 let LOGO = 'assets/logo.png';
 if (!sessionStorage.getItem('unlocked')) {
   document.body.insertAdjacentHTML('afterbegin', `<div id="gate"><div class="panel left"></div><div class="panel right"></div><div class="gate-center">
-  <img src="${LOGO}" alt="" onerror="this.remove()">
-  <svg class="lock" viewBox="0 0 64 64" width="84" height="84" fill="none" stroke="#F5F7FF" stroke-width="3" aria-hidden="true"><rect x="12" y="28" width="40" height="28" rx="6"/><path d="M22 28V20a10 10 0 0 1 20 0v8"/><circle cx="32" cy="42" r="3" fill="#F5F7FF"/></svg>
-  <p class="gate-title">UNLOCK</p><p class="gate-sub">The AI &amp; Young Professionals Summit</p><button class="btn" id="unlockBtn">UNLOCK</button></div></div>`);
+  <img src="${LOGO}" alt="UNLOCK"><button class="btn" id="unlockBtn">UNLOCK</button></div></div>`);
   $('unlockBtn').focus();
   $('unlockBtn').onclick = () => { $('gate').classList.add('opening'); sessionStorage.setItem('unlocked','1'); setTimeout(() => $('gate').classList.add('done'), 1300); };
 }
 
 // ---- Shared nav, footer, command palette ----
-$('navMount').outerHTML = `<header class="nav"><a class="logo" href="#home"><img src="${LOGO}" alt="" onerror="this.remove()">UNLOCK</a>
+$('navMount').outerHTML = `<header class="nav"><a class="logo" href="#home"><img src="${LOGO}" alt="UNLOCK home"></a>
 <button class="burger" aria-label="Menu" onclick="document.body.classList.toggle('menu')">&#9776;</button>
 <nav>${PAGES.map(p => `<a href="${p[0]}" class="${p[0]===here?'on':''}">${p[1]}</a>`).join('')}<a class="btn primary" data-register href="#" target="_blank" rel="noopener">Register Now!</a></nav></header>`;
 $('footMount').outerHTML = `<footer>&copy; 2026 UNLOCK &middot; In collaboration with iCEP &middot; UiTM Shah Alam</footer>`;
@@ -40,7 +38,7 @@ document.addEventListener('mousemove', e => { const c = e.target.closest && e.ta
 // ---- Fill pages from content.json (each block only runs if that element exists) ----
 const set = (id, v, html) => { const el = $(id); if (el) el[html ? 'innerHTML' : 'textContent'] = v; };
 const list = (id, items, fn) => set(id, items.map(fn).join(''), true);
-fetch('content.json?v=' + Date.now()).then(r => r.json()).then(c => {
+fetch('content.json').then(r => r.json()).then(c => {
   LOGO = c.logo || LOGO;
   document.querySelectorAll('[data-register]').forEach(a => a.href = c.registerUrl);
   set('heroTitle', c.hero.title); set('heroSub', c.hero.subtitle); set('heroChip', c.hero.status);
@@ -90,3 +88,7 @@ function askBar(c) {
   $('askChips').innerHTML = c.hero.prompts.map(p => `<button type="button">${p}</button>`).join('');
   $('askChips').onclick = e => e.target.tagName === 'BUTTON' && run(e.target.textContent);
 }
+
+// smooth scroll progress bar and nav shadow
+document.body.insertAdjacentHTML('afterbegin', '<div class="progress" id="prog"></div>');
+addEventListener('scroll', () => { const d = document.documentElement; $('prog').style.width = (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + '%'; document.querySelector('.nav').classList.toggle('scrolled', d.scrollTop > 20); }, { passive: true });
