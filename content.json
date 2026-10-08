@@ -1,40 +1,91 @@
 {
   "logo": "assets/logo.png",
-  "registerUrl": "PASTE_YOUR_GOOGLE_FORM_LINK_HERE",
   "eventDate": "2026-12-07T09:00:00+08:00",
+  "forms": {
+    "student": "https://docs.google.com/forms/d/e/1FAIpQLScjcFHom0135srNLg7fGaY6moRNvCFjtvLQ-yLHkR7ssWUZFQ/viewform",
+    "professional": "https://forms.gle/xWHN24HcJGkgtB8P6"
+  },
   "hero": {
     "title": "UNLOCK: Create Beyond Boundaries",
     "subtitle": "The AI & Young Professionals Summit & Innovation Challenge",
-    "status": "Registration open",
-    "prompts": ["Who can join?", "How big can a team be?", "Are fees refundable?", "How do I join the WhatsApp group?"]
+    "status": "Registration open until late October 2026",
+    "prompts": ["Who can join?", "How do I register?", "What are the 6 tracks?", "When are the dates?", "How is it judged?", "What are the prizes?", "What is the UNLOCK Passport?", "What do I submit?"]
   },
+  "stats": [ {"n":10,"label":"teams in the cohort"}, {"n":50,"label":"talents"}, {"n":3,"label":"weeks virtual incubation"}, {"n":1,"label":"Grand Finale summit"} ],
   "about": {
-    "summary": "UNLOCK is an AI innovation competition and grand expo run with iCEP at UiTM Shah Alam. It starts with a 3-week online incubation sprint (7, 14 and 21 Nov) and ends with the Grand Finale Summit on 7 Dec 2026.",
-    "objectives": ["EDIT: Build practical AI skills for students and young professionals", "EDIT: Turn ideas into working prototypes", "EDIT: Connect talent with industry"],
+    "summary": "UNLOCK is an AI workplace innovation challenge and grand expo run with iCEP at UiTM Shah Alam. Ten teams (five University Student teams and five Young Professional teams) join a 3-week virtual incubation sprint, then showcase working prototypes at the physical UNLOCK Summit on 7 December 2026.",
+    "objectives": ["EDIT: Build practical applied-AI skills for students and young professionals", "EDIT: Turn workplace problems into working AI prototypes", "EDIT: Connect young talent with industry"],
     "vision": "EDIT: your vision statement here.",
     "mission": "EDIT: your mission statement here.",
-    "prizes": ["EDIT: Champion prize", "EDIT: First runner-up prize", "EDIT: Second runner-up prize"],
-    "tracks": ["Customer Experience & Support", "HR & Talent Operations", "Data & Marketing", "Productivity & Decision-Making", "Sustainability & ESG"]
+    "cohort": ["10 teams, 50 talents in total", "5 University Student teams (25 students)", "5 Young Professional teams (25 professionals)", "Strictly 5 members per team"],
+    "tracks": ["Customer Experience & Support", "HR & Talent Operations", "Operations & Productivity", "Marketing & Content", "Data & Decision-Making", "Sustainability & ESG"]
+  },
+  "registration": {
+    "prepare": ["Team leader's full name, email and WhatsApp or phone number", "Institution or organisation", "Your chosen track (one of the 6)", "Team name and the names of all 5 members", "Proposed project title and a short description of the innovation", "Confirmation that all members agree, agreement to the rules, and PDPA consent"],
+    "steps": ["Team leader completes the Student or Professional form (once only)", "You receive a confirmation email with your registration ID", "Complete the member-confirmation form from that email", "Join the WhatsApp group shown at the end of registration", "Attend the Saturday sprint sessions and submit your deliverables"]
   },
   "timeline": [
-    { "date": "7 Nov", "title": "Week 1", "detail": "Kickoff, soft launch and Applied AI Literacy." },
-    { "date": "14 Nov", "title": "Week 2", "detail": "System architecture and wireframing." },
-    { "date": "21 Nov", "title": "Week 3", "detail": "Prototype and finalist selection. Top 3 Students and Top 3 Professionals pitch live." },
-    { "date": "6 Dec 2026", "title": "Grand Finale Summit", "detail": "Dewan Annex / Dewan Seroja, UiTM Shah Alam." }
+    { "date": "Late Oct 2026", "title": "Registration closes", "detail": "First come, first served. Only 5 team spots per category." },
+    { "date": "Sat 7 Nov", "title": "Week 1: Kickoff & Framing", "detail": "Virtual soft launch, Applied AI Literacy in the Workplace, Virtual Meet 1 on modern AI prototyping tools, task scenario draw, 1-page proposal kickoff." },
+    { "date": "Sat 14 Nov", "title": "Week 2: System Architecture", "detail": "Virtual Meet 2: turn problem statements into technical briefs, then wireframe system logic, user flows and interface models." },
+    { "date": "Sat 21 Nov", "title": "Week 3: Prototype & Selection", "detail": "Virtual Meet 3 on refinement and testing. Industry panels (including iCEP) evaluate all 10 prototypes. Top 3 Student and Top 3 Young Professional teams are chosen for the live pitch. All 10 teams advance to the exhibition." },
+    { "date": "Mon 7 Dec 2026", "title": "Grand Finale & UNLOCK Summit", "detail": "Dewan Annex / Dewan Seroja, UiTM Shah Alam." }
   ],
-  "rules": ["Open to Malaysian university students (undergraduate and postgraduate) and young professionals.", "Team size: 5 members per group.", "Registration fees are non-refundable."],
+  "summit": {
+    "zones": [
+      { "t": "Zone A: Main Stage Conference", "d": "Industry talk sessions, the live final pitch of the Top 6 teams (3 Student and 3 Young Professional), then the grand awards ceremony." },
+      { "t": "Zone B: Innovation Exhibition Floor", "d": "All 10 teams set up interactive project booths for delegates, industry visitors and evaluators." }
+    ],
+    "passport": ["Discover", "Engage", "Validate", "Unlock"],
+    "passportText": "Visitors follow the UNLOCK Passport (Onboarding, Exploration, Redemption) to visit all 10 booths and redeem rewards.",
+    "peoples": "People's Choice Award: summit delegates vote directly across all 10 exhibition booths."
+  },
+  "criteria": [
+    {"name":"Innovation and Originality","w":20}, {"name":"AI Integration & Technical Soundness","w":20}, {"name":"Problem Relevance & Track Alignment","w":15},
+    {"name":"Feasibility & Practical Functionality","w":15}, {"name":"Scalability & Organizational Impact","w":15}, {"name":"Pitch Presentation & Prototype Demo","w":10}, {"name":"Future Potential & Roadmap","w":5}
+  ],
+  "awards": [
+    {"n":6,"label":"Official Trophies","d":"Top 3 Student teams and Top 3 Young Professional teams"},
+    {"n":9,"label":"Appreciation Hampers","d":"Top 6 teams plus the People's Choice winners"},
+    {"n":50,"label":"Finalist Medals","d":"All 50 talents who complete the incubation and exhibition"}
+  ],
+  "submissions": ["1-page proposal and problem brief", "Technical architecture and wireframe models", "Working AI prototype / proof of concept", "Pitch deck (10-minute presentation, 5-minute Q&A)", "Interactive booth exhibition setup (Zone B)", "Official AI-Use Declaration"],
+  "rules": [
+    { "t": "1. Eligibility", "items": ["Active university students (undergraduate and postgraduate) join the Student Category. Early-career working adults join the Young Professional Category.", "Exactly 5 members per team.", "Each participant joins one team and one industry track only."] },
+    { "t": "2. Theme and tracks", "items": ["Solve a realistic workplace challenge with applied AI inside one of the 6 tracks.", "Show the problem, a working AI architecture, user workflows and measurable business impact."] },
+    { "t": "3. Originality and AI governance", "items": ["Original design work. Disclose all third-party models, APIs and frameworks.", "Not allowed: plagiarism, fabricated survey data, unverified system claims, private or confidential company data without clearance, malicious applications.", "Submit the official AI-Use Declaration."] },
+    { "t": "4. Data and privacy (PDPA)", "items": ["Projects must comply with the PDPA. No unencrypted personal records, credentials or proprietary databases."] },
+    { "t": "5. Disqualification and conduct", "items": ["Disqualified for: intellectual property infringement, not disclosing core AI-generated code, fabricated results, late delivery outside approved sprint windows, or unapproved absence from required checkpoints.", "Professional conduct is required at all virtual workshops, mentor clinics and on-site summit venues."] }
+  ],
   "faqs": [
-    { "q": "Who can join?", "a": "Malaysian university students (undergraduate and postgraduate) and young professionals can join." },
-    { "q": "How big can a team be?", "a": "A team can have 1 to 5 members." },
-    { "q": "Are registration fees refundable?", "a": "No. Registration fees are non-refundable." },
-    { "q": "How will my project be judged?", "a": "EDIT: list your judging criteria here." },
-    { "q": "How do I join the WhatsApp group?", "a": "After you submit the registration form, the group link appears on the confirmation page. Tap it to join." }
+    { "q": "Who can join?", "kw": "eligible eligibility student professional layak", "a": "Active Malaysian university students (undergraduate and postgraduate) join the Student Category, and early-career working adults join the Young Professional Category." },
+    { "q": "How do I register?", "kw": "daftar sign up form register", "a": "Only the team leader registers, once, using the Student form or the Young Professional form in the Register section. Then confirm your members with the second form from your confirmation email, and join the WhatsApp group at the end." },
+    { "q": "Should every team member fill in the registration form?", "kw": "duplicate members leader", "a": "No. Only the team leader or an authorised representative fills in the main form, to avoid duplicate team records. Members complete the member-confirmation form later." },
+    { "q": "How many teams and members?", "kw": "team size members pasukan how many spots", "a": "The cohort has 10 teams (50 talents): 5 Student teams and 5 Young Professional teams. Every team has exactly 5 members." },
+    { "q": "What are the 6 tracks?", "kw": "tracks categories industry challenge", "a": "Customer Experience & Support, HR & Talent Operations, Operations & Productivity, Marketing & Content, Data & Decision-Making, and Sustainability & ESG. Each team picks one." },
+    { "q": "What are the dates?", "kw": "when date tarikh schedule timeline deadline", "a": "Registration closes in late October 2026. The sprint runs on Saturdays 7, 14 and 21 November 2026, and the Grand Finale and UNLOCK Summit is on Monday 7 December 2026." },
+    { "q": "Where is the summit?", "kw": "venue location lokasi where uitm", "a": "The Grand Finale is at Dewan Annex / Dewan Seroja, UiTM Shah Alam. The 3-week sprint is online." },
+    { "q": "What happens each week?", "kw": "week sprint workshop incubation", "a": "Week 1: kickoff, applied AI literacy and prototyping tools. Week 2: system architecture and wireframing. Week 3: prototype refinement and finalist selection." },
+    { "q": "How is it judged?", "kw": "judging criteria weightage marks scoring", "a": "Innovation and Originality 20%, AI Integration & Technical Soundness 20%, Problem Relevance 15%, Feasibility 15%, Scalability & Impact 15%, Pitch and Demo 10%, Future Potential 5%." },
+    { "q": "What are the prizes?", "kw": "prize award trophy hamper medal hadiah", "a": "6 official trophies (Top 3 per category), 9 appreciation hampers (Top 6 teams plus People's Choice winners) and 50 commemorative finalist medals for every participant." },
+    { "q": "What do we have to submit?", "kw": "deliverables submission requirements proposal prototype", "a": "A 1-page proposal, technical architecture and wireframes, a working AI prototype, a pitch deck (10-minute talk, 5-minute Q&A), a booth setup for Zone B, and the AI-Use Declaration." },
+    { "q": "What is the AI-Use Declaration?", "kw": "declaration governance ai tools disclose", "a": "An official form explaining which AI tools, models and APIs you used and how you prompted them. All third-party tools must be disclosed." },
+    { "q": "Who pitches live at the finale?", "kw": "finalist pitch stage top 6 selection", "a": "The Top 3 Student teams and Top 3 Young Professional teams pitch live on the Main Stage (Zone A). All 10 teams exhibit at booths in Zone B." },
+    { "q": "What is the UNLOCK Passport?", "kw": "passport journey booth redeem rewards", "a": "An interactive visitor journey (Discover, Engage, Validate, Unlock) that takes delegates through all 10 team booths, with rewards to redeem." },
+    { "q": "How does the People's Choice Award work?", "kw": "voting vote people choice", "a": "Summit delegates vote directly across all 10 exhibition booths." },
+    { "q": "What is Zone A and Zone B?", "kw": "zone stage exhibition booth", "a": "Zone A is the Main Stage conference with talks, the final pitch and the awards. Zone B is the exhibition floor where all 10 teams run interactive booths." },
+    { "q": "Can I join more than one team?", "kw": "multiple teams twice", "a": "No. Each participant joins one team and one track only." },
+    { "q": "Can we use private company data?", "kw": "pdpa privacy confidential data", "a": "Not without clearance. Projects must follow the PDPA, with no unencrypted personal records, credentials or proprietary databases." },
+    { "q": "What gets a team disqualified?", "kw": "disqualification rules conduct plagiarism", "a": "IP infringement, not disclosing core AI-generated code, fabricated results, late delivery outside approved windows, or unapproved absence from required sprint checkpoints." },
+    { "q": "Are registration fees refundable?", "kw": "fee yuran refund payment", "a": "Registration fees, if any, are non-refundable." },
+    { "q": "How do I join the WhatsApp group?", "kw": "whatsapp group updates announcement", "a": "The link appears at the end of the registration process. Official updates are also sent by email." },
+    { "q": "Who is iCEP?", "kw": "icep partner sponsor", "a": "iCEP is the Anchor Industry Partner and Strategic Advisory Lead, and its industry panel helps evaluate the prototypes." }
   ],
   "sponsors": [
     { "name": "UiTM Shah Alam", "role": "Host university", "logo": "" },
     { "name": "iCEP", "role": "Anchor Industry Partner & Strategic Advisory Lead", "logo": "" }
   ],
-  "live": { "appsScriptUrl": "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE", "studentCap": 100, "professionalCap": 100 },
+  "live": { "appsScriptUrl": "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE", "studentCap": 5, "professionalCap": 5 },
   "contact": { "phone": "EDIT: +60 00-000 0000", "email": "EDIT: email@example.com", "location": "UiTM Shah Alam, Selangor" },
   "social": { "whatsapp": "#", "instagram": "#", "tiktok": "#", "youtube": "#" }
 }
