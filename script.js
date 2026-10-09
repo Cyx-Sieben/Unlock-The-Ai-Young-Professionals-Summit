@@ -120,9 +120,10 @@ const countObs = new IntersectionObserver((es, o) => es.forEach(e => { if (!e.is
 
 // ---- 3D hero logo: stacked layers with a gentle mouse tilt ----
 const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const lite = matchMedia('(pointer: coarse)').matches || innerWidth < 900;   // phones and tablets
 (function logo3d() {
   const box = $('logo3d'); if (!box) return;
-  let h = ''; for (let i = 5; i >= 1; i--) h += `<img class="ly" src="${LOGO}" alt="" style="transform:translateZ(${-i * 3}px);filter:brightness(${1 - i * .09})">`;
+  let h = ''; for (let i = lite ? 3 : 5; i >= 1; i--) h += `<img class="ly" src="${LOGO}" alt="" style="transform:translateZ(${-i * 3}px);filter:brightness(${1 - i * .09})">`;
   box.innerHTML = `<div class="rig" id="rig">${h}<img class="front" src="${LOGO}" alt="UNLOCK: The AI & Young Professionals Summit"></div>`;
   const rig = $('rig');
   document.addEventListener('mousemove', e => { if (rig.getAnimations().length) return; const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
@@ -141,37 +142,41 @@ function titleFx(t) {
       { duration: 1000, delay: i * 40, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' }); a.onfinish = () => { c.style.opacity = 1; a.cancel(); }; });
     // 2. A soft light wave travels across the letters every 8 seconds
     const wave = () => chars.forEach((c, i) => c.animate([{ filter: 'brightness(1)', transform: 'translateY(0)' }, { filter: 'brightness(1.7)', transform: 'translateY(-.08em)', offset: .5 }, { filter: 'brightness(1)', transform: 'translateY(0)' }], { duration: 900, delay: i * 55, easing: 'ease-in-out' }));
-    setTimeout(() => { wave(); setInterval(wave, 8000); }, 3500); };
+    setTimeout(() => { wave(); setInterval(wave, lite ? 10000 : 8000); }, 3500); };
   const btn = $('unlockBtn'); if (btn) btn.addEventListener('click', () => setTimeout(enter, 900)); else setTimeout(enter, 200);
   // 3. The whole title tilts gently toward the cursor
   h.style.transition = 'transform .3s ease-out';
   addEventListener('mousemove', e => { h.style.transform = `perspective(900px) rotateY(${(e.clientX / innerWidth - .5) * 8}deg) rotateX(${-(e.clientY / innerHeight - .5) * 5}deg)`; });
 }
 
-// ---- Hero background: a visible network of nodes and "atoms" that reacts to the cursor ----
+// ---- Hero background: a visible network of nodes and "atoms" (full on desktop, lighter on phones and tablets) ----
 (function net() {
   const cv = $('net'); if (!cv || calm) return;
-  const ctx = cv.getContext('2d'), hero = cv.parentElement, BL = '38,32,138', BR = '140,109,70'; let W, H, pts = [], mx = -999, my = -999, on = true;
-  const size = () => { const r = hero.getBoundingClientRect(), d = devicePixelRatio || 1; W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
-    pts = Array.from({ length: Math.round(Math.min(130, W * H / 9500)) }, () => { const atom = Math.random() < .14;
-      return { x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, c: Math.random() < .42 ? BR : BL, atom, r: atom ? 4 : 2.3, a: Math.random() * 6.28 }; }); };
-  size(); addEventListener('resize', size);
-  hero.addEventListener('mousemove', e => { const r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
-  hero.addEventListener('mouseleave', () => mx = -999);
+  const ctx = cv.getContext('2d'), hero = cv.parentElement, BL = '38,32,138', BR = '140,109,70'; let W, H, pts = [], mx = -999, my = -999, on = true, T, last = 0, lw = innerWidth;
+  const size = () => { const r = hero.getBoundingClientRect(), d = lite ? Math.min(devicePixelRatio || 1, 2) : (devicePixelRatio || 1); W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+    T = innerWidth < 640 ? { max: 60, den: 11000, link: 120, atom: .1, r: 2, ar: 3.2, rx: 10, ry: 5 }          // phone
+      : lite ? { max: 80, den: 13000, link: 130, atom: .12, r: 2.2, ar: 3.6, rx: 11, ry: 5 }                   // tablet
+      : { max: 130, den: 9500, link: 150, atom: .14, r: 2.3, ar: 4, rx: 13, ry: 6 };                           // laptop / desktop
+    pts = Array.from({ length: Math.round(Math.min(T.max, W * H / T.den)) }, () => { const atom = Math.random() < T.atom;
+      return { x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, c: Math.random() < .42 ? BR : BL, atom, r: atom ? T.ar : T.r, a: Math.random() * 6.28 }; }); };
+  size(); addEventListener('resize', () => { if (innerWidth !== lw) { lw = innerWidth; size(); } });   // ignore phone address-bar resizes
+  const point = (x, y) => { const r = cv.getBoundingClientRect(); mx = x - r.left; my = y - r.top; };
+  hero.addEventListener('mousemove', e => point(e.clientX, e.clientY)); hero.addEventListener('mouseleave', () => mx = -999);
+  hero.addEventListener('touchmove', e => point(e.touches[0].clientX, e.touches[0].clientY), { passive: true }); hero.addEventListener('touchend', () => mx = -999);  // nodes react to a finger too
   new IntersectionObserver(es => on = es[0].isIntersecting).observe(cv);
-  (function draw() { requestAnimationFrame(draw); if (!on || document.hidden) return; ctx.clearRect(0, 0, W, H);
+  (function draw(ts) { requestAnimationFrame(draw); if (!on || document.hidden) return; if (lite && ts - last < 33) return; last = ts; ctx.clearRect(0, 0, W, H);   // ~30 fps on phones and tablets
     for (const p of pts) { const dm = Math.hypot(p.x - mx, p.y - my);
-      if (dm < 130) { p.x += (p.x - mx) / dm * .9; p.y += (p.y - my) / dm * .9; }  // nodes drift away from the cursor
+      if (dm < 130) { p.x += (p.x - mx) / dm * .9; p.y += (p.y - my) / dm * .9; }
       p.x += p.vx; p.y += p.vy; p.a += .025; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
     for (let i = 0; i < pts.length; i++) { const a = pts[i];
       for (let j = i + 1; j < pts.length; j++) { const b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
-        if (d < 150) { ctx.strokeStyle = `rgba(${a.c === b.c ? a.c : BR},${(1 - d / 150) * .4})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); } }
+        if (d < T.link) { ctx.strokeStyle = `rgba(${a.c === b.c ? a.c : BR},${(1 - d / T.link) * .4})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); } }
       const dm = Math.hypot(a.x - mx, a.y - my);
       if (dm < 190) { ctx.strokeStyle = `rgba(${BR},${(1 - dm / 190) * .7})`; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mx, my); ctx.stroke(); }
       ctx.fillStyle = `rgba(${a.c},.92)`; ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 7); ctx.fill();
-      if (a.atom) { ctx.strokeStyle = `rgba(${a.c},.5)`; ctx.beginPath(); ctx.ellipse(a.x, a.y, 13, 6, a.a * .3, 0, 7); ctx.stroke();   // orbit ring + electron
-        ctx.fillStyle = `rgba(${a.c === BL ? BR : BL},1)`; ctx.beginPath(); ctx.arc(a.x + Math.cos(a.a) * 13, a.y + Math.sin(a.a) * 6, 2, 0, 7); ctx.fill(); } }
-  })();
+      if (a.atom) { ctx.strokeStyle = `rgba(${a.c},.5)`; ctx.beginPath(); ctx.ellipse(a.x, a.y, T.rx, T.ry, a.a * .3, 0, 7); ctx.stroke();
+        ctx.fillStyle = `rgba(${a.c === BL ? BR : BL},1)`; ctx.beginPath(); ctx.arc(a.x + Math.cos(a.a) * T.rx, a.y + Math.sin(a.a) * T.ry, 2, 0, 7); ctx.fill(); } }
+  })(0);
 })();
 
 // ---- Extra interactive polish: card tilt, magnetic buttons, timeline highlight, rotating placeholder ----
