@@ -29,7 +29,7 @@ document.body.insertAdjacentHTML('beforeend','<a class="btn primary fab" href="#
 document.querySelectorAll('.nav nav a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('menu')));
 // highlight the current section in the nav, and fade blocks in as they scroll into view
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in');
-  if (e.target.tagName === 'SECTION') document.querySelectorAll('.nav nav a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); } }), { threshold: .2 });
+  if (e.target.tagName === 'SECTION') document.querySelectorAll('.nav nav a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); } }), { threshold: .04 });
 document.querySelectorAll('section').forEach(x => io.observe(x));
 document.querySelectorAll('.card, h2, .trk, .steps, .crit, .prize, .stat').forEach(x => { if (!x.closest('.hero')) { x.classList.add('rv'); io.observe(x); } });
 // cursor glow on cards
@@ -123,7 +123,7 @@ const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const lite = matchMedia('(pointer: coarse)').matches || innerWidth < 900;   // phones and tablets
 (function logo3d() {
   const box = $('logo3d'); if (!box) return;
-  let h = ''; for (let i = lite ? 3 : 5; i >= 1; i--) h += `<img class="ly" src="${LOGO}" alt="" style="transform:translateZ(${-i * 3}px);filter:brightness(${1 - i * .09})">`;
+  let h = ''; for (let i = lite ? 2 : 5; i >= 1; i--) h += `<img class="ly" src="${LOGO}" alt="" style="transform:translateZ(${-i * 3}px);filter:brightness(${1 - i * .09})">`;
   box.innerHTML = `<div class="rig" id="rig">${h}<img class="front" src="${LOGO}" alt="UNLOCK: The AI & Young Professionals Summit"></div>`;
   const rig = $('rig');
   document.addEventListener('mousemove', e => { if (rig.getAnimations().length) return; const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
@@ -135,42 +135,51 @@ function titleFx(t) {
   const h = $('heroTitle'); if (!h) return; h.setAttribute('aria-label', t);
   const cut = t.indexOf(':'); let k = 0;
   h.innerHTML = t.split(' ').map(w => `<span class="w">${[...w].map(ch => `<span class="ch ${k++ > cut ? 'br' : ''}" aria-hidden="true">${ch}</span>`).join('')}</span>`).join(' ');
-  const chars = [...h.querySelectorAll('.ch')]; if (calm) return;
-  chars.forEach(c => c.style.opacity = 0);
-  // 1. Entrance: letters rise out of a soft blur, one after another (starts after UNLOCK is pressed)
-  const enter = () => { chars.forEach((c, i) => { const a = c.animate([{ opacity: 0, transform: 'translateY(.5em) rotateX(-80deg)', filter: 'blur(8px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }],
-      { duration: 1000, delay: i * 40, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' }); a.onfinish = () => { c.style.opacity = 1; a.cancel(); }; });
-    // 2. A soft light wave travels across the letters every 8 seconds
-    const wave = () => chars.forEach((c, i) => c.animate([{ filter: 'brightness(1)', transform: 'translateY(0)' }, { filter: 'brightness(1.7)', transform: 'translateY(-.08em)', offset: .5 }, { filter: 'brightness(1)', transform: 'translateY(0)' }], { duration: 900, delay: i * 55, easing: 'ease-in-out' }));
+  const chars = [...h.querySelectorAll('.ch')]; chars.forEach(c => c.style.opacity = 0);
+  // Entrance. Desktop: rise out of a blur. Phones: simple rise (light on the GPU). Reduce-motion: soft fade only.
+  const kf = calm ? [{ opacity: 0 }, { opacity: 1 }]
+    : lite ? [{ opacity: 0, transform: 'translateY(.45em)' }, { opacity: 1, transform: 'none' }]
+    : [{ opacity: 0, transform: 'translateY(.5em) rotateX(-80deg)', filter: 'blur(8px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }];
+  const enter = () => { chars.forEach((c, i) => { const a = c.animate(kf, { duration: calm ? 900 : 1000, delay: i * (calm ? 12 : lite ? 30 : 40), easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
+      a.onfinish = () => { c.style.opacity = 1; a.cancel(); }; });
+    if (calm) return;
+    // A soft wave runs across the letters (transform only on phones, plus brightness on desktop)
+    const wkf = lite ? [{ transform: 'translateY(0)' }, { transform: 'translateY(-.07em)', offset: .5 }, { transform: 'translateY(0)' }]
+      : [{ filter: 'brightness(1)', transform: 'translateY(0)' }, { filter: 'brightness(1.7)', transform: 'translateY(-.08em)', offset: .5 }, { filter: 'brightness(1)', transform: 'translateY(0)' }];
+    const wave = () => { if (document.hidden) return; chars.forEach((c, i) => c.animate(wkf, { duration: 900, delay: i * 55, easing: 'ease-in-out' })); };
     setTimeout(() => { wave(); setInterval(wave, lite ? 10000 : 8000); }, 3500); };
   const btn = $('unlockBtn'); if (btn) btn.addEventListener('click', () => setTimeout(enter, 900)); else setTimeout(enter, 200);
-  // 3. The whole title tilts gently toward the cursor
-  h.style.transition = 'transform .3s ease-out';
-  addEventListener('mousemove', e => { h.style.transform = `perspective(900px) rotateY(${(e.clientX / innerWidth - .5) * 8}deg) rotateX(${-(e.clientY / innerHeight - .5) * 5}deg)`; });
+  if (!lite && !calm) { h.style.transition = 'transform .3s ease-out';   // cursor tilt (mouse devices only)
+    addEventListener('mousemove', e => { h.style.transform = `perspective(900px) rotateY(${(e.clientX / innerWidth - .5) * 8}deg) rotateX(${-(e.clientY / innerHeight - .5) * 5}deg)`; }); }
 }
 
-// ---- Hero background: a visible network of nodes and "atoms" (full on desktop, lighter on phones and tablets) ----
+// ---- Hero background: network of nodes and "atoms". Full on desktop, lighter on phones, gentle if Reduce Motion is on ----
 (function net() {
-  const cv = $('net'); if (!cv || calm) return;
-  const ctx = cv.getContext('2d'), hero = cv.parentElement, BL = '38,32,138', BR = '140,109,70'; let W, H, pts = [], mx = -999, my = -999, on = true, T, last = 0, lw = innerWidth;
-  const size = () => { const r = hero.getBoundingClientRect(), d = lite ? Math.min(devicePixelRatio || 1, 2) : (devicePixelRatio || 1); W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
-    T = innerWidth < 640 ? { max: 40, den: 11000, link: 120, atom: .1, r: 2, ar: 3.2, rx: 10, ry: 5 }          // phone
-      : lite ? { max: 80, den: 13000, link: 130, atom: .12, r: 2.2, ar: 3.6, rx: 11, ry: 5 }                   // tablet
-      : { max: 130, den: 9500, link: 150, atom: .14, r: 2.3, ar: 4, rx: 13, ry: 6 };                           // laptop / desktop
+  const cv = $('net'); if (!cv) return;
+  const ctx = cv.getContext('2d'), hero = cv.parentElement, BL = '38,32,138', BR = '140,109,70', speed = calm ? .4 : 1;
+  let W, H, pts = [], mx = -999, my = -999, on = true, T, last = 0, lw = innerWidth, acc = 0, cnt = 0, level = 0;
+  const size = () => { const r = hero.getBoundingClientRect(), d = lite ? Math.min(devicePixelRatio || 1, innerWidth < 640 ? 1.25 : 1.5) : (devicePixelRatio || 1);   // smaller canvas = smoother on older phones
+    W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+    T = innerWidth < 640 ? { max: 60, den: 11000, link: 120, atom: .1, r: 2, ar: 3.2, rx: 10, ry: 5 }
+      : lite ? { max: 80, den: 13000, link: 130, atom: .12, r: 2.2, ar: 3.6, rx: 11, ry: 5 }
+      : { max: 130, den: 9500, link: 150, atom: .14, r: 2.3, ar: 4, rx: 13, ry: 6 };
     pts = Array.from({ length: Math.round(Math.min(T.max, W * H / T.den)) }, () => { const atom = Math.random() < T.atom;
-      return { x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, c: Math.random() < .42 ? BR : BL, atom, r: atom ? T.ar : T.r, a: Math.random() * 6.28 }; }); };
-  size(); addEventListener('resize', () => { if (innerWidth !== lw) { lw = innerWidth; size(); } });   // ignore phone address-bar resizes
-  const point = (x, y) => { const r = cv.getBoundingClientRect(); mx = x - r.left; my = y - r.top; };
-  hero.addEventListener('mousemove', e => point(e.clientX, e.clientY)); hero.addEventListener('mouseleave', () => mx = -999);
-  hero.addEventListener('touchmove', e => point(e.touches[0].clientX, e.touches[0].clientY), { passive: true }); hero.addEventListener('touchend', () => mx = -999);  // nodes react to a finger too
+      return { x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, c: Math.random() < .42 ? BR : BL, atom, r: atom ? T.ar : T.r, a: Math.random() * 6.28 }; }); level = 0; };
+  size(); addEventListener('resize', () => { if (innerWidth !== lw) { lw = innerWidth; size(); } });
+  if (!calm) { const point = (x, y) => { const r = cv.getBoundingClientRect(); mx = x - r.left; my = y - r.top; };
+    hero.addEventListener('mousemove', e => point(e.clientX, e.clientY)); hero.addEventListener('mouseleave', () => mx = -999);
+    hero.addEventListener('touchmove', e => point(e.touches[0].clientX, e.touches[0].clientY), { passive: true }); hero.addEventListener('touchend', () => mx = -999); }
   new IntersectionObserver(es => on = es[0].isIntersecting).observe(cv);
-  (function draw(ts) { requestAnimationFrame(draw); if (!on || document.hidden) return; if (lite && ts - last < 33) return; last = ts; ctx.clearRect(0, 0, W, H);   // ~30 fps on phones and tablets
+  (function draw(ts) { requestAnimationFrame(draw); if (!on || document.hidden) return; if (lite && ts - last < 28) return;
+    const dt = Math.min(ts - last, 100); if (lite && last) { acc += dt; if (++cnt === 90) {           // quality watchdog: slow phone? use fewer nodes automatically
+      if (acc / cnt > 42 && level < 2) { level++; pts.length = Math.floor(pts.length * .65); T.link *= .85; if (level === 2) document.documentElement.classList.add('perf-low'); } acc = cnt = 0; } }
+    last = ts; ctx.clearRect(0, 0, W, H); const L2 = T.link * T.link;
     for (const p of pts) { const dm = Math.hypot(p.x - mx, p.y - my);
       if (dm < 130) { p.x += (p.x - mx) / dm * .9; p.y += (p.y - my) / dm * .9; }
-      p.x += p.vx; p.y += p.vy; p.a += .025; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
+      p.x += p.vx * speed; p.y += p.vy * speed; p.a += .025 * speed; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
     for (let i = 0; i < pts.length; i++) { const a = pts[i];
-      for (let j = i + 1; j < pts.length; j++) { const b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
-        if (d < T.link) { ctx.strokeStyle = `rgba(${a.c === b.c ? a.c : BR},${(1 - d / T.link) * .4})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); } }
+      for (let j = i + 1; j < pts.length; j++) { const b = pts[j], dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
+        if (d2 < L2) { ctx.strokeStyle = `rgba(${a.c === b.c ? a.c : BR},${(1 - Math.sqrt(d2) / T.link) * .4})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); } }
       const dm = Math.hypot(a.x - mx, a.y - my);
       if (dm < 190) { ctx.strokeStyle = `rgba(${BR},${(1 - dm / 190) * .7})`; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mx, my); ctx.stroke(); }
       ctx.fillStyle = `rgba(${a.c},.92)`; ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 7); ctx.fill();
@@ -195,3 +204,10 @@ function enhance(c) {
   const inp = $('askInput'); let pi = 0;
   if (inp && !calm) setInterval(() => { if (document.activeElement !== inp && !inp.value) inp.placeholder = 'Try: ' + c.hero.prompts[pi++ % c.hero.prompts.length]; }, 3500);
 }
+
+// ---- Phones: the hero logo drifts a little slower than the page, so scrolling feels alive ----
+(function parallax() {
+  const box = $('logo3d'); if (!box || !lite || calm) return; let busy = false;
+  addEventListener('scroll', () => { if (busy) return; busy = true; requestAnimationFrame(() => { busy = false; const y = Math.min(scrollY, 700);
+    box.style.transform = `translateY(${y * .18}px)`; box.style.opacity = Math.max(1 - y / 1100, .15); }); }, { passive: true });
+})();
