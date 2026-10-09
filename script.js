@@ -154,7 +154,7 @@ function titleFx(t) {
   const cv = $('net'); if (!cv || calm) return;
   const ctx = cv.getContext('2d'), hero = cv.parentElement, BL = '38,32,138', BR = '140,109,70'; let W, H, pts = [], mx = -999, my = -999, on = true, T, last = 0, lw = innerWidth;
   const size = () => { const r = hero.getBoundingClientRect(), d = lite ? Math.min(devicePixelRatio || 1, 2) : (devicePixelRatio || 1); W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
-    T = innerWidth < 640 ? { max: 60, den: 11000, link: 120, atom: .1, r: 2, ar: 3.2, rx: 10, ry: 5 }          // phone
+    T = innerWidth < 640 ? { max: 40, den: 11000, link: 120, atom: .1, r: 2, ar: 3.2, rx: 10, ry: 5 }          // phone
       : lite ? { max: 80, den: 13000, link: 130, atom: .12, r: 2.2, ar: 3.6, rx: 11, ry: 5 }                   // tablet
       : { max: 130, den: 9500, link: 150, atom: .14, r: 2.3, ar: 4, rx: 13, ry: 6 };                           // laptop / desktop
     pts = Array.from({ length: Math.round(Math.min(T.max, W * H / T.den)) }, () => { const atom = Math.random() < T.atom;
