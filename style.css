@@ -50,7 +50,8 @@ footer{border-top:1px solid var(--line);padding:28px 22px;text-align:center;colo
 .gate-title{font:600 2.4rem 'Space Grotesk';letter-spacing:.28em;margin:10px 0 4px}.gate-sub{margin:0 0 26px;opacity:.7}.gate-center .btn{background:var(--violet);border-color:var(--violet);color:#fff;padding:14px 38px}
 #gate.opening .gate-center{opacity:0}#gate.opening .left{transform:translateX(-100%)}#gate.opening .right{transform:translateX(100%)}.is-open #gate,#gate.done{display:none}
 @media(max-width:860px){.burger{display:block}.nav nav{display:none;position:absolute;top:110%;left:0;right:0;flex-direction:column;align-items:stretch;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px}body.menu .nav nav{display:flex}.bento{grid-template-columns:1fr}.span2{grid-column:auto}.hero-in{padding-top:70px}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}}
+/* Reduce Motion: no spinning, tilting or sliding, but soft fades and a gentle background still run */
+@media(prefers-reduced-motion:reduce){.mesh,.hero-logo,.lock,.rig{animation:none!important}.rv{transform:none!important}.ticker #ticker{animation-duration:110s}}
 /* single-page additions */
 html{scroll-padding-top:90px}section.alt{background:#fff;border-block:1px solid var(--line)}.wrap h2:first-of-type{margin-top:0}.wrap h2{margin-top:56px}
 .card+.card,.card+h2{margin-top:18px}
@@ -147,3 +148,11 @@ details[open] p{animation:fadeDown .45s var(--ease)}@keyframes fadeDown{from{opa
   .stat,.trk,.prize{transform:none}.ticker{padding:9px 0;font-size:.9rem}
   .passport span{padding:9px 14px;font-size:.9rem}.num{font-size:3rem}.fab{bottom:14px;right:14px}
 }
+
+/* v8: iPhone / Safari smoothness */
+.nav{-webkit-backdrop-filter:blur(12px)}.glass{-webkit-backdrop-filter:blur(10px)}
+.dots{-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 70%)}
+#net{transform:translateZ(0)}
+.rig,.logo3d,.hero h1{-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.perf-low .mesh{animation:none}.perf-low #ticker{animation-duration:90s}
+@media(max-width:640px){.mesh{animation-duration:22s}.ticker #ticker{animation-duration:55s}}
