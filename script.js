@@ -51,7 +51,7 @@ fetch('content.json').then(r => r.json()).then(c => {
   list('sponsorList', c.sponsors, s => `<div>${s.logo ? `<img src="${s.logo}" alt="${s.name}">` : `<b>${s.name}</b>`}<small>${s.role}</small></div>`);
   set('cPhone', 'Phone: ' + c.contact.phone); set('cEmail', `Email: <a href="mailto:${c.contact.email}">${c.contact.email}</a>`, 1); set('cLoc', 'Location: ' + c.contact.location);
   [['waLink','whatsapp'],['igLink','instagram'],['ttLink','tiktok'],['ytLink','youtube']].forEach(([id,k]) => $(id) && ($(id).href = c.social[k]));
-  extra(c); countdown(c.eventDate); counters(c.live); askBar(c);
+  extra(c); enhance(c); countdown(c.eventDate); counters(c.live); askBar(c);
 }).catch(() => console.error('Could not load content.json (open the site through GitHub Pages, not by double-clicking the file).'));
 
 // ---- Countdown ----
@@ -129,37 +129,64 @@ const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
     rig.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 10}deg)`; });
 })();
 
-// ---- 3D title: Transformers-style morph, slow spin every 2 minutes ----
+// ---- 3D title: rise-in entrance, light wave, cursor tilt ----
 function titleFx(t) {
   const h = $('heroTitle'); if (!h) return; h.setAttribute('aria-label', t);
   const cut = t.indexOf(':'); let k = 0;
   h.innerHTML = t.split(' ').map(w => `<span class="w">${[...w].map(ch => `<span class="ch ${k++ > cut ? 'br' : ''}" aria-hidden="true">${ch}</span>`).join('')}</span>`).join(' ');
-  const chars = [...h.querySelectorAll('.ch')], pool = '<>/[]{}=+*^?#01';
-  function morph() { if (calm) return;
-    h.animate([{ transform: 'perspective(900px) rotateY(0deg)' }, { transform: 'perspective(900px) rotateY(360deg)' }], { duration: 3800, easing: 'cubic-bezier(.65,0,.35,1)' });
-    chars.forEach((c, i) => setTimeout(() => { const o = c.textContent; c.style.width = c.offsetWidth + 'px'; c.style.textAlign = 'center';
-      c.animate([{ transform: 'rotateX(0) scale(1)' }, { transform: 'rotateX(180deg) scale(1.25) translateZ(40px)', offset: .5 }, { transform: 'rotateX(360deg) scale(1)' }], { duration: 1400, easing: 'cubic-bezier(.45,0,.2,1)' });
-      let n = 0; const iv = setInterval(() => { c.textContent = n++ < 9 ? pool[Math.random() * pool.length | 0] : o; if (n > 9) { clearInterval(iv); c.style.width = ''; } }, 70); }, i * 45)); }
-  setTimeout(morph, 4500); setInterval(morph, 120000); // every 2 minutes
+  const chars = [...h.querySelectorAll('.ch')]; if (calm) return;
+  chars.forEach(c => c.style.opacity = 0);
+  // 1. Entrance: letters rise out of a soft blur, one after another (starts after UNLOCK is pressed)
+  const enter = () => { chars.forEach((c, i) => { const a = c.animate([{ opacity: 0, transform: 'translateY(.5em) rotateX(-80deg)', filter: 'blur(8px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }],
+      { duration: 1000, delay: i * 40, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' }); a.onfinish = () => { c.style.opacity = 1; a.cancel(); }; });
+    // 2. A soft light wave travels across the letters every 8 seconds
+    const wave = () => chars.forEach((c, i) => c.animate([{ filter: 'brightness(1)', transform: 'translateY(0)' }, { filter: 'brightness(1.7)', transform: 'translateY(-.08em)', offset: .5 }, { filter: 'brightness(1)', transform: 'translateY(0)' }], { duration: 900, delay: i * 55, easing: 'ease-in-out' }));
+    setTimeout(() => { wave(); setInterval(wave, 8000); }, 3500); };
+  const btn = $('unlockBtn'); if (btn) btn.addEventListener('click', () => setTimeout(enter, 900)); else setTimeout(enter, 200);
+  // 3. The whole title tilts gently toward the cursor
+  h.style.transition = 'transform .3s ease-out';
+  addEventListener('mousemove', e => { h.style.transform = `perspective(900px) rotateY(${(e.clientX / innerWidth - .5) * 8}deg) rotateX(${-(e.clientY / innerHeight - .5) * 5}deg)`; });
 }
 
-// ---- Hero background: a quiet network of nodes that gently links up near the cursor ----
+// ---- Hero background: a visible network of nodes and "atoms" that reacts to the cursor ----
 (function net() {
   const cv = $('net'); if (!cv || calm) return;
-  const ctx = cv.getContext('2d'), hero = cv.parentElement; let W, H, pts = [], mx = -999, my = -999, on = true;
+  const ctx = cv.getContext('2d'), hero = cv.parentElement, BL = '38,32,138', BR = '140,109,70'; let W, H, pts = [], mx = -999, my = -999, on = true;
   const size = () => { const r = hero.getBoundingClientRect(), d = devicePixelRatio || 1; W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
-    pts = Array.from({ length: Math.round(Math.min(64, W * H / 22000)) }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .22, vy: (Math.random() - .5) * .22, b: Math.random() < .2 })); };
+    pts = Array.from({ length: Math.round(Math.min(130, W * H / 9500)) }, () => { const atom = Math.random() < .14;
+      return { x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, c: Math.random() < .42 ? BR : BL, atom, r: atom ? 4 : 2.3, a: Math.random() * 6.28 }; }); };
   size(); addEventListener('resize', size);
   hero.addEventListener('mousemove', e => { const r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
   hero.addEventListener('mouseleave', () => mx = -999);
   new IntersectionObserver(es => on = es[0].isIntersecting).observe(cv);
   (function draw() { requestAnimationFrame(draw); if (!on || document.hidden) return; ctx.clearRect(0, 0, W, H);
-    for (const p of pts) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
+    for (const p of pts) { const dm = Math.hypot(p.x - mx, p.y - my);
+      if (dm < 130) { p.x += (p.x - mx) / dm * .9; p.y += (p.y - my) / dm * .9; }  // nodes drift away from the cursor
+      p.x += p.vx; p.y += p.vy; p.a += .025; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
     for (let i = 0; i < pts.length; i++) { const a = pts[i];
       for (let j = i + 1; j < pts.length; j++) { const b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
-        if (d < 130) { ctx.strokeStyle = `rgba(${a.b || b.b ? '140,109,70' : '38,32,138'},${(1 - d / 130) * .2})`; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); } }
+        if (d < 150) { ctx.strokeStyle = `rgba(${a.c === b.c ? a.c : BR},${(1 - d / 150) * .4})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); } }
       const dm = Math.hypot(a.x - mx, a.y - my);
-      if (dm < 170) { ctx.strokeStyle = `rgba(140,109,70,${(1 - dm / 170) * .5})`; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mx, my); ctx.stroke(); }
-      ctx.fillStyle = a.b ? 'rgba(140,109,70,.75)' : 'rgba(38,32,138,.5)'; ctx.beginPath(); ctx.arc(a.x, a.y, a.b ? 2.4 : 1.6, 0, 7); ctx.fill(); }
+      if (dm < 190) { ctx.strokeStyle = `rgba(${BR},${(1 - dm / 190) * .7})`; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mx, my); ctx.stroke(); }
+      ctx.fillStyle = `rgba(${a.c},.92)`; ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 7); ctx.fill();
+      if (a.atom) { ctx.strokeStyle = `rgba(${a.c},.5)`; ctx.beginPath(); ctx.ellipse(a.x, a.y, 13, 6, a.a * .3, 0, 7); ctx.stroke();   // orbit ring + electron
+        ctx.fillStyle = `rgba(${a.c === BL ? BR : BL},1)`; ctx.beginPath(); ctx.arc(a.x + Math.cos(a.a) * 13, a.y + Math.sin(a.a) * 6, 2, 0, 7); ctx.fill(); } }
   })();
 })();
+
+// ---- Extra interactive polish: card tilt, magnetic buttons, timeline highlight, rotating placeholder ----
+function enhance(c) {
+  if (!calm && matchMedia('(hover:hover)').matches) {
+    document.querySelectorAll('.trk, .prize, .stat, #zones .card').forEach(el => {
+      el.addEventListener('mouseenter', () => el.style.transition = 'transform .15s ease-out');
+      el.addEventListener('mousemove', e => { const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; el.style.transform = `perspective(700px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-3px)`; });
+      el.addEventListener('mouseleave', () => { el.style.transition = 'transform .5s cubic-bezier(.22,.8,.24,1)'; el.style.transform = ''; }); });
+    document.querySelectorAll('.btn.primary, .btn.brown').forEach(b => {
+      b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .15}px, ${(e.clientY - r.top - r.height / 2) * .25}px)`; });
+      b.addEventListener('mouseleave', () => b.style.transform = ''); });
+  }
+  const tio = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('on', e.isIntersecting)), { rootMargin: '-35% 0px -35% 0px' });
+  document.querySelectorAll('#timelineList li').forEach(li => tio.observe(li));
+  const inp = $('askInput'); let pi = 0;
+  if (inp && !calm) setInterval(() => { if (document.activeElement !== inp && !inp.value) inp.placeholder = 'Try: ' + c.hero.prompts[pi++ % c.hero.prompts.length]; }, 3500);
+}
