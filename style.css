@@ -110,3 +110,14 @@ body{background:#fff}section.alt{background:var(--bg);border-block:0}
 
 /* v5: quiet network background */
 #net{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
+/* v6: clean interactive polish */
+h2{position:relative;padding-bottom:14px}
+h2:after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;border-radius:3px;background:linear-gradient(90deg,var(--cyan),var(--dark));transition:width 1s var(--ease) .2s}h2.in:after{width:64px}
+summary{display:flex;justify-content:space-between;gap:12px;list-style:none}summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font:400 1.5rem 'IBM Plex Mono',monospace;line-height:1;color:var(--cyan);transition:transform .35s var(--ease)}details[open] summary:after{transform:rotate(45deg)}
+details[open] p{animation:fadeDown .45s var(--ease)}@keyframes fadeDown{from{opacity:0;transform:translateY(-8px)}}
+.steps.big li{opacity:.5;transition:opacity .5s,transform .5s,border-color .5s}.steps.big li:before{transition:all .4s}
+.steps.big li.on{opacity:1;transform:translateX(6px);border-left-color:var(--cyan)}.steps.big li.on:before{background:var(--cyan);box-shadow:0 0 0 6px rgba(140,109,70,.2)}
+.ticker:hover #ticker{animation-play-state:paused}
+.hero h1{will-change:transform}
