@@ -218,3 +218,17 @@ function enhance(c) {
   addEventListener('scroll', () => { if (busy) return; busy = true; requestAnimationFrame(() => { busy = false; const y = Math.min(scrollY, 700);
     box.style.transform = `translateY(${y * .18}px)`; box.style.opacity = Math.max(1 - y / 1100, .15); }); }, { passive: true });
 })();
+
+// ---- Photo background (About + tracks): scrolls slower than the page, so it drifts as you scroll up and down ----
+(function bgParallax() {
+  const secs = [...document.querySelectorAll('.px')]; if (!secs.length || calm) return;
+  const speed = lite ? .88 : .75;   // 1 = still behind the page; lower = moves more with the page
+  let busy = false, lw = innerWidth;
+  const size = () => secs.forEach(s => { const bg = s.querySelector('.px-bg'); bg.style.height = Math.ceil(innerHeight + (1 - speed) * s.offsetHeight + 40) + 'px'; });
+  const move = () => { busy = false; secs.forEach(s => { const r = s.getBoundingClientRect(); if (r.bottom < -300 || r.top > innerHeight + 300) return;
+    const bg = s.querySelector('.px-bg'); const y = Math.max(0, -r.top * speed); bg.style.transform = `translate3d(0,${y}px,0)`; }); };
+  size(); move();
+  addEventListener('scroll', () => { if (!busy) { busy = true; requestAnimationFrame(move); } }, { passive: true });
+  addEventListener('resize', () => { if (innerWidth !== lw) { lw = innerWidth; size(); move(); } });   // ignore phone address-bar resizes
+  addEventListener('load', () => { size(); move(); });
+})();
