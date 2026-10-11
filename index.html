@@ -27,23 +27,29 @@
   <form class="ask" id="askForm"><span class="mono">&gt;</span><input id="askInput" placeholder="Ask UNLOCK anything: who can join, dates, prizes..." aria-label="Ask a question"><button class="btn primary" type="submit">Ask</button></form>
   <div class="chips" id="askChips"></div>
   <div class="answer card" id="askOut" hidden><span class="mono label">Answer</span><p id="askText"></p></div>
-  <div class="actions"><a class="btn primary" href="#register">Register now</a><a class="btn" href="#about">Learn more</a><a class="btn brown" href="#sponsors">See open spots</a></div>
-  <div class="card" style="margin-top:44px;max-width:560px"><span class="mono label">Grand Finale countdown</span><div class="count" id="countdown"></div></div>
+  <div class="actions"><a class="btn primary" href="#register">Register now</a><a class="btn" href="#about">Learn more</a><a class="btn brown" href="#spots">See open spots</a></div>
+  <div class="card" style="margin-top:44px;max-width:560px"><span class="mono label">UNLOCK Summit countdown: Mon, 7 Dec 2026</span><div class="count" id="countdown"></div>
+    <a class="btn small" id="calLink" href="#" target="_blank" rel="noopener">Add to calendar</a></div>
+  <div class="partners-wrap"><span class="mono label">Partners</span><div class="partners" id="partners"></div></div>
 </div></section>
 <div class="ticker" aria-hidden="true"><div id="ticker"></div></div>
 <section class="wrap stats" id="stats"></section>
 
-<!-- ABOUT -->
-<section id="about" class="wrap"><span class="mono label">About</span><h2>About UNLOCK</h2>
-  <p class="lead" id="aboutSummary"></p>
-  <div class="grid3"><div class="card accent"><h3>The cohort</h3><ul id="cohort"></ul></div>
-  <div class="card"><h3>Objectives</h3><ul id="objectives"></ul></div>
-  <div class="card"><h3>Vision and mission</h3><p id="vision"></p><p id="mission"></p></div></div>
-  <h2>6 industry challenge tracks</h2><div class="trks" id="tracks"></div>
-</section>
+<!-- LIVE TEAM SPOTS (above About) -->
+<section id="spots"><div class="wrap"><span class="mono label">Live registration</span><h2>Live team spots</h2>
+  <div class="card accent"><div id="counters"></div></div></div></section>
 
-<!-- REGISTER -->
-<section id="register" class="alt"><div class="wrap"><span class="mono label">Register</span><h2>Register your team</h2>
+<!-- ABOUT -->
+<section id="about" class="alt"><div class="wrap"><span class="mono label">About</span><h2>About UNLOCK</h2>
+  <p class="lead" id="aboutSummary"></p>
+  <div class="grid3"><div class="card hl"><h3>The cohort</h3><ul id="cohort"></ul></div>
+  <div class="card hl"><h3>Objectives</h3><ul id="objectives"></ul></div>
+  <div class="card hl"><h3>Vision and mission</h3><p id="vision"></p><p id="mission"></p></div></div>
+  <h2>6 industry challenge tracks</h2><div class="trks" id="tracks"></div>
+</div></section>
+
+<!-- REGISTER (kept light on purpose) -->
+<section id="register"><div class="wrap"><span class="mono label">Register</span><h2>Register your team</h2>
   <p class="lead">Only the team leader registers, once. Members must not fill in the main form, to avoid duplicate teams.</p>
   <div class="grid3 two"><div class="card accent"><h3>Student Category</h3><p>For active university students (undergraduate and postgraduate).</p><a class="btn primary" id="stuForm" href="#" target="_blank" rel="noopener">Student registration form</a></div>
   <div class="card accent brown-top"><h3>Young Professional Category</h3><p>For early-career working adults.</p><a class="btn primary" id="proForm" href="#" target="_blank" rel="noopener">Professional registration form</a></div></div>
@@ -51,37 +57,34 @@
 </div></section>
 
 <!-- TIMELINE -->
-<section id="timeline" class="wrap"><span class="mono label">Timeline</span><h2>General timeline</h2><ol class="steps big" id="timelineList"></ol></section>
+<section id="timeline" class="alt"><div class="wrap"><span class="mono label">Timeline</span><h2>General timeline</h2><ol class="steps big" id="timelineList"></ol></div></section>
 
 <!-- SUMMIT -->
-<section id="summit" class="alt"><div class="wrap"><span class="mono label">Grand Finale</span><h2>UNLOCK Summit, 7 December 2026</h2>
+<section id="summit"><div class="wrap"><span class="mono label">Grand Finale</span><h2>UNLOCK Summit, 7 December 2026</h2>
   <div class="grid3 two" id="zones"></div>
   <h3 class="sub">UNLOCK Passport</h3><p id="passportText" class="muted"></p><div class="passport" id="passport"></div>
   <div class="card brown-card"><span class="mono label">Vote</span><p id="peoples"></p></div>
 </div></section>
 
 <!-- JUDGING, PRIZES, SUBMISSIONS -->
-<section id="awards" class="wrap"><span class="mono label">Awards</span><h2>Judging and prizes</h2>
-  <div class="grid3 two"><div class="card"><h3>Judging criteria (100%)</h3><div id="criteria"></div></div>
+<section id="awards" class="alt"><div class="wrap"><span class="mono label">Awards</span><h2>Judging and prizes</h2>
+  <div class="grid3 two"><div class="card"><h3>Judging criteria</h3><div id="criteria"></div></div>
   <div><div class="prizes" id="prizeGrid"></div><div class="card" style="margin-top:18px"><h3>What each team submits</h3><ul id="submitList"></ul></div></div></div>
-</section>
+</div></section>
 
-<!-- RULES & FAQ -->
+<!-- SPONSORS -->
+<section id="sponsors"><div class="wrap"><span class="mono label">Sponsors</span><h2>Our sponsors</h2>
+  <p class="muted">Tap a logo to visit the sponsor.</p><div class="sponsors" id="sponsorList"></div></div></section>
+
+<!-- RULES & FAQ (above Contacts) -->
 <section id="faq" class="alt"><div class="wrap"><span class="mono label">Rules</span><h2>Rules and regulations</h2><div class="grid3" id="rules"></div>
   <h2>Frequently asked questions</h2><div id="faqList"></div></div></section>
 
-<!-- SPONSORS & LIVE TRACKER -->
-<section id="sponsors" class="wrap"><span class="mono label">Live registration</span><h2>Sponsors and live team spots</h2>
-  <div class="card accent"><div id="counters"></div></div>
-  <h2>Partners</h2><div class="logos" id="sponsorList"></div>
-</section>
-
 <!-- CONTACTS -->
-<section id="contact" class="alt"><div class="wrap"><span class="mono label">Contact</span><h2>Contacts and socials</h2>
-<div class="grid3">
+<section id="contact"><div class="wrap"><span class="mono label">Contact</span><h2>Contacts and socials</h2>
+<div class="grid3 two">
   <div class="card"><h3>Contact</h3><p id="cPhone"></p><p id="cEmail"></p><p id="cLoc"></p></div>
-  <div class="card"><h3>WhatsApp group</h3><p>Join at the end of your registration. The link appears after you submit the form.</p><a class="btn primary" id="waLink" href="#" target="_blank" rel="noopener">Open WhatsApp group</a></div>
-  <div class="card"><h3>Follow us</h3><p><a id="igLink" href="#" target="_blank" rel="noopener">Instagram</a></p><p><a id="ttLink" href="#" target="_blank" rel="noopener">TikTok</a></p><p><a id="ytLink" href="#" target="_blank" rel="noopener">YouTube livestream</a></p></div>
+  <div class="card"><h3>Follow us</h3><div class="socials" id="socials"></div></div>
 </div></div></section>
 
 </main>
