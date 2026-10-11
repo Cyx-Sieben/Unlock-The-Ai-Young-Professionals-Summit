@@ -182,3 +182,10 @@ details[open] p{animation:fadeDown .45s var(--ease)}@keyframes fadeDown{from{opa
 .pt b{display:block;line-height:1.15;font-size:.92rem;color:var(--dark)}.pt small{display:block;color:var(--muted);font-size:.72rem;max-width:200px}.pt:hover{border-color:var(--cyan);transform:translateY(-2px)}
 .socials{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
 @media(max-width:640px){.trks{gap:10px}.trk{padding:14px;font-size:.92rem}.pt small{max-width:150px}.rt .t b{font-size:2rem}}
+
+/* v10: photo background behind About + the 6 tracks, with scroll parallax */
+.px{position:relative;overflow:hidden;isolation:isolate}
+.px-bg{position:absolute;left:0;right:0;top:0;height:100%;z-index:-2;background:url(assets/team-bg.jpg) center 62%/cover no-repeat;will-change:transform}
+.px::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(21,0,97,.82),rgba(21,0,97,.62) 40%,rgba(21,0,97,.8))}
+.px h2,.px .lead{color:#F5F2EB}.px .label{color:#D8B98C}.px h2:after{background:linear-gradient(90deg,#D8B98C,#F5F2EB)}
+.px .trk{background:rgba(245,242,235,.96)}
