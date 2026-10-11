@@ -189,3 +189,16 @@ details[open] p{animation:fadeDown .45s var(--ease)}@keyframes fadeDown{from{opa
 .px::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(21,0,97,.82),rgba(21,0,97,.62) 40%,rgba(21,0,97,.8))}
 .px h2,.px .lead{color:#F5F2EB}.px .label{color:#D8B98C}.px h2:after{background:linear-gradient(90deg,#D8B98C,#F5F2EB)}
 .px .trk{background:rgba(245,242,235,.96)}
+
+/* v11: photo without the blue tint, aligned cards, partner logos */
+.px::after{background:linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.18) 45%,rgba(0,0,0,.30))}
+.px-bg{background-position:center 70%}
+.px h2,.px .lead,.px .label{text-shadow:0 2px 14px rgba(0,0,0,.55)}.px h2:after{box-shadow:0 1px 6px rgba(0,0,0,.4)}
+.grid3>.card,.grid3>div{margin-top:0!important}
+.pt{padding:8px 22px 8px 12px;background:#fff}.pt img{height:46px;width:auto;max-width:120px;object-fit:contain;border-radius:0}
+.pt .mono-badge{width:46px;height:46px}
+.sp .lg img{max-height:70px;width:auto}
+
+.wm{font:600 1.05rem 'Space Grotesk',sans-serif;color:var(--dark);letter-spacing:.01em;padding:0 4px;max-width:130px;line-height:1.1}
+.wm + span b{display:none}
+.pt img{height:52px;max-width:150px}
