@@ -323,10 +323,10 @@
    "alt": "Participants receive the WhatsApp group link when they finish registering, and official updates are also sent by email."
   },
   {
-   "q": "Who is iCEP?",
-   "kw": "icep partner sponsor",
-   "a": "iCEP is the Anchor Industry Partner and Strategic Advisory Lead, and its industry panel helps evaluate the prototypes.",
-   "alt": "iCEP is our anchor industry partner and strategic advisory lead, and its panel helps evaluate the prototypes."
+   "q": "Who is iCEP PETRONAS?",
+   "kw": "icep partner sponsor icep petronas",
+   "a": "iCEP PETRONAS is the Anchor Industry Partner and Strategic Advisory Lead, and its industry panel helps evaluate the prototypes.",
+   "alt": "iCEP PETRONAS is our anchor industry partner and strategic advisory lead, and its panel helps evaluate the prototypes."
   },
   {
    "q": "Is there a Q&A after the pitch?",
@@ -337,8 +337,8 @@
   {
    "q": "Who are the partners?",
    "kw": "partner krackeddevs uitm icep",
-   "a": "UiTM Shah Alam is the host, iCEP is the anchor industry partner and strategic advisory lead, and KrackedDevs, Malaysia's builder ecosystem, is a partner.",
-   "alt": "Our partners are UiTM Shah Alam (host), iCEP (anchor industry partner) and KrackedDevs (Malaysia's builder ecosystem)."
+   "a": "UiTM Shah Alam is the host, iCEP PETRONAS is the anchor industry partner and strategic advisory lead, and KrackedDevs, Malaysia's builder ecosystem, is a partner.",
+   "alt": "Our partners are UiTM Shah Alam (host), iCEP PETRONAS (anchor industry partner) and KrackedDevs (Malaysia's builder ecosystem)."
   },
   {
    "q": "Where can I follow UNLOCK?",
@@ -362,7 +362,7 @@
   }
  ],
  "live": {
-  "appsScriptUrl": "https://script.google.com/macros/s/AKfycbwVxVL7MqbZ4euDSwiSVsBuJcwmc0lMaxjqacHulpAKh1A0ku48CdYSL19WYs-0PJi_/exec",
+  "appsScriptUrl": "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE",
   "studentCap": 5,
   "professionalCap": 5
  },
@@ -376,19 +376,19 @@
   {
    "name": "UiTM Shah Alam",
    "role": "Host university",
-   "logo": "",
+   "logo": "assets/partners/uitm.png",
    "url": "https://www.uitm.edu.my"
   },
   {
-   "name": "iCEP",
+   "name": "iCEP PETRONAS",
    "role": "Anchor Industry Partner & Strategic Advisory Lead",
-   "logo": "",
-   "url": ""
+   "logo": "assets/partners/icep.png",
+   "url": "https://icep.com.my"
   },
   {
    "name": "KrackedDevs",
    "role": "Malaysia's builder ecosystem",
-   "logo": "",
+   "logo": "assets/partners/krackeddevs.svg",
    "url": "https://krackeddevs.com/"
   }
  ],
