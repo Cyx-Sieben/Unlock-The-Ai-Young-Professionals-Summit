@@ -1,6 +1,6 @@
 /* UNLOCK final script (single-page site). Text lives in content.json. */
 const $ = id => document.getElementById(id);
-const PAGES = [['#home','Home'],['#about','About'],['#timeline','Timeline'],['#summit','Summit'],['#faq','Rules & FAQ'],['#sponsors','Sponsors'],['#contact','Contacts']];
+const PAGES = [['#home','Home'],['#about','About'],['#timeline','Timeline'],['#summit','Summit'],['#sponsors','Sponsors'],['#faq','Rules & FAQ'],['#contact','Contacts']];
 const here = document.body.dataset.page;
 
 // ---- Unlock gate (once per session) ----
@@ -31,7 +31,7 @@ document.querySelectorAll('.nav nav a').forEach(a => a.addEventListener('click',
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in');
   if (e.target.tagName === 'SECTION') document.querySelectorAll('.nav nav a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); } }), { threshold: .04 });
 document.querySelectorAll('section').forEach(x => io.observe(x));
-document.querySelectorAll('.card, h2, .trk, .steps, .crit, .prize, .stat').forEach(x => { if (!x.closest('.hero')) { x.classList.add('rv'); io.observe(x); } });
+document.querySelectorAll('.card, h2, .trk, .steps, .crit, .prize, .stat, .sp').forEach(x => { if (!x.closest('.hero')) { x.classList.add('rv'); io.observe(x); } });
 // cursor glow on cards
 document.addEventListener('mousemove', e => { const c = e.target.closest && e.target.closest('.card'); if (c) { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', e.clientX-r.left+'px'); c.style.setProperty('--my', e.clientY-r.top+'px'); } });
 
@@ -48,9 +48,7 @@ fetch('content.json').then(r => r.json()).then(c => {
   list('timelineList', c.timeline, t => `<li><b>${t.date}: ${t.title}</b><br><span class="muted">${t.detail}</span></li>`);
   
   list('faqList', c.faqs, f => `<details><summary>${f.q}</summary><p>${f.a}</p></details>`);
-  list('sponsorList', c.sponsors, s => `<div>${s.logo ? `<img src="${s.logo}" alt="${s.name}">` : `<b>${s.name}</b>`}<small>${s.role}</small></div>`);
   set('cPhone', 'Phone: ' + c.contact.phone); set('cEmail', `Email: <a href="mailto:${c.contact.email}">${c.contact.email}</a>`, 1); set('cLoc', 'Location: ' + c.contact.location);
-  [['waLink','whatsapp'],['igLink','instagram'],['ttLink','tiktok'],['ytLink','youtube']].forEach(([id,k]) => $(id) && ($(id).href = c.social[k]));
   extra(c); enhance(c); countdown(c.eventDate); counters(c.live); askBar(c);
 }).catch(() => console.error('Could not load content.json (open the site through GitHub Pages, not by double-clicking the file).'));
 
@@ -83,7 +81,7 @@ function askBar(c) {
   const answer = q => { const w = words(q);
     const scored = c.faqs.map(f => { const qt = words(f.q + ' ' + (f.kw || '')), at = words(f.a);
       return { f, sc: w.filter(x => qt.some(t => t.startsWith(x) || x.startsWith(t))).length * 3 + w.filter(x => at.includes(x)).length }; }).sort((a, b) => b.sc - a.sc);
-    if (scored[0].sc > 0) return scored[0].f.a;
+    if (scored[0].sc > 0) { const f = scored[0].f, v = [f.a].concat(f.alt || []); f._n = f._n === undefined ? Math.random() * v.length | 0 : (f._n + 1) % v.length; return v[f._n]; }
     return 'I am not sure about that one. Try asking about: ' + c.hero.prompts.slice(0, 4).join(', ') + '. Or contact the team in the Contacts section.'; };
   const run = q => { if (!q.trim()) return; $('askInput').value = q; $('askOut').hidden = false; const t = $('askText'), a = answer(q); t.textContent = ''; let i = 0;
     clearInterval(run.t); run.t = setInterval(() => { t.textContent = a.slice(0, ++i); if (i >= a.length) clearInterval(run.t); }, 12); };
@@ -106,11 +104,19 @@ function extra(c) {
   $('stuForm').href = c.forms.student; $('proForm').href = c.forms.professional;
   list('zones', c.summit.zones, z => `<div class="card accent"><h3>${z.t}</h3><p>${z.d}</p></div>`);
   list('passport', c.summit.passport, p => `<span>${p}</span>`); set('passportText', c.summit.passportText); set('peoples', c.summit.peoples);
-  list('criteria', c.criteria, x => `<div class="crit rv"><span>${x.name}</span><b>${x.w}%</b><div class="bar"><i style="--w:${x.w}%"></i></div></div>`);
+  list('criteria', c.criteria, (x, i) => `<div class="crit rv"><i>${String(i + 1).padStart(2, '0')}</i><span>${x}</span></div>`);
   list('prizeGrid', c.awards, a => `<div class="prize rv"><b>${a.n}</b><strong>${a.label}</strong><small>${a.d}</small></div>`);
   list('submitList', c.submissions, t => `<li>${t}</li>`);
-  list('rules', c.rules, r => `<div class="card"><h3>${r.t}</h3><ul>${r.items.map(i => `<li>${i}</li>`).join('')}</ul></div>`);
-  document.querySelectorAll('.crit,.prize,.trk,.stat').forEach(x => { x.classList.add('rv'); io.observe(x); });
+  list('rules', c.rules, (r, i) => { const t = r.t.replace(/^\d+\.\s*/, ''); return `<div class="card hl"><h3 class="rt"><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="t"><b>${t[0]}</b>${t.slice(1)}</span></h3><ul>${r.items.map(x => `<li>${x}</li>`).join('')}</ul></div>`; });
+  const ini = n => n.split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase(), link = o => o.url || 'https://www.google.com/search?q=' + encodeURIComponent(o.name),
+    mark = o => o.logo ? `<img src="${o.logo}" alt="${o.name} logo">` : `<span class="mono-badge">${ini(o.name)}</span>`;
+  list('sponsorList', c.sponsors, o => `<a class="sp rv" href="${link(o)}" target="_blank" rel="noopener sponsored"><div class="lg">${mark(o)}</div><b>${o.name}</b><small>${o.role}</small><span class="go">VISIT &rarr;</span></a>`);
+  list('partners', c.partners, o => `<a class="pt" href="${link(o)}" target="_blank" rel="noopener">${mark(o)}<span><b>${o.name}</b><small>${o.role}</small></span></a>`);
+  list('socials', c.socials, o => `<a class="btn primary" href="${o.url}" target="_blank" rel="noopener">${o.name} <span class="mono" style="margin-left:8px;opacity:.8">${o.handle}</span></a>`);
+  const cal = $('calLink'); if (cal) cal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('UNLOCK Summit & Grand Finale 2026') + '&dates=20261207/20261208&location=' + encodeURIComponent('Dewan Annex / Dewan Seroja, UiTM Shah Alam');
+  const left = Math.ceil((new Date(c.regClose) - Date.now()) / 864e5);   // registration chip: live days left
+  set('heroChip', left > 0 ? `Registration open · closes 2 Nov 2026 · ${left} day${left > 1 ? 's' : ''} left` : 'Registration closed');
+  document.querySelectorAll('.crit,.prize,.trk,.stat,.sp').forEach(x => { x.classList.add('rv'); io.observe(x); });
   new IntersectionObserver((es, o) => es.forEach(e => { if (!e.isIntersecting) return; o.unobserve(e.target); const b = e.target, n = +b.dataset.n, t0 = performance.now();
     const step = t => { const p = Math.min((t - t0) / 1400, 1); b.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }), { threshold: .5 })
     .observe && document.querySelectorAll('.stat b').forEach(b => countObs.observe(b));
@@ -191,11 +197,12 @@ function titleFx(t) {
 // ---- Extra interactive polish: card tilt, magnetic buttons, timeline highlight, rotating placeholder ----
 function enhance(c) {
   if (!calm && matchMedia('(hover:hover)').matches) {
-    document.querySelectorAll('.trk, .prize, .stat, #zones .card').forEach(el => {
+    document.querySelectorAll('.prize, .stat, #zones .card, .sp').forEach(el => {
       el.addEventListener('mouseenter', () => el.style.transition = 'transform .15s ease-out');
       el.addEventListener('mousemove', e => { const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; el.style.transform = `perspective(700px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-3px)`; });
       el.addEventListener('mouseleave', () => { el.style.transition = 'transform .5s cubic-bezier(.22,.8,.24,1)'; el.style.transform = ''; }); });
-    document.querySelectorAll('.btn.primary, .btn.brown').forEach(b => {
+    document.querySelectorAll('.btn.primary, .btn.brown').forEach(b => { if (b.closest('#register')) return;   // register area stays calm and light
+     
       b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .15}px, ${(e.clientY - r.top - r.height / 2) * .25}px)`; });
       b.addEventListener('mouseleave', () => b.style.transform = ''); });
   }
