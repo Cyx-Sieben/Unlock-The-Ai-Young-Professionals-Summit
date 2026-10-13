@@ -202,3 +202,5 @@ details[open] p{animation:fadeDown .45s var(--ease)}@keyframes fadeDown{from{opa
 .wm{font:600 1.05rem 'Space Grotesk',sans-serif;color:var(--dark);letter-spacing:.01em;padding:0 4px;max-width:130px;line-height:1.1}
 .wm + span b{display:none}
 .pt img{height:52px;max-width:150px}
+
+.btn.is-full{opacity:.55;pointer-events:none;background:var(--muted);border-color:var(--muted)}
