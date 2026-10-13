@@ -68,7 +68,9 @@ function counters(cfg) {
   el.innerHTML = box('s','Students',cfg.studentCap) + box('p','Professionals',cfg.professionalCap) + '<p class="mono muted" id="liveNote" style="font-size:.75rem"></p>';
   const show = (k, cap, n) => { const left = Math.max(cap - n, 0); $(k+'Left').textContent = left || 'Full'; $(k+'Sfx').textContent = left ? `of ${cap} team spots left` : 'registration closed for this group'; $(k+'Left').closest('.ctr').classList.toggle('full', !left); $(k+'Bar').style.width = Math.min(n / cap * 100, 100) + '%'; };
   if (!cfg.appsScriptUrl || cfg.appsScriptUrl.includes('PASTE')) { $('liveNote').textContent = 'Live counter not connected yet.'; return; }
-  const load = () => fetch(cfg.appsScriptUrl).then(r => r.json()).then(d => { show('s', cfg.studentCap, +d.students||0); show('p', cfg.professionalCap, +d.professionals||0); $('liveNote').textContent = 'Live. Updated ' + new Date().toLocaleTimeString(); })
+  const load = () => fetch(cfg.appsScriptUrl).then(r => r.json()).then(d => { show('s', cfg.studentCap, +d.students||0); show('p', cfg.professionalCap, +d.professionals||0); [['stuForm', cfg.studentCap, d.students, 'Student category is full'], ['proForm', cfg.professionalCap, d.professionals, 'Young Professional category is full']].forEach(([id, cap, n, msg]) => {   // category full: lock its register button
+      const b = $(id); if (b && (+n || 0) >= cap) { b.textContent = msg; b.removeAttribute('href'); b.classList.add('is-full'); } });
+    $('liveNote').textContent = 'Live. Updated ' + new Date().toLocaleTimeString(); })
     .catch(() => $('liveNote').textContent = 'Live count unavailable. Please check again soon.');
   load(); setInterval(load, 30000);
 }
@@ -109,9 +111,9 @@ function extra(c) {
   list('submitList', c.submissions, t => `<li>${t}</li>`);
   list('rules', c.rules, (r, i) => { const t = r.t.replace(/^\d+\.\s*/, ''); return `<div class="card hl"><h3 class="rt"><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="t"><b>${t[0]}</b>${t.slice(1)}</span></h3><ul>${r.items.map(x => `<li>${x}</li>`).join('')}</ul></div>`; });
   const ini = n => n.split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase(), link = o => o.url || 'https://www.google.com/search?q=' + encodeURIComponent(o.name),
-    mark = o => o.logo ? `<img src="${o.logo}" alt="${o.name} logo">` : `<span class="mono-badge">${ini(o.name)}</span>`;
+    mark = (o, wm) => { const b = wm ? `<span class="wm">${o.name}</span>` : `<span class="mono-badge">${ini(o.name)}</span>`; return o.logo ? `<img src="${o.logo}" alt="${o.name} logo" onerror="this.outerHTML=this.dataset.fb" data-fb='${b}'>` : b; };
   list('sponsorList', c.sponsors, o => `<a class="sp rv" href="${link(o)}" target="_blank" rel="noopener sponsored"><div class="lg">${mark(o)}</div><b>${o.name}</b><small>${o.role}</small><span class="go">VISIT &rarr;</span></a>`);
-  list('partners', c.partners, o => `<a class="pt" href="${link(o)}" target="_blank" rel="noopener">${mark(o)}<span><b>${o.name}</b><small>${o.role}</small></span></a>`);
+  list('partners', c.partners, o => `<a class="pt" href="${link(o)}" target="_blank" rel="noopener">${mark(o, 1)}<span><b>${o.name}</b><small>${o.role}</small></span></a>`);
   list('socials', c.socials, o => `<a class="btn primary" href="${o.url}" target="_blank" rel="noopener">${o.name} <span class="mono" style="margin-left:8px;opacity:.8">${o.handle}</span></a>`);
   const cal = $('calLink'); if (cal) cal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('UNLOCK Summit & Grand Finale 2026') + '&dates=20261207/20261208&location=' + encodeURIComponent('Dewan Annex / Dewan Seroja, UiTM Shah Alam');
   const left = Math.ceil((new Date(c.regClose) - Date.now()) / 864e5);   // registration chip: live days left
