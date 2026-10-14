@@ -42,14 +42,14 @@ fetch('content.json').then(r => r.json()).then(c => {
   LOGO = c.logo || LOGO;
   document.querySelectorAll('[data-register]').forEach(a => a.href = c.registerUrl);
   titleFx(c.hero.title); set('heroSub', c.hero.subtitle); set('heroChip', c.hero.status);
-  set('aboutSummary', c.about.summary); set('vision', '<b>Vision:</b> ' + c.about.vision, 1); set('mission', '<b>Mission:</b> ' + c.about.mission, 1);
-  list('objectives', c.about.objectives, t => `<li>${t}</li>`); 
+  set('aboutSummary', c.about.summary); set('mission', '<span class="sublabel">OUR MISSION</span>' + c.about.mission, 1); set('vision', '<span class="sublabel">OUR VISION</span>' + c.about.vision, 1);
+  set('objectives', c.about.objective); 
   
-  list('timelineList', c.timeline, t => `<li><b>${t.date}: ${t.title}</b><br><span class="muted">${t.detail}</span></li>`);
+  list('timelineList', c.timeline, t => `<li><b>${t.date}: ${cap(t.title)}</b><br><span class="muted">${t.detail}</span></li>`);
   
   list('faqList', c.faqs, f => `<details><summary>${f.q}</summary><p>${f.a}</p></details>`);
   set('cPhone', 'Phone: ' + c.contact.phone); set('cEmail', `Email: <a href="mailto:${c.contact.email}">${c.contact.email}</a>`, 1); set('cLoc', 'Location: ' + c.contact.location);
-  extra(c); enhance(c); countdown(c.eventDate); counters(c.live); askBar(c);
+  extra(c); styleTitles(); touchHighlight(); enhance(c); countdown(c.eventDate); counters(c.live); askBar(c);
 }).catch(() => console.error('Could not load content.json (open the site through GitHub Pages, not by double-clicking the file).'));
 
 // ---- Countdown ----
@@ -99,7 +99,7 @@ addEventListener('scroll', () => { const d = document.documentElement; $('prog')
 // ---- new sections filled from content.json ----
 function extra(c) {
   list('stats', c.stats, s => `<div class="stat"><b data-n="${s.n}">0</b><span>${s.label}</span></div>`);
-  list('tracks', c.about.tracks, (t, i) => `<div class="trk"><i>0${i + 1}</i>${t}</div>`);
+  list('tracks', c.about.tracks, (t, i) => `<div class="trk"><i>0${i + 1}</i><span class="tt">${cap(t)}</span></div>`);
   list('ticker', c.about.tracks.concat(c.about.tracks), t => `<span>${t}</span>`);
   list('cohort', c.about.cohort, t => `<li>${t}</li>`);
   list('prepare', c.registration.prepare, t => `<li>${t}</li>`); list('regSteps', c.registration.steps, t => `<li>${t}</li>`);
@@ -115,7 +115,7 @@ function extra(c) {
   list('sponsorList', c.sponsors, o => `<a class="sp rv" href="${link(o)}" target="_blank" rel="noopener sponsored"><div class="lg">${mark(o)}</div><b>${o.name}</b><small>${o.role}</small><span class="go">VISIT &rarr;</span></a>`);
   list('partners', c.partners, o => `<a class="pt" href="${link(o)}" target="_blank" rel="noopener">${mark(o, 1)}<span><b>${o.name}</b><small>${o.role}</small></span></a>`);
   list('socials', c.socials, o => `<a class="btn primary" href="${o.url}" target="_blank" rel="noopener">${o.name} <span class="mono" style="margin-left:8px;opacity:.8">${o.handle}</span></a>`);
-  const cal = $('calLink'); if (cal) cal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('UNLOCK Summit & Grand Finale 2026') + '&dates=20261207/20261208&location=' + encodeURIComponent('Dewan Annex / Dewan Seroja, UiTM Shah Alam');
+  const cal = $('calLink'); if (cal) cal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(c.officialName) + '&dates=20261207/20261208&location=' + encodeURIComponent('Dewan Annex / Dewan Seroja, UiTM Shah Alam');
   const left = Math.ceil((new Date(c.regClose) - Date.now()) / 864e5);   // registration chip: live days left
   set('heroChip', left > 0 ? `Registration open · closes 2 Nov 2026 · ${left} day${left > 1 ? 's' : ''} left` : 'Registration closed');
   document.querySelectorAll('.crit,.prize,.trk,.stat,.sp').forEach(x => { x.classList.add('rv'); io.observe(x); });
@@ -234,3 +234,15 @@ function enhance(c) {
   addEventListener('resize', () => { if (innerWidth !== lw) { lw = innerWidth; size(); move(); } });   // ignore phone address-bar resizes
   addEventListener('load', () => { size(); move(); });
 })();
+
+// ---- Big-first-letter style for card titles and sub-headings; touch highlight for boxes ----
+function cap(x) { return `<b class="cap">${x[0]}</b>${x.slice(1)}`; }
+function styleTitles() {
+  document.querySelectorAll('.card.hl h3:not(.rt), #register .card h3, #zones .card h3, h3.sub, #awards .card h3, #contact .card h3').forEach(h => { if (!h.querySelector('.cap')) h.innerHTML = cap(h.textContent); });
+}
+function touchHighlight() {   // phones and tablets: tapping a box turns it blue with white text (like hover on a computer)
+  document.querySelectorAll('.trk, .card.hl').forEach(el => {
+    el.addEventListener('touchstart', () => { clearTimeout(el._t); el.classList.add('hot'); }, { passive: true });
+    ['touchend', 'touchcancel'].forEach(ev => el.addEventListener(ev, () => { el._t = setTimeout(() => el.classList.remove('hot'), 450); }, { passive: true }));
+  });
+}
