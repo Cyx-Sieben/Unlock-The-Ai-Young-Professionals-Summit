@@ -204,3 +204,13 @@ details[open] p{animation:fadeDown .45s var(--ease)}@keyframes fadeDown{from{opa
 .pt img{height:52px;max-width:150px}
 
 .btn.is-full{opacity:.55;pointer-events:none;background:var(--muted);border-color:var(--muted)}
+
+/* v12: boxes turn blue on hover/tap (fixes the tracks), big-first-letter titles, no highlight behind rules titles */
+.trk:hover,.trk.hot,.px .trk:hover,.px .trk.hot,.hl.hot{background:var(--dark);border-color:var(--dark);border-top-color:var(--cyan);color:#fff}
+.hl.hot h3,.hl.hot li,.hl.hot p,.hl.hot b,.hl.hot .t,.hl.hot .t b,.hl.hot .sublabel{color:#fff}.hl.hot .rt .n{background:#fff;color:var(--dark)}
+.trk{transition:background .3s,color .3s,border-color .3s}.trk:hover i,.trk.hot i{color:#E2C99A}
+.cap{font:600 1.75em 'Space Grotesk',sans-serif;color:var(--dark);line-height:1;margin-right:1px}
+.trk .cap{font-size:1.5em}.trk:hover .cap,.trk.hot .cap,.hl:hover .cap,.hl.hot .cap{color:#fff}
+.rt .t{background:none}
+.sublabel{display:block;font:500 .75rem 'IBM Plex Mono',monospace;letter-spacing:.08em;color:var(--cyan);margin:10px 0 4px}.hl:hover .sublabel{color:#E2C99A}
+.steps b .cap{font-size:1.5em}
