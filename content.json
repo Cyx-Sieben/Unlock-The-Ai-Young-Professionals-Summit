@@ -370,7 +370,7 @@
   }
  ],
  "live": {
-  "appsScriptUrl": "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE",
+  "appsScriptUrl": "https://script.google.com/macros/s/AKfycbz9iG0L1nzKBMmSBZkUVwPB6fyibNmt_MkF7MX-ZjtaxUzrNuT2cRKkSam7c2EsKfc3/exec",
   "studentCap": 5,
   "professionalCap": 5
  },
