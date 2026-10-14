@@ -2,7 +2,7 @@
  "logo": "assets/logo.png",
  "eventDate": "2026-12-07T09:00:00+08:00",
  "forms": {
-  "student": "https://docs.google.com/forms/d/e/1FAIpQLScjcFHom0135srNLg7fGaY6moRNvCFjtvLQ-yLHkR7ssWUZFQ/viewform",
+  "student": "https://forms.gle/7w7po8TZtenv67YM9",
   "professional": "https://forms.gle/xWHN24HcJGkgtB8P6"
  },
  "hero": {
@@ -37,13 +37,8 @@
  ],
  "about": {
   "summary": "UNLOCK is an AI workplace innovation challenge and grand expo run with iCEP at UiTM Shah Alam. Ten teams (five University Student teams and five Young Professional teams) join a 3-week virtual incubation sprint, then showcase working prototypes at the physical UNLOCK Summit on 7 December 2026.",
-  "objectives": [
-   "EDIT: Build practical applied-AI skills for students and young professionals",
-   "EDIT: Turn workplace problems into working AI prototypes",
-   "EDIT: Connect young talent with industry"
-  ],
-  "vision": "EDIT: your vision statement here.",
-  "mission": "EDIT: your mission statement here.",
+  "vision": "To become a leading platform that bridges academia and industry in nurturing an innovative, AI-ready generation capable of shaping a sustainable, ethical and future-driven workforce.",
+  "mission": "To empower students and young professionals with AI knowledge, innovative thinking, and practical problem-solving skills while fostering meaningful collaboration between academia and industry to promote ethical and responsible AI adoption in the workplace.",
   "cohort": [
    "10 teams, 50 talents in total",
    "5 University Student teams (25 students)",
@@ -57,7 +52,8 @@
    "Marketing & Content",
    "Data & Decision-Making",
    "Sustainability & ESG"
-  ]
+  ],
+  "objective": "To enhance knowledge and understanding of Artificial Intelligence (AI) applications in the workplace, encourage the development of innovative ideas and practical AI-driven solutions, and strengthen strategic collaboration among universities, industries, and communities towards ethical, responsible, and sustainable AI adoption."
  },
  "registration": {
   "prepare": [
@@ -99,8 +95,8 @@
   },
   {
    "date": "Mon, 7 Dec",
-   "title": "Grand Finale & UNLOCK Summit",
-   "detail": "Dewan Annex / Dewan Seroja, UiTM Shah Alam."
+   "title": "Grand Finale",
+   "detail": "UNLOCK: The AI & Young Professionals Summit & Innovation Challenge. Dewan Annex / Dewan Seroja, UiTM Shah Alam."
   }
  ],
  "summit": {
@@ -345,6 +341,18 @@
    "kw": "instagram tiktok social media follow",
    "a": "Follow us on Instagram and TikTok at @unlockai.project. The links are in the Contacts section.",
    "alt": "We are on Instagram and TikTok as @unlockai.project, with direct links in the Contacts section."
+  },
+  {
+   "q": "What is the objective of UNLOCK?",
+   "kw": "objective aim goal purpose objektif",
+   "a": "To enhance knowledge and understanding of Artificial Intelligence (AI) applications in the workplace, encourage the development of innovative ideas and practical AI-driven solutions, and strengthen strategic collaboration among universities, industries, and communities towards ethical, responsible, and sustainable AI adoption.",
+   "alt": "UNLOCK aims to build understanding of workplace AI, encourage innovative and practical AI-driven solutions, and strengthen collaboration between universities, industries and communities for ethical, responsible and sustainable AI adoption."
+  },
+  {
+   "q": "What are the mission and vision of UNLOCK?",
+   "kw": "mission vision misi visi",
+   "a": "Mission: To empower students and young professionals with AI knowledge, innovative thinking, and practical problem-solving skills while fostering meaningful collaboration between academia and industry to promote ethical and responsible AI adoption in the workplace. Vision: To become a leading platform that bridges academia and industry in nurturing an innovative, AI-ready generation capable of shaping a sustainable, ethical and future-driven workforce.",
+   "alt": "Our mission is to empower students and young professionals with AI knowledge and practical skills while connecting academia and industry. Our vision is to be a leading platform that bridges the two and nurtures an AI-ready, ethical and sustainable workforce."
   }
  ],
  "sponsors": [
@@ -362,7 +370,7 @@
   }
  ],
  "live": {
-  "appsScriptUrl": "https://script.google.com/macros/s/AKfycbyYrzqhvcLYW-aanNI73OBRT7b2j-g70DsbzH5m7kEWqUmrBlTPrWJeUfu6psNAQw9s/exec",
+  "appsScriptUrl": "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE",
   "studentCap": 5,
   "professionalCap": 5
  },
@@ -403,5 +411,6 @@
    "handle": "@unlockai.project",
    "url": "https://www.tiktok.com/@unlockai.project?_r=1&_t=ZS-9ASIJca1yjc"
   }
- ]
+ ],
+ "officialName": "UNLOCK: The AI & Young Professionals Summit & Innovation Challenge"
 }
