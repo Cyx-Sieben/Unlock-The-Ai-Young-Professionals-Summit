@@ -1,6 +1,6 @@
 {
  "logo": "assets/logo.png",
- "eventDate": "2026-12-07T09:00:00+08:00",
+ "eventDate": "2026-12-06T09:00:00+08:00",
  "forms": {
   "student": "https://forms.gle/7w7po8TZtenv67YM9",
   "professional": "https://forms.gle/xWHN24HcJGkgtB8P6"
@@ -94,7 +94,7 @@
    "detail": "Virtual Meet 3 on refinement and testing. Industry panels (including iCEP) evaluate all 10 prototypes. Top 3 Student and Top 3 Young Professional teams are chosen for the live pitch. All 10 teams advance to the exhibition."
   },
   {
-   "date": "Mon, 6 Dec",
+   "date": "Sun, 6 Dec",
    "title": "Grand Finale",
    "detail": "UNLOCK: The AI & Young Professionals Summit & Innovation Challenge. Dewan Annex / Dewan Seroja, UiTM Shah Alam."
   }
@@ -225,12 +225,12 @@
   {
    "q": "What are the dates?",
    "kw": "when date tarikh schedule timeline deadline",
-   "a": "Registration closes on Monday 2 November 2026. The Saturday sprint sessions are on 7, 14 and 21 November, and the Grand Finale and UNLOCK Summit is on Monday 6 December 2026.",
+   "a": "Registration closes on Monday 2 November 2026. The Saturday sprint sessions are on 7, 14 and 21 November, and the Grand Finale and UNLOCK Summit is on Sunday 6 December 2026.",
    "alt": "Remember these dates: 2 Nov (registration closes), 7, 14 and 21 Nov (Saturday sprint sessions) and 6 Dec 2026 (Grand Finale and summit)."
   },
   {
    "q": "Where is the summit?",
-   "kw": "venue location lokasi where uitm",
+   "kw": "venue location lokasi where uitm held happening place address dewan finale grand",
    "a": "The Grand Finale is at Dewan Annex / Dewan Seroja, UiTM Shah Alam. The 3-week sprint is online.",
    "alt": "The 3-week sprint is online. The Grand Finale on 6 December is in person at Dewan Annex / Dewan Seroja, UiTM Shah Alam."
   },
@@ -242,7 +242,7 @@
   },
   {
    "q": "How is it judged?",
-   "kw": "judging criteria weightage marks scoring",
+   "kw": "judging criteria weightage marks scoring judged scored marked evaluated assessed score rubric",
    "a": "Judges look at Innovation and Originality, AI Integration & Technical Soundness, Problem Relevance & Track Alignment, Feasibility & Practical Functionality, Scalability & Organizational Impact, Pitch Presentation & Prototype Demo, and Future Potential & Roadmap.",
    "alt": "Teams are assessed on seven areas: originality, AI and technical soundness, problem relevance, feasibility, scalability and impact, the pitch and demo, and future potential."
   },
@@ -370,7 +370,7 @@
   }
  ],
  "live": {
-  "appsScriptUrl": "https://script.google.com/macros/s/AKfycbz9iG0L1nzKBMmSBZkUVwPB6fyibNmt_MkF7MX-ZjtaxUzrNuT2cRKkSam7c2EsKfc3/exec",
+  "appsScriptUrl": "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE",
   "studentCap": 5,
   "professionalCap": 5
  },
@@ -412,5 +412,289 @@
    "url": "https://www.tiktok.com/@unlockai.project?_r=1&_t=ZS-9ASIJca1yjc"
   }
  ],
- "officialName": "UNLOCK: The AI & Young Professionals Summit & Innovation Challenge"
+ "officialName": "UNLOCK: The AI & Young Professionals Summit & Innovation Challenge",
+ "askOnly": [
+  {
+   "q": "What is UNLOCK?",
+   "kw": "unlock about event summit challenge apa",
+   "a": "UNLOCK is an AI workplace innovation challenge and grand expo with iCEP PETRONAS at UiTM Shah Alam. Ten teams build working AI prototypes in a 3-week online sprint, then showcase them at the summit on 6 December 2026.",
+   "alt": "It is the AI & Young Professionals Summit & Innovation Challenge: a 3-week online incubation followed by a physical Grand Finale at UiTM Shah Alam, where 10 teams exhibit their AI prototypes."
+  },
+  {
+   "q": "Who organises UNLOCK?",
+   "kw": "organiser organizer committee penganjur",
+   "a": "UNLOCK is run by the UNLOCK committee at UiTM Shah Alam in collaboration with iCEP PETRONAS, with KrackedDevs as a partner.",
+   "alt": "The UNLOCK committee organises it, with UiTM Shah Alam as host, iCEP PETRONAS as anchor industry partner and KrackedDevs as a partner."
+  },
+  {
+   "q": "When does registration close?",
+   "kw": "deadline closing last date tutup closes",
+   "a": "Registration closes on Monday 2 November 2026, or earlier if all 5 team places in a category are filled.",
+   "alt": "You have until 2 November 2026, but each category has only 5 team places, so the form closes as soon as they are taken. Check the live team spots on this page."
+  },
+  {
+   "q": "Is the event online or physical?",
+   "kw": "online physical hybrid venue location held",
+   "a": "Both. The 3-week workshop sprint is online, and the Grand Finale on 6 December 2026 is in person at Dewan Annex / Dewan Seroja, UiTM Shah Alam.",
+   "alt": "The weekly workshops are online on Saturdays. The final summit is physical at UiTM Shah Alam."
+  },
+  {
+   "q": "How much is the registration fee?",
+   "kw": "fee yuran cost price free percuma bayar payment pay",
+   "a": "Please check the registration form for the latest fee information. If you need confirmation, message the committee on WhatsApp or by email.",
+   "alt": "Fee details are given on the registration form. For any payment question, contact us on WhatsApp or email and we will confirm.",
+   "contact": true
+  },
+  {
+   "q": "Do I need AI or coding experience?",
+   "kw": "experience beginner coding skill programming pengalaman knowledge",
+   "a": "Week 1 teaches Applied AI Literacy in the Workplace and modern AI prototyping tools, and Week 2 guides you through wireframing and system design, so the workshops help you build your prototype. If you are unsure about your team's skills, ask us.",
+   "alt": "The sprint is guided: AI literacy and prototyping tools in Week 1, architecture and wireframing in Week 2, and prototype testing in Week 3. For specific concerns about skills, contact the committee.",
+   "contact": true
+  },
+  {
+   "q": "What will we build?",
+   "kw": "build project prototype create product idea innovation",
+   "a": "A working AI prototype or proof of concept that solves a realistic workplace problem in your chosen track, with clear user workflows and measurable business impact.",
+   "alt": "Each team designs and builds an AI-powered solution for a real organisational challenge, showing the problem, the AI architecture, the user flows and the expected impact."
+  },
+  {
+   "q": "Can students and professionals be in the same team?",
+   "kw": "mixed same team combine both category",
+   "a": "Each team registers under one category: Student for university students, or Young Professional for early-career working adults. If your team is mixed, please ask the committee before registering.",
+   "alt": "Teams are registered as either Student or Young Professional. For a mixed team, contact us so we can advise you.",
+   "contact": true
+  },
+  {
+   "q": "What if my team has fewer than 5 members?",
+   "kw": "fewer less four members incomplete exactly short",
+   "a": "Every team must have exactly 5 members. If you are still looking for members, ask the committee how we can help.",
+   "alt": "The rule is strictly 5 members per team, so please complete your team before registering. Contact us if you need advice.",
+   "contact": true
+  },
+  {
+   "q": "How are the finalists chosen?",
+   "kw": "finalist selection select top 6 evaluate chosen",
+   "a": "In Week 3, industry panels including iCEP PETRONAS evaluate all 10 prototypes. The Top 3 Student and Top 3 Young Professional teams are chosen to pitch live.",
+   "alt": "After the Week 3 prototype submission, the judges score every team with the rubric, and the top 3 from each category go to the Main Stage."
+  },
+  {
+   "q": "Do all teams join the summit?",
+   "kw": "all teams attend booth exhibit summit finale everyone",
+   "a": "Yes. All 10 teams advance to the Grand Finale and set up interactive booths in Zone B. Only the Top 6 also pitch on the Main Stage.",
+   "alt": "Every team exhibits at the summit. The 6 finalists present on stage as well."
+  },
+  {
+   "q": "What do we need to prepare for the summit?",
+   "kw": "bring prepare booth setup what to bring",
+   "a": "A working prototype and an interactive booth setup for Zone B. Booth setup times and the stage schedule will be sent by email and WhatsApp.",
+   "alt": "Prepare your prototype, your booth exhibition setup and, if you are a finalist, your 10-minute pitch. We will email the schedule."
+  },
+  {
+   "q": "How long is the pitch?",
+   "kw": "pitch presentation minutes duration time slot",
+   "a": "The pitch is a 10-minute presentation with no Q&A.",
+   "alt": "Finalists get 10 minutes on the Main Stage, and there is no Q&A session after it."
+  },
+  {
+   "q": "Will the workshops be recorded?",
+   "kw": "recording record youtube replay miss class rakaman",
+   "a": "Yes. Class recordings are unlisted on YouTube, and the link is sent in the WhatsApp community and by email.",
+   "alt": "Recordings are shared as unlisted YouTube links through the WhatsApp community and email, so you can catch up if you miss a class."
+  },
+  {
+   "q": "Where are the workshops held?",
+   "kw": "workshop class link zoom online where how join",
+   "a": "The workshops are online. You will receive the class link by email and WhatsApp one day before each session.",
+   "alt": "Classes run online on Saturdays 7, 14 and 21 November. We send the join link a day before, together with the weekly attendance form."
+  },
+  {
+   "q": "Do I have to attend every class?",
+   "kw": "attendance absent compulsory miss required hadir",
+   "a": "Attendance matters: there is a weekly attendance form, and unapproved absence from required sprint checkpoints can lead to disqualification. Tell the committee in advance if you cannot attend.",
+   "alt": "Please attend all three sessions and complete each week's attendance form. Missing a required checkpoint without approval risks disqualification, so inform us early.",
+   "contact": true
+  },
+  {
+   "q": "Can we use ChatGPT or other AI tools?",
+   "kw": "chatgpt gemini claude copilot ai tools allowed llm api",
+   "a": "Yes, third-party AI models, APIs and frameworks are allowed, but you must disclose all of them in the official AI-Use Declaration. Plagiarism and fabricated data are not allowed.",
+   "alt": "AI tools are part of the challenge. Just declare every tool and how you used it in the AI-Use Declaration."
+  },
+  {
+   "q": "Will there be certificates?",
+   "kw": "certificate sijil medal",
+   "a": "All 50 participants receive a commemorative finalist medal for completing the incubation and exhibition. For certificate details, please contact the committee.",
+   "alt": "Every participant gets a finalist medal. If you need information on certificates, WhatsApp or email us.",
+   "contact": true
+  },
+  {
+   "q": "Who are the judges and mentors?",
+   "kw": "judge panel mentor instructor speaker juri",
+   "a": "Industry panels, including anchor partner iCEP PETRONAS, evaluate the prototypes. For the names of judges, mentors and speakers, please follow our social media or contact the committee.",
+   "alt": "The prototypes are judged by industry panels with iCEP PETRONAS. Announcements about speakers and mentors are shared through our official channels.",
+   "contact": true
+  },
+  {
+   "q": "How can I contact the committee?",
+   "kw": "contact reach whatsapp email phone hubungi help support",
+   "a": "You can contact us on WhatsApp or by email from the Contacts section, or message @unlockai.project on Instagram and TikTok.",
+   "alt": "Use the Contacts section on this page for our phone and email, or follow @unlockai.project on Instagram and TikTok.",
+   "contact": true
+  },
+  {
+   "q": "How do I know my team is registered?",
+   "kw": "confirm registered confirmation email registration id check status",
+   "a": "The team leader and every member whose email you entered receive a confirmation email with your Registration ID. The live team spots on this page also update.",
+   "alt": "After you submit the form, check your inbox (and spam folder) for the confirmation email with your Registration ID."
+  },
+  {
+   "q": "I did not receive the confirmation email",
+   "kw": "no email not received spam missing didn't got",
+   "a": "Please check your spam or promotions folder and wait a few minutes. If it still has not arrived, WhatsApp or email us with your team name and the email you used.",
+   "alt": "Confirmation emails go to the team leader and every member email on the form. If yours is missing, contact us with your team name so we can check.",
+   "contact": true
+  },
+  {
+   "q": "Can I change my team members after registering?",
+   "kw": "change replace edit update withdraw cancel member swap tukar",
+   "a": "Please contact the committee as soon as possible so we can check what can be changed. A message on WhatsApp or email is the fastest way.",
+   "alt": "Changes to a registered team need the committee's approval. Contact us with your team name and the change you need.",
+   "contact": true
+  },
+  {
+   "q": "Who is KrackedDevs?",
+   "kw": "krackeddevs krackeddev partner builder",
+   "a": "KrackedDevs is Malaysia's builder ecosystem and a partner of UNLOCK.",
+   "alt": "KrackedDevs, Malaysia's builder ecosystem, is one of our partners. You can find them at krackeddevs.com."
+  },
+  {
+   "q": "Who is on the UNLOCK team?",
+   "kw": "team committee president vice president advisor bureau organiser pasukan ahli jawatankuasa",
+   "a": "The committee is led by President Syed Aiman Hafique and Vice President Syaza Athirah, advised by Dr. Ahlam Abdul Aziz and Dr. Nurul Atiqah binti Mohd Azlan. Five bureaus run the event: Programme, Protocol, Multimedia & Publicity, Sponsorship, and Logistic & Technical. Meet everyone on the Our Team page.",
+   "alt": "UNLOCK is run by a student committee with two advisors, a president and vice president, a secretary, treasurer and their deputies, plus five bureaus. You can see all of them on the Our Team page."
+  },
+  {
+   "q": "Who are the advisors?",
+   "kw": "advisor adviser lecturer penasihat doctor dr",
+   "a": "Our two advisors are Dr. Ahlam Abdul Aziz and Dr. Nurul Atiqah binti Mohd Azlan.",
+   "alt": "UNLOCK is advised by Dr. Ahlam Abdul Aziz and Dr. Nurul Atiqah binti Mohd Azlan. See them on the Our Team page."
+  },
+  {
+   "q": "Who is the president of UNLOCK?",
+   "kw": "president vice presiden pengerusi leader head",
+   "a": "The President is Syed Aiman Hafique and the Vice President is Syaza Athirah.",
+   "alt": "UNLOCK is led by President Syed Aiman Hafique, supported by Vice President Syaza Athirah."
+  }
+ ],
+ "team": {
+  "photo": "assets/team/background-all.jpg",
+  "advisors": [
+   {
+    "name": "Dr. Ahlam Abdul Aziz",
+    "role": "Advisor"
+   },
+   {
+    "name": "Dr. Nurul Atiqah binti Mohd Azlan",
+    "role": "Advisor"
+   }
+  ],
+  "leadership": [
+   {
+    "title": "President & Vice President",
+    "people": [
+     {
+      "name": "Syed Aiman Hafique",
+      "role": "President"
+     },
+     {
+      "name": "Syaza Athirah",
+      "role": "Vice President"
+     }
+    ]
+   },
+   {
+    "title": "Secretary & Vice Secretary",
+    "people": [
+     {
+      "name": "Ameerah",
+      "role": "Secretary"
+     },
+     {
+      "name": "Danial",
+      "role": "Vice Secretary"
+     }
+    ]
+   },
+   {
+    "title": "Treasurer & Vice Treasurer",
+    "people": [
+     {
+      "name": "Fatnun",
+      "role": "Treasurer"
+     },
+     {
+      "name": "Farisha",
+      "role": "Vice Treasurer"
+     }
+    ]
+   }
+  ],
+  "bureaus": [
+   {
+    "name": "Programme Bureau",
+    "members": [
+     "Adam",
+     "Shaqruz",
+     "Farid",
+     "Wein",
+     "Aisyah",
+     "Aleyatie",
+     "Fatin",
+     "Azra",
+     "Safiah",
+     "Isni"
+    ]
+   },
+   {
+    "name": "Protocol Bureau",
+    "members": [
+     "Izreena",
+     "Elya",
+     "Syasya",
+     "Afi",
+     "Ameera",
+     "Alieya"
+    ]
+   },
+   {
+    "name": "Multimedia & Publicity Bureau",
+    "members": [
+     "Haziq",
+     "Diana",
+     "Sabrina",
+     "Nadia"
+    ]
+   },
+   {
+    "name": "Sponsorship Bureau",
+    "members": [
+     "Izzat",
+     "Engku",
+     "Zura",
+     "Farah"
+    ]
+   },
+   {
+    "name": "Logistic & Technical Bureau",
+    "members": [
+     "Khum",
+     "Adel",
+     "Elle",
+     "Keisha",
+     "Arif"
+    ]
+   }
+  ]
+ }
 }
