@@ -1,6 +1,8 @@
 /* UNLOCK final script (single-page site). Text lives in content.json. */
 const $ = id => document.getElementById(id);
-const PAGES = [['#home','Home'],['#about','About'],['#timeline','Timeline'],['#summit','Summit'],['#sponsors','Sponsors'],['#faq','Rules & FAQ'],['#contact','Contacts']];
+const PAGES = [['#home','Home'],['#about','About'],['team.html','Our Team'],['#timeline','Timeline'],['#summit','Summit'],['#sponsors','Sponsors'],['#faq','Rules & FAQ'],['#contact','Contacts']];
+const B = document.body.dataset.page === 'index' ? '' : 'index.html';   // on other pages, anchors point back to the home page
+const Hf = p => p[0][0] === '#' ? B + p[0] : p[0];
 const here = document.body.dataset.page;
 
 // ---- Unlock gate (once per session) ----
@@ -13,11 +15,11 @@ if (!sessionStorage.getItem('unlocked')) {
 }
 
 // ---- Shared nav, footer, command palette ----
-$('navMount').outerHTML = `<header class="nav"><a class="logo" href="#home"><img src="${LOGO}" alt="UNLOCK home"></a>
+$('navMount').outerHTML = `<header class="nav"><a class="logo" href="${B || '#home'}"><img src="${LOGO}" alt="UNLOCK home"></a>
 <button class="burger" aria-label="Menu" onclick="document.body.classList.toggle('menu')">&#9776;</button>
-<nav>${PAGES.map(p => `<a href="${p[0]}" class="${p[0]===here?'on':''}">${p[1]}</a>`).join('')}<a class="btn primary" href="#register">Register Now!</a></nav></header>`;
+<nav>${PAGES.map(p => `<a href="${Hf(p)}" class="${p[0]===here?'on':''}">${p[1]}</a>`).join('')}<a class="btn primary" href="${B}#register">Register Now!</a></nav></header>`;
 $('footMount').outerHTML = `<footer>&copy; 2026 UNLOCK &middot; In collaboration with iCEP &middot; UiTM Shah Alam</footer>`;
-document.body.insertAdjacentHTML('beforeend', `<div id="cmd"><div><input placeholder="Go to page..." aria-label="Go to page">${PAGES.map(p=>`<a href="${p[0]}">${p[1]}</a>`).join('')}</div></div>`);
+document.body.insertAdjacentHTML('beforeend', `<div id="cmd"><div><input placeholder="Go to page..." aria-label="Go to page">${PAGES.map(p=>`<a href="${Hf(p)}">${p[1]}</a>`).join('')}</div></div>`);
 const cmd = $('cmd'), cin = cmd.querySelector('input');
 addEventListener('keydown', e => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); cmd.classList.add('show'); cin.focus(); }
@@ -25,7 +27,7 @@ addEventListener('keydown', e => {
 });
 cmd.onclick = e => { if (e.target === cmd) cmd.classList.remove('show'); };
 cin.oninput = () => cmd.querySelectorAll('a').forEach(a => a.style.display = a.textContent.toLowerCase().includes(cin.value.toLowerCase()) ? '' : 'none');
-document.body.insertAdjacentHTML('beforeend','<a class="btn primary fab" href="#register">Register</a>');
+document.body.insertAdjacentHTML('beforeend','<a class="btn primary fab" href="${B}#register">Register</a>');
 document.querySelectorAll('.nav nav a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('menu')));
 // highlight the current section in the nav, and fade blocks in as they scroll into view
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in');
@@ -45,11 +47,11 @@ fetch('content.json').then(r => r.json()).then(c => {
   set('aboutSummary', c.about.summary); set('mission', '<span class="sublabel">OUR MISSION</span>' + c.about.mission, 1); set('vision', '<span class="sublabel">OUR VISION</span>' + c.about.vision, 1);
   set('objectives', c.about.objective); 
   
-  list('timelineList', c.timeline, t => `<li><b>${t.date}: ${cap(t.title)}</b><br><span class="muted">${t.detail}</span></li>`);
+  list('timelineList', c.timeline, t => `<li><b>${t.date}: <span class="ttl">${t.title}</span></b><br><span class="muted">${t.detail}</span></li>`);
   
   list('faqList', c.faqs, f => `<details><summary>${f.q}</summary><p>${f.a}</p></details>`);
   set('cPhone', 'Phone: ' + c.contact.phone); set('cEmail', `Email: <a href="mailto:${c.contact.email}">${c.contact.email}</a>`, 1); set('cLoc', 'Location: ' + c.contact.location);
-  extra(c); styleTitles(); touchHighlight(); enhance(c); countdown(c.eventDate); counters(c.live); askBar(c);
+  extra(c); styleTitles(); renderTeam(c); touchHighlight(); enhance(c); countdown(c.eventDate); counters(c.live); askBar(c);
 }).catch(() => console.error('Could not load content.json (open the site through GitHub Pages, not by double-clicking the file).'));
 
 // ---- Countdown ----
@@ -78,15 +80,26 @@ function counters(cfg) {
 // ---- "Ask UNLOCK" bar: matches the question to your FAQs and streams the answer ----
 function askBar(c) {
   const form = $('askForm'); if (!form) return;
-  const stop = 'the and for are you how what who when where can does this that with have from your our any about will'.split(' ');
-  const words = s => (s.toLowerCase().match(/[a-z0-9]{3,}/g) || []).filter(w => !stop.includes(w));
+  const stop = 'the and for are you how what who when where can does this that with have from your our any about will there many much people some did not get got could would should been has was were its also into use need want tell give know please which they them their then than just more only each every here very really still sit'.split(' ');
+  const words = s => (s.toLowerCase().match(/[a-z0-9]{3,}/g) || []).map(w => w.length > 3 ? w.replace(/s$/, '') : w).filter(w => !stop.includes(w));
+  const all = c.faqs.concat(c.askOnly || []);
+  const digits = String(c.contact.phone || '').replace(/\D/g, ''), wa = /EDIT/i.test(c.contact.phone || '') || digits.length < 9 ? '' : (digits[0] === '0' ? '6' + digits : digits);
+  const mail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.contact.email || '') ? c.contact.email : '';
+  const fb = ['I am not sure about that one, but our team can help. Please message us on WhatsApp or send us an email and we will answer you personally.',
+              'That is a little outside what I can answer here. For help with this, please reach out to the committee on WhatsApp or by email.'];
+  let fbn = Math.random() * 2 | 0;
+  const links = q => [wa ? `<a class="btn small" href="https://wa.me/${wa}?text=${encodeURIComponent('Hi UNLOCK team, I have a question: ' + q)}" target="_blank" rel="noopener">WhatsApp us</a>` : '',
+    mail ? `<a class="btn small" href="mailto:${mail}?subject=${encodeURIComponent('UNLOCK question')}&body=${encodeURIComponent(q)}">Email us</a>` : '', '<a class="btn small" href="#contact">Contacts</a>'].join('');
   const answer = q => { const w = words(q);
-    const scored = c.faqs.map(f => { const qt = words(f.q + ' ' + (f.kw || '')), at = words(f.a);
-      return { f, sc: w.filter(x => qt.some(t => t.startsWith(x) || x.startsWith(t))).length * 3 + w.filter(x => at.includes(x)).length }; }).sort((a, b) => b.sc - a.sc);
-    if (scored[0].sc > 0) { const f = scored[0].f, v = [f.a].concat(f.alt || []); f._n = f._n === undefined ? Math.random() * v.length | 0 : (f._n + 1) % v.length; return v[f._n]; }
-    return 'I am not sure about that one. Try asking about: ' + c.hero.prompts.slice(0, 4).join(', ') + '. Or contact the team in the Contacts section.'; };
-  const run = q => { if (!q.trim()) return; $('askInput').value = q; $('askOut').hidden = false; const t = $('askText'), a = answer(q); t.textContent = ''; let i = 0;
-    clearInterval(run.t); run.t = setInterval(() => { t.textContent = a.slice(0, ++i); if (i >= a.length) clearInterval(run.t); }, 12); };
+    const cp = (p, q) => { let i = 0; while (i < p.length && i < q.length && p[i] === q[i]) i++; return i; };
+    const hit = (x, list) => list.some(t => t === x || (Math.min(x.length, t.length) >= 5 && cp(x, t) >= 5));   // same word, or same stem (register / registration)
+    const scored = all.map(f => { const tt = words(f.q), kk = words(f.kw || ''), at = words(f.a);
+      const a = w.filter(x => hit(x, tt)).length, b = w.filter(x => hit(x, kk)).length, d = w.filter(x => at.includes(x)).length;
+      return { f, sc: a + b >= 1 || d >= 2 ? a * 4 + b * 3 + d - tt.length * .01 : 0 }; }).sort((a, b) => b.sc - a.sc);   // must match the question or keywords (or 2+ answer words)
+    if (scored[0].sc >= 3) { const f = scored[0].f, v = [f.a].concat(f.alt || []); f._n = f._n === undefined ? Math.random() * v.length | 0 : (f._n + 1) % v.length; return { text: v[f._n], contact: !!f.contact }; }
+    fbn = (fbn + 1) % 2; return { text: fb[fbn], contact: true }; };      // not related or no match: point to WhatsApp / email
+  const run = q => { if (!q.trim()) return; $('askInput').value = q; $('askOut').hidden = false; const t = $('askText'), r = answer(q); t.textContent = ''; $('askLinks').innerHTML = r.contact ? links(q) : ''; let i = 0;
+    clearInterval(run.t); run.t = setInterval(() => { t.textContent = r.text.slice(0, ++i); if (i >= r.text.length) clearInterval(run.t); }, 12); };
   form.onsubmit = e => { e.preventDefault(); run($('askInput').value); };
   $('askChips').innerHTML = c.hero.prompts.map(p => `<button type="button">${p}</button>`).join('');
   $('askChips').onclick = e => e.target.tagName === 'BUTTON' && run(e.target.textContent);
@@ -103,7 +116,7 @@ function extra(c) {
   list('ticker', c.about.tracks.concat(c.about.tracks), t => `<span>${t}</span>`);
   list('cohort', c.about.cohort, t => `<li>${t}</li>`);
   list('prepare', c.registration.prepare, t => `<li>${t}</li>`); list('regSteps', c.registration.steps, t => `<li>${t}</li>`);
-  $('stuForm').href = c.forms.student; $('proForm').href = c.forms.professional;
+  if ($('stuForm')) { $('stuForm').href = c.forms.student; $('proForm').href = c.forms.professional; }
   list('zones', c.summit.zones, z => `<div class="card accent"><h3>${z.t}</h3><p>${z.d}</p></div>`);
   list('passport', c.summit.passport, p => `<span>${p}</span>`); set('passportText', c.summit.passportText); set('peoples', c.summit.peoples);
   list('criteria', c.criteria, (x, i) => `<div class="crit rv"><i>${String(i + 1).padStart(2, '0')}</i><span>${x}</span></div>`);
@@ -115,7 +128,7 @@ function extra(c) {
   list('sponsorList', c.sponsors, o => `<a class="sp rv" href="${link(o)}" target="_blank" rel="noopener sponsored"><div class="lg">${mark(o)}</div><b>${o.name}</b><small>${o.role}</small><span class="go">VISIT &rarr;</span></a>`);
   list('partners', c.partners, o => `<a class="pt" href="${link(o)}" target="_blank" rel="noopener">${mark(o, 1)}<span><b>${o.name}</b><small>${o.role}</small></span></a>`);
   list('socials', c.socials, o => `<a class="btn primary" href="${o.url}" target="_blank" rel="noopener">${o.name} <span class="mono" style="margin-left:8px;opacity:.8">${o.handle}</span></a>`);
-  const cal = $('calLink'); if (cal) cal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(c.officialName) + '&dates=20261207/20261208&location=' + encodeURIComponent('Dewan Annex / Dewan Seroja, UiTM Shah Alam');
+  const cal = $('calLink'); if (cal) cal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(c.officialName) + '&dates=20261206/20261207&location=' + encodeURIComponent('Dewan Annex / Dewan Seroja, UiTM Shah Alam');
   const left = Math.ceil((new Date(c.regClose) - Date.now()) / 864e5);   // registration chip: live days left
   set('heroChip', left > 0 ? `Registration open · closes 2 Nov 2026 · ${left} day${left > 1 ? 's' : ''} left` : 'Registration closed');
   document.querySelectorAll('.crit,.prize,.trk,.stat,.sp').forEach(x => { x.classList.add('rv'); io.observe(x); });
@@ -238,11 +251,35 @@ function enhance(c) {
 // ---- Big-first-letter style for card titles and sub-headings; touch highlight for boxes ----
 function cap(x) { return `<b class="cap">${x[0]}</b>${x.slice(1)}`; }
 function styleTitles() {
-  document.querySelectorAll('.card.hl h3:not(.rt), #register .card h3, #zones .card h3, h3.sub, #awards .card h3, #contact .card h3').forEach(h => { if (!h.querySelector('.cap')) h.innerHTML = cap(h.textContent); });
+  // bold CAPS titles
+  document.querySelectorAll('.card.hl h3:not(.rt), #register .card h3, #zones .card h3, h3.sub, #awards .card h3').forEach(h => h.classList.add('ttl'));
+  // big first letter for the contact cards
+  document.querySelectorAll('#contact .card h3').forEach(h => { if (!h.querySelector('.cap')) h.innerHTML = cap(h.textContent); });
 }
 function touchHighlight() {   // phones and tablets: tapping a box turns it blue with white text (like hover on a computer)
-  document.querySelectorAll('.trk, .card.hl').forEach(el => {
+  document.querySelectorAll('.trk, .card.hl, .pcard').forEach(el => {
     el.addEventListener('touchstart', () => { clearTimeout(el._t); el.classList.add('hot'); }, { passive: true });
     ['touchend', 'touchcancel'].forEach(ev => el.addEventListener(ev, () => { el._t = setTimeout(() => el.classList.remove('hot'), 450); }, { passive: true }));
   });
+}
+
+// ---- Our Team page (team.html): everything comes from "team" in content.json ----
+function avFail(img) { if (!img.dataset.t) { img.dataset.t = 1; img.src = img.src.replace(/\.jpg$/, '.png'); } else img.remove(); }   // try .jpg, then .png, else keep the initials
+function renderTeam(c) {
+  const root = $('teamRoot'); if (!root || !c.team) return; const T = c.team; let k = 0;
+  const slug = n => n.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const ini = n => n.replace(/^dr\.?\s+/i, '').split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+  const person = (p, role) => typeof p === 'string' ? { name: p, role } : { role, ...p };
+  const av = (p, cls) => `<div class="av ${cls} ${k++ % 2 ? 'b2' : 'b1'}"><span>${ini(p.name)}</span><img src="${p.photo || 'assets/team/' + slug(p.name) + '.jpg'}" alt="${p.name}" loading="lazy" onerror="avFail(this)"></div>`;
+  const card = (p, cls) => `<div class="pcard hl rv">${av(p, cls)}<b class="pn">${p.name}</b><small class="pr">${p.role || ''}</small></div>`;
+  const total = T.advisors.length + T.leadership.reduce((a, g) => a + g.people.length, 0) + T.bureaus.reduce((a, b) => a + b.members.length, 0);
+  set('tmCount', `${total} committee members · ${T.bureaus.length} bureaus`);
+  const chips = [['advisors', 'Advisors'], ['leadership', 'Leadership']].concat(T.bureaus.map(b => [slug(b.name), b.name.replace(' Bureau', '')]));
+  $('tmChips').innerHTML = chips.map(x => `<a href="#${x[0]}">${x[1]}</a>`).join('');
+  root.innerHTML = `<figure class="group rv"><img src="${T.photo}" alt="The UNLOCK committee"></figure>
+    <div class="tm-block" id="advisors"><span class="mono label">Guided by</span><h2 class="ttl">Advisors</h2><div class="people">${T.advisors.map(p => card(person(p, 'Advisor'), 'xl')).join('')}</div></div>
+    <div class="tm-block" id="leadership"><span class="mono label">Leading UNLOCK</span><h2 class="ttl">Leadership</h2>${T.leadership.map(g => `<h3 class="ttl tm-sub">${g.title}</h3><div class="people">${g.people.map(p => card(person(p, p.role), 'lg')).join('')}</div>`).join('')}</div>
+    ${T.bureaus.map(b => `<div class="tm-block" id="${slug(b.name)}"><span class="mono label">${b.members.length} members</span><h2 class="ttl">${b.name}</h2><div class="people grid">${b.members.map(m => card(person(m, b.name.replace(' Bureau', '')), 'md')).join('')}</div></div>`).join('')}`;
+  root.querySelectorAll('.rv').forEach(x => io.observe(x));
+  list('tmSocials', c.socials, o => `<a class="btn primary" href="${o.url}" target="_blank" rel="noopener">${o.name} <span class="mono" style="margin-left:8px;opacity:.8">${o.handle}</span></a>`);
 }
