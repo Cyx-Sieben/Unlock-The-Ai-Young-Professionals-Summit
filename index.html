@@ -2,13 +2,13 @@
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UNLOCK: The AI & Young Professionals Summit & Innovation Challenge</title>
-<meta name="description" content="AI workplace innovation challenge and grand expo at UiTM Shah Alam, with iCEP. Summit on 7 Dec 2026.">
+<meta name="description" content="AI workplace innovation challenge and grand expo at UiTM Shah Alam, with iCEP. Summit on 6 Dec 2026.">
 <meta property="og:title" content="UNLOCK: The AI & Young Professionals Summit & Innovation Challenge">
-<meta property="og:description" content="3-week virtual incubation, Grand Finale on 7 Dec 2026 at UiTM Shah Alam. Register now.">
+<meta property="og:description" content="3-week virtual incubation, Grand Finale on 6 Dec 2026 at UiTM Shah Alam. Register now.">
 <meta property="og:type" content="website"><meta name="theme-color" content="#150061">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%93%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <!-- HOSTING: static files on GitHub Pages are served from GitHub's global CDN, so thousands of visitors will not crash it. -->
 <script>if(sessionStorage.getItem('unlocked'))document.documentElement.classList.add('is-open')</script>
@@ -26,9 +26,9 @@
   <p class="lead" id="heroSub"></p>
   <form class="ask" id="askForm"><span class="mono">&gt;</span><input id="askInput" placeholder="Ask UNLOCK anything: who can join, dates, prizes..." aria-label="Ask a question"><button class="btn primary" type="submit">Ask</button></form>
   <div class="chips" id="askChips"></div>
-  <div class="answer card" id="askOut" hidden><span class="mono label">Answer</span><p id="askText"></p></div>
+  <div class="answer card" id="askOut" hidden><span class="mono label">Answer</span><p id="askText"></p><div class="asklinks" id="askLinks"></div></div>
   <div class="actions"><a class="btn primary" href="#register">Register now</a><a class="btn" href="#about">Learn more</a><a class="btn brown" href="#spots">See open spots</a></div>
-  <div class="card" style="margin-top:44px;max-width:560px"><span class="mono label">Countdown to the Grand Finale: Mon, 7 Dec 2026</span><div class="count" id="countdown"></div>
+  <div class="card" style="margin-top:44px;max-width:560px"><span class="mono label">Countdown to the Grand Finale: Sun, 6 Dec 2026</span><div class="count" id="countdown"></div>
     <a class="btn small" id="calLink" href="#" target="_blank" rel="noopener">Add to calendar</a></div>
   <div class="partners-wrap"><span class="mono label">Partners</span><div class="partners" id="partners"></div></div>
 </div></section>
@@ -42,6 +42,7 @@
 <!-- ABOUT -->
 <section id="about" class="alt px"><div class="px-bg" aria-hidden="true"></div><div class="wrap"><span class="mono label">About</span><h2>About UNLOCK</h2>
   <p class="lead" id="aboutSummary"></p>
+  <p><a class="btn brown" href="team.html">Meet our team</a></p>
   <div class="grid3"><div class="card hl"><h3>The cohort</h3><ul id="cohort"></ul></div>
   <div class="card hl"><h3>Objectives</h3><p id="objectives"></p></div>
   <div class="card hl"><h3>Mission and vision</h3><p id="mission"></p><p id="vision"></p></div></div>
@@ -60,7 +61,7 @@
 <section id="timeline" class="alt"><div class="wrap"><span class="mono label">Timeline</span><h2>General timeline</h2><ol class="steps big" id="timelineList"></ol></div></section>
 
 <!-- SUMMIT -->
-<section id="summit"><div class="wrap"><span class="mono label">Grand Finale · Monday, 7 December 2026</span><h2>UNLOCK: The AI &amp; Young Professionals Summit &amp; Innovation Challenge</h2>
+<section id="summit"><div class="wrap"><span class="mono label">Grand Finale · Sunday, 6 December 2026</span><h2>UNLOCK: The AI &amp; Young Professionals Summit &amp; Innovation Challenge</h2>
   <div class="grid3 two" id="zones"></div>
   <h3 class="sub">UNLOCK Passport</h3><p id="passportText" class="muted"></p><div class="passport" id="passport"></div>
   <div class="card brown-card"><span class="mono label">Vote</span><p id="peoples"></p></div>
