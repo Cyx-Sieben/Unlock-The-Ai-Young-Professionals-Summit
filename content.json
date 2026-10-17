@@ -18,22 +18,10 @@
   ]
  },
  "stats": [
-  {
-   "n": 10,
-   "label": "teams in the cohort"
-  },
-  {
-   "n": 50,
-   "label": "talents"
-  },
-  {
-   "n": 3,
-   "label": "weeks virtual incubation"
-  },
-  {
-   "n": 1,
-   "label": "Grand Finale summit"
-  }
+  { "n": 10, "label": "teams in the cohort" },
+  { "n": 50, "label": "talents" },
+  { "n": 3, "label": "weeks virtual incubation" },
+  { "n": 1, "label": "Grand Finale summit" }
  ],
  "about": {
   "summary": "UNLOCK is an AI workplace innovation challenge and grand expo run with iCEP at UiTM Shah Alam. Ten teams (five University Student teams and five Young Professional teams) join a 3-week virtual incubation sprint, then showcase working prototypes at the physical UNLOCK Summit on 6 December 2026.",
@@ -73,49 +61,18 @@
   ]
  },
  "timeline": [
-  {
-   "date": "Mon, 2 Nov",
-   "title": "Registration Closes",
-   "detail": "First come, first served. Only 5 team spots per category."
-  },
-  {
-   "date": "Sat, 7 Nov",
-   "title": "Week 1 Kickoff & Framing",
-   "detail": "Virtual soft launch, Applied AI Literacy in the Workplace, Virtual Meet 1 on modern AI prototyping tools, task scenario draw, 1-page proposal kickoff."
-  },
-  {
-   "date": "Sat, 14 Nov",
-   "title": "Week 2 System Architecture",
-   "detail": "Virtual Meet 2: turn problem statements into technical briefs, then wireframe system logic, user flows and interface models."
-  },
-  {
-   "date": "Sat, 21 Nov",
-   "title": "Week 3 Prototype & Selection",
-   "detail": "Virtual Meet 3 on refinement and testing. Industry panels (including iCEP) evaluate all 10 prototypes. Top 3 Student and Top 3 Young Professional teams are chosen for the live pitch. All 10 teams advance to the exhibition."
-  },
-  {
-   "date": "Sun, 6 Dec",
-   "title": "Grand Finale",
-   "detail": "UNLOCK: The AI & Young Professionals Summit & Innovation Challenge. Dewan Annex / Dewan Seroja, UiTM Shah Alam."
-  }
+  { "date": "Mon, 2 Nov", "title": "Registration Closes", "detail": "First come, first served. Only 5 team spots per category." },
+  { "date": "Sat, 7 Nov", "title": "Week 1 Kickoff & Framing", "detail": "Virtual soft launch, Applied AI Literacy in the Workplace, Virtual Meet 1 on modern AI prototyping tools, task scenario draw, 1-page proposal kickoff." },
+  { "date": "Sat, 14 Nov", "title": "Week 2 System Architecture", "detail": "Virtual Meet 2: turn problem statements into technical briefs, then wireframe system logic, user flows and interface models." },
+  { "date": "Sat, 21 Nov", "title": "Week 3 Prototype & Selection", "detail": "Virtual Meet 3 on refinement and testing. Industry panels (including iCEP) evaluate all 10 prototypes. Top 3 Student and Top 3 Young Professional teams are chosen for the live pitch. All 10 teams advance to the exhibition." },
+  { "date": "Sun, 6 Dec", "title": "Grand Finale", "detail": "UNLOCK: The AI & Young Professionals Summit & Innovation Challenge. Dewan Annex / Dewan Seroja, UiTM Shah Alam." }
  ],
  "summit": {
   "zones": [
-   {
-    "t": "Zone A: Main Stage Conference",
-    "d": "Industry talk sessions, the live final pitch of the Top 6 teams (3 Student and 3 Young Professional), then the grand awards ceremony."
-   },
-   {
-    "t": "Zone B: Innovation Exhibition Floor",
-    "d": "All 10 teams set up interactive project booths for delegates, industry visitors and evaluators."
-   }
+   { "t": "Zone A: Main Stage Conference", "d": "Industry talk sessions, the live final pitch of the Top 6 teams (3 Student and 3 Young Professional), then the grand awards ceremony." },
+   { "t": "Zone B: Innovation Exhibition Floor", "d": "All 10 teams set up interactive project booths for delegates, industry visitors and evaluators." }
   ],
-  "passport": [
-   "Discover",
-   "Engage",
-   "Validate",
-   "Unlock"
-  ],
+  "passport": ["Discover", "Engage", "Validate", "Unlock"],
   "passportText": "Visitors follow the UNLOCK Passport (Onboarding, Exploration, Redemption) to visit all 10 booths and redeem rewards.",
   "peoples": "People's Choice Award: summit delegates vote directly across all 10 exhibition booths."
  },
@@ -129,21 +86,9 @@
   "Future Potential & Roadmap"
  ],
  "awards": [
-  {
-   "n": 6,
-   "label": "Official Trophies",
-   "d": "Top 3 Student teams and Top 3 Young Professional teams"
-  },
-  {
-   "n": 9,
-   "label": "Appreciation Hampers",
-   "d": "Top 6 teams plus the People's Choice winners"
-  },
-  {
-   "n": 50,
-   "label": "Finalist Medals",
-   "d": "All 50 talents who complete the incubation and exhibition"
-  }
+  { "n": 6, "label": "Official Trophies", "d": "Top 3 Student teams and Top 3 Young Professional teams" },
+  { "n": 9, "label": "Appreciation Hampers", "d": "Top 6 teams plus the People's Choice winners" },
+  { "n": 50, "label": "Finalist Medals", "d": "All 50 talents who complete the incubation and exhibition" }
  ],
  "submissions": [
   "1-page proposal and problem brief",
@@ -356,18 +301,8 @@
   }
  ],
  "sponsors": [
-  {
-   "name": "ZUS Coffee Malaysia",
-   "role": "EXAMPLE sponsor: replace me",
-   "logo": "",
-   "url": ""
-  },
-  {
-   "name": "Gardenia Malaysia",
-   "role": "EXAMPLE sponsor: replace me",
-   "logo": "",
-   "url": ""
-  }
+  { "name": "ZUS Coffee Malaysia", "role": "EXAMPLE sponsor: replace me", "logo": "", "url": "" },
+  { "name": "Gardenia Malaysia", "role": "EXAMPLE sponsor: replace me", "logo": "", "url": "" }
  ],
  "live": {
   "appsScriptUrl": "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE",
@@ -381,36 +316,13 @@
  },
  "regClose": "2026-11-02T23:59:00+08:00",
  "partners": [
-  {
-   "name": "UiTM Shah Alam",
-   "role": "Host university",
-   "logo": "assets/partners/uitm.png",
-   "url": "https://www.uitm.edu.my"
-  },
-  {
-   "name": "iCEP PETRONAS",
-   "role": "Anchor Industry Partner & Strategic Advisory Lead",
-   "logo": "assets/partners/icep.png",
-   "url": "https://icep.com.my"
-  },
-  {
-   "name": "KrackedDevs",
-   "role": "Malaysia's builder ecosystem",
-   "logo": "assets/partners/krackeddevs.svg",
-   "url": "https://krackeddevs.com/"
-  }
+  { "name": "UiTM Shah Alam", "role": "Host university", "logo": "assets/partners/uitm.png", "url": "https://www.uitm.edu.my" },
+  { "name": "iCEP PETRONAS", "role": "Anchor Industry Partner & Strategic Advisory Lead", "logo": "assets/partners/icep.png", "url": "https://icep.com.my" },
+  { "name": "KrackedDevs", "role": "Malaysia's builder ecosystem", "logo": "assets/partners/krackeddevs.svg", "url": "https://krackeddevs.com/" }
  ],
  "socials": [
-  {
-   "name": "Instagram",
-   "handle": "@unlockai.project",
-   "url": "https://www.instagram.com/unlockai.project?mdxt=emJicGZycGhsZTg5"
-  },
-  {
-   "name": "TikTok",
-   "handle": "@unlockai.project",
-   "url": "https://www.tiktok.com/@unlockai.project?_r=1&_t=ZS-9ASIJca1yjc"
-  }
+  { "name": "Instagram", "handle": "@unlockai.project", "url": "https://www.instagram.com/unlockai.project?mdxt=emJicGZycGhsZTg5" },
+  { "name": "TikTok", "handle": "@unlockai.project", "url": "https://www.tiktok.com/@unlockai.project?_r=1&_t=ZS-9ASIJca1yjc" }
  ],
  "officialName": "UNLOCK: The AI & Young Professionals Summit & Innovation Challenge",
  "askOnly": [
@@ -590,110 +502,69 @@
  "team": {
   "photo": "assets/team/background-all.jpg",
   "advisors": [
-   {
-    "name": "Dr. Ahlam Abdul Aziz",
-    "role": "Advisor"
-   },
-   {
-    "name": "Dr. Nurul Atiqah binti Mohd Azlan",
-    "role": "Advisor"
-   }
+   { "name": "Dr. Ahlam Abdul Aziz", "role": "Advisor" },
+   { "name": "Dr. Nurul Atiqah binti Mohd Azlan", "role": "Advisor" }
   ],
   "leadership": [
    {
     "title": "President & Vice President",
     "people": [
-     {
-      "name": "Syed Aiman Hafique",
-      "role": "President"
-     },
-     {
-      "name": "Syaza Athirah",
-      "role": "Vice President"
-     }
+     { "name": "Syed Aiman Hafique", "role": "President" },
+     { "name": "Syaza Athirah", "role": "Vice President" }
     ]
    },
    {
     "title": "Secretary & Vice Secretary",
     "people": [
-     {
-      "name": "Ameerah",
-      "role": "Secretary"
-     },
-     {
-      "name": "Danial",
-      "role": "Vice Secretary"
-     }
+     { "name": "Ameerah", "role": "Secretary" },
+     { "name": "Danial", "role": "Vice Secretary" }
     ]
    },
    {
     "title": "Treasurer & Vice Treasurer",
     "people": [
-     {
-      "name": "Fatnun",
-      "role": "Treasurer"
-     },
-     {
-      "name": "Farisha",
-      "role": "Vice Treasurer"
-     }
+     { "name": "Fatnun", "role": "Treasurer" },
+     { "name": "Farisha", "role": "Vice Treasurer" }
     ]
    }
   ],
   "bureaus": [
    {
     "name": "Programme Bureau",
-    "members": [
-     "Adam",
-     "Shaqruz",
-     "Farid",
-     "Wein",
-     "Aisyah",
-     "Aleyatie",
-     "Fatin",
-     "Azra",
-     "Safiah",
-     "Isni"
-    ]
+    "hods": [
+     { "name": "Adam", "role": "Head of Department 1" },
+     { "name": "Shaqruz", "role": "Head of Department 2" }
+    ],
+    "members": ["Farid", "Wein", "Aisyah", "Aleyatie", "Fatin", "Azra", "Safiah", "Isni"]
    },
    {
     "name": "Protocol Bureau",
-    "members": [
-     "Izreena",
-     "Elya",
-     "Syasya",
-     "Afi",
-     "Ameera",
-     "Alieya"
-    ]
+    "hods": [
+     { "name": "Izreena", "role": "Head of Department 1" },
+     { "name": "Afi", "role": "Head of Department 2" }
+    ],
+    "members": ["Elya", "Syasya", "Ameera", "Alieya"]
    },
    {
     "name": "Multimedia & Publicity Bureau",
-    "members": [
-     "Haziq",
-     "Diana",
-     "Sabrina",
-     "Nadia"
-    ]
+    "hods": [
+     { "name": "Haziq", "role": "Head of Department" }
+    ],
+    "members": ["Diana", "Sabrina", "Nadia"]
    },
    {
     "name": "Sponsorship Bureau",
-    "members": [
-     "Izzat",
-     "Engku",
-     "Zura",
-     "Farah"
-    ]
+    "hods": [
+     { "name": "Izzat", "role": "Head of Department" }
+    ],
+    "members": ["Engku", "Zura", "Farah"]
    },
    {
     "name": "Logistic & Technical Bureau",
-    "members": [
-     "Khum",
-     "Adel",
-     "Elle",
-     "Keisha",
-     "Arif"
-    ]
+    "hods": [
+     { "name": "Khum", "role": "Head of Department" }
+    ],
+    "members": ["Adel", "Elle", "Keisha", "Arif"]
    }
   ]
  }
