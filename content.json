@@ -644,8 +644,6 @@
    {
     "name": "Programme Bureau",
     "members": [
-     "Adam",
-     "Shaqruz",
      "Farid",
      "Wein",
      "Aisyah",
@@ -654,45 +652,78 @@
      "Azra",
      "Safiah",
      "Isni"
+    ],
+    "hods": [
+     {
+      "name": "Adam",
+      "role": "Head of Department (HOD) 1"
+     },
+     {
+      "name": "Shaqruz",
+      "role": "Head of Department (HOD) 2"
+     }
     ]
    },
    {
     "name": "Protocol Bureau",
     "members": [
-     "Izreena",
      "Elya",
      "Syasya",
-     "Afi",
      "Ameera",
      "Alieya"
+    ],
+    "hods": [
+     {
+      "name": "Izreena",
+      "role": "Head of Department (HOD) 1"
+     },
+     {
+      "name": "Afi",
+      "role": "Head of Department (HOD) 2"
+     }
     ]
    },
    {
     "name": "Multimedia & Publicity Bureau",
     "members": [
-     "Haziq",
      "Diana",
      "Sabrina",
      "Nadia"
+    ],
+    "hods": [
+     {
+      "name": "Haziq",
+      "role": "Head of Department (HOD)"
+     }
     ]
    },
    {
     "name": "Sponsorship Bureau",
     "members": [
-     "Izzat",
      "Engku",
      "Zura",
      "Farah"
+    ],
+    "hods": [
+     {
+      "name": "Izzat",
+      "role": "Head of Department (HOD)"
+     }
     ]
    },
    {
     "name": "Logistic & Technical Bureau",
     "members": [
-     "Khum",
      "Adel",
      "Elle",
      "Keisha",
      "Arif"
+    ],
+    "hods": [
+     {
+      "name": "Khum",
+      "role": "Head of Department (HOD)"
+     }
     ]
    }
   ]
