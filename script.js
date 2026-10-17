@@ -5,13 +5,46 @@ const B = document.body.dataset.page === 'index' ? '' : 'index.html';   // on ot
 const Hf = p => p[0][0] === '#' ? B + p[0] : p[0];
 const here = document.body.dataset.page;
 
-// ---- Unlock gate (once per session) ----
+// ---- Unlock gate (once per session): logo + button on a flat blue screen, then a pixel-grid reveal ----
 let LOGO = 'assets/logo.png';
 if (!sessionStorage.getItem('unlocked')) {
-  document.body.insertAdjacentHTML('afterbegin', `<div id="gate"><div class="panel left"></div><div class="panel right"></div><div class="gate-center">
-  <img src="${LOGO}" alt="UNLOCK"><button class="btn" id="unlockBtn">UNLOCK</button></div></div>`);
-  $('unlockBtn').focus();
-  $('unlockBtn').onclick = () => { $('gate').classList.add('opening'); sessionStorage.setItem('unlocked','1'); setTimeout(() => $('gate').classList.add('done'), 1300); };
+  document.body.classList.add('locked');
+  document.body.insertAdjacentHTML('afterbegin', `<div id="gate"><div class="gate-center"><img src="${LOGO}" alt="UNLOCK"><button class="btn" id="unlockBtn" type="button">UNLOCK</button></div></div>`);
+  $('unlockBtn').addEventListener('click', () => { sessionStorage.setItem('unlocked', '1'); pixelReveal($('gate')); }, { once: true });
+}
+
+/* Pixel reveal. A canvas covers the screen with blue squares. From the centre, a ring of small squares
+   spreads outward; inside the ring the blue is gone (the site shows through), and the ring dissolves as it nears the edges.
+   Tweak: CELL (square size), BAND (ring thickness, in squares), MS (duration). */
+function pixelReveal(gate) {
+  const BLUE = getComputedStyle(document.documentElement).getPropertyValue('--gate').trim() || '#150061';
+  const MS = 1900, BAND = 7, RING = '255,255,255';
+  const finish = () => { gate.remove(); document.body.classList.remove('locked'); };
+  gate.classList.add('opening');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { setTimeout(finish, 500); return; }
+  const W = innerWidth, H = innerHeight, CELL = Math.max(18, Math.round(Math.max(W, H) / 52));
+  const cols = Math.ceil(W / CELL), rows = Math.ceil(H / CELL), cx = cols / 2, cy = rows / 2;
+  const cv = document.createElement('canvas'); cv.id = 'pxcv'; cv.width = W; cv.height = H; gate.appendChild(cv);
+  const ctx = cv.getContext('2d');
+  const cells = [];
+  for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) cells.push({ x: x * CELL, y: y * CELL, d: Math.hypot(x + .5 - cx, y + .5 - cy), n: Math.random() });
+  const maxR = Math.hypot(cx, cy) + BAND, ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  let t0 = null;
+  const draw = ts => {
+    if (t0 === null) t0 = ts;
+    const t = Math.min((ts - t0) / MS, 1), R = ease(t) * maxR, fade = 1 - Math.pow(t, 3);
+    ctx.clearRect(0, 0, W, H);
+    for (const c of cells) {
+      const u = (R - c.d) / BAND;                     // <0 not reached, 0..1 inside the ring, >1 already cleared
+      if (u >= 1) continue;
+      if (u <= 0 || c.n > u) { ctx.fillStyle = BLUE; ctx.fillRect(c.x, c.y, CELL + 1, CELL + 1); }   // blue square still standing
+      if (u > 0) { const s = CELL * Math.sin(Math.PI * u) * (.45 + .55 * c.n), o = (CELL - s) / 2;   // small ring squares that grow then vanish
+        ctx.fillStyle = `rgba(${RING},${.55 * fade})`; ctx.fillRect(c.x + o, c.y + o, s, s); }
+    }
+    if (t < 1) requestAnimationFrame(draw); else finish();
+  };
+  gate.style.background = 'transparent';
+  requestAnimationFrame(draw);
 }
 
 // ---- Shared nav, footer, command palette ----
@@ -272,14 +305,17 @@ function renderTeam(c) {
   const person = (p, role) => typeof p === 'string' ? { name: p, role } : { role, ...p };
   const av = (p, cls) => `<div class="av ${cls} ${k++ % 2 ? 'b2' : 'b1'}"><span>${ini(p.name)}</span><img src="${p.photo || 'assets/team/' + slug(p.name) + '.jpg'}" alt="${p.name}" loading="lazy" onerror="avFail(this)"></div>`;
   const card = (p, cls) => `<div class="pcard hl rv">${av(p, cls)}<b class="pn">${p.name}</b><small class="pr">${p.role || ''}</small></div>`;
-  const total = T.advisors.length + T.leadership.reduce((a, g) => a + g.people.length, 0) + T.bureaus.reduce((a, b) => a + b.members.length, 0);
+  const total = T.advisors.length + T.leadership.reduce((a, g) => a + g.people.length, 0) + T.bureaus.reduce((a, b) => a + (b.hods || []).length + b.members.length, 0);
   set('tmCount', `${total} committee members · ${T.bureaus.length} bureaus`);
   const chips = [['advisors', 'Advisors'], ['leadership', 'Leadership']].concat(T.bureaus.map(b => [slug(b.name), b.name.replace(' Bureau', '')]));
   $('tmChips').innerHTML = chips.map(x => `<a href="#${x[0]}">${x[1]}</a>`).join('');
-  root.innerHTML = `<figure class="group rv"><img src="${T.photo}" alt="The UNLOCK committee"></figure>
+  root.innerHTML = `<figure class="group rv"><img src="${T.photo}" alt="The UNLOCK committee" onerror="this.parentElement.remove()"></figure>
     <div class="tm-block" id="advisors"><span class="mono label">Guided by</span><h2 class="ttl">Advisors</h2><div class="people">${T.advisors.map(p => card(person(p, 'Advisor'), 'xl')).join('')}</div></div>
     <div class="tm-block" id="leadership"><span class="mono label">Leading UNLOCK</span><h2 class="ttl">Leadership</h2>${T.leadership.map(g => `<h3 class="ttl tm-sub">${g.title}</h3><div class="people">${g.people.map(p => card(person(p, p.role), 'lg')).join('')}</div>`).join('')}</div>
-    ${T.bureaus.map(b => `<div class="tm-block" id="${slug(b.name)}"><span class="mono label">${b.members.length} members</span><h2 class="ttl">${b.name}</h2><div class="people grid">${b.members.map(m => card(person(m, b.name.replace(' Bureau', '')), 'md')).join('')}</div></div>`).join('')}`;
+    ${T.bureaus.map(b => { const hs = b.hods || [], short = b.name.replace(' Bureau', '');
+      return `<div class="tm-block" id="${slug(b.name)}"><span class="mono label">${hs.length + b.members.length} members</span><h2 class="ttl">${b.name}</h2>
+      <div class="bureau"><div class="hods">${hs.map(p => card(person(p, p.role), 'lg')).join('')}</div>
+      <div class="people grid team">${b.members.map(m => card(person(m, short), 'md')).join('')}</div></div></div>`; }).join('')}`;
   root.querySelectorAll('.rv').forEach(x => io.observe(x));
   list('tmSocials', c.socials, o => `<a class="btn primary" href="${o.url}" target="_blank" rel="noopener">${o.name} <span class="mono" style="margin-left:8px;opacity:.8">${o.handle}</span></a>`);
 }
