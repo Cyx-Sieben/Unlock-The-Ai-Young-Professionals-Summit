@@ -358,15 +358,21 @@
  "sponsors": [
   {
    "name": "ZUS Coffee Malaysia",
-   "role": "EXAMPLE sponsor: replace me",
-   "logo": "",
-   "url": ""
+   "role": "Confirmed sponsor",
+   "logo": "assets/sponsors/zus-coffee.png",
+   "url": "https://zuscoffee.com/"
   },
   {
-   "name": "Gardenia Malaysia",
-   "role": "EXAMPLE sponsor: replace me",
-   "logo": "",
-   "url": ""
+   "name": "Bank Islam Malaysia",
+   "role": "Confirmed sponsor",
+   "logo": "assets/sponsors/bank-islam.png",
+   "url": "https://www.bankislam.com/"
+  },
+  {
+   "name": "BookDoc Connect & Unite Malaysia",
+   "role": "Confirmed sponsor",
+   "logo": "assets/sponsors/bookdoc.png",
+   "url": "https://www.bookdoc.com/"
   }
  ],
  "live": {
@@ -375,8 +381,7 @@
   "professionalCap": 5
  },
  "contact": {
-  "phone": "EDIT: +60 00-000 0000",
-  "email": "EDIT: email@example.com",
+  "email": "unlockai.project@gmail.com",
   "location": "UiTM Shah Alam, Selangor"
  },
  "regClose": "2026-11-02T23:59:00+08:00",
@@ -441,8 +446,8 @@
   {
    "q": "How much is the registration fee?",
    "kw": "fee yuran cost price free percuma bayar payment pay",
-   "a": "Please check the registration form for the latest fee information. If you need confirmation, message the committee on WhatsApp or by email.",
-   "alt": "Fee details are given on the registration form. For any payment question, contact us on WhatsApp or email and we will confirm.",
+   "a": "Please check the registration form for the latest fee information. If you need confirmation, email the committee.",
+   "alt": "Fee details are given on the registration form. For any payment question, email us and we will confirm.",
    "contact": true
   },
   {
@@ -525,7 +530,7 @@
    "q": "Will there be certificates?",
    "kw": "certificate sijil medal",
    "a": "All 50 participants receive a commemorative finalist medal for completing the incubation and exhibition. For certificate details, please contact the committee.",
-   "alt": "Every participant gets a finalist medal. If you need information on certificates, WhatsApp or email us.",
+   "alt": "Every participant gets a finalist medal. If you need information on certificates, email us.",
    "contact": true
   },
   {
@@ -537,9 +542,9 @@
   },
   {
    "q": "How can I contact the committee?",
-   "kw": "contact reach whatsapp email phone hubungi help support",
-   "a": "You can contact us on WhatsApp or by email from the Contacts section, or message @unlockai.project on Instagram and TikTok.",
-   "alt": "Use the Contacts section on this page for our phone and email, or follow @unlockai.project on Instagram and TikTok.",
+   "kw": "contact reach email hubungi help support",
+   "a": "You can email us from the Contacts section, or message @unlockai.project on Instagram and TikTok.",
+   "alt": "Use the Contacts section on this page for our email, or follow @unlockai.project on Instagram and TikTok.",
    "contact": true
   },
   {
@@ -551,14 +556,14 @@
   {
    "q": "I did not receive the confirmation email",
    "kw": "no email not received spam missing didn't got",
-   "a": "Please check your spam or promotions folder and wait a few minutes. If it still has not arrived, WhatsApp or email us with your team name and the email you used.",
+   "a": "Please check your spam or promotions folder and wait a few minutes. If it still has not arrived, email us with your team name and the email you used.",
    "alt": "Confirmation emails go to the team leader and every member email on the form. If yours is missing, contact us with your team name so we can check.",
    "contact": true
   },
   {
    "q": "Can I change my team members after registering?",
    "kw": "change replace edit update withdraw cancel member swap tukar",
-   "a": "Please contact the committee as soon as possible so we can check what can be changed. A message on WhatsApp or email is the fastest way.",
+   "a": "Please contact the committee as soon as possible so we can check what can be changed. An email is the fastest way.",
    "alt": "Changes to a registered team need the committee's approval. Contact us with your team name and the change you need.",
    "contact": true
   },
