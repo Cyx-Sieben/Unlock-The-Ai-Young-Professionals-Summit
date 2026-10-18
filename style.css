@@ -247,14 +247,14 @@ details[open] p{animation:fadeDown .45s var(--ease)}@keyframes fadeDown{from{opa
 @media(max-width:640px){.tm-block{margin-top:60px}.people:not(.grid) .pcard{min-width:150px;flex:1 1 150px}.av.xl{width:130px;height:170px;border-radius:65px}.av.lg{width:110px;height:146px;border-radius:55px}.group{border-radius:22px}.people.grid{grid-template-columns:repeat(2,1fr)}}
 
 /* ===== v5: flat-blue unlock gate + pixel reveal ===== */
-:root{--gate:#150061;--gate-logo-filter:none}   /* gate colour. If the logo is blue and disappears, set --gate-logo-filter:brightness(0) invert(1) for a white logo */
+:root{--gate:#ffffff;--gate-logo-filter:none}   /* the unlock screen is white; the pixels are blue (see pixelReveal in script.js) */
 body.locked{overflow:hidden}
 #gate{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:var(--gate)}
 #gate .gate-center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;text-align:center;transition:opacity .35s ease,transform .5s var(--ease)}
 #gate .gate-center img{width:min(380px,70vw);height:auto;margin:0;animation:none;filter:var(--gate-logo-filter)}
-#gate .gate-center .btn{background:#fff;border:1px solid #fff;color:var(--gate);font:600 .95rem 'Space Grotesk',sans-serif;letter-spacing:.28em;padding:15px 46px;border-radius:99px;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s}
-#gate .gate-center .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(255,255,255,.45)}
-#gate .gate-center .btn:focus-visible{outline:2px solid #fff;outline-offset:4px}
+#gate .gate-center .btn{background:var(--dark);border:1px solid var(--dark);color:#fff;font:600 .95rem 'Space Grotesk',sans-serif;letter-spacing:.28em;padding:15px 46px;border-radius:99px;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s}
+#gate .gate-center .btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(21,0,97,.45)}
+#gate .gate-center .btn:focus-visible{outline:2px solid var(--dark);outline-offset:4px}
 #gate.opening .gate-center{opacity:0;transform:scale(.96);pointer-events:none}
 #pxcv{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
 
@@ -270,3 +270,55 @@ body.locked{overflow:hidden}
 @media(max-width:900px){.bureau{grid-template-columns:1fr}}
 @media(max-width:640px){.av.lg{width:140px;height:180px;border-radius:24px}.hods .pcard{width:calc(50% - 9px);min-width:150px;padding-inline:8px}.people:not(.grid) .pcard{min-width:150px;flex:1 1 150px}.people.grid.team{grid-template-columns:repeat(2,1fr)}#gate .gate-center{gap:28px}}
 .av img{object-position:50% 22%}   /* keep faces in frame */
+
+/* ===== v6: "Click to Meet Our Team" button (About) ===== */
+.tc-wrap{margin:22px 0 6px}
+.team-cta{position:relative;display:inline-flex;align-items:center;gap:16px;padding:10px 12px 10px 14px;border-radius:99px;text-decoration:none;color:#fff;overflow:hidden;background:linear-gradient(110deg,var(--dark),#26208A 55%,var(--dark));background-size:200% 100%;box-shadow:0 18px 34px -16px rgba(21,0,97,.6);transition:transform .4s var(--ease),box-shadow .4s var(--ease),background-position .8s var(--ease)}
+.team-cta:hover{transform:translateY(-3px);background-position:100% 0;box-shadow:0 24px 40px -16px rgba(21,0,97,.7)}
+.tc-stack{display:flex}.tc-stack img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:2px solid #fff;margin-left:-14px;transition:margin .4s var(--ease),transform .4s var(--ease);background:#ddd}
+.tc-stack img:first-child{margin-left:0}.team-cta:hover .tc-stack img{margin-left:-6px}.team-cta:hover .tc-stack img:first-child{margin-left:0}
+.tc-text{display:flex;flex-direction:column;line-height:1.2;text-align:left}.tc-text small{font-size:.7rem;opacity:.75;letter-spacing:.04em}.tc-text b{font:600 1.05rem 'Space Grotesk',sans-serif;letter-spacing:.01em}
+.tc-go{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--dark);font-size:1.2rem;animation:nudge 1.8s ease-in-out infinite;transition:background .3s,color .3s}
+.team-cta:hover .tc-go{background:var(--cyan);color:#fff}
+@keyframes nudge{50%{transform:translateX(5px)}}
+.team-cta:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.22) 50%,transparent 65%);transform:translateX(-120%);animation:sheen 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes sheen{55%,100%{transform:translateX(120%)}}
+@media(prefers-reduced-motion:reduce){.tc-go,.team-cta:after{animation:none}}
+@media(max-width:480px){.tc-stack img:nth-child(n+4){display:none}.tc-text b{font-size:.98rem}}
+
+/* ===== v6: Our Team, tiered layout (advisors > leadership > bureaus) ===== */
+.tp{margin:0;text-align:center}
+.tp figcaption b{display:block;font:600 1rem 'Space Grotesk',sans-serif;color:var(--dark)}
+.tp figcaption small{display:block;margin-top:3px;font:500 .68rem 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan)}
+.tp .av img{transition:transform .7s var(--ease)}.tp:hover .av img{transform:scale(1.07)}
+.av .ribbon{position:absolute;top:10px;left:10px;z-index:2;font:600 .66rem 'IBM Plex Mono',monospace;font-style:normal;letter-spacing:.12em;padding:5px 11px;border-radius:99px;background:var(--dark);color:#fff;box-shadow:0 6px 14px -6px rgba(21,0,97,.6)}
+/* advisors: wide horizontal cards */
+.adv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;max-width:900px;margin-inline:auto}
+.adv{display:flex;align-items:center;gap:22px;padding:20px 24px 20px 20px;background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:0 24px 40px -30px rgba(21,0,97,.45)}
+.adv .av{margin:0;flex:none}.adv .av.xl{width:124px;height:156px;border-radius:22px;font-size:2rem}
+.adv .tag{display:inline-block;font:600 .64rem 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:99px;background:rgba(140,109,70,.14);color:var(--cyan)}
+.adv b{display:block;margin:10px 0 4px;font:600 1.12rem/1.25 'Space Grotesk',sans-serif;color:var(--dark)}.adv small{color:var(--muted);font-size:.85rem}
+/* leadership: three paired "boards" */
+.exec{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.duo{position:relative;padding:26px 16px 22px;text-align:center;background:linear-gradient(180deg,#fff,#faf7ef);border:1px solid var(--line);border-radius:30px;box-shadow:0 30px 46px -34px rgba(21,0,97,.5);overflow:hidden}
+.duo:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--dark),var(--cyan))}
+.duo h3{margin:0 0 18px;font:600 .7rem 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.duo-people{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.duo .av.lg{width:100%;height:auto;aspect-ratio:4/5;border-radius:20px;margin:0 0 10px}
+.duo .tp figcaption b{font-size:.95rem}.duo .tp figcaption small{font-size:.6rem}
+/* bureaus: big number, HOD cards left, team panel right */
+.b-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:24px}.b-head h2{margin:0}
+.b-no{font:700 clamp(3.4rem,8vw,6rem)/.78 'Space Grotesk',sans-serif;color:transparent;-webkit-text-stroke:1.5px var(--dark);opacity:.2;user-select:none}
+.b-body{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:stretch}
+.b-hods{display:flex;gap:16px;align-items:flex-start}
+.b-hods .tp{width:216px;padding:14px 14px 18px;background:#fff;border:1px solid var(--line);border-radius:30px;box-shadow:0 28px 44px -30px rgba(21,0,97,.5)}
+.b-hods .av.lg{width:100%;height:auto;aspect-ratio:4/5;border-radius:22px;margin:0 0 14px}
+.b-hods .tp figcaption b{font-size:1.1rem}.b-hods .tp figcaption small{font-size:.6rem;color:var(--dark)}
+.b-crew{padding:22px 22px 26px;background:rgba(21,0,97,.035);border:1px solid var(--line);border-radius:30px}
+.crew-label{display:block;margin-bottom:18px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.crew-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:22px 12px}
+.crew-grid .av.md{width:92px;height:92px;border-radius:50%;margin:0 auto 10px;border:3px solid #fff;box-shadow:0 12px 22px -12px rgba(21,0,97,.55);transition:transform .45s var(--ease)}
+.crew-grid .tp:hover .av.md{transform:translateY(-5px)}
+.crew-grid .tp figcaption b{font-size:.92rem}.crew-grid .tp figcaption small{font-size:.58rem}
+@media(max-width:1000px){.exec{grid-template-columns:1fr;max-width:460px;margin-inline:auto}.b-body{grid-template-columns:1fr}.b-hods{justify-content:center}}
+@media(max-width:640px){.adv{flex-direction:column;text-align:center;padding:22px}.b-hods .tp{width:calc(50% - 8px);min-width:0;padding:10px 10px 14px}.b-hods .tp:only-child{width:min(240px,70%)}.crew-grid{grid-template-columns:repeat(3,1fr);gap:18px 8px}.crew-grid .av.md{width:72px;height:72px}.b-crew{padding:18px 12px 20px}.b-no{font-size:3.2rem}}
