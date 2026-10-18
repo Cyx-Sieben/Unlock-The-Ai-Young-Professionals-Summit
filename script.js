@@ -17,8 +17,8 @@ if (!sessionStorage.getItem('unlocked')) {
    spreads outward; inside the ring the blue is gone (the site shows through), and the ring dissolves as it nears the edges.
    Tweak: CELL (square size), BAND (ring thickness, in squares), MS (duration). */
 function pixelReveal(gate) {
-  const BLUE = getComputedStyle(document.documentElement).getPropertyValue('--gate').trim() || '#150061';
-  const MS = 1900, BAND = 7, RING = '255,255,255';
+  const COVER = getComputedStyle(document.documentElement).getPropertyValue('--gate').trim() || '#ffffff', INK = ['21,0,97', '38,32,138'];   // white screen, blue pixels
+  const MS = 1900, BAND = 7;
   const finish = () => { gate.remove(); document.body.classList.remove('locked'); };
   gate.classList.add('opening');
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) { setTimeout(finish, 500); return; }
@@ -37,9 +37,9 @@ function pixelReveal(gate) {
     for (const c of cells) {
       const u = (R - c.d) / BAND;                     // <0 not reached, 0..1 inside the ring, >1 already cleared
       if (u >= 1) continue;
-      if (u <= 0 || c.n > u) { ctx.fillStyle = BLUE; ctx.fillRect(c.x, c.y, CELL + 1, CELL + 1); }   // blue square still standing
+      if (u <= 0 || c.n > u) { ctx.fillStyle = COVER; ctx.fillRect(c.x, c.y, CELL + 1, CELL + 1); }   // white square still standing
       if (u > 0) { const s = CELL * Math.sin(Math.PI * u) * (.45 + .55 * c.n), o = (CELL - s) / 2;   // small ring squares that grow then vanish
-        ctx.fillStyle = `rgba(${RING},${.55 * fade})`; ctx.fillRect(c.x + o, c.y + o, s, s); }
+        ctx.fillStyle = `rgba(${INK[c.n > .5 ? 0 : 1]},${.9 * fade})`; ctx.fillRect(c.x + o, c.y + o, s, s); }
     }
     if (t < 1) requestAnimationFrame(draw); else finish();
   };
@@ -60,7 +60,6 @@ addEventListener('keydown', e => {
 });
 cmd.onclick = e => { if (e.target === cmd) cmd.classList.remove('show'); };
 cin.oninput = () => cmd.querySelectorAll('a').forEach(a => a.style.display = a.textContent.toLowerCase().includes(cin.value.toLowerCase()) ? '' : 'none');
-document.body.insertAdjacentHTML('beforeend','<a class="btn primary fab" href="${B}#register">Register</a>');
 document.querySelectorAll('.nav nav a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('menu')));
 // highlight the current section in the nav, and fade blocks in as they scroll into view
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in');
@@ -83,7 +82,7 @@ fetch('content.json').then(r => r.json()).then(c => {
   list('timelineList', c.timeline, t => `<li><b>${t.date}: <span class="ttl">${t.title}</span></b><br><span class="muted">${t.detail}</span></li>`);
   
   list('faqList', c.faqs, f => `<details><summary>${f.q}</summary><p>${f.a}</p></details>`);
-  set('cPhone', 'Phone: ' + c.contact.phone); set('cEmail', `Email: <a href="mailto:${c.contact.email}">${c.contact.email}</a>`, 1); set('cLoc', 'Location: ' + c.contact.location);
+  set('cEmail', `Email: <a href="mailto:${c.contact.email}">${c.contact.email}</a>`, 1); set('cLoc', 'Location: ' + c.contact.location);
   extra(c); styleTitles(); renderTeam(c); touchHighlight(); enhance(c); countdown(c.eventDate); counters(c.live); askBar(c);
 }).catch(() => console.error('Could not load content.json (open the site through GitHub Pages, not by double-clicking the file).'));
 
@@ -118,8 +117,8 @@ function askBar(c) {
   const all = c.faqs.concat(c.askOnly || []);
   const digits = String(c.contact.phone || '').replace(/\D/g, ''), wa = /EDIT/i.test(c.contact.phone || '') || digits.length < 9 ? '' : (digits[0] === '0' ? '6' + digits : digits);
   const mail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.contact.email || '') ? c.contact.email : '';
-  const fb = ['I am not sure about that one, but our team can help. Please message us on WhatsApp or send us an email and we will answer you personally.',
-              'That is a little outside what I can answer here. For help with this, please reach out to the committee on WhatsApp or by email.'];
+  const fb = ['I am not sure about that one, but our team can help. Please send us an email and we will answer you personally.',
+              'That is a little outside what I can answer here. For help with this, please email the committee.'];
   let fbn = Math.random() * 2 | 0;
   const links = q => [wa ? `<a class="btn small" href="https://wa.me/${wa}?text=${encodeURIComponent('Hi UNLOCK team, I have a question: ' + q)}" target="_blank" rel="noopener">WhatsApp us</a>` : '',
     mail ? `<a class="btn small" href="mailto:${mail}?subject=${encodeURIComponent('UNLOCK question')}&body=${encodeURIComponent(q)}">Email us</a>` : '', '<a class="btn small" href="#contact">Contacts</a>'].join('');
@@ -158,7 +157,7 @@ function extra(c) {
   list('rules', c.rules, (r, i) => { const t = r.t.replace(/^\d+\.\s*/, ''); return `<div class="card hl"><h3 class="rt"><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="t"><b>${t[0]}</b>${t.slice(1)}</span></h3><ul>${r.items.map(x => `<li>${x}</li>`).join('')}</ul></div>`; });
   const ini = n => n.split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase(), link = o => o.url || 'https://www.google.com/search?q=' + encodeURIComponent(o.name),
     mark = (o, wm) => { const b = wm ? `<span class="wm">${o.name}</span>` : `<span class="mono-badge">${ini(o.name)}</span>`; return o.logo ? `<img src="${o.logo}" alt="${o.name} logo" onerror="this.outerHTML=this.dataset.fb" data-fb='${b}'>` : b; };
-  list('sponsorList', c.sponsors, o => `<a class="sp rv" href="${link(o)}" target="_blank" rel="noopener sponsored"><div class="lg">${mark(o)}</div><b>${o.name}</b><small>${o.role}</small><span class="go">VISIT &rarr;</span></a>`);
+  list('sponsorList', c.sponsors, o => `<a class="sp rv" href="${link(o)}" target="_blank" rel="noopener sponsored"><div class="lg">${mark(o, 1)}</div><b>${o.name}</b><small>${o.role}</small><span class="go">VISIT &rarr;</span></a>`);
   list('partners', c.partners, o => `<a class="pt" href="${link(o)}" target="_blank" rel="noopener">${mark(o, 1)}<span><b>${o.name}</b><small>${o.role}</small></span></a>`);
   list('socials', c.socials, o => `<a class="btn primary" href="${o.url}" target="_blank" rel="noopener">${o.name} <span class="mono" style="margin-left:8px;opacity:.8">${o.handle}</span></a>`);
   const cal = $('calLink'); if (cal) cal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(c.officialName) + '&dates=20261206/20261207&location=' + encodeURIComponent('Dewan Annex / Dewan Seroja, UiTM Shah Alam');
@@ -299,23 +298,27 @@ function touchHighlight() {   // phones and tablets: tapping a box turns it blue
 // ---- Our Team page (team.html): everything comes from "team" in content.json ----
 function avFail(img) { if (!img.dataset.t) { img.dataset.t = 1; img.src = img.src.replace(/\.jpg$/, '.png'); } else img.remove(); }   // try .jpg, then .png, else keep the initials
 function renderTeam(c) {
-  const root = $('teamRoot'); if (!root || !c.team) return; const T = c.team; let k = 0;
+  const root = $('teamRoot'); if (!root || !c.team) return; const T = c.team; let k = 0, d = 0;
   const slug = n => n.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const ini = n => n.replace(/^dr\.?\s+/i, '').split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase();
   const person = (p, role) => typeof p === 'string' ? { name: p, role } : { role, ...p };
-  const av = (p, cls) => `<div class="av ${cls} ${k++ % 2 ? 'b2' : 'b1'}"><span>${ini(p.name)}</span><img src="${p.photo || 'assets/team/' + slug(p.name) + '.jpg'}" alt="${p.name}" loading="lazy" onerror="avFail(this)"></div>`;
-  const card = (p, cls) => `<div class="pcard hl rv">${av(p, cls)}<b class="pn">${p.name}</b><small class="pr">${p.role || ''}</small></div>`;
+  const av = (p, cls, extra = '') => `<div class="av ${cls} ${k++ % 2 ? 'b2' : 'b1'}"><span>${ini(p.name)}</span><img src="${p.photo || 'assets/team/' + slug(p.name) + '.jpg'}" alt="${p.name}" loading="lazy" onerror="avFail(this)">${extra}</div>`;
+  const dl = () => `style="transition-delay:${(d++ % 5) * 70}ms"`;                       // gentle staggered reveal
+  const tp = (p, cls, extra = '', mod = '') => `<figure class="tp ${mod} rv" ${dl()}>${av(p, cls, extra)}<figcaption><b>${p.name}</b><small>${p.role || ''}</small></figcaption></figure>`;
   const total = T.advisors.length + T.leadership.reduce((a, g) => a + g.people.length, 0) + T.bureaus.reduce((a, b) => a + (b.hods || []).length + b.members.length, 0);
   set('tmCount', `${total} committee members · ${T.bureaus.length} bureaus`);
   const chips = [['advisors', 'Advisors'], ['leadership', 'Leadership']].concat(T.bureaus.map(b => [slug(b.name), b.name.replace(' Bureau', '')]));
   $('tmChips').innerHTML = chips.map(x => `<a href="#${x[0]}">${x[1]}</a>`).join('');
+  const hodTag = r => 'HOD' + ((String(r).match(/HOD\)\s*(\d)/) || [])[1] ? ' ' + String(r).match(/HOD\)\s*(\d)/)[1] : '');
   root.innerHTML = `<figure class="group rv"><img src="${T.photo}" alt="The UNLOCK committee" onerror="this.parentElement.remove()"></figure>
-    <div class="tm-block" id="advisors"><span class="mono label">Guided by</span><h2 class="ttl">Advisors</h2><div class="people">${T.advisors.map(p => card(person(p, 'Advisor'), 'xl')).join('')}</div></div>
-    <div class="tm-block" id="leadership"><span class="mono label">Leading UNLOCK</span><h2 class="ttl">Leadership</h2>${T.leadership.map(g => `<h3 class="ttl tm-sub">${g.title}</h3><div class="people">${g.people.map(p => card(person(p, p.role), 'lg')).join('')}</div>`).join('')}</div>
-    ${T.bureaus.map(b => { const hs = b.hods || [], short = b.name.replace(' Bureau', '');
-      return `<div class="tm-block" id="${slug(b.name)}"><span class="mono label">${hs.length + b.members.length} members</span><h2 class="ttl">${b.name}</h2>
-      <div class="bureau"><div class="hods">${hs.map(p => card(person(p, p.role), 'lg')).join('')}</div>
-      <div class="people grid team">${b.members.map(m => card(person(m, short), 'md')).join('')}</div></div></div>`; }).join('')}`;
+    <div class="tm-block" id="advisors"><span class="mono label">Guided by</span><h2 class="ttl">Advisors</h2>
+      <div class="adv-grid">${T.advisors.map(p => { p = person(p, 'Advisor'); return `<article class="adv rv" ${dl()}>${av(p, 'xl')}<div><span class="tag">Advisor</span><b>${p.name}</b><small>Guiding the UNLOCK committee</small></div></article>`; }).join('')}</div></div>
+    <div class="tm-block" id="leadership"><span class="mono label">Leading UNLOCK</span><h2 class="ttl">Leadership</h2>
+      <div class="exec">${T.leadership.map(g => `<div class="duo rv" ${dl()}><h3>${g.title}</h3><div class="duo-people">${g.people.map(p => tp(person(p, p.role), 'lg', '', 'lead')).join('')}</div></div>`).join('')}</div></div>
+    ${T.bureaus.map((b, i) => { const hs = b.hods || [], short = b.name.replace(' Bureau', '');
+      return `<div class="tm-block bureau-sec" id="${slug(b.name)}"><div class="b-head"><span class="b-no" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span><div><span class="mono label">${hs.length + b.members.length} members</span><h2 class="ttl">${b.name}</h2></div></div>
+      <div class="b-body"><div class="b-hods">${hs.map(p => { p = person(p, p.role); return tp(p, 'lg', `<i class="ribbon">${hodTag(p.role)}</i>`, 'hod'); }).join('')}</div>
+      <div class="b-crew"><span class="mono crew-label">The ${short} team</span><div class="crew-grid">${b.members.map(m => tp(person(m, short), 'md')).join('')}</div></div></div></div>`; }).join('')}`;
   root.querySelectorAll('.rv').forEach(x => io.observe(x));
   list('tmSocials', c.socials, o => `<a class="btn primary" href="${o.url}" target="_blank" rel="noopener">${o.name} <span class="mono" style="margin-left:8px;opacity:.8">${o.handle}</span></a>`);
 }
