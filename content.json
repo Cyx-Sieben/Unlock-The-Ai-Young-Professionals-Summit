@@ -360,7 +360,8 @@
    "name": "ZUS Coffee",
    "role": "Confirmed sponsor",
    "logo": "assets/sponsors/zus-coffee.png",
-   "url": "https://zuscoffee.com/"
+   "url": "https://zuscoffee.com/",
+   "bg": "#0D2B6B"
   },
   {
    "name": "Bank Islam",
