@@ -328,3 +328,90 @@ function renderTeam(c) {
   });
   list('tmSocials', c.socials, o => `<a class="btn primary" href="${o.url}" target="_blank" rel="noopener">${o.name} <span class="mono" style="margin-left:8px;opacity:.8">${o.handle}</span></a>`);
 }
+/* UNLOCK extras: loads after script.js. Everything here is additive. */
+(() => {
+const $ = id => document.getElementById(id), D = 'cyx-sieben.github.io/Unlock-The-Ai-Young-Professionals-Summit';
+const ready = (id, fn) => { const el = $(id); if (!el) return; if (el.children.length) return fn(el);
+  const mo = new MutationObserver(() => { if (el.children.length) { mo.disconnect(); fn(el); } }); mo.observe(el, { childList: true }); };
+const dl = (name, type, text) => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1e3); };
+const esc = s => String(s).replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
+const ics = (title, ymd, detail) => { const d = ymd.replace(/-/g, ''), n = new Date(Date.UTC(+d.slice(0, 4), +d.slice(4, 6) - 1, +d.slice(6)) + 864e5).toISOString().slice(0, 10).replace(/-/g, '');
+  return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//UNLOCK 2026//EN', 'BEGIN:VEVENT', `UID:${d}-${title.length}@unlock`, `DTSTAMP:${new Date().toISOString().replace(/[-:]|\.\d+/g, '')}`,
+    `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${n}`, `SUMMARY:${title}`, `DESCRIPTION:${(detail || '').replace(/\n/g, ' ')}`, 'LOCATION:UiTM Shah Alam\\, Selangor', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n'); };
+
+/* 1. Counter fallback: cache last good numbers, show them with an "updated at" stamp if the live call fails */
+const _f = window.fetch;
+window.fetch = (u, o) => { if (!/script\.google/.test(String(u))) return _f(u, o);
+  return _f(u, o).then(r => { if (!r.ok) throw 0; r.clone().json().then(d => { try { localStorage.setItem('unl_cnt', JSON.stringify({ d, t: Date.now() })); } catch (e) {} }); return r; })
+    .catch(() => { let s; try { s = JSON.parse(localStorage.getItem('unl_cnt')); } catch (e) {} if (!s) throw 0;
+      setTimeout(() => { const n = $('liveNote'); if (n) n.textContent = 'Showing last known count. Updated ' + new Date(s.t).toLocaleString(); }, 80);
+      return new Response(JSON.stringify(s.d), { headers: { 'Content-Type': 'application/json' } }); }); };
+
+/* 2. Offline support */
+if ('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('sw.js').catch(() => {});
+
+/* 3. Language toggle (interface text; page copy lives in content.json) */
+const MS = { 'Home': 'Utama', 'About': 'Tentang', 'Our Team': 'Pasukan Kami', 'Timeline': 'Garis Masa', 'Summit': 'Sidang Kemuncak', 'Sponsors': 'Penaja', 'Rules & FAQ': 'Peraturan & Soalan Lazim', 'Contacts': 'Hubungi', 'Register Now!': 'Daftar Sekarang!', 'Register now': 'Daftar sekarang', 'Learn more': 'Ketahui lebih lanjut', 'See open spots': 'Lihat slot kosong', 'Live team spots': 'Slot pasukan terkini', 'About UNLOCK': 'Tentang UNLOCK', 'Register your team': 'Daftarkan pasukan anda', 'General timeline': 'Garis masa umum', 'Judging and prizes': 'Penilaian dan hadiah', 'Our confirmed sponsors': 'Penaja yang disahkan', 'Rules and regulations': 'Peraturan', 'Frequently asked questions': 'Soalan lazim', 'Contacts and socials': 'Hubungan dan media sosial', 'Add to calendar': 'Tambah ke kalendar', 'Ask': 'Tanya' };
+const nav = document.querySelector('.nav nav');
+if (nav) { const b = document.createElement('button'); b.className = 'btn small lang'; b.type = 'button'; b.textContent = 'BM'; b.setAttribute('aria-label', 'Tukar bahasa / Switch language');
+  nav.appendChild(b); let bm = localStorage.getItem('unl_lang') === 'ms';
+  const apply = () => { document.documentElement.lang = bm ? 'ms' : 'en'; b.textContent = bm ? 'EN' : 'BM';
+    document.querySelectorAll('a,button,h2,.btn').forEach(el => { if (el === b || el.children.length) return; const t = (el.dataset.en || el.textContent).trim();
+      if (MS[t]) { el.dataset.en = t; el.textContent = bm ? MS[t] : t; } }); };
+  b.onclick = () => { bm = !bm; try { localStorage.setItem('unl_lang', bm ? 'ms' : 'en'); } catch (e) {} apply(); }; if (bm) setTimeout(apply, 600); }
+
+fetch('content.json').then(r => r.json()).then(c => {
+  /* 4. Ask box: log every question (Apps Script, else local queue) */
+  const af = $('askForm'), au = c.live && c.live.appsScriptUrl;
+  if (af) af.addEventListener('submit', () => { const q = $('askInput').value.trim().slice(0, 300); if (!q) return;
+    if (au && !/PASTE/.test(au) && navigator.sendBeacon && navigator.sendBeacon(au, JSON.stringify({ type: 'ask', q }))) return;
+    try { const a = JSON.parse(localStorage.getItem('unl_q') || '[]'); a.push({ q, t: Date.now() }); localStorage.setItem('unl_q', JSON.stringify(a.slice(-50))); } catch (e) {} }, true);
+
+  /* 5. Per-week .ics buttons + full-event .ics */
+  const M = { Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12 }, p2 = n => String(n).padStart(2, '0');
+  ready('timelineList', ul => ul.querySelectorAll('li').forEach((li, i) => { const t = c.timeline[i], m = t && t.date.match(/(\d{1,2})\s([A-Za-z]{3})/); if (!m) return;
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'btn small ics'; b.textContent = 'Add to calendar (.ics)';
+    b.onclick = () => dl(`unlock-${i + 1}.ics`, 'text/calendar', ics(`UNLOCK: ${t.title}`, `2026-${p2(M[m[2]])}-${p2(m[1])}`, t.detail)); li.appendChild(b); }));
+  const cal = $('calLink'); if (cal) { const b = document.createElement('button'); b.type = 'button'; b.className = 'btn small'; b.textContent = 'Download .ics';
+    b.onclick = () => dl('unlock-grand-finale.ics', 'text/calendar', ics(c.officialName, '2026-12-06', 'Grand Finale and Expo')); cal.after(' ', b); }
+
+  /* 6. Track call-outs (TRK-01) */
+  ready('tracks', el => el.querySelectorAll('.trk i').forEach((i, n) => i.textContent = 'TRK-0' + (n + 1)));
+
+  /* 7. Mount sections: news, track finder, checklist, livestream, share */
+  const T = c.about.tracks, news = c.news || [];
+  if ($('news')) $('news').innerHTML = news.length ? news.map(n => `<article class="card news-i"><span class="mono label">${esc(n.date)}</span><h3>${esc(n.title)}</h3><p>${esc(n.body)}</p></article>`).join('') : '<p class="muted">No updates yet.</p>';
+  const Q = [['What do you enjoy most?', [['Helping people', [0, 1]], ['Making things run smoothly', [2, 1]], ['Telling stories', [3]], ['Finding patterns', [4, 5]]]],
+    ['Which problem bothers you at work?', [['Slow replies and repeated questions', [0]], ['Hiring and onboarding friction', [1]], ['Manual, repetitive tasks', [2]], ['Waste and reporting burden', [5, 4]]]],
+    ['Your best skill?', [['Writing and design', [3]], ['Spreadsheets and analysis', [4, 2]], ['Communication', [0, 1]], ['Research and policy', [5]]]]];
+  const fin = $('finder'); if (fin) { const sc = Array(T.length).fill(0); let qi = 0;
+    const step = () => { if (qi >= Q.length) { const best = sc.indexOf(Math.max(...sc)); fin.innerHTML = `<p class="mono label">Your best fit</p><h3>${esc(T[best])}</h3><p class="muted">Based on ${Q.length} answers. You can pick any track when you register.</p><button class="btn small" type="button" id="fRe">Retake</button>`; $('fRe').onclick = () => { sc.fill(0); qi = 0; step(); }; return; }
+      fin.innerHTML = `<p class="mono label">Question ${qi + 1} of ${Q.length}</p><h3>${Q[qi][0]}</h3><div class="opts">${Q[qi][1].map((o, j) => `<button class="btn" type="button" data-j="${j}">${o[0]}</button>`).join('')}</div>`;
+      fin.querySelectorAll('[data-j]').forEach(b => b.onclick = () => { Q[qi][1][b.dataset.j][1].forEach(k => sc[k]++); qi++; step(); }); }; step(); }
+
+  const ck = $('checklist'); if (ck) { const items = c.registration.prepare, forms = [$('stuForm'), $('proForm')].filter(Boolean);
+    ck.innerHTML = items.map((t, i) => `<label class="ck"><input type="checkbox" data-i="${i}"> <span>${t}</span></label>`).join('') + '<p class="muted" id="ckMsg" role="status">Tick everything to unlock the registration forms.</p>';
+    const ok = () => [...ck.querySelectorAll('input')].every(x => x.checked);
+    const sync = () => { forms.forEach(f => f.setAttribute('aria-disabled', ok() ? 'false' : 'true')); $('ckMsg').textContent = ok() ? 'All set. You can register now.' : 'Tick everything to unlock the registration forms.'; };
+    ck.addEventListener('change', sync); sync();
+    forms.forEach(f => f.addEventListener('click', e => { if (f.getAttribute('aria-disabled') === 'true' && !f.classList.contains('is-full')) { e.preventDefault(); ck.querySelector('input:not(:checked)').focus(); } })); }
+
+  if ($('live')) { const ls = c.livestreamUrl, fb = c.feedbackUrl;
+    $('live').innerHTML = (ls ? `<div class="embed"><iframe src="${esc(ls)}" title="UNLOCK livestream" loading="lazy" allowfullscreen></iframe></div>` : '<p class="muted">The livestream appears here on the day.</p>')
+      + (fb ? `<details class="card"><summary>Give feedback</summary><div class="embed tall"><iframe src="${esc(fb)}" title="Feedback form" loading="lazy"></iframe></div></details>` : ''); }
+
+  /* 8. Share card ("We're in UNLOCK 2026") + Web Share */
+  const sh = $('shareBtn'); if (sh) sh.onclick = async () => { const name = ($('shareName').value || 'Our team').slice(0, 40), cv = document.createElement('canvas'); cv.width = 1080; cv.height = 1920; const x = cv.getContext('2d');
+    const g = x.createLinearGradient(0, 0, 1080, 1920); g.addColorStop(0, '#150061'); g.addColorStop(1, '#26208A'); x.fillStyle = g; x.fillRect(0, 0, 1080, 1920);
+    x.strokeStyle = 'rgba(255,255,255,.08)'; for (let i = 0; i <= 1080; i += 60) { x.beginPath(); x.moveTo(i, 0); x.lineTo(i, 1920); x.stroke(); } for (let i = 0; i <= 1920; i += 60) { x.beginPath(); x.moveTo(0, i); x.lineTo(1080, i); x.stroke(); }
+    const logo = new Image(); logo.src = c.logo; await new Promise(r => { logo.onload = logo.onerror = r; }); if (logo.naturalWidth) x.drawImage(logo, 340, 300, 400, 400 * logo.naturalHeight / logo.naturalWidth);
+    x.fillStyle = '#fff'; x.textAlign = 'center'; x.font = '700 96px "Space Grotesk",sans-serif'; x.fillText("We're in", 540, 1000); x.fillText('UNLOCK 2026', 540, 1110);
+    x.font = '500 60px "Space Grotesk",sans-serif'; x.fillStyle = '#C9B28A'; x.fillText(name, 540, 1260); x.font = '400 44px Inter,sans-serif'; x.fillStyle = '#fff'; x.fillText('Grand Finale · 6 Dec 2026 · UiTM Shah Alam', 540, 1700);
+    cv.toBlob(async b => { const f = new File([b], 'unlock-2026.png', { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [f] })) { try { await navigator.share({ files: [f], title: "We're in UNLOCK 2026", url: location.href }); return; } catch (e) {} }
+      const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'unlock-2026.png'; a.click(); }); };
+
+  /* 9. Footer policies */
+  const ft = document.querySelector('footer'); if (ft) ft.insertAdjacentHTML('beforeend', '<br><a href="policies.html#conduct">Code of Conduct</a> &middot; <a href="policies.html#ai">AI-use rules</a> &middot; <a href="policies.html#terms">Terms of Participation</a> &middot; <a href="print.html">Print version</a>');
+}).catch(() => {});
+})();
