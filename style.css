@@ -456,7 +456,7 @@ body{overflow-x:clip}
 body,.alt,#summit{background-image:linear-gradient(var(--bp) 1px,transparent 1px),linear-gradient(90deg,var(--bp) 1px,transparent 1px);background-size:40px 40px}
 .alt,#summit{background-color:#fff}
 .hero{background:linear-gradient(var(--bp) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,var(--bp) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(180deg,#fff 0%,var(--bg) 100%)}
-.prize,.passport span,.btn.primary,.hl:hover,.hl:active,.hl.hot,.trk:hover,.trk:active,.trk.hot,.hot{background-image:linear-gradient(var(--bpw) 1px,transparent 1px),linear-gradient(90deg,var(--bpw) 1px,transparent 1px);background-size:22px 22px}
+.btn.primary,.hl:hover,.hl:active,.hl.hot,.trk:hover,.trk:active,.trk.hot,.hot{background-image:linear-gradient(var(--bpw) 1px,transparent 1px),linear-gradient(90deg,var(--bpw) 1px,transparent 1px);background-size:22px 22px}
 .trk i{letter-spacing:.04em}
 .news-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .news-i:hover .label,.news-i.hot .label{color:#D8B98C}
