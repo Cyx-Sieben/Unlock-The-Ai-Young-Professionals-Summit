@@ -157,7 +157,7 @@ function extra(c) {
   list('rules', c.rules, (r, i) => { const t = r.t.replace(/^\d+\.\s*/, ''); return `<div class="card hl"><h3 class="rt"><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="t"><b>${t[0]}</b>${t.slice(1)}</span></h3><ul>${r.items.map(x => `<li>${x}</li>`).join('')}</ul></div>`; });
   const ini = n => n.split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase(), link = o => o.url || 'https://www.google.com/search?q=' + encodeURIComponent(o.name),
     mark = (o, wm) => { const b = wm ? `<span class="wm">${o.name}</span>` : `<span class="mono-badge">${ini(o.name)}</span>`; return o.logo ? `<img src="${o.logo}" alt="${o.name} logo" onerror="this.outerHTML=this.dataset.fb" data-fb='${b}'>` : b; };
-  list('sponsorList', c.sponsors, o => `<a class="sp rv" href="${link(o)}" target="_blank" rel="noopener sponsored"><div class="lg">${mark(o, 1)}</div><b>${o.name}</b><small>${o.role}</small><span class="go">VISIT &rarr;</span></a>`);
+  list('sponsorList', c.sponsors, o => `<a class="sp rv" href="${link(o)}" target="_blank" rel="noopener sponsored"><div class="lg"${o.bg ? ` style="background:${o.bg}"` : ''}>${mark(o, 1)}</div><b>${o.name}</b><small>${o.role}</small><span class="go">VISIT &rarr;</span></a>`);
   list('partners', c.partners, o => `<a class="pt" href="${link(o)}" target="_blank" rel="noopener">${mark(o, 1)}<span><b>${o.name}</b><small>${o.role}</small></span></a>`);
   list('socials', c.socials, o => `<a class="btn primary" href="${o.url}" target="_blank" rel="noopener">${o.name} <span class="mono" style="margin-left:8px;opacity:.8">${o.handle}</span></a>`);
   const cal = $('calLink'); if (cal) cal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(c.officialName) + '&dates=20261206/20261207&location=' + encodeURIComponent('Dewan Annex / Dewan Seroja, UiTM Shah Alam');
@@ -304,7 +304,7 @@ function renderTeam(c) {
   const person = (p, role) => typeof p === 'string' ? { name: p, role } : { role, ...p };
   const av = (p, cls, extra = '') => `<div class="av ${cls} ${k++ % 2 ? 'b2' : 'b1'}"><span>${ini(p.name)}</span><img src="${p.photo || 'assets/team/' + slug(p.name) + '.jpg'}" alt="${p.name}" loading="lazy" onerror="avFail(this)">${extra}</div>`;
   const dl = () => `style="transition-delay:${(d++ % 5) * 70}ms"`;                       // gentle staggered reveal
-  const tp = (p, cls, extra = '', mod = '') => `<figure class="tp ${mod} rv" ${dl()}>${av(p, cls, extra)}<figcaption><b>${p.name}</b><small>${p.role || ''}</small></figcaption></figure>`;
+  const tp = (p, cls, extra = '', mod = '') => `<figure class="tp ${mod} rv" tabindex="0" ${dl()}>${av(p, cls, extra)}<figcaption><b>${p.name}</b><small>${p.role || ''}</small></figcaption></figure>`;
   const total = T.advisors.length + T.leadership.reduce((a, g) => a + g.people.length, 0) + T.bureaus.reduce((a, b) => a + (b.hods || []).length + b.members.length, 0);
   set('tmCount', `${total} committee members · ${T.bureaus.length} bureaus`);
   const chips = [['advisors', 'Advisors'], ['leadership', 'Leadership']].concat(T.bureaus.map(b => [slug(b.name), b.name.replace(' Bureau', '')]));
@@ -312,7 +312,7 @@ function renderTeam(c) {
   const hodTag = r => 'HOD' + ((String(r).match(/HOD\)\s*(\d)/) || [])[1] ? ' ' + String(r).match(/HOD\)\s*(\d)/)[1] : '');
   root.innerHTML = `<figure class="group rv"><img src="${T.photo}" alt="The UNLOCK committee" onerror="this.parentElement.remove()"></figure>
     <div class="tm-block" id="advisors"><span class="mono label">Guided by</span><h2 class="ttl">Advisors</h2>
-      <div class="adv-grid">${T.advisors.map(p => { p = person(p, 'Advisor'); return `<article class="adv rv" ${dl()}>${av(p, 'xl')}<div><span class="tag">Advisor</span><b>${p.name}</b><small>Guiding the UNLOCK committee</small></div></article>`; }).join('')}</div></div>
+      <div class="adv-grid">${T.advisors.map(p => { p = person(p, 'Advisor'); return `<article class="adv rv" tabindex="0" ${dl()}>${av(p, 'xl')}<div><span class="tag">Advisor</span><b>${p.name}</b><small>Guiding the UNLOCK committee</small></div></article>`; }).join('')}</div></div>
     <div class="tm-block" id="leadership"><span class="mono label">Leading UNLOCK</span><h2 class="ttl">Leadership</h2>
       <div class="exec">${T.leadership.map(g => `<div class="duo rv" ${dl()}><h3>${g.title}</h3><div class="duo-people">${g.people.map(p => tp(person(p, p.role), 'lg', '', 'lead')).join('')}</div></div>`).join('')}</div></div>
     ${T.bureaus.map((b, i) => { const hs = b.hods || [], short = b.name.replace(' Bureau', '');
@@ -320,5 +320,11 @@ function renderTeam(c) {
       <div class="b-body"><div class="b-hods">${hs.map(p => { p = person(p, p.role); return tp(p, 'lg', `<i class="ribbon">${hodTag(p.role)}</i>`, 'hod'); }).join('')}</div>
       <div class="b-crew"><span class="mono crew-label">The ${short} team</span><div class="crew-grid">${b.members.map(m => tp(person(m, short), 'md')).join('')}</div></div></div></div>`; }).join('')}`;
   root.querySelectorAll('.rv').forEach(x => io.observe(x));
+  // touch screens have no hover: tapping a person highlights them, tapping elsewhere (or another person) returns to normal
+  if (!matchMedia('(hover: hover)').matches) root.addEventListener('click', e => {
+    const t = e.target.closest('.tp, .adv');
+    root.querySelectorAll('.is-active').forEach(x => x !== t && x.classList.remove('is-active'));
+    if (t) t.classList.toggle('is-active');
+  });
   list('tmSocials', c.socials, o => `<a class="btn primary" href="${o.url}" target="_blank" rel="noopener">${o.name} <span class="mono" style="margin-left:8px;opacity:.8">${o.handle}</span></a>`);
 }
