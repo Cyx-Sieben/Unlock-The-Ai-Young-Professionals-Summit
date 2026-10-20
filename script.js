@@ -296,7 +296,7 @@ function touchHighlight() {   // phones and tablets: tapping a box turns it blue
 }
 
 // ---- Our Team page (team.html): everything comes from "team" in content.json ----
-function avFail(img) { if (!img.dataset.t) { img.dataset.t = 1; img.src = img.src.replace(/\.jpg$/, '.png'); } else img.remove(); }   // try .jpg, then .png, else keep the initials
+function avFail(img) { const ex = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'JPEG', 'PNG'], i = +(img.dataset.t || 0); if (i < ex.length - 1) { img.dataset.t = i + 1; img.src = img.src.replace(/\.[A-Za-z]+$/, '.' + ex[i + 1]); } else img.remove(); }   // tries jpg, jpeg, png, webp (and capitals), else keeps the initials
 function renderTeam(c) {
   const root = $('teamRoot'); if (!root || !c.team) return; const T = c.team; let k = 0, d = 0;
   const slug = n => n.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
