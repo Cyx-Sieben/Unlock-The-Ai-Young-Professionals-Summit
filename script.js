@@ -303,7 +303,7 @@ function renderTeam(c) {
   const ini = n => n.replace(/^dr\.?\s+/i, '').split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase();
   const person = (p, role) => typeof p === 'string' ? { name: p, role } : { role, ...p };
   const av = (p, cls, extra = '') => `<div class="av ${cls} ${k++ % 2 ? 'b2' : 'b1'}"><span>${ini(p.name)}</span><img src="${p.photo || 'assets/team/' + slug(p.name) + '.jpg'}" alt="${p.name}" loading="lazy" onerror="avFail(this)">${extra}</div>`;
-  const dl = () => `style="transition-delay:${(d++ % 5) * 70}ms"`;                       // gentle staggered reveal
+  const dl = () => `style="--d:${(d++ % 5) * 70}ms"`;                       // gentle staggered reveal
   const tp = (p, cls, extra = '', mod = '') => `<figure class="tp ${mod} rv" tabindex="0" ${dl()}>${av(p, cls, extra)}<figcaption><b>${p.name}</b><small>${p.role || ''}</small></figcaption></figure>`;
   const total = T.advisors.length + T.leadership.reduce((a, g) => a + g.people.length, 0) + T.bureaus.reduce((a, b) => a + (b.hods || []).length + b.members.length, 0);
   set('tmCount', `${total} committee members · ${T.bureaus.length} bureaus`);
