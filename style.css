@@ -290,7 +290,6 @@ body.locked{overflow:hidden}
 .tp{margin:0;text-align:center}
 .tp figcaption b{display:block;font:600 1rem 'Space Grotesk',sans-serif;color:var(--dark)}
 .tp figcaption small{display:block;margin-top:3px;font:500 .68rem 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan)}
-.tp .av img{transition:transform .7s var(--ease)}.tp:hover .av img{transform:scale(1.07)}
 .av .ribbon{position:absolute;top:10px;left:10px;z-index:2;font:600 .66rem 'IBM Plex Mono',monospace;font-style:normal;letter-spacing:.12em;padding:5px 11px;border-radius:99px;background:var(--dark);color:#fff;box-shadow:0 6px 14px -6px rgba(21,0,97,.6)}
 /* advisors: wide horizontal cards */
 .adv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;max-width:900px;margin-inline:auto}
@@ -300,8 +299,8 @@ body.locked{overflow:hidden}
 .adv b{display:block;margin:10px 0 4px;font:600 1.12rem/1.25 'Space Grotesk',sans-serif;color:var(--dark)}.adv small{color:var(--muted);font-size:.85rem}
 /* leadership: three paired "boards" */
 .exec{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.duo{position:relative;padding:26px 16px 22px;text-align:center;background:linear-gradient(180deg,#fff,#faf7ef);border:1px solid var(--line);border-radius:30px;box-shadow:0 30px 46px -34px rgba(21,0,97,.5);overflow:hidden}
-.duo:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--dark),var(--cyan))}
+.duo{position:relative;padding:26px 16px 22px;text-align:center;background:linear-gradient(180deg,#fff,#faf7ef);border:1px solid var(--line);border-radius:30px;box-shadow:0 30px 46px -34px rgba(21,0,97,.5)}
+.duo:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;border-radius:30px 30px 0 0;background:linear-gradient(90deg,var(--dark),var(--cyan))}
 .duo h3{margin:0 0 18px;font:600 .7rem 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
 .duo-people{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .duo .av.lg{width:100%;height:auto;aspect-ratio:4/5;border-radius:20px;margin:0 0 10px}
@@ -318,7 +317,60 @@ body.locked{overflow:hidden}
 .crew-label{display:block;margin-bottom:18px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
 .crew-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:22px 12px}
 .crew-grid .av.md{width:92px;height:92px;border-radius:50%;margin:0 auto 10px;border:3px solid #fff;box-shadow:0 12px 22px -12px rgba(21,0,97,.55);transition:transform .45s var(--ease)}
-.crew-grid .tp:hover .av.md{transform:translateY(-5px)}
 .crew-grid .tp figcaption b{font-size:.92rem}.crew-grid .tp figcaption small{font-size:.58rem}
 @media(max-width:1000px){.exec{grid-template-columns:1fr;max-width:460px;margin-inline:auto}.b-body{grid-template-columns:1fr}.b-hods{justify-content:center}}
 @media(max-width:640px){.adv{flex-direction:column;text-align:center;padding:22px}.b-hods .tp{width:calc(50% - 8px);min-width:0;padding:10px 10px 14px}.b-hods .tp:only-child{width:min(240px,70%)}.crew-grid{grid-template-columns:repeat(3,1fr);gap:18px 8px}.crew-grid .av.md{width:72px;height:72px}.b-crew{padding:18px 12px 20px}.b-no{font-size:3.2rem}}
+
+/* ===== v7: About, committee photo (always shown in full) + soft photo backdrop ===== */
+.px-bg{left:-40px;right:-40px;top:-40px;background:url(assets/about-team-960.jpg) center/cover no-repeat;filter:blur(14px) saturate(1.1)}   /* atmosphere only; the sharp, uncropped photo is the figure below */
+.about-photo{position:relative;margin:6px 0 30px;border-radius:28px;overflow:hidden;background:#0d0b2a;border:1px solid rgba(255,255,255,.4);box-shadow:0 44px 70px -34px rgba(0,0,0,.65)}
+.about-photo a{display:block;line-height:0}
+.about-photo img{display:block;width:100%;height:auto}                      /* height follows the width, so nobody is ever cropped */
+.about-photo figcaption{position:absolute;right:14px;bottom:12px;padding:6px 13px;border-radius:99px;background:rgba(21,0,97,.74);color:#fff;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);text-shadow:none}
+@media(max-width:640px){.about-photo{border-radius:18px;margin-bottom:24px}.about-photo figcaption{right:8px;bottom:8px;padding:5px 10px;font-size:.58rem}}
+.about-photo figcaption{top:12px;bottom:auto}                              /* top-right is empty wall, so no one is covered */
+@media(max-width:640px){.about-photo figcaption{top:8px}}
+@media(max-width:480px){.tc-text small{display:none}}
+
+/* ===== v8: sponsor logos (clear, on white; ZUS on its blue) ===== */
+.sp .lg{height:132px;background:#fff;border:1px solid var(--line);padding:14px}
+.sp .lg img{max-height:84px;max-width:88%;width:auto;height:auto;object-fit:contain;image-rendering:auto}
+.sp .lg[style*="background"]{border-color:transparent}
+
+/* ===== v8: bureau teams, larger and always centred ===== */
+.b-crew{display:flex;flex-direction:column;justify-content:center;padding:26px 22px 30px}
+.crew-label{text-align:center;margin-bottom:22px}
+.crew-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:30px 26px}
+.crew-grid .tp{width:156px}
+.crew-grid .av.md{width:132px;height:132px;border-width:4px;margin:0 auto 12px;font-size:1.8rem}
+.crew-grid .tp figcaption b{font-size:1.08rem;line-height:1.25}
+.crew-grid .tp figcaption small{font-size:.72rem;letter-spacing:.09em;margin-top:5px}
+.b-hods .tp figcaption b{font-size:1.2rem}.b-hods .tp figcaption small{font-size:.66rem}
+@media(max-width:1000px){.crew-grid .tp{width:150px}}
+@media(max-width:640px){.b-crew{padding:20px 10px 24px}.crew-grid{gap:22px 10px}.crew-grid .tp{width:calc(33.33% - 10px);min-width:100px}.crew-grid .av.md{width:92px;height:92px;border-width:3px}.crew-grid .tp figcaption b{font-size:.95rem}.crew-grid .tp figcaption small{font-size:.6rem;letter-spacing:.05em}}
+.b-hods .tp figcaption small{letter-spacing:.03em;font-size:.62rem}
+
+/* ===== v9: bureau circles ~50% of the HOD frame (no zoom inside the frame) + hover / tap highlight for everyone ===== */
+.crew-grid .tp{width:150px}
+.crew-grid .av.md{width:120px;height:120px}
+.crew-grid .av img,.tp .av img{object-position:50% 14%}
+@media(max-width:640px){.crew-grid .tp{width:calc(33.33% - 10px)}.crew-grid .av.md{width:92px;height:92px}}
+
+#teamRoot{overflow-x:clip}                                               /* the enlarged frame can never cause sideways scrolling */
+.tp,.adv{position:relative;cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
+.tp .av,.adv .av{position:relative;z-index:1;transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .55s ease;will-change:transform}
+.tp figcaption{transition:transform .55s cubic-bezier(.22,1,.36,1)}
+.crew-grid .tp{--shift:22px}
+.duo .tp{container-type:inline-size;--shift:calc(18.75cqw + 4px)}
+.b-hods .tp{container-type:inline-size;--shift:calc(17cqw + 4px)}
+/* highlight: frame and photo grow together by 30% */
+.tp.is-active,.tp:focus-visible,.adv.is-active,.adv:focus-visible{z-index:8}
+.tp.is-active .av,.tp:focus-visible .av,.adv.is-active .av,.adv:focus-visible .av{transform:scale(1.3);z-index:6;box-shadow:0 28px 46px -14px rgba(21,0,97,.6)}
+.tp.is-active figcaption,.tp:focus-visible figcaption{transform:translateY(var(--shift,0px))}
+@media(hover:hover){
+  .tp:hover,.adv:hover{z-index:8}
+  .tp:hover .av,.adv:hover .av{transform:scale(1.3);z-index:6;box-shadow:0 28px 46px -14px rgba(21,0,97,.6)}
+  .tp:hover figcaption{transform:translateY(var(--shift,0px))}
+}
+@media(prefers-reduced-motion:reduce){.tp .av,.adv .av,.tp figcaption{transition-duration:.01s}}
+.tp .av.md,.tp .av.lg,.tp .av.xl,.adv .av.xl{transition:transform .6s cubic-bezier(.22,1,.36,1),box-shadow .6s ease}
