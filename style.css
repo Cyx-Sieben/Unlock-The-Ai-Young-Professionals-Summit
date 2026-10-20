@@ -401,3 +401,52 @@ body.locked{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.tp,.adv{transition-duration:.01s}}
 .rv{transition-delay:var(--d,0ms)}
 .tp.rv,.adv.rv{transition-delay:var(--d,0ms),var(--d,0ms),0ms,0ms}
+
+/* ===== v11: same frame size for HOD / leadership / advisors, roomier boxes, no clipping on pop-up ===== */
+:root{--hod-w:186px}
+@media(max-width:640px){:root{--hod-w:138px}}
+
+/* 1) no more cut-off: clip only at the screen edge, never at the team area */
+#teamRoot{overflow:visible}
+body{overflow-x:clip}
+@media(max-width:1239px){#teamRoot{padding-inline:40px}}
+@media(max-width:640px){#teamRoot{padding-inline:20px}}
+
+/* 2) HOD card: photo is exactly --hod-w wide */
+.b-hods .tp,.b-hods .tp:only-child{width:calc(var(--hod-w) + 30px)}
+@media(max-width:640px){.b-hods .tp,.b-hods .tp:only-child{width:calc(var(--hod-w) + 22px);min-width:0}}
+
+/* 3) leadership: every frame = HOD frame size, bigger boxes so the pop-up stays inside */
+.exec{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;max-width:none;margin-inline:0}
+.duo{padding:46px 40px 52px}
+.duo h3{margin-bottom:52px}
+.duo-people{grid-template-columns:repeat(2,var(--hod-w));justify-content:center;gap:28px}
+.duo .av.lg{width:100%;height:auto;aspect-ratio:4/5;border-radius:22px;margin:0 0 14px}
+.duo .tp figcaption b{font-size:1.2rem}.duo .tp figcaption small{font-size:.66rem}
+@media(max-width:640px){
+  .exec{gap:18px}
+  .duo{padding:38px 22px 44px;width:100%}
+  .duo-people{gap:12px}
+  .duo .av.lg{border-radius:16px}
+  .duo .tp figcaption b{font-size:1rem}.duo .tp figcaption small{font-size:.56rem}
+}
+
+/* 4) advisors: frame = HOD frame size */
+.adv-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));max-width:1080px;gap:24px}
+.adv{padding:30px 32px;gap:28px}
+.adv .av.xl{width:var(--hod-w);height:auto;aspect-ratio:4/5;border-radius:22px;font-size:2.6rem}
+.adv b{font-size:1.25rem}
+@media(max-width:640px){.adv{flex-direction:column;text-align:center;padding:28px 20px}}
+
+/* 5) bureau team box: more room around the frames */
+.b-crew{padding:34px 28px 46px}
+.crew-label{margin-bottom:34px}
+.crew-grid{gap:34px 12px}
+.crew-grid .tp{width:calc((100% - 36px)/4)}
+@media(max-width:1239px){.b-body{grid-template-columns:1fr}.b-hods{justify-content:center}}
+@media(max-width:640px){
+  .b-crew{padding:26px 16px 32px}
+  .crew-label{margin-bottom:26px}
+  .crew-grid{gap:26px 10px}
+  .crew-grid .tp{width:calc((100% - 20px)/3)}
+}
