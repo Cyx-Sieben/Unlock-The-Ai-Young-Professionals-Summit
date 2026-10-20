@@ -343,16 +343,16 @@ body.locked{overflow:hidden}
 .crew-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:30px 26px}
 .crew-grid .tp{width:156px}
 .crew-grid .av.md{width:132px;height:132px;border-width:4px;margin:0 auto 12px;font-size:1.8rem}
- figcaption b{font-size:1.08rem;line-height:1.25}
+.crew-grid .tp figcaption b{font-size:1.08rem;line-height:1.25}
 .crew-grid .tp figcaption small{font-size:.72rem;letter-spacing:.09em;margin-top:5px}
 .b-hods .tp figcaption b{font-size:1.2rem}.b-hods .tp figcaption small{font-size:.66rem}
-@media(max-width:1000px){{width:150px}}
-@media(max-width:640px){.b-crew{padding:20px 10px 24px}.crew-grid{gap:22px 10px}{width:calc(33.33% - 10px);min-width:100px}.crew-grid .av.md{width:92px;height:92px;border-width:3px}.crew-grid .tp figcaption b{font-size:.95rem}.crew-grid .tp figcaption small{font-size:.6rem;letter-spacing:.05em}}
+@media(max-width:1000px){.crew-grid .tp{width:150px}}
+@media(max-width:640px){.b-crew{padding:20px 10px 24px}.crew-grid{gap:22px 10px}.crew-grid .tp{width:calc(33.33% - 10px);min-width:100px}.crew-grid .av.md{width:92px;height:92px;border-width:3px}.crew-grid .tp figcaption b{font-size:.95rem}.crew-grid .tp figcaption small{font-size:.6rem;letter-spacing:.05em}}
 .b-hods .tp figcaption small{letter-spacing:.03em;font-size:.62rem}
 
 /* ===== v9: bureau circles ~50% of the HOD frame (no zoom inside the frame) + hover / tap highlight for everyone ===== */
 .crew-grid .tp{width:150px}
-.crew-grid .av.md{width:140px;height:140px}
+.crew-grid .av.md{width:120px;height:120px}
 .crew-grid .av img,.tp .av img{object-position:50% 14%}
 @media(max-width:640px){.crew-grid .tp{width:calc(33.33% - 10px)}.crew-grid .av.md{width:92px;height:92px}}
 
@@ -360,17 +360,44 @@ body.locked{overflow:hidden}
 .tp,.adv{position:relative;cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
 .tp .av,.adv .av{position:relative;z-index:1;transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .55s ease;will-change:transform}
 .tp figcaption{transition:transform .55s cubic-bezier(.22,1,.36,1)}
-.crew-grid .tp{--shift:22px}
-.duo .tp{container-type:inline-size;--shift:calc(18.75cqw + 4px)}
-.b-hods .tp{container-type:inline-size;--shift:calc(17cqw + 4px)}
-/* highlight: frame and photo grow together by 30% */
-.tp.is-active,.tp:focus-visible,.adv.is-active,.adv:focus-visible{z-index:8}
-.tp.is-active .av,.tp:focus-visible .av,.adv.is-active .av,.adv:focus-visible .av{transform:scale(1.3);z-index:6;box-shadow:0 28px 46px -14px rgba(21,0,97,.6)}
-.tp.is-active figcaption,.tp:focus-visible figcaption{transform:translateY(var(--shift,0px))}
-@media(hover:hover){
-  .tp:hover,.adv:hover{z-index:8}
-  .tp:hover .av,.adv:hover .av{transform:scale(1.3);z-index:6;box-shadow:0 28px 46px -14px rgba(21,0,97,.6)}
-  .tp:hover figcaption{transform:translateY(var(--shift,0px))}
-}
-@media(prefers-reduced-motion:reduce){.tp .av,.adv .av,.tp figcaption{transition-duration:.01s}}
+
 .tp .av.md,.tp .av.lg,.tp .av.xl,.adv .av.xl{transition:transform .6s cubic-bezier(.22,1,.36,1),box-shadow .6s ease}
+
+/* ===== v10: rectangle member frames (70% of the HOD frame), 4 per row, centred; pop-up on hover/tap for everyone ===== */
+:root{--hod-w:186px;--frame-w:calc(var(--hod-w)*.7);--pop:1.3}            /* --hod-w = width of the HOD photo. Member frame = 70% of it. Change either number to resize. */
+@media(max-width:640px){:root{--hod-w:147px}}
+
+.crew-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:30px 16px}
+.crew-grid .tp{width:calc((100% - 48px)/4);min-width:0}                  /* 4 per row; fewer members stay centred */
+.crew-grid .av.md{width:min(var(--frame-w),100%);height:auto;aspect-ratio:4/5;border-radius:22px;margin:0 auto 12px;border:3px solid #fff}
+.crew-grid .av img{object-position:50% 12%}
+.crew-grid .tp figcaption b{font-size:1.02rem;line-height:1.25;overflow-wrap:anywhere}
+.crew-grid .tp figcaption small{font-size:.66rem;letter-spacing:.07em}
+@media(max-width:640px){
+  .crew-grid{gap:22px 10px}
+  .crew-grid .tp{width:calc((100% - 20px)/3)}                             /* phones: 3 per row, still centred */
+  .crew-grid .av.md{border-radius:16px;border-width:2px}
+  .crew-grid .tp figcaption b{font-size:.86rem}.crew-grid .tp figcaption small{font-size:.54rem;letter-spacing:.03em}
+}
+
+/* pop-up: the whole person (frame + photo + name + position) grows together */
+.tp,.adv{position:relative;cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent;
+  transition:opacity .9s var(--ease),transform .9s var(--ease),scale .6s cubic-bezier(.22,1,.36,1),box-shadow .6s ease}
+.tp.rv,.adv.rv{transition-delay:var(--d,0ms),var(--d,0ms),0ms,0ms}      /* the scroll-in stagger never slows the pop-up */
+.tp:hover,.tp.is-active,.tp:focus-visible,.adv.is-active,.adv:focus-visible{z-index:9}
+.tp.is-active,.tp:focus-visible,.adv.is-active,.adv:focus-visible{scale:var(--pop)}
+.tp.is-active .av,.tp:focus-visible .av{box-shadow:0 26px 44px -16px rgba(21,0,97,.6)}
+@media(hover:hover){
+  .tp:hover,.adv:hover{z-index:9;scale:var(--pop)}
+  .tp:hover .av{box-shadow:0 26px 44px -16px rgba(21,0,97,.6)}
+}
+.adv{--pop:1.3}
+@media(max-width:900px){.adv{--pop:1.15}}                                 /* wide advisor cards would run off the screen */
+@media(max-width:640px){
+  .adv{--pop:1.08}
+  .b-hods .tp:first-child:not(:only-child){transform-origin:left center}   /* keep the HOD pop-up inside the screen edge */
+  .b-hods .tp:last-child:not(:only-child){transform-origin:right center}
+}
+@media(prefers-reduced-motion:reduce){.tp,.adv{transition-duration:.01s}}
+.rv{transition-delay:var(--d,0ms)}
+.tp.rv,.adv.rv{transition-delay:var(--d,0ms),var(--d,0ms),0ms,0ms}
