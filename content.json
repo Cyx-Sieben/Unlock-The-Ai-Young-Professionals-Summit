@@ -63,8 +63,7 @@
    "Team name and the names of all 5 members",
    "Proposed project title and a short description of the innovation",
    "Confirmation that all members agree, agreement to the rules, and PDPA consent",
-      "Confirmation that all members agree, agreement to the rules, and PDPA consent",
-   "Payment of RM65 (Student category) or RM180 (Young Professional category) per team, with your payment proof ready"
+  "Payment of RM65 (Student category) or RM180 (Young Professional category) per team, with your payment proof ready"
   ],
   "steps": [
    "Team leader completes the Student or Professional form (once only)",
@@ -449,8 +448,8 @@
   {
    "q": "How much is the registration fee?",
    "kw": "fee yuran cost price free percuma bayar payment pay",
-   "a": "Please check the registration form for the latest fee information. If you need confirmation, email the committee.",
-   "alt": "Fee details are given on the registration form. For any payment question, email us and we will confirm.",
+   "a": "The registration fee is RM65 per team for the Student category and RM180 per team for the Young Professional category. Payment details are given on the registration form.",
+   "alt": "It is RM65 per team for students and RM180 per team for young professionals. You will find how to pay on the registration form.",
    "contact": true
   },
   {
