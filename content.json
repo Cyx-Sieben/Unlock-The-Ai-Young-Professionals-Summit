@@ -2,8 +2,8 @@
  "logo": "assets/logo.png",
  "eventDate": "2026-12-06T09:00:00+08:00",
  "forms": {
-  "student": "https://forms.gle/7w7po8TZtenv67YM9",
-  "professional": "https://forms.gle/xWHN24HcJGkgtB8P6"
+  "student": "https://forms.gle/3uogkFdn5aNqScfs5",
+  "professional": "https://forms.gle/9XEvqHxQ7kthyQsn9"
  },
  "hero": {
   "title": "UNLOCK: Create Beyond Boundaries",
@@ -377,7 +377,7 @@
   }
  ],
  "live": {
-  "appsScriptUrl": "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE",
+  "appsScriptUrl": "https://script.google.com/macros/s/AKfycbyHQDRfYJwoulaaFAkZl-Bm4_zI31DWRoCV7ooVMa4FxAmYY4eMtR8HtHYrMF7ud120jQ/exec",
   "studentCap": 5,
   "professionalCap": 5
  },
