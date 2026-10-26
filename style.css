@@ -463,3 +463,8 @@ body,.alt,#summit{background-image:linear-gradient(var(--bp) 1px,transparent 1px
 .opts{display:grid;gap:10px;margin:14px 0}
 #finder{margin-top:28px}
 :focus-visible{outline:3px solid #8C6D46;outline-offset:3px}
+
+   /* Registration price */
+   .price{margin:10px 0 16px}
+   .price b{font:700 2rem "Space Grotesk",sans-serif;color:var(--dark)}
+   .price span{color:var(--muted);margin-left:6px}
