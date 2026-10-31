@@ -51,7 +51,7 @@ function pixelReveal(gate) {
 $('navMount').outerHTML = `<header class="nav"><a class="logo" href="${B || '#home'}"><img src="${LOGO}" alt="UNLOCK home"></a>
 <button class="burger" aria-label="Menu" onclick="document.body.classList.toggle('menu')">&#9776;</button>
 <nav>${PAGES.map(p => `<a href="${Hf(p)}" class="${p[0]===here?'on':''}">${p[1]}</a>`).join('')}<a class="btn primary" href="${B}#register">Register Now!</a></nav></header>`;
-$('footMount').outerHTML = `<footer>&copy; 2026 UNLOCK &middot; In collaboration with iCEP &middot; UiTM Shah Alam</footer>`;
+$('footMount').outerHTML = `<footer>&copy; 2026 UNLOCK &middot; UiTM Shah Alam</footer>`;
 document.body.insertAdjacentHTML('beforeend', `<div id="cmd"><div><input placeholder="Go to page..." aria-label="Go to page">${PAGES.map(p=>`<a href="${Hf(p)}">${p[1]}</a>`).join('')}</div></div>`);
 const cmd = $('cmd'), cin = cmd.querySelector('input');
 addEventListener('keydown', e => {
