@@ -63,11 +63,12 @@
    "Team name and the names of all 5 members",
    "Proposed project title and a short description of the innovation",
    "Confirmation that all members agree, agreement to the rules, and PDPA consent",
-  "Payment of RM65 (Student category) or RM180 (Young Professional category) per team, with your payment proof ready"
+   "No payment is needed now: this is a pre-registration and you pay later. We will email the payment details (RM65 per Student team, RM180 per Young Professional team)."
   ],
   "steps": [
-   "Team leader completes the Student or Professional form (once only)",
+   "Team leader completes the Student or Professional pre-registration form (once only)",
    "You receive a confirmation email with your registration ID",
+   "Pay later: we email the payment details after your pre-registration (RM65 Student, RM180 Young Professional, per team)",
    "Complete the member-confirmation form from that email",
    "Join the WhatsApp group shown at the end of registration",
    "Attend the Saturday sprint sessions and submit your deliverables"
@@ -76,23 +77,23 @@
  "timeline": [
   {
    "date": "Mon, 9 Nov",
-   "title": "Registration Closes",
-   "detail": "First come, first served. Only 5 team spots per category."
+   "title": "Pre-registration Closes",
+   "detail": "Pay later: payment details are emailed after you pre-register. First come, first served. Only 5 team spots per category."
   },
   {
    "date": "Sat, 14 Nov",
-   "title": "Week 1 Kickoff & Framing",
-   "detail": "Virtual soft launch, Applied AI Literacy in the Workplace, Virtual Meet 1 on modern AI prototyping tools, task scenario draw, 1-page proposal kickoff."
+   "title": "Workshop 1: Kickoff & Framing",
+   "detail": "Workshop 1, Saturday 14 November, online<br>&bull; Virtual Soft Launch <span class=\"muted\">(Welcome, talk/speech from collaborators, introduce the challenge, the journey ahead and the challenge platform)</span><br>&bull; Applied AI Literacy in the Workplace <span class=\"muted\">(How AI is applied in real workplaces; tools teams can use, rules and regulations, and the overall process of the competition)</span><br>&bull; Kahoot Quiz time <span class=\"muted\">(Online game engagement)</span><br>&bull; Virtual Meet 1: Modern AI Prototyping Tools <span class=\"muted\">(Instructors explain tools and other AI software teams can use to build, including an Apexelerate introduction)</span><br>&bull; Task Scenario Draw <span class=\"muted\">(Each team draws its scenario under one of the 6 industry challenge tracks; instructors assign a topic/problem and guide on tools such as website, landing page, system, apps)</span><br>&bull; 1-page proposal kickoff using Apexelerate <span class=\"muted\">(Teams start drafting their 1-page proposal)</span><br><b>Team output:</b> a 1-page proposal. 5 mentors from HackDev guide the teams."
   },
   {
    "date": "Sat, 21 Nov",
-   "title": "Week 2 System Architecture",
-   "detail": "Virtual Meet 2: turn problem statements into technical briefs, then wireframe system logic, user flows and interface models."
+   "title": "Workshop 2: System Architecture",
+   "detail": "Workshop 2, Saturday 21 November, online<br>&bull; Virtual Meet 2, Part 1: Technical Briefs using Apexelerate <span class=\"muted\">(Teams turn their problem statement outline into a technical brief)</span><br>&bull; Short 15-minute Break<br>&bull; VS Code Session <span class=\"muted\">(Instructor-led session on using Visual Studio Code so teams can begin building)</span><br>&bull; Preparation / Buffer Time <span class=\"muted\">(Time for teams to prepare for the wireframing session)</span><br>&bull; Virtual Meet 2, Part 2: Wireframing <span class=\"muted\">(System logic, user flows and interface models; teams explain their proposed innovations in greater detail)</span><br><b>Tuesday, 24 November: Prototype Presentation Slides Submission.</b> Slides explain the proposed prototype: features, wireframes, system logic and overall framework. The actual prototype is not required at this stage.<br><b>Team output:</b> a technical brief and framework."
   },
   {
    "date": "Sat, 28 Nov",
-   "title": "Week 3 Prototype & Selection",
-   "detail": "Virtual Meet 3 on refinement and testing. Industry panels (including iCEP) evaluate all 10 prototypes. Top 3 Student and Top 3 Young Professional teams are chosen for the live pitch. All 10 teams advance to the exhibition."
+   "title": "Workshop 3: Prototype & Selection",
+   "detail": "Workshop 3, Saturday 28 November, online<br>&bull; Virtual Meet 3: Technical refinement & testing <span class=\"muted\">(Teams refine and improve their prototypes with instructor support: coding, system functionality, logic, design, debugging and testing; slots for talks with the industry)</span><br>&bull; Short break <span class=\"muted\">(Gives the panel time to prepare)</span><br>&bull; Comprehensive evaluation (video, slides and links) <span class=\"muted\">(Industry panels, including iCEP, evaluate all 10 prototypes (about 6 min each))</span><br>&bull; Selection <span class=\"muted\">(Judges select the Top 3 finalists in each category (Student and Young Professional) for the Main Stage pitch; all 10 teams advance to exhibit booths at the Grand Finale)</span><br><b>Submission:</b> presentation slides and a demonstration video of the refined prototype, due Tuesday, 1 December 2026.<br><b>Team output:</b> a working prototype, submitted for evaluation."
   },
   {
    "date": "Sun, 6 Dec",
@@ -147,8 +148,10 @@
   }
  ],
  "submissions": [
-  "1-page proposal and problem brief",
-  "Technical architecture and wireframe models",
+  "1-page proposal and problem brief (drafted in Workshop 1)",
+  "Technical brief, architecture and wireframe models (Workshop 2)",
+  "Prototype presentation slides: features, wireframes, system logic and overall framework, due Tuesday 24 November 2026 (the working prototype is not required yet)",
+  "Evaluation pack: presentation slides and a demonstration video of your refined prototype (with links), due Tuesday 1 December 2026",
   "Working AI prototype / proof of concept",
   "Pitch deck (10-minute presentation, no Q&A)",
   "Interactive booth exhibition setup (Zone B)",
@@ -202,8 +205,8 @@
   {
    "q": "How do I register?",
    "kw": "daftar sign up form register",
-   "a": "Only the team leader registers, once, using the Student form or the Young Professional form in the Register section. Then confirm your members with the second form from your confirmation email, and join the WhatsApp group at the end.",
-   "alt": "Choose the Student or Young Professional form in the Register section. The team leader fills it in once, then follows the confirmation email to confirm the members and join the WhatsApp group."
+   "a": "This is a pre-registration. Only the team leader registers, once, using the Student form or the Young Professional form in the Register section. You do not pay now: we email the payment details later. Then confirm your members with the second form from your confirmation email, and join the WhatsApp group at the end.",
+   "alt": "Choose the Student or Young Professional pre-registration form in the Register section. The team leader fills it in once and pays later, when we email the payment details. Then follow the confirmation email to confirm the members and join the WhatsApp group."
   },
   {
    "q": "Should every team member fill in the registration form?",
@@ -255,9 +258,9 @@
   },
   {
    "q": "What do we have to submit?",
-   "kw": "deliverables submission requirements proposal prototype",
-   "a": "A 1-page proposal, technical architecture and wireframes, a working AI prototype, a pitch deck (10-minute presentation, no Q&A), a booth setup for Zone B, and the AI-Use Declaration.",
-   "alt": "Your submission pack has six parts: the 1-page proposal, architecture and wireframes, a working prototype, the pitch deck for a 10-minute talk, your Zone B booth setup, and the AI-Use Declaration."
+   "kw": "deliverables submission requirements proposal prototype slides video deadline 24 november 1 december",
+   "a": "Step by step: a 1-page proposal (Workshop 1); a technical brief and framework (Workshop 2); prototype presentation slides by Tuesday 24 November 2026 (no working prototype needed yet); presentation slides and a demonstration video of your refined prototype by Tuesday 1 December 2026; and for the Grand Finale, a pitch deck (10-minute presentation, no Q&A), a booth setup for Zone B, and the AI-Use Declaration.",
+   "alt": "Your pack builds up over the weeks: 1-page proposal, technical brief and framework, prototype slides (due Tue 24 Nov, no prototype needed yet), then slides plus a demo video (due Tue 1 Dec). On finale day you bring the pitch deck, your Zone B booth setup and the AI-Use Declaration."
   },
   {
    "q": "What is the AI-Use Declaration?",
@@ -308,6 +311,13 @@
    "alt": "Copying others' IP, hiding core AI-generated code, made-up results, late delivery outside approved windows, or missing required checkpoints without approval."
   },
   {
+   "q": "Do we pay now or later?",
+   "kw": "pay payment now later pre registration pre-registration fee bayar yuran rm65 rm180",
+   "a": "The forms are for pre-registration only, so you pay later. After you pre-register, we email the payment details. The fee is RM65 per team for the Student category and RM180 per team for the Young Professional category.",
+   "alt": "You pay later. Filling in the form is a pre-registration, and we send the payment details by email afterwards: RM65 per team for students and RM180 per team for young professionals.",
+   "contact": true
+  },
+  {
    "q": "Are registration fees refundable?",
    "kw": "fee yuran refund payment",
    "a": "Registration fees, if any, are non-refundable.",
@@ -333,9 +343,21 @@
   },
   {
    "q": "Who are the partners?",
-   "kw": "partner krackeddevs uitm icep",
-   "a": "UiTM Shah Alam is the host, iCEP PETRONAS is the anchor industry partner and strategic advisory lead, and KrackedDevs, Malaysia's builder ecosystem, is a partner.",
-   "alt": "Our partners are UiTM Shah Alam (host), iCEP PETRONAS (anchor industry partner) and KrackedDevs (Malaysia's builder ecosystem)."
+   "kw": "partner hackdev hack dev uitm icep",
+   "a": "UiTM Shah Alam is the host, iCEP PETRONAS is the anchor industry partner and strategic advisory lead, and HackDev, a student-led cybersecurity community in Malaysia, is a partner that provides mentors for the teams.",
+   "alt": "Our partners are UiTM Shah Alam (host), iCEP PETRONAS (anchor industry partner) and HackDev (student-led community, mentoring partner)."
+  },
+  {
+   "q": "Who is HackDev?",
+   "kw": "hackdev hack dev hackdev.my partner collaborate collaboration community cybersecurity",
+   "a": "We collaborate with HackDev Malaysia, a student-led community with 2,000+ members across Malaysia that runs hands-on workshops, CTFs, mentorship and open-source projects. Learn more at hackdev.my.",
+   "alt": "HackDev Malaysia is a student-led community with more than 2,000 members. They run workshops, CTFs and mentorship, and they collaborate with UNLOCK. See hackdev.my."
+  },
+  {
+   "q": "Will there be mentors to guide us?",
+   "kw": "mentor mentors guide guidance coach help support hackdev 5 lima",
+   "a": "Yes. Through our collaboration with HackDev, 5 mentors will guide the teams during the incubation.",
+   "alt": "Yes, you will not be alone. Five mentors from our partner HackDev will guide the teams throughout the incubation."
   },
   {
    "q": "Where can I follow UNLOCK?",
@@ -401,10 +423,10 @@
    "url": "https://icep.com.my"
   },
   {
-   "name": "KrackedDevs",
-   "role": "Malaysia's builder ecosystem",
-   "logo": "assets/partners/krackeddevs.svg",
-   "url": "https://krackeddevs.com/"
+   "name": "HackDev",
+   "role": "Mentoring partner · Malaysia's student-led cybersecurity community",
+   "logo": "assets/partners/hackdev.png",
+   "url": "https://hackdev.my/"
   }
  ],
  "socials": [
@@ -430,8 +452,8 @@
   {
    "q": "Who organises UNLOCK?",
    "kw": "organiser organizer committee penganjur",
-   "a": "UNLOCK is run by the UNLOCK committee at UiTM Shah Alam in collaboration with iCEP PETRONAS, with KrackedDevs as a partner.",
-   "alt": "The UNLOCK committee organises it, with UiTM Shah Alam as host, iCEP PETRONAS as anchor industry partner and KrackedDevs as a partner."
+   "a": "UNLOCK is run by the UNLOCK committee at UiTM Shah Alam in collaboration with iCEP PETRONAS, with HackDev as a partner.",
+   "alt": "The UNLOCK committee organises it, with UiTM Shah Alam as host, iCEP PETRONAS as anchor industry partner and HackDev as a partner."
   },
   {
    "q": "When does registration close?",
@@ -448,8 +470,8 @@
   {
    "q": "How much is the registration fee?",
    "kw": "fee yuran cost price free percuma bayar payment pay",
-   "a": "The registration fee is RM65 per team for the Student category and RM180 per team for the Young Professional category. Payment details are given on the registration form.",
-   "alt": "It is RM65 per team for students and RM180 per team for young professionals. You will find how to pay on the registration form.",
+   "a": "The registration fee is RM65 per team for the Student category and RM180 per team for the Young Professional category. For now it is a pre-registration, so you pay later: we email the payment details after you pre-register.",
+   "alt": "It is RM65 per team for students and RM180 per team for young professionals. You do not pay at pre-registration; we email the payment details afterwards.",
    "contact": true
   },
   {
@@ -538,8 +560,8 @@
   {
    "q": "Who are the judges and mentors?",
    "kw": "judge panel mentor instructor speaker juri",
-   "a": "Industry panels, including anchor partner iCEP PETRONAS, evaluate the prototypes. For the names of judges, mentors and speakers, please follow our social media or contact the committee.",
-   "alt": "The prototypes are judged by industry panels with iCEP PETRONAS. Announcements about speakers and mentors are shared through our official channels.",
+   "a": "Industry panels, including anchor partner iCEP PETRONAS, evaluate the prototypes. The teams are guided by 5 mentors from our partner HackDev. For the names of judges, mentors and speakers, please follow our social media or contact the committee.",
+   "alt": "The prototypes are judged by industry panels with iCEP PETRONAS, and 5 mentors from HackDev guide the teams. Announcements about speakers and mentors are shared through our official channels.",
    "contact": true
   },
   {
@@ -568,12 +590,6 @@
    "a": "Please contact the committee as soon as possible so we can check what can be changed. An email is the fastest way.",
    "alt": "Changes to a registered team need the committee's approval. Contact us with your team name and the change you need.",
    "contact": true
-  },
-  {
-   "q": "Who is KrackedDevs?",
-   "kw": "krackeddevs krackeddev partner builder",
-   "a": "KrackedDevs is Malaysia's builder ecosystem and a partner of UNLOCK.",
-   "alt": "KrackedDevs, Malaysia's builder ecosystem, is one of our partners. You can find them at krackeddevs.com."
   },
   {
    "q": "Who is on the UNLOCK team?",
@@ -737,9 +753,9 @@
  },
  "news": [
   {
-   "date": "Registration",
-   "title": "Registration closes 9 November",
-   "body": "Only 5 team spots per category. First come, first served."
+   "date": "Pre-registration",
+   "title": "Pre-registration closes 9 November",
+   "body": "Pay later: payment details are sent after you pre-register. Only 5 team spots per category. First come, first served."
   },
   {
    "date": "6 Dec 2026",
