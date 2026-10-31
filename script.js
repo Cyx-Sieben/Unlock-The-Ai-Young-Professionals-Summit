@@ -162,7 +162,7 @@ function extra(c) {
   list('socials', c.socials, o => `<a class="btn primary" href="${o.url}" target="_blank" rel="noopener">${o.name} <span class="mono" style="margin-left:8px;opacity:.8">${o.handle}</span></a>`);
   const cal = $('calLink'); if (cal) cal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(c.officialName) + '&dates=20261206/20261207&location=' + encodeURIComponent('Dewan Annex / Dewan Seroja, UiTM Shah Alam');
   const left = Math.ceil((new Date(c.regClose) - Date.now()) / 864e5);   // registration chip: live days left
-  set('heroChip', left > 0 ? `Registration open · closes 9 Nov 2026 · ${left} day${left > 1 ? 's' : ''} left` : 'Registration closed');
+  set('heroChip', left > 0 ? `Pre-registration open · closes 9 Nov 2026 · ${left} day${left > 1 ? 's' : ''} left` : 'Registration closed');
   document.querySelectorAll('.crit,.prize,.trk,.stat,.sp').forEach(x => { x.classList.add('rv'); io.observe(x); });
   new IntersectionObserver((es, o) => es.forEach(e => { if (!e.isIntersecting) return; o.unobserve(e.target); const b = e.target, n = +b.dataset.n, t0 = performance.now();
     const step = t => { const p = Math.min((t - t0) / 1400, 1); b.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }), { threshold: .5 })
