@@ -76,7 +76,7 @@
  },
  "timeline": [
   {
-   "date": "Mon, 9 Nov",
+   "date": "Wed, 11 Nov",
    "title": "Pre-registration Closes",
    "detail": "Pay later: payment details are emailed after you pre-register. First come, first served. Only 5 team spots per category."
   },
@@ -229,8 +229,8 @@
   {
    "q": "What are the dates?",
    "kw": "when date tarikh schedule timeline deadline",
-   "a": "Registration closes on Monday 9 November 2026. The Saturday sprint sessions are on 14, 21 and 28 November, and the Grand Finale and UNLOCK Summit is on Sunday 6 December 2026.",
-   "alt": "Remember these dates: 9 Nov (registration closes), 14, 21 and 28 Nov (Saturday sprint sessions) and 6 Dec 2026 (Grand Finale and summit)."
+   "a": "Registration closes on Wednesday 11 November 2026. The Saturday sprint sessions are on 14, 21 and 28 November, and the Grand Finale and UNLOCK Summit is on Sunday 6 December 2026.",
+   "alt": "Remember these dates: 11 Nov (registration closes), 14, 21 and 28 Nov (Saturday sprint sessions) and 6 Dec 2026 (Grand Finale and summit)."
   },
   {
    "q": "Where is the summit?",
@@ -402,7 +402,7 @@
   "email": "unlockai.project@gmail.com",
   "location": "UiTM Shah Alam, Selangor"
  },
- "regClose": "2026-11-09T23:59:00+08:00",
+ "regClose": "2026-11-11T23:59:00+08:00",
  "partners": [
   {
    "name": "UiTM Shah Alam",
@@ -446,8 +446,8 @@
   {
    "q": "When does registration close?",
    "kw": "deadline closing last date tutup closes",
-   "a": "Registration closes on Monday 9 November 2026, or earlier if all 5 team places in a category are filled.",
-   "alt": "You have until 9 November 2026, but each category has only 5 team places, so the form closes as soon as they are taken. Check the live team spots on this page."
+   "a": "Registration closes on Wednesday 11 November 2026, or earlier if all 5 team places in a category are filled.",
+   "alt": "You have until 11 November 2026, but each category has only 5 team places, so the form closes as soon as they are taken. Check the live team spots on this page."
   },
   {
    "q": "Is the event online or physical?",
@@ -742,7 +742,7 @@
  "news": [
   {
    "date": "Pre-registration",
-   "title": "Pre-registration closes 9 November",
+   "title": "Pre-registration closes 11 November",
    "body": "Pay later: payment details are sent after you pre-register. Only 5 team spots per category. First come, first served."
   },
   {
