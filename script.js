@@ -79,12 +79,28 @@ fetch('content.json').then(r => r.json()).then(c => {
   set('aboutSummary', c.about.summary); set('mission', '<span class="sublabel">OUR MISSION</span>' + c.about.mission, 1); set('vision', '<span class="sublabel">OUR VISION</span>' + c.about.vision, 1);
   set('objectives', c.about.objective); 
   
-  list('timelineList', c.timeline, t => `<li><b>${t.date}: <span class="ttl">${t.title}</span></b><br><span class="muted">${t.detail}</span></li>`);
+  const TAG = { deadline: 'Deadline', workshop: 'Online' };   // simple timeline: date, title, tags, short points
+  list('timelineList', c.timeline, t => `<li class="tl tl-${t.type || 'event'}"><span class="tl-date">${t.date}</span><div class="tl-body"><div class="tl-title"><span class="ttl">${t.title}</span>${TAG[t.type] ? `<span class="tl-tag ${t.type}">${TAG[t.type]}</span>` : ''}${t.audience ? `<span class="tl-tag aud${/finalist/i.test(t.audience) ? ' fin' : ''}">${t.audience}</span>` : ''}</div>${(t.points || []).length ? `<ul class="tl-pts">${t.points.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}</div></li>`);
+  set('tcCount', teamLine(c.team));
   
   list('faqList', c.faqs, f => `<details><summary>${f.q}</summary><p>${f.a}</p></details>`);
   set('cEmail', `Email: <a href="mailto:${c.contact.email}">${c.contact.email}</a>`, 1); set('cLoc', 'Location: ' + c.contact.location);
   extra(c); styleTitles(); renderTeam(c); touchHighlight(); enhance(c); countdown(c.eventDate); counters(c.live); askBar(c);
 }).catch(() => console.error('Could not load content.json (open the site through GitHub Pages, not by double-clicking the file).'));
+
+// ---- Logo strips and team counts ----
+const escA = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+function logoFail(img) { const s = document.createElement('span'); s.className = 'lt-name'; s.textContent = img.alt; img.replaceWith(s); }   // logo missing: show the name instead
+function logoRow(id, arr) {   // one white tile per logo; a tile only links out when a url is set
+  list(id, arr || [], o => { const inner = o.logo ? `<img src="${o.logo}" alt="${escA(o.name)}" loading="lazy" onerror="logoFail(this)">` : `<span class="lt-name">${o.name}</span>`,
+      st = o.bg ? ` style="background:${o.bg};border-color:${o.bg}"` : '';
+    return o.url ? `<a class="lt" href="${o.url}" target="_blank" rel="noopener" title="${escA(o.name)}"${st}>${inner}</a>` : `<div class="lt" title="${escA(o.name)}"${st}>${inner}</div>`; });
+}
+function teamLine(T) {   // committee = leadership + HODs + bureau members; advisors are counted separately
+  if (!T) return '';
+  const committee = T.leadership.reduce((a, g) => a + g.people.length, 0) + T.bureaus.reduce((a, b) => a + (b.hods || []).length + b.members.length, 0);
+  return `${committee} committee members · ${T.advisors.length} advisors · ${T.bureaus.length} bureaus`;
+}
 
 // ---- Countdown ----
 function countdown(date) {
@@ -99,7 +115,7 @@ function countdown(date) {
 function counters(cfg) {
   const el = $('counters'); if (!el) return;
   const box = (k, label, cap) => `<div class="ctr"><span>${label}</span><br><b id="${k}Left">--</b> <span id="${k}Sfx">of ${cap} team spots left</span><div class="bar"><i id="${k}Bar"></i></div></div>`;
-  el.innerHTML = box('s','Students',cfg.studentCap) + box('p','Professionals',cfg.professionalCap) + '<p class="mono muted" id="liveNote" style="font-size:.75rem"></p>';
+  el.innerHTML = box('s','Students',cfg.studentCap) + box('p','Young Professionals',cfg.professionalCap) + '<p class="mono muted" id="liveNote" style="font-size:.75rem"></p>';
   const show = (k, cap, n) => { const left = Math.max(cap - n, 0); $(k+'Left').textContent = left || 'Full'; $(k+'Sfx').textContent = left ? `of ${cap} team spots left` : 'registration closed for this group'; $(k+'Left').closest('.ctr').classList.toggle('full', !left); $(k+'Bar').style.width = Math.min(n / cap * 100, 100) + '%'; };
   if (!cfg.appsScriptUrl || cfg.appsScriptUrl.includes('PASTE')) { $('liveNote').textContent = 'Live counter not connected yet.'; return; }
   const load = () => fetch(cfg.appsScriptUrl).then(r => r.json()).then(d => { show('s', cfg.studentCap, +d.students||0); show('p', cfg.professionalCap, +d.professionals||0); [['stuForm', cfg.studentCap, d.students, 'Student category is full'], ['proForm', cfg.professionalCap, d.professionals, 'Young Professional category is full']].forEach(([id, cap, n, msg]) => {   // category full: lock its register button
@@ -153,16 +169,17 @@ function extra(c) {
   list('passport', c.summit.passport, p => `<span>${p}</span>`); set('passportText', c.summit.passportText); set('peoples', c.summit.peoples);
   list('criteria', c.criteria, (x, i) => `<div class="crit rv"><i>${String(i + 1).padStart(2, '0')}</i><span>${x}</span></div>`);
   list('prizeGrid', c.awards, a => `<div class="prize rv"><b>${a.n}</b><strong>${a.label}</strong><small>${a.d}</small></div>`);
-  list('submitList', c.submissions, t => `<li>${t}</li>`);
+  list('submitList', c.submissions, g => typeof g === 'string' ? `<li>${g}</li>` : `<div class="sub-g${/finalist/i.test(g.title) ? ' fin' : ''}"><h4>${g.title}</h4><ul>${g.items.map(x => `<li>${x}</li>`).join('')}</ul></div>`);
   list('rules', c.rules, (r, i) => { const t = r.t.replace(/^\d+\.\s*/, ''); return `<div class="card hl"><h3 class="rt"><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="t"><b>${t[0]}</b>${t.slice(1)}</span></h3><ul>${r.items.map(x => `<li>${x}</li>`).join('')}</ul></div>`; });
   const ini = n => n.split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase(), link = o => o.url || 'https://www.google.com/search?q=' + encodeURIComponent(o.name),
     mark = (o, wm) => { const b = wm ? `<span class="wm">${o.name}</span>` : `<span class="mono-badge">${ini(o.name)}</span>`; return o.logo ? `<img src="${o.logo}" alt="${o.name} logo" onerror="this.outerHTML=this.dataset.fb" data-fb='${b}'>` : b; };
   list('sponsorList', c.sponsors, o => `<a class="sp rv" href="${link(o)}" target="_blank" rel="noopener sponsored"><div class="lg"${o.bg ? ` style="background:${o.bg}"` : ''}>${mark(o, 1)}</div><b>${o.name}</b><small>${o.role}</small><span class="go">VISIT &rarr;</span></a>`);
-  list('partners', c.partners, o => `<a class="pt" href="${link(o)}" target="_blank" rel="noopener">${mark(o, 1)}<span><b>${o.name}</b><small>${o.role}</small></span></a>`);
+  logoRow('partners', c.partners); logoRow('collaborators', c.collaborators); logoRow('heroSponsors', c.sponsors);   // hero: Partners, Collaborator, Sponsors
   list('socials', c.socials, o => `<a class="btn primary" href="${o.url}" target="_blank" rel="noopener">${o.name} <span class="mono" style="margin-left:8px;opacity:.8">${o.handle}</span></a>`);
-  const cal = $('calLink'); if (cal) cal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(c.officialName) + '&dates=20261206/20261207&location=' + encodeURIComponent('Dewan Annex / Dewan Seroja, UiTM Shah Alam');
+  const cal = $('calLink'); if (cal) cal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(c.officialName) + '&dates=20261206/20261207&location=' + encodeURIComponent(c.venue || 'UiTM Shah Alam');
   const left = Math.ceil((new Date(c.regClose) - Date.now()) / 864e5);   // registration chip: live days left
-  set('heroChip', left > 0 ? `Pre-registration open · closes 11 Nov 2026 · ${left} day${left > 1 ? 's' : ''} left` : 'Registration closed');
+  const closes = new Date(c.regClose).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Kuala_Lumpur' });
+  set('heroChip', left > 0 ? `Pre-registration open · closes ${closes} · ${left} day${left > 1 ? 's' : ''} left` : 'Registration closed');
   document.querySelectorAll('.crit,.prize,.trk,.stat,.sp').forEach(x => { x.classList.add('rv'); io.observe(x); });
   new IntersectionObserver((es, o) => es.forEach(e => { if (!e.isIntersecting) return; o.unobserve(e.target); const b = e.target, n = +b.dataset.n, t0 = performance.now();
     const step = t => { const p = Math.min((t - t0) / 1400, 1); b.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }), { threshold: .5 })
@@ -305,8 +322,7 @@ function renderTeam(c) {
   const av = (p, cls, extra = '') => `<div class="av ${cls} ${k++ % 2 ? 'b2' : 'b1'}"><span>${ini(p.name)}</span><img src="${p.photo || 'assets/team/' + slug(p.name) + '.jpg'}" alt="${p.name}" loading="lazy" onerror="avFail(this)">${extra}</div>`;
   const dl = () => `style="--d:${(d++ % 5) * 70}ms"`;                       // gentle staggered reveal
   const tp = (p, cls, extra = '', mod = '') => `<figure class="tp ${mod} rv" tabindex="0" ${dl()}>${av(p, cls, extra)}<figcaption><b>${p.name}</b><small>${p.role || ''}</small></figcaption></figure>`;
-  const total = T.advisors.length + T.leadership.reduce((a, g) => a + g.people.length, 0) + T.bureaus.reduce((a, b) => a + (b.hods || []).length + b.members.length, 0);
-  set('tmCount', `${total} committee members · ${T.bureaus.length} bureaus`);
+  set('tmCount', teamLine(T));
   const chips = [['advisors', 'Advisors'], ['leadership', 'Leadership']].concat(T.bureaus.map(b => [slug(b.name), b.name.replace(' Bureau', '')]));
   $('tmChips').innerHTML = chips.map(x => `<a href="#${x[0]}">${x[1]}</a>`).join('');
   const hodTag = r => 'HOD' + ((String(r).match(/HOD\)\s*(\d)/) || [])[1] ? ' ' + String(r).match(/HOD\)\s*(\d)/)[1] : '');
@@ -357,10 +373,10 @@ fetch('content.json').then(r => r.json()).then(c => {
   /* ONE "Add to calendar" button (countdown): downloads a .ics with every date on the site */
   const cal = $('calLink'); if (cal) { cal.removeAttribute('target'); cal.textContent = 'Add to calendar';
     cal.onclick = e => { e.preventDefault();
-      const ev = c.timeline.map(t => { const m = t.date.match(/(\d{1,2})\s([A-Za-z]{3})/); return m && { d: `2026${p2(M[m[2]])}${p2(m[1])}`, t: 'UNLOCK: ' + t.title, x: t.detail }; }).filter(Boolean);
+      const ev = c.timeline.map(t => { const m = t.date.match(/(\d{1,2})\s([A-Za-z]{3})/); return m && { d: `2026${p2(M[m[2]])}${p2(m[1])}`, t: 'UNLOCK: ' + t.title, x: (t.points || []).join('. ') || String(t.detail || '').replace(/<[^>]+>/g, ' ') }; }).filter(Boolean);
       const next = d => new Date(Date.UTC(+d.slice(0, 4), +d.slice(4, 6) - 1, +d.slice(6)) + 864e5).toISOString().slice(0, 10).replace(/-/g, '');
       const txt = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//UNLOCK 2026//EN'].concat(...ev.map((v, i) => ['BEGIN:VEVENT', `UID:unlock-${v.d}-${i}@unlock`, `DTSTAMP:${new Date().toISOString().replace(/[-:]|\.\d+/g, '')}`,
-        `DTSTART;VALUE=DATE:${v.d}`, `DTEND;VALUE=DATE:${next(v.d)}`, `SUMMARY:${v.t.replace(/[,;]/g, ' ')}`, `DESCRIPTION:${v.x.replace(/[,;\n]/g, ' ')}`, 'LOCATION:UiTM Shah Alam Selangor', 'END:VEVENT'])).concat('END:VCALENDAR').join('\r\n');
+        `DTSTART;VALUE=DATE:${v.d}`, `DTEND;VALUE=DATE:${next(v.d)}`, `SUMMARY:${v.t.replace(/[,;]/g, ' ')}`, `DESCRIPTION:${v.x.replace(/[,;\n]/g, ' ')}`, 'LOCATION:' + String(c.venue || 'UiTM Shah Alam').replace(/[,;]/g, ' '), 'END:VEVENT'])).concat('END:VCALENDAR').join('\r\n');
       const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([txt], { type: 'text/calendar' })); a.download = 'unlock-2026.ics'; a.click(); }; }
 
   /* Track call-outs TRK-01 to TRK-06 */
