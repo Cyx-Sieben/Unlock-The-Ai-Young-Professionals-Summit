@@ -534,3 +534,8 @@ a.lt:hover{transform:translateY(-3px);border-color:var(--cyan);box-shadow:0 20px
 @media(max-width:480px){.prizes{grid-template-columns:1fr}.prize:nth-child(3){background:var(--dark)}.prize:nth-child(4){background:var(--cyan)}}
 .lt img[src*="cmap"]{max-height:70px}   /* round logo: a little taller so it matches the wide ones visually */
 @media(max-width:640px){.lt img[src*="cmap"]{max-height:52px}}
+
+/* ===== v16: Strategic Partners and Collaborator side by side (Collaborator left, Partners right); stacked on small screens (Partners first) ===== */
+.logo-pair{display:grid;grid-template-columns:auto auto;justify-content:center;align-items:start;gap:28px 56px;width:100%}
+.logo-pair .lg-collab{order:1}.logo-pair .lg-partners{order:2}
+@media(max-width:900px){.logo-pair{grid-template-columns:1fr;gap:28px}.logo-pair .lg-partners{order:1}.logo-pair .lg-collab{order:2}}
