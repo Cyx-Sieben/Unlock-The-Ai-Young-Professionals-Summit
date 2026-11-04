@@ -36,7 +36,7 @@
   }
  ],
  "about": {
-  "summary": "UNLOCK is an AI workplace innovation challenge and grand expo hosted at UiTM Shah Alam. Ten teams (five University Student teams and five Young Professional teams) join a 3-week online incubation sprint, then showcase working prototypes at the UNLOCK Grand Finale on 6 December 2026 at Dewan Seroja, UiTM Shah Alam.",
+  "summary": "UNLOCK is an AI workplace innovation challenge and grand expo hosted at UiTM Shah Alam. Ten teams (five University Student teams and five Young Professional teams) join a 3-week online incubation sprint. The Top 2 teams from each category then set up booths and pitch their working prototypes at the UNLOCK Grand Finale on 6 December 2026 at Dewan Seroja, UiTM Shah Alam.",
   "vision": "To become a leading platform that bridges academia and industry in nurturing an innovative, AI-ready generation capable of shaping a sustainable, ethical and future-driven workforce.",
   "mission": "To empower students and young professionals with AI knowledge, innovative thinking, and practical problem-solving skills while fostering meaningful collaboration between academia and industry to promote ethical and responsible AI adoption in the workplace.",
   "cohort": [
@@ -70,7 +70,7 @@
    "The leader and every member listed on the form receive a confirmation email with the Registration ID and the WhatsApp community link",
    "Join the WhatsApp community for announcements",
    "Pay later: we email the payment details after your pre-registration (RM65 Student, RM180 Young Professional, per team)",
-   "Attend the three Saturday workshops and submit your deliverables"
+   "Attend the three online workshops (Sun 15, Sat 21 and Sat 28 Nov) and submit your deliverables"
   ]
  },
  "timeline": [
@@ -84,7 +84,7 @@
    ]
   },
   {
-   "date": "Sat, 14 Nov",
+   "date": "Sun, 15 Nov",
    "title": "Workshop 1: Kickoff",
    "type": "workshop",
    "points": [
@@ -120,7 +120,7 @@
    "points": [
     "Refine and test your prototype with instructors",
     "Industry panel evaluates all 10 teams",
-    "Top 2 Student and Top 2 Young Professional teams selected as finalists"
+    "Top 2 Student and Top 2 Young Professional teams selected as finalists for the Grand Finale"
    ]
   },
   {
@@ -138,7 +138,7 @@
    "type": "event",
    "points": [
     "Dewan Seroja, UiTM Shah Alam",
-    "All 10 teams exhibit at booths; the 4 finalists pitch on the Main Stage",
+    "Only the 4 finalists (Top 2 per category) set up booths and pitch on the Main Stage",
     "Awards ceremony"
    ]
   }
@@ -151,7 +151,7 @@
    },
    {
     "t": "Zone B: Innovation Exhibition Floor",
-    "d": "All 10 teams set up interactive project booths for delegates, industry visitors and evaluators."
+    "d": "The 4 finalist teams (Top 2 Student and Top 2 Young Professional) set up interactive project booths for delegates, industry visitors and evaluators."
    }
   ],
   "passport": [
@@ -160,8 +160,8 @@
    "Validate",
    "Unlock"
   ],
-  "passportText": "Visitors follow the UNLOCK Passport (Onboarding, Exploration, Redemption) to visit all 10 booths and redeem rewards.",
-  "peoples": "People's Choice Award: summit delegates vote directly across all 10 exhibition booths, and the winning team receives a hamper."
+  "passportText": "Visitors follow the UNLOCK Passport (Onboarding, Exploration, Redemption) to visit all 4 finalist booths and redeem rewards.",
+  "peoples": "People's Choice Award: summit delegates vote directly across the 4 finalist booths, and the winning team receives a hamper."
  },
  "criteria": [
   "Innovation and Originality",
@@ -181,7 +181,7 @@
   {
    "n": 1,
    "label": "People's Choice Hamper",
-   "d": "The team with the most delegate votes across all 10 booths"
+   "d": "The finalist team with the most delegate votes across the 4 booths"
   },
   {
    "n": 6,
@@ -211,7 +211,7 @@
    ]
   },
   {
-   "title": "All teams, at the Grand Finale",
+   "title": "Finalists only, at the Grand Finale",
    "items": [
     "Working prototype and an interactive booth (Zone B)",
     "The official AI-Use Declaration"
@@ -290,8 +290,8 @@
   {
    "q": "What are the dates?",
    "kw": "when date tarikh schedule timeline deadline",
-   "a": "Pre-registration closes on Wednesday 11 November 2026. The online workshops are on Saturday 14, 21 and 28 November. Prototype slides are due on Tuesday 24 November, the finalist pack is due on Tuesday 1 December, and the Grand Finale is on Sunday 6 December 2026.",
-   "alt": "Remember these dates: 11 Nov (pre-registration closes), 14, 21 and 28 Nov (online workshops), 24 Nov (prototype slides due), 1 Dec (finalist pack due) and 6 Dec 2026 (Grand Finale)."
+   "a": "Pre-registration closes on Wednesday 11 November 2026. The online workshops are on Sunday 15, Saturday 21 and Saturday 28 November. Prototype slides are due on Tuesday 24 November, the finalist pack is due on Tuesday 1 December, and the Grand Finale is on Sunday 6 December 2026.",
+   "alt": "Remember these dates: 11 Nov (pre-registration closes), 15, 21 and 28 Nov (online workshops), 24 Nov (prototype slides due), 1 Dec (finalist pack due) and 6 Dec 2026 (Grand Finale)."
   },
   {
    "q": "Where is the summit venue?",
@@ -320,8 +320,8 @@
   {
    "q": "What do we have to submit?",
    "kw": "deliverables submission requirements proposal prototype slides video deadline 24 november 1 december finalist finalists only",
-   "a": "All teams: a 1-page proposal (Workshop 1), a technical brief and wireframes (Workshop 2), and prototype presentation slides by Tuesday 24 November 2026 (no working prototype needed yet). Finalists only: presentation slides and a demo video of the refined prototype by Tuesday 1 December 2026, plus a 10-minute pitch at the Grand Finale. At the Grand Finale, all teams bring a working prototype, a Zone B booth and the AI-Use Declaration.",
-   "alt": "All teams submit a 1-page proposal, a technical brief and prototype slides (due Tue 24 Nov). Only the 4 finalists submit slides and a demo video by Tue 1 Dec and pitch on stage. Every team brings its prototype, booth and AI-Use Declaration to the Grand Finale."
+   "a": "All teams: a 1-page proposal (Workshop 1), a technical brief and wireframes (Workshop 2), and prototype presentation slides by Tuesday 24 November 2026 (no working prototype needed yet). Finalists only: presentation slides and a demo video of the refined prototype by Tuesday 1 December 2026. At the Grand Finale, the 4 finalists bring a working prototype, a Zone B booth and the AI-Use Declaration, and give a 10-minute pitch.",
+   "alt": "All teams submit a 1-page proposal, a technical brief and prototype slides (due Tue 24 Nov). Only the 4 finalists submit slides and a demo video by Tue 1 Dec, then bring their prototype, booth and AI-Use Declaration to the Grand Finale and pitch on stage."
   },
   {
    "q": "What is the AI-Use Declaration?",
@@ -332,26 +332,26 @@
   {
    "q": "Who pitches live at the finale?",
    "kw": "finalist pitch stage top 2 top 4 selection",
-   "a": "The Top 2 Student teams and the Top 2 Young Professional teams (4 finalists) pitch live on the Main Stage (Zone A). All 10 teams exhibit at booths in Zone B.",
-   "alt": "Four teams take the Main Stage in Zone A: the Top 2 Students and the Top 2 Young Professionals. All 10 teams still exhibit in Zone B."
+   "a": "The Top 2 Student teams and the Top 2 Young Professional teams (4 finalists) set up booths in Zone B and pitch live on the Main Stage (Zone A).",
+   "alt": "Only the 4 finalists take part at the Grand Finale: the Top 2 Students and the Top 2 Young Professionals. They run booths in Zone B and pitch in Zone A."
   },
   {
    "q": "What is the UNLOCK Passport?",
    "kw": "passport journey booth redeem rewards",
-   "a": "An interactive visitor journey (Discover, Engage, Validate, Unlock) that takes delegates through all 10 team booths, with rewards to redeem.",
-   "alt": "It is a visitor journey (Discover, Engage, Validate, Unlock) that guides delegates around all 10 booths so they can redeem rewards."
+   "a": "An interactive visitor journey (Discover, Engage, Validate, Unlock) that takes delegates through all 4 finalist booths, with rewards to redeem.",
+   "alt": "It is a visitor journey (Discover, Engage, Validate, Unlock) that guides delegates around the 4 finalist booths so they can redeem rewards."
   },
   {
    "q": "How does the People's Choice Award work?",
    "kw": "voting vote people choice hamper",
-   "a": "Summit delegates vote directly across all 10 exhibition booths, and the winning team receives a hamper.",
-   "alt": "Delegates at the summit vote at the 10 exhibition booths, and the most-voted team wins the People's Choice Award and a hamper."
+   "a": "Summit delegates vote directly across the 4 finalist booths, and the winning team receives a hamper.",
+   "alt": "Delegates at the summit vote at the 4 finalist booths, and the most-voted team wins the People's Choice Award and a hamper."
   },
   {
    "q": "What is Zone A and Zone B?",
    "kw": "zone stage exhibition booth",
-   "a": "Zone A is the Main Stage conference with talks, the final pitch and the awards. Zone B is the exhibition floor where all 10 teams run interactive booths.",
-   "alt": "Zone A is the main stage for talks, the final pitches and the awards. Zone B is the exhibition floor with all 10 team booths."
+   "a": "Zone A is the Main Stage conference with talks, the final pitch and the awards. Zone B is the exhibition floor where the 4 finalist teams run interactive booths.",
+   "alt": "Zone A is the main stage for talks, the final pitches and the awards. Zone B is the exhibition floor with the 4 finalist booths."
   },
   {
    "q": "Can I join more than one team?",
@@ -501,8 +501,8 @@
   {
    "q": "What is UNLOCK?",
    "kw": "unlock about event summit challenge apa",
-   "a": "UNLOCK is an AI workplace innovation challenge and grand expo hosted at UiTM Shah Alam. Ten teams build working AI prototypes in a 3-week online sprint, then showcase them at the Grand Finale on 6 December 2026 at Dewan Seroja, UiTM Shah Alam.",
-   "alt": "It is the AI & Young Professionals Summit & Innovation Challenge: a 3-week online incubation followed by a physical Grand Finale at Dewan Seroja, UiTM Shah Alam, where 10 teams exhibit their AI prototypes."
+   "a": "UNLOCK is an AI workplace innovation challenge and grand expo hosted at UiTM Shah Alam. Ten teams build AI prototypes in a 3-week online sprint, and the Top 2 teams from each category showcase and pitch them at the Grand Finale on 6 December 2026 at Dewan Seroja, UiTM Shah Alam.",
+   "alt": "It is the AI & Young Professionals Summit & Innovation Challenge: a 3-week online incubation for 10 teams, followed by a physical Grand Finale at Dewan Seroja, UiTM Shah Alam, where the 4 finalist teams exhibit and pitch their AI prototypes."
   },
   {
    "q": "Who organises UNLOCK?",
@@ -520,7 +520,7 @@
    "q": "Is the event online or physical?",
    "kw": "online physical hybrid venue location held",
    "a": "Both. The 3-week workshop sprint is online on Google Meet, and the Grand Finale on 6 December 2026 is in person at Dewan Seroja, UiTM Shah Alam.",
-   "alt": "The weekly workshops are online on Saturdays. The Grand Finale is physical at Dewan Seroja, UiTM Shah Alam."
+   "alt": "The workshops are online on Sunday 15, Saturday 21 and Saturday 28 November. The Grand Finale is physical at Dewan Seroja, UiTM Shah Alam."
   },
   {
    "q": "How much is the registration fee?",
@@ -559,20 +559,20 @@
   {
    "q": "How are the finalists chosen?",
    "kw": "finalist finalists selection select top 2 top 4 how many evaluate chosen",
-   "a": "In Workshop 3 on 28 November, industry panels evaluate all 10 prototypes. The Top 2 Student and Top 2 Young Professional teams are chosen to pitch live at the Grand Finale.",
-   "alt": "After the Workshop 3 evaluation, the judges score every team with the rubric, and the top 2 from each category go to the Main Stage."
+   "a": "In Workshop 3 on 28 November, industry panels evaluate all 10 prototypes. The Top 2 Student and Top 2 Young Professional teams are chosen to set up booths and pitch live at the Grand Finale.",
+   "alt": "After the Workshop 3 evaluation, the judges score every team with the rubric, and the top 2 from each category go to the Grand Finale."
   },
   {
    "q": "Do all teams join the summit?",
    "kw": "all teams attend booth exhibit finale everyone",
-   "a": "Yes. All 10 teams advance to the Grand Finale and set up interactive booths in Zone B. Only the 4 finalists also pitch on the Main Stage.",
-   "alt": "Every team exhibits at the summit. The 4 finalists present on stage as well."
+   "a": "No. Only the Top 2 Student teams and the Top 2 Young Professional teams (4 finalists) advance to the Grand Finale, where they set up interactive booths in Zone B and pitch on the Main Stage.",
+   "alt": "Only the 4 finalists join the summit. They exhibit at booths and present on stage."
   },
   {
    "q": "What do we need to prepare for the summit?",
    "kw": "bring prepare booth setup what to bring",
-   "a": "A working prototype, an interactive booth setup for Zone B and the AI-Use Declaration. Finalists also prepare a 10-minute pitch. Booth setup times and the stage schedule will be sent by email and WhatsApp.",
-   "alt": "Prepare your prototype, your booth exhibition setup and the AI-Use Declaration and, if you are one of the 4 finalists, your 10-minute pitch. We will email the schedule."
+   "a": "Only the 4 finalist teams take part in the summit. They prepare a working prototype, an interactive booth setup for Zone B, the AI-Use Declaration and a 10-minute pitch. Booth setup times and the stage schedule will be sent by email and WhatsApp.",
+   "alt": "If you are one of the 4 finalists, prepare your prototype, your booth exhibition setup, the AI-Use Declaration and your 10-minute pitch. We will email the schedule."
   },
   {
    "q": "How long is the pitch?",
@@ -590,13 +590,13 @@
    "q": "Where are the workshops held?",
    "kw": "workshop class link zoom online where how join",
    "a": "The workshops are online on Google Meet. The link is emailed 2 days before and on the day of each workshop, and shared in the WhatsApp community.",
-   "alt": "Classes run online on Saturdays 14, 21 and 28 November. You will receive the Google Meet link by email 2 days before and on the day of each class."
+   "alt": "Classes run online on Sunday 15, Saturday 21 and Saturday 28 November. You will receive the Google Meet link by email 2 days before and on the day of each class."
   },
   {
    "q": "Do I have to attend every class?",
    "kw": "attendance absent compulsory miss required hadir attendance form",
    "a": "Yes, teams are expected at all three workshops. Unapproved absence from required checkpoints can lead to disqualification, so please inform the committee in advance if you cannot attend.",
-   "alt": "Please attend all three Saturday sessions. Missing a required checkpoint without approval risks disqualification, so tell us early.",
+   "alt": "Please attend all three online sessions (15, 21 and 28 November). Missing a required checkpoint without approval risks disqualification, so tell us early.",
    "contact": true
   },
   {
@@ -608,7 +608,7 @@
   {
    "q": "Will there be certificates?",
    "kw": "certificate sijil medal medals participant",
-   "a": "All 50 participants receive a medal for completing the incubation and exhibition. For certificate details, please contact the committee.",
+   "a": "All 50 participants receive a medal for completing the incubation. For certificate details, please contact the committee.",
    "alt": "Every participant receives a medal. If you need information on certificates, email us.",
    "contact": true
   },
@@ -821,7 +821,7 @@
   {
    "date": "6 Dec 2026",
    "title": "Grand Finale at Dewan Seroja, UiTM Shah Alam",
-   "body": "Summit, expo and the final pitches."
+   "body": "Summit, expo and the final pitches by the Top 2 teams from each category."
   }
  ],
  "livestreamUrl": "",
