@@ -1,0 +1,9 @@
+{
+  "name": "unlock-website",
+  "private": true,
+  "scripts": {
+    "start": "npx serve .",
+    "check": "node -e \"JSON.parse(require('fs').readFileSync('content.json','utf8'));console.log('content.json is valid')\"",
+    "format": "npx prettier -w \"*.html\" \"*.css\" \"*.json\""
+  }
+}
