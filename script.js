@@ -72,20 +72,20 @@ document.addEventListener('mousemove', e => { const c = e.target.closest && e.ta
 // ---- Fill pages from content.json (each block only runs if that element exists) ----
 const set = (id, v, html) => { const el = $(id); if (el) el[html ? 'innerHTML' : 'textContent'] = v; };
 const list = (id, items, fn) => set(id, items.map(fn).join(''), true);
-fetch('content.json').then(r => r.json()).then(c => {
+fetch('content.json', { cache: 'no-cache' }).then(r => r.json()).then(c => {
   LOGO = c.logo || LOGO;
   document.querySelectorAll('[data-register]').forEach(a => a.href = c.registerUrl);
   titleFx(c.hero.title); set('heroSub', c.hero.subtitle); set('heroChip', c.hero.status);
   set('aboutSummary', c.about.summary); set('mission', '<span class="sublabel">OUR MISSION</span>' + c.about.mission, 1); set('vision', '<span class="sublabel">OUR VISION</span>' + c.about.vision, 1);
   set('objectives', c.about.objective); 
   
-  const TAG = { deadline: 'Deadline', workshop: 'Online' };   // simple timeline: date, title, tags, short points
-  list('timelineList', c.timeline, t => `<li class="tl tl-${t.type || 'event'}"><span class="tl-date">${t.date}</span><div class="tl-body"><div class="tl-title"><span class="ttl">${t.title}</span>${TAG[t.type] ? `<span class="tl-tag ${t.type}">${TAG[t.type]}</span>` : ''}${t.audience ? `<span class="tl-tag aud${/finalist/i.test(t.audience) ? ' fin' : ''}">${t.audience}</span>` : ''}</div>${(t.points || []).length ? `<ul class="tl-pts">${t.points.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}</div></li>`);
+  const TAG = { deadline: 'Deadline', workshop: 'Online' }, tba = d => /announ|tba/i.test(d);   // simple timeline: date, title, tags, short points
+  list('timelineList', c.timeline, t => `<li class="tl tl-${t.type || 'event'}"><span class="tl-date"${tba(t.date) ? ' style="font-style:italic"' : ''}>${t.date}</span><div class="tl-body"><div class="tl-title"><span class="ttl">${t.title}</span>${TAG[t.type] ? `<span class="tl-tag ${t.type}">${TAG[t.type]}</span>` : ''}${tba(t.date) ? '<span class="tl-tag aud">Date TBA</span>' : ''}${t.audience ? `<span class="tl-tag aud${/finalist/i.test(t.audience) ? ' fin' : ''}">${t.audience}</span>` : ''}</div>${(t.points || []).length ? `<ul class="tl-pts">${t.points.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}</div></li>`);
   set('tcCount', teamLine(c.team));
   
   list('faqList', c.faqs, f => `<details><summary>${f.q}</summary><p>${f.a}</p></details>`);
   set('cEmail', `Email: <a href="mailto:${c.contact.email}">${c.contact.email}</a>`, 1); set('cLoc', 'Location: ' + c.contact.location);
-  extra(c); styleTitles(); renderTeam(c); touchHighlight(); enhance(c); countdown(c.eventDate); counters(c.live); askBar(c);
+  extra(c); styleTitles(); renderTeam(c); touchHighlight(); enhance(c); countdown(c); counters(c.live); askBar(c);
 }).catch(() => console.error('Could not load content.json (open the site through GitHub Pages, not by double-clicking the file).'));
 
 // ---- Logo strips and team counts ----
@@ -108,9 +108,12 @@ function teamLine(T) {   // committee = leadership + HODs + bureau members; advi
 }
 
 // ---- Countdown ----
-function countdown(date) {
+function countdown(c) {   // counts down to the pre-registration deadline first, then switches to the Grand Finale by itself
   const el = $('countdown'); if (!el) return;
-  const tick = () => { let s = Math.max(0, (new Date(date) - Date.now()) / 1000);
+  const lbl = $('countLabel'), fmt = d => new Date(d).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Kuala_Lumpur' });
+  const tick = () => { const regOpen = c.regClose && new Date(c.regClose) > Date.now(), date = regOpen ? c.regClose : c.eventDate;
+    if (lbl) lbl.textContent = regOpen ? `Pre-registration ${c.regExtended ? 'extended, ' : ''}closes: ${fmt(c.regClose)}, 11:59 pm` : `Countdown to the Grand Finale: ${fmt(c.eventDate)}`;
+    let s = Math.max(0, (new Date(date) - Date.now()) / 1000);
     const v = [['days',86400],['hrs',3600],['min',60],['sec',1]].map(([n,d]) => { const x = Math.floor(s / d); s -= x * d; return `<div><b>${String(x).padStart(2,'0')}</b><small>${n}</small></div>`; });
     el.innerHTML = v.join(''); };
   tick(); setInterval(tick, 1000);
@@ -184,7 +187,7 @@ function extra(c) {
   const cal = $('calLink'); if (cal) cal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(c.officialName) + '&dates=20261206/20261207&location=' + encodeURIComponent(c.venue || 'UiTM Shah Alam');
   const left = Math.ceil((new Date(c.regClose) - Date.now()) / 864e5);   // registration chip: live days left
   const closes = new Date(c.regClose).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Kuala_Lumpur' });
-  set('heroChip', left > 0 ? `Pre-registration open · closes ${closes} · ${left} day${left > 1 ? 's' : ''} left` : 'Registration closed');
+  set('heroChip', left > 0 ? `Pre-registration ${c.regExtended ? 'extended' : 'open'} · closes ${closes} · ${left} day${left > 1 ? 's' : ''} left` : 'Registration closed');
   document.querySelectorAll('.crit,.prize,.trk,.stat,.sp').forEach(x => { x.classList.add('rv'); io.observe(x); });
   new IntersectionObserver((es, o) => es.forEach(e => { if (!e.isIntersecting) return; o.unobserve(e.target); const b = e.target, n = +b.dataset.n, t0 = performance.now();
     const step = t => { const p = Math.min((t - t0) / 1400, 1); b.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }), { threshold: .5 })
@@ -366,9 +369,10 @@ window.fetch = (u, o) => { if (!/script\.google/.test(String(u))) return _f(u, o
       return new Response(JSON.stringify(s.d), { headers: { 'Content-Type': 'application/json' } }); }); };
 
 /* Offline support */
-if ('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('sw.js').catch(() => {});
+/* (there is no sw.js on the site, so no service worker is registered; any old one is removed so visitors always get the newest files) */
+if ('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then(rs => rs.forEach(r => r.unregister())).catch(() => {});
 
-fetch('content.json').then(r => r.json()).then(c => {
+fetch('content.json', { cache: 'no-cache' }).then(r => r.json()).then(c => {
   /* Ask box: log every question (Apps Script, else a local queue) */
   const af = $('askForm'), au = c.live && c.live.appsScriptUrl;
   if (af) af.addEventListener('submit', () => { const q = $('askInput').value.trim().slice(0, 300); if (!q) return;

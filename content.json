@@ -8,11 +8,11 @@
   "hero": {
     "title": "UNLOCK: Create Beyond Boundaries",
     "subtitle": "The AI & Young Professionals Summit & Innovation Challenge",
-    "status": "Registration open",
+    "status": "Pre-registration extended",
     "prompts": [
       "Who can join?",
       "How do I register?",
-      "What are the 6 tracks?",
+      "When does registration close?",
       "When are the dates?",
       "What are the prizes?"
     ]
@@ -70,24 +70,26 @@
       "The leader and every member listed on the form receive a confirmation email with the Registration ID and the WhatsApp community link",
       "Join the WhatsApp community for announcements",
       "Pay later: we email the payment details after your pre-registration (RM65 Student, RM180 Young Professional, per team)",
-      "Attend the three online workshops (Sun 15, Sat 21 and Sat 28 Nov) and submit your deliverables"
+      "Attend the three online workshops (Workshop 1 date to be announced, then Sat 21 and Sat 28 Nov) and submit your deliverables"
     ]
   },
   "timeline": [
     {
-      "date": "Wed, 11 Nov",
-      "title": "Pre-registration Closes",
+      "date": "Wed, 18 Nov",
+      "title": "Pre-registration Closes (Extended)",
       "type": "deadline",
       "points": [
+        "Extended from 11 November to Wednesday 18 November 2026",
         "Only 5 team spots per category, first come first served",
         "Pay later: payment details are emailed after you pre-register"
       ]
     },
     {
-      "date": "Sun, 15 Nov",
+      "date": "To be announced",
       "title": "Workshop 1: Kickoff",
       "type": "workshop",
       "points": [
+        "New date will be announced by email, WhatsApp and our socials",
         "Virtual soft launch and Applied AI Literacy in the Workplace",
         "Prototyping tools and the task scenario draw, guided by 5 mentors from our collaborator HackDev",
         "Output: 1-page proposal"
@@ -154,7 +156,12 @@
         "d": "The 4 finalist teams (Top 2 Student and Top 2 Young Professional) set up interactive project booths for delegates, industry visitors and evaluators."
       }
     ],
-    "passport": ["Discover", "Engage", "Validate", "Unlock"],
+    "passport": [
+      "Discover",
+      "Engage",
+      "Validate",
+      "Unlock"
+    ],
     "passportText": "Visitors follow the UNLOCK Passport (Onboarding, Exploration, Redemption) to visit all 4 finalist booths and redeem rewards.",
     "peoples": "People's Choice Award: summit delegates vote directly across the 4 finalist booths, and the winning team receives a hamper."
   },
@@ -285,8 +292,8 @@
     {
       "q": "What are the dates?",
       "kw": "when date tarikh schedule timeline deadline",
-      "a": "Pre-registration closes on Wednesday 11 November 2026. The online workshops are on Sunday 15, Saturday 21 and Saturday 28 November. Prototype slides are due on Tuesday 24 November, the finalist pack is due on Tuesday 1 December, and the Grand Finale is on Sunday 6 December 2026.",
-      "alt": "Remember these dates: 11 Nov (pre-registration closes), 15, 21 and 28 Nov (online workshops), 24 Nov (prototype slides due), 1 Dec (finalist pack due) and 6 Dec 2026 (Grand Finale)."
+      "a": "Pre-registration has been extended and now closes on Wednesday 18 November 2026. Workshop 1 (Kickoff) has moved: its new date will be announced soon by email, WhatsApp and our socials. Workshop 2 is on Saturday 21 November and Workshop 3 on Saturday 28 November. Prototype slides are due on Tuesday 24 November, the finalist pack is due on Tuesday 1 December, and the Grand Finale is on Sunday 6 December 2026.",
+      "alt": "Key dates: 18 Nov (pre-registration closes, extended), Workshop 1 (new date to be announced), 21 and 28 Nov (Workshops 2 and 3), 24 Nov (prototype slides due), 1 Dec (finalist pack due) and 6 Dec 2026 (Grand Finale)."
     },
     {
       "q": "Where is the summit venue?",
@@ -447,10 +454,16 @@
       "role": "Confirmed sponsor",
       "logo": "assets/sponsors/bookdoc.png",
       "url": "https://www.bookdoc.com/"
+    },
+    {
+      "name": "Bean & Green",
+      "role": "Confirmed sponsor",
+      "logo": "assets/sponsors/bean-and-green.png",
+      "url": "https://www.instagram.com/beanandgreen_/"
     }
   ],
   "live": {
-    "appsScriptUrl": "https://script.google.com/macros/s/AKfycbwcGVdLYBGZYX7MZ257bzcszSEzN50xfwnuHw5jwKi0qkRDj5PFvCFeWDO-Xr_zlOCF/exec",
+    "appsScriptUrl": "https://script.google.com/macros/s/AKfycbwwU4cexN3DyBTNdNneBB1fGrTuQW5UwMEFMYwcc0t51RfuC4gzWfUf7a7WkUA0_TP9eg/exec",
     "studentCap": 5,
     "professionalCap": 5
   },
@@ -458,7 +471,7 @@
     "email": "unlockai.project@gmail.com",
     "location": "Dewan Seroja, UiTM Shah Alam, Selangor"
   },
-  "regClose": "2026-11-11T23:59:00+08:00",
+  "regClose": "2026-11-18T23:59:00+08:00",
   "partners": [
     {
       "name": "Organizational Communication Management",
@@ -508,14 +521,14 @@
     {
       "q": "When does registration close?",
       "kw": "deadline closing last date tutup closes",
-      "a": "Registration closes on Wednesday 11 November 2026, or earlier if all 5 team places in a category are filled.",
-      "alt": "You have until 11 November 2026, but each category has only 5 team places, so the form closes as soon as they are taken. Check the live team spots on this page."
+      "a": "Pre-registration has been extended. It now closes on Wednesday 18 November 2026, or earlier if all 5 team places in a category are filled.",
+      "alt": "You have until 18 November 2026 (extended from 11 November), but each category has only 5 team places, so the form closes as soon as they are taken. Check the live team spots on this page."
     },
     {
       "q": "Is the event online or physical?",
       "kw": "online physical hybrid venue location held",
       "a": "Both. The 3-week workshop sprint is online on Google Meet, and the Grand Finale on 6 December 2026 is in person at Dewan Seroja, UiTM Shah Alam.",
-      "alt": "The workshops are online on Sunday 15, Saturday 21 and Saturday 28 November. The Grand Finale is physical at Dewan Seroja, UiTM Shah Alam."
+      "alt": "The workshops are online on Google Meet (Workshop 1's new date will be announced; Workshops 2 and 3 are on 21 and 28 November). The Grand Finale is physical at Dewan Seroja, UiTM Shah Alam."
     },
     {
       "q": "How much is the registration fee?",
@@ -585,13 +598,13 @@
       "q": "Where are the workshops held?",
       "kw": "workshop class link zoom online where how join",
       "a": "The workshops are online on Google Meet. The link is emailed 2 days before and on the day of each workshop, and shared in the WhatsApp community.",
-      "alt": "Classes run online on Sunday 15, Saturday 21 and Saturday 28 November. You will receive the Google Meet link by email 2 days before and on the day of each class."
+      "alt": "Classes run online on Google Meet. Workshop 1's new date will be announced, and Workshops 2 and 3 are on 21 and 28 November. You will receive the link by email 2 days before and on the day of each class."
     },
     {
       "q": "Do I have to attend every class?",
       "kw": "attendance absent compulsory miss required hadir attendance form",
       "a": "Yes, teams are expected at all three workshops. Unapproved absence from required checkpoints can lead to disqualification, so please inform the committee in advance if you cannot attend.",
-      "alt": "Please attend all three online sessions (15, 21 and 28 November). Missing a required checkpoint without approval risks disqualification, so tell us early.",
+      "alt": "Please attend all three online sessions (Workshop 1's new date will be announced, then 21 and 28 November). Missing a required checkpoint without approval risks disqualification, so tell us early.",
       "contact": true
     },
     {
@@ -664,6 +677,12 @@
       "kw": "committee jawatankuasa organisers organizers how many advisors bureaus",
       "a": "UNLOCK has 35 committee members across 5 bureaus, guided by 2 advisors. Meet everyone on the Our Team page.",
       "alt": "There are 35 committee members in 5 bureaus, plus 2 advisors. You can see all of them on the Our Team page."
+    },
+    {
+      "q": "When is Workshop 1?",
+      "kw": "workshop kickoff first postponed moved new date announce 15 november tba",
+      "a": "Workshop 1 (Kickoff) is no longer on 15 November. Its new date will be announced soon by email, in the WhatsApp community and on our socials.",
+      "alt": "The Kickoff workshop has been moved, and the new date will be announced shortly. Registered participants will be told by email and WhatsApp."
     }
   ],
   "team": {
@@ -745,21 +764,30 @@
       },
       {
         "name": "Protocol Bureau",
-        "members": ["Elya", "Syasya", "Ameera", "Alieya"],
+        "members": [
+          "Elya",
+          "Syasya",
+          "Ameera",
+          "Alieya"
+        ],
         "hods": [
           {
-            "name": "Izreena",
+            "name": "Afi",
             "role": "Head of Department (HOD) 1"
           },
           {
-            "name": "Afi",
+            "name": "Izreena",
             "role": "Head of Department (HOD) 2"
           }
         ]
       },
       {
         "name": "Multimedia & Publicity Bureau",
-        "members": ["Diana", "Sabrina", "Nadia"],
+        "members": [
+          "Diana",
+          "Sabrina",
+          "Nadia"
+        ],
         "hods": [
           {
             "name": "Haziq",
@@ -769,7 +797,11 @@
       },
       {
         "name": "Sponsorship Bureau",
-        "members": ["Engku", "Zura", "Farah"],
+        "members": [
+          "Engku",
+          "Zura",
+          "Farah"
+        ],
         "hods": [
           {
             "name": "Izzat",
@@ -779,7 +811,12 @@
       },
       {
         "name": "Logistic & Technical Bureau",
-        "members": ["Adel", "Elle", "Keisha", "Arif"],
+        "members": [
+          "Adel",
+          "Elle",
+          "Keisha",
+          "Arif"
+        ],
         "hods": [
           {
             "name": "Khum",
@@ -791,9 +828,14 @@
   },
   "news": [
     {
-      "date": "Pre-registration",
-      "title": "Pre-registration closes 11 November",
-      "body": "Pay later: payment details are sent after you pre-register. Only 5 team spots per category. First come, first served."
+      "date": "Update · 12 Nov 2026",
+      "title": "Pre-registration extended to 18 November",
+      "body": "Pre-registration now closes on Wednesday 18 November 2026. Workshop 1 (Kickoff) is no longer on 15 November; its new date will be announced soon. Pay later: payment details are sent after you pre-register."
+    },
+    {
+      "date": "Sponsor",
+      "title": "Welcome, Bean & Green!",
+      "body": "Bean & Green joins UNLOCK as a confirmed sponsor."
     },
     {
       "date": "6 Dec 2026",
@@ -811,5 +853,6 @@
       "logo": "assets/partners/hackdev.png",
       "url": "https://hackdev.my/"
     }
-  ]
+  ],
+  "regExtended": true
 }
