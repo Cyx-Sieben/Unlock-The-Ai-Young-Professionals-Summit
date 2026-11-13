@@ -74,6 +74,7 @@ const set = (id, v, html) => { const el = $(id); if (el) el[html ? 'innerHTML' :
 const list = (id, items, fn) => set(id, items.map(fn).join(''), true);
 fetch('content.json', { cache: 'no-cache' }).then(r => r.json()).then(c => {
   LOGO = c.logo || LOGO;
+  c.sponsors = (c.sponsors || []).filter(o => !o.hidden);   // a sponsor with "hidden": true in content.json is not shown anywhere
   document.querySelectorAll('[data-register]').forEach(a => a.href = c.registerUrl);
   titleFx(c.hero.title); set('heroSub', c.hero.subtitle); set('heroChip', c.hero.status);
   set('aboutSummary', c.about.summary); set('mission', '<span class="sublabel">OUR MISSION</span>' + c.about.mission, 1); set('vision', '<span class="sublabel">OUR VISION</span>' + c.about.vision, 1);

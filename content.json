@@ -447,7 +447,8 @@
       "name": "Bank Islam",
       "role": "Confirmed sponsor",
       "logo": "assets/sponsors/bank-islam.png",
-      "url": "https://www.bankislam.com/"
+      "url": "https://www.bankislam.com/",
+      "hidden": true
     },
     {
       "name": "BookDoc Connect & Unite",
