@@ -4,6 +4,7 @@ const PAGES = [['#home','Home'],['#about','About'],['team.html','Our Team'],['#t
 const B = document.body.dataset.page === 'index' ? '' : 'index.html';   // on other pages, anchors point back to the home page
 const Hf = p => p[0][0] === '#' ? B + p[0] : p[0];
 const here = document.body.dataset.page;
+const CONTENT = fetch('content.json', { cache: 'no-cache' }).then(r => r.json());   // PERFORMANCE: content.json is downloaded once and shared
 
 // ---- Unlock gate (once per session): logo + button on a flat blue screen, then a pixel-grid reveal ----
 let LOGO = 'assets/logo.png';
@@ -72,7 +73,7 @@ document.addEventListener('mousemove', e => { const c = e.target.closest && e.ta
 // ---- Fill pages from content.json (each block only runs if that element exists) ----
 const set = (id, v, html) => { const el = $(id); if (el) el[html ? 'innerHTML' : 'textContent'] = v; };
 const list = (id, items, fn) => set(id, items.map(fn).join(''), true);
-fetch('content.json', { cache: 'no-cache' }).then(r => r.json()).then(c => {
+CONTENT.then(c => {
   LOGO = c.logo || LOGO;
   c.sponsors = (c.sponsors || []).filter(o => !o.hidden);   // a sponsor with "hidden": true in content.json is not shown anywhere
   document.querySelectorAll('[data-register]').forEach(a => a.href = c.registerUrl);
@@ -98,7 +99,7 @@ function logoFail(img) {   // logo missing: try other spellings of the file name
     if (next) { img.dataset.tried = tried.concat(src).join('|'); img.src = next; return; } }
   const s = document.createElement('span'); s.className = 'lt-name'; s.textContent = img.alt; img.replaceWith(s); }
 function logoRow(id, arr) {   // one white tile per logo; a tile only links out when a url is set
-  list(id, arr || [], o => { const inner = o.logo ? `<img src="${o.logo}" alt="${escA(o.name)}" loading="lazy" onerror="logoFail(this)">` : `<span class="lt-name">${o.name}</span>`,
+  list(id, arr || [], o => { const inner = o.logo ? `<img src="${o.logo}" alt="${escA(o.name)}" loading="lazy" decoding="async" onerror="logoFail(this)">` : `<span class="lt-name">${o.name}</span>`,
       st = o.bg ? ` style="background:${o.bg};border-color:${o.bg}"` : '';
     return o.url ? `<a class="lt" href="${o.url}" target="_blank" rel="noopener" title="${escA(o.name)}"${st}>${inner}</a>` : `<div class="lt" title="${escA(o.name)}"${st}>${inner}</div>`; });
 }
@@ -164,7 +165,9 @@ function askBar(c) {
 
 // smooth scroll progress bar and nav shadow
 document.body.insertAdjacentHTML('afterbegin', '<div class="progress" id="prog"></div>');
-addEventListener('scroll', () => { const d = document.documentElement; $('prog').style.width = (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + '%'; document.querySelector('.nav').classList.toggle('scrolled', d.scrollTop > 20); }, { passive: true });
+(() => { let busy = false; const prog = $('prog'), nav = document.querySelector('.nav');   // PERFORMANCE: read layout once per frame, not on every scroll event
+  addEventListener('scroll', () => { if (busy) return; busy = true; requestAnimationFrame(() => { busy = false; const d = document.documentElement, max = d.scrollHeight - d.clientHeight;
+    prog.style.transform = `scaleX(${max > 0 ? d.scrollTop / max : 0})`; nav.classList.toggle('scrolled', d.scrollTop > 20); }); }, { passive: true }); })();
 
 // ---- new sections filled from content.json ----
 function extra(c) {
@@ -203,7 +206,7 @@ const lite = matchMedia('(pointer: coarse)').matches || innerWidth < 900;   // p
 (function logo3d() {
   const box = $('logo3d'); if (!box) return;
   let h = ''; for (let i = lite ? 2 : 5; i >= 1; i--) h += `<img class="ly" src="${LOGO}" alt="" style="transform:translateZ(${-i * 3}px);filter:brightness(${1 - i * .09})">`;
-  box.innerHTML = `<div class="rig" id="rig">${h}<img class="front" src="${LOGO}" alt="UNLOCK: The AI & Young Professionals Summit"></div>`;
+  box.innerHTML = `<div class="rig" id="rig">${h}<img class="front" src="${LOGO}" alt="UNLOCK: The AI & Young Professionals Summit" width="763" height="420" fetchpriority="high"></div>`;
   const rig = $('rig');
   document.addEventListener('mousemove', e => { if (rig.getAnimations().length) return; const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
     rig.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 10}deg)`; });
@@ -249,7 +252,7 @@ function titleFx(t) {
     hero.addEventListener('mousemove', e => point(e.clientX, e.clientY)); hero.addEventListener('mouseleave', () => mx = -999);
     hero.addEventListener('touchmove', e => point(e.touches[0].clientX, e.touches[0].clientY), { passive: true }); hero.addEventListener('touchend', () => mx = -999); }
   new IntersectionObserver(es => on = es[0].isIntersecting).observe(cv);
-  (function draw(ts) { requestAnimationFrame(draw); if (!on || document.hidden) return; if (lite && ts - last < 28) return;
+  const draw = ts => { requestAnimationFrame(draw); if (!on || document.hidden) return; if (lite && ts - last < 28) return;
     const dt = Math.min(ts - last, 100); if (lite && last) { acc += dt; if (++cnt === 90) {           // quality watchdog: slow phone? use fewer nodes automatically
       if (acc / cnt > 42 && level < 2) { level++; pts.length = Math.floor(pts.length * .65); T.link *= .85; if (level === 2) document.documentElement.classList.add('perf-low'); } acc = cnt = 0; } }
     last = ts; ctx.clearRect(0, 0, W, H); const L2 = T.link * T.link;
@@ -263,8 +266,9 @@ function titleFx(t) {
       if (dm < 190) { ctx.strokeStyle = `rgba(${BR},${(1 - dm / 190) * .7})`; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mx, my); ctx.stroke(); }
       ctx.fillStyle = `rgba(${a.c},.92)`; ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 7); ctx.fill();
       if (a.atom) { ctx.strokeStyle = `rgba(${a.c},.5)`; ctx.beginPath(); ctx.ellipse(a.x, a.y, T.rx, T.ry, a.a * .3, 0, 7); ctx.stroke();
-        ctx.fillStyle = `rgba(${a.c === BL ? BR : BL},1)`; ctx.beginPath(); ctx.arc(a.x + Math.cos(a.a) * T.rx, a.y + Math.sin(a.a) * T.ry, 2, 0, 7); ctx.fill(); } }
-  })(0);
+        ctx.fillStyle = `rgba(${a.c === BL ? BR : BL},1)`; ctx.beginPath(); ctx.arc(a.x + Math.cos(a.a) * T.rx, a.y + Math.sin(a.a) * T.ry, 2, 0, 7); ctx.fill(); } } };
+  // PERFORMANCE: the background animation starts after the page has loaded, so it does not compete with the first paint
+  if (document.readyState === 'complete') requestAnimationFrame(draw); else addEventListener('load', () => requestAnimationFrame(draw), { once: true });
 })();
 
 // ---- Extra interactive polish: card tilt, magnetic buttons, timeline highlight, rotating placeholder ----
@@ -373,7 +377,7 @@ window.fetch = (u, o) => { if (!/script\.google/.test(String(u))) return _f(u, o
 /* (there is no sw.js on the site, so no service worker is registered; any old one is removed so visitors always get the newest files) */
 if ('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then(rs => rs.forEach(r => r.unregister())).catch(() => {});
 
-fetch('content.json', { cache: 'no-cache' }).then(r => r.json()).then(c => {
+CONTENT.then(c => {
   /* Ask box: log every question (Apps Script, else a local queue) */
   const af = $('askForm'), au = c.live && c.live.appsScriptUrl;
   if (af) af.addEventListener('submit', () => { const q = $('askInput').value.trim().slice(0, 300); if (!q) return;
@@ -406,6 +410,6 @@ fetch('content.json', { cache: 'no-cache' }).then(r => r.json()).then(c => {
       fin.querySelectorAll('[data-j]').forEach(b => b.onclick = () => { Q[qi][1][b.dataset.j][1].forEach(k => sc[k]++); qi++; step(); }); }; step(); }
 
   /* Footer policy links */
-  const ft = document.querySelector('footer'); if (ft) ft.insertAdjacentHTML('beforeend', '<br><a href="policies.html#conduct">Code of Conduct</a> &middot; <a href="policies.html#ai">AI-use rules</a> &middot; <a href="policies.html#terms">Terms of Participation</a>');
+  const ft = document.querySelector('footer'); if (ft) ft.insertAdjacentHTML('beforeend', `<br><a href="${document.body.dataset.page === 'index' ? '' : 'index.html'}#faq">Rules, code of conduct &amp; AI-use rules</a>`);   // policies.html does not exist, so this points to the Rules & FAQ section
 }).catch(() => {});
 })();

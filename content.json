@@ -36,7 +36,7 @@
     }
   ],
   "about": {
-    "summary": "UNLOCK is an AI workplace innovation challenge and grand expo hosted at UiTM Shah Alam. Ten teams (five University Student teams and five Young Professional teams) join a 3-week online incubation sprint. The Top 2 teams from each category then set up booths and pitch their working prototypes at the UNLOCK Grand Finale on 6 December 2026 at Dewan Seroja, UiTM Shah Alam.",
+    "summary": "UNLOCK is an AI workplace innovation challenge and grand expo hosted at UiTM Shah Alam. Ten teams (five University Student teams and five Young Professional teams) join a 3-week online incubation sprint. The Top 2 teams from each category then pitch their working prototypes live at the UNLOCK Grand Finale on 6 December 2026 at Dewan Seroja, UiTM Shah Alam, where every visitor can explore interactive booths from our collaborators, partners and sponsors with the UNLOCK Passport.",
     "vision": "To become a leading platform that bridges academia and industry in nurturing an innovative, AI-ready generation capable of shaping a sustainable, ethical and future-driven workforce.",
     "mission": "To empower students and young professionals with AI knowledge, innovative thinking, and practical problem-solving skills while fostering meaningful collaboration between academia and industry to promote ethical and responsible AI adoption in the workplace.",
     "cohort": [
@@ -92,7 +92,7 @@
         "New date will be announced by email, WhatsApp and our socials",
         "Virtual soft launch and Applied AI Literacy in the Workplace",
         "Prototyping tools and the task scenario draw, guided by 5 mentors from our collaborator HackDev",
-        "Output: 1-page proposal"
+        "Output: an Apexelerate account with your innovation brief, kept updated after the workshop"
       ]
     },
     {
@@ -140,7 +140,8 @@
       "type": "event",
       "points": [
         "Dewan Seroja, UiTM Shah Alam",
-        "Only the 4 finalists (Top 2 per category) set up booths and pitch on the Main Stage",
+        "The 4 finalists (Top 2 per category) pitch live on the Main Stage",
+        "UNLOCK Passport: collect stamps at interactive booths from our collaborators, partners and sponsors",
         "Awards ceremony"
       ]
     }
@@ -149,21 +150,21 @@
     "zones": [
       {
         "t": "Zone A: Main Stage Conference",
-        "d": "Industry talk sessions, the live final pitch of the Top 4 teams (2 Student and 2 Young Professional), then the grand awards ceremony."
+        "d": "Industry talk sessions, the live final pitch and prototype demo of the Top 4 teams (2 Student and 2 Young Professional), then the grand awards ceremony."
       },
       {
-        "t": "Zone B: Innovation Exhibition Floor",
-        "d": "The 4 finalist teams (Top 2 Student and Top 2 Young Professional) set up interactive project booths for delegates, industry visitors and evaluators."
+        "t": "Zone B: Exhibition Floor",
+        "d": "Interactive booths from our collaborators, partners and sponsors. Bring your UNLOCK Passport and collect a stamp at every booth you visit."
       }
     ],
     "passport": [
-      "Discover",
-      "Engage",
-      "Validate",
-      "Unlock"
+      "Get your passport",
+      "Visit the booths",
+      "Collect stamps",
+      "Unlock rewards"
     ],
-    "passportText": "Visitors follow the UNLOCK Passport (Onboarding, Exploration, Redemption) to visit all 4 finalist booths and redeem rewards.",
-    "peoples": "People's Choice Award: summit delegates vote directly across the 4 finalist booths, and the winning team receives a hamper."
+    "passportText": "Everyone who comes to the Grand Finale gets an UNLOCK Passport. Visit the interactive booths of our collaborators, partners and sponsors on the exhibition floor, collect a stamp at each one, and complete your passport to redeem rewards.",
+    "peoples": "People's Choice Award: summit delegates vote for their favourite of the 4 finalist pitches, and the winning team receives a hamper."
   },
   "criteria": [
     "Innovation and Originality",
@@ -183,7 +184,7 @@
     {
       "n": 1,
       "label": "People's Choice Hamper",
-      "d": "The finalist team with the most delegate votes across the 4 booths"
+      "d": "The finalist team with the most delegate votes after the live pitches"
     },
     {
       "n": 6,
@@ -200,7 +201,7 @@
     {
       "title": "All teams, during the incubation",
       "items": [
-        "Workshop 1: 1-page proposal",
+        "After Workshop 1: keep everything about your innovation updated on Apexelerate (apexelerate.vercel.app): brief, instructions, pitch and app code",
         "Workshop 2: technical brief and wireframes",
         "Tue 24 Nov: prototype presentation slides (no working prototype needed yet)"
       ]
@@ -215,7 +216,7 @@
     {
       "title": "Finalists only, at the Grand Finale",
       "items": [
-        "Working prototype and an interactive booth (Zone B)",
+        "Working prototype, demonstrated during the Main Stage pitch (Zone A)",
         "The official AI-Use Declaration"
       ]
     }
@@ -321,9 +322,9 @@
     },
     {
       "q": "What do we have to submit?",
-      "kw": "deliverables submission requirements proposal prototype slides video deadline 24 november 1 december finalist finalists only",
-      "a": "All teams: a 1-page proposal (Workshop 1), a technical brief and wireframes (Workshop 2), and prototype presentation slides by Tuesday 24 November 2026 (no working prototype needed yet). Finalists only: presentation slides and a demo video of the refined prototype by Tuesday 1 December 2026. At the Grand Finale, the 4 finalists bring a working prototype, a Zone B booth and the AI-Use Declaration, and give a 10-minute pitch.",
-      "alt": "All teams submit a 1-page proposal, a technical brief and prototype slides (due Tue 24 Nov). Only the 4 finalists submit slides and a demo video by Tue 1 Dec, then bring their prototype, booth and AI-Use Declaration to the Grand Finale and pitch on stage."
+      "kw": "deliverables submission requirements apexelerate prototype slides video deadline 24 november 1 december finalist finalists only",
+      "a": "All teams: keep everything about your innovation updated on Apexelerate (apexelerate.vercel.app) after Workshop 1, a technical brief and wireframes (Workshop 2), and prototype presentation slides by Tuesday 24 November 2026 (no working prototype needed yet). Finalists only: presentation slides and a demo video of the refined prototype by Tuesday 1 December 2026. At the Grand Finale, the 4 finalists bring their working prototype and the AI-Use Declaration, and give a 10-minute pitch with a live demo.",
+      "alt": "All teams keep their innovation updated on Apexelerate, then submit a technical brief and prototype slides (due Tue 24 Nov). Only the 4 finalists submit slides and a demo video by Tue 1 Dec, then bring their prototype and AI-Use Declaration to the Grand Finale and pitch on stage."
     },
     {
       "q": "What is the AI-Use Declaration?",
@@ -334,26 +335,26 @@
     {
       "q": "Who pitches live at the finale?",
       "kw": "finalist pitch stage top 2 top 4 selection",
-      "a": "The Top 2 Student teams and the Top 2 Young Professional teams (4 finalists) set up booths in Zone B and pitch live on the Main Stage (Zone A).",
-      "alt": "Only the 4 finalists take part at the Grand Finale: the Top 2 Students and the Top 2 Young Professionals. They run booths in Zone B and pitch in Zone A."
+      "a": "The Top 2 Student teams and the Top 2 Young Professional teams (4 finalists) pitch live and demo their prototypes on the Main Stage (Zone A).",
+      "alt": "Only the 4 finalists pitch at the Grand Finale: the Top 2 Students and the Top 2 Young Professionals, live on the Main Stage."
     },
     {
       "q": "What is the UNLOCK Passport?",
-      "kw": "passport journey booth redeem rewards",
-      "a": "An interactive visitor journey (Discover, Engage, Validate, Unlock) that takes delegates through all 4 finalist booths, with rewards to redeem.",
-      "alt": "It is a visitor journey (Discover, Engage, Validate, Unlock) that guides delegates around the 4 finalist booths so they can redeem rewards."
+      "kw": "passport stamp stamps collect booth booths reward rewards visitor sponsor collaborator partner",
+      "a": "Everyone who comes to the Grand Finale gets an UNLOCK Passport. Visit the interactive booths of our collaborators, partners and sponsors on the exhibition floor, collect a stamp at each one, and complete your passport to redeem rewards.",
+      "alt": "It is a stamp card for everyone at the Grand Finale: visit the interactive booths of our collaborators, partners and sponsors, collect a stamp at each, and complete it to redeem rewards."
     },
     {
       "q": "How does the People's Choice Award work?",
       "kw": "voting vote people choice hamper",
-      "a": "Summit delegates vote directly across the 4 finalist booths, and the winning team receives a hamper.",
-      "alt": "Delegates at the summit vote at the 4 finalist booths, and the most-voted team wins the People's Choice Award and a hamper."
+      "a": "Summit delegates vote for their favourite of the 4 finalist pitches, and the winning team receives a hamper.",
+      "alt": "After the live pitches, delegates vote for their favourite finalist, and the most-voted team wins the People's Choice Award and a hamper."
     },
     {
       "q": "What is Zone A and Zone B?",
       "kw": "zone stage exhibition booth",
-      "a": "Zone A is the Main Stage conference with talks, the final pitch and the awards. Zone B is the exhibition floor where the 4 finalist teams run interactive booths.",
-      "alt": "Zone A is the main stage for talks, the final pitches and the awards. Zone B is the exhibition floor with the 4 finalist booths."
+      "a": "Zone A is the Main Stage conference with talks, the 4 finalist pitches and the awards. Zone B is the exhibition floor with interactive booths from our collaborators, partners and sponsors, where you collect stamps for your UNLOCK Passport.",
+      "alt": "Zone A is the main stage for talks, the final pitches and the awards. Zone B is the exhibition floor with collaborator, partner and sponsor booths for the UNLOCK Passport."
     },
     {
       "q": "Can I join more than one team?",
@@ -510,8 +511,8 @@
     {
       "q": "What is UNLOCK?",
       "kw": "unlock about event summit challenge apa",
-      "a": "UNLOCK is an AI workplace innovation challenge and grand expo hosted at UiTM Shah Alam. Ten teams build AI prototypes in a 3-week online sprint, and the Top 2 teams from each category showcase and pitch them at the Grand Finale on 6 December 2026 at Dewan Seroja, UiTM Shah Alam.",
-      "alt": "It is the AI & Young Professionals Summit & Innovation Challenge: a 3-week online incubation for 10 teams, followed by a physical Grand Finale at Dewan Seroja, UiTM Shah Alam, where the 4 finalist teams exhibit and pitch their AI prototypes."
+      "a": "UNLOCK is an AI workplace innovation challenge and grand expo hosted at UiTM Shah Alam. Ten teams build AI prototypes in a 3-week online sprint, and the Top 2 teams from each category pitch them live at the Grand Finale on 6 December 2026 at Dewan Seroja, UiTM Shah Alam, alongside interactive booths from our collaborators, partners and sponsors.",
+      "alt": "It is the AI & Young Professionals Summit & Innovation Challenge: a 3-week online incubation for 10 teams, followed by a physical Grand Finale at Dewan Seroja, UiTM Shah Alam, where the 4 finalist teams pitch their AI prototypes and visitors collect UNLOCK Passport stamps at partner booths."
     },
     {
       "q": "Who organises UNLOCK?",
@@ -568,20 +569,20 @@
     {
       "q": "How are the finalists chosen?",
       "kw": "finalist finalists selection select top 2 top 4 how many evaluate chosen",
-      "a": "In Workshop 3 on 28 November, industry panels evaluate all 10 prototypes. The Top 2 Student and Top 2 Young Professional teams are chosen to set up booths and pitch live at the Grand Finale.",
+      "a": "In Workshop 3 on 28 November, industry panels evaluate all 10 prototypes. The Top 2 Student and Top 2 Young Professional teams are chosen to pitch live at the Grand Finale.",
       "alt": "After the Workshop 3 evaluation, the judges score every team with the rubric, and the top 2 from each category go to the Grand Finale."
     },
     {
       "q": "Do all teams join the summit?",
-      "kw": "all teams attend booth exhibit finale everyone",
-      "a": "No. Only the Top 2 Student teams and the Top 2 Young Professional teams (4 finalists) advance to the Grand Finale, where they set up interactive booths in Zone B and pitch on the Main Stage.",
-      "alt": "Only the 4 finalists join the summit. They exhibit at booths and present on stage."
+      "kw": "all teams attend finale everyone",
+      "a": "Only the Top 2 Student teams and the Top 2 Young Professional teams (4 finalists) pitch at the Grand Finale. Everyone who attends can collect UNLOCK Passport stamps at the interactive booths of our collaborators, partners and sponsors.",
+      "alt": "Only the 4 finalists pitch on stage at the summit. Visitors can explore the collaborator, partner and sponsor booths with the UNLOCK Passport."
     },
     {
       "q": "What do we need to prepare for the summit?",
-      "kw": "bring prepare booth setup what to bring",
-      "a": "Only the 4 finalist teams take part in the summit. They prepare a working prototype, an interactive booth setup for Zone B, the AI-Use Declaration and a 10-minute pitch. Booth setup times and the stage schedule will be sent by email and WhatsApp.",
-      "alt": "If you are one of the 4 finalists, prepare your prototype, your booth exhibition setup, the AI-Use Declaration and your 10-minute pitch. We will email the schedule."
+      "kw": "bring prepare setup what to bring summit",
+      "a": "The 4 finalist teams prepare their working prototype for a live demo, the AI-Use Declaration and a 10-minute pitch. The stage schedule will be sent by email and WhatsApp.",
+      "alt": "If you are one of the 4 finalists, prepare your prototype demo, the AI-Use Declaration and your 10-minute pitch. We will email the schedule."
     },
     {
       "q": "How long is the pitch?",
@@ -684,6 +685,12 @@
       "kw": "workshop kickoff first postponed moved new date announce 15 november tba",
       "a": "Workshop 1 (Kickoff) is no longer on 15 November. Its new date will be announced soon by email, in the WhatsApp community and on our socials.",
       "alt": "The Kickoff workshop has been moved, and the new date will be announced shortly. Registered participants will be told by email and WhatsApp."
+    },
+    {
+      "q": "What is Apexelerate?",
+      "kw": "apexelerate apex account platform project update brief pitch github code upload",
+      "a": "Apexelerate (apexelerate.vercel.app) is where every team keeps its innovation after Workshop 1. Create a free account, then keep your brief, build instructions, pitch and app code (upload a ZIP or link GitHub) up to date there. It also gives AI help with your brief and pitch, and explains how your app's code works.",
+      "alt": "It is the platform where your team keeps everything about its innovation updated after Workshop 1: brief, instructions, pitch and code. HackDev explains it in Workshop 1."
     }
   ],
   "team": {
@@ -841,7 +848,7 @@
     {
       "date": "6 Dec 2026",
       "title": "Grand Finale at Dewan Seroja, UiTM Shah Alam",
-      "body": "Summit, expo and the final pitches by the Top 2 teams from each category."
+      "body": "Summit, final pitches by the Top 2 teams from each category, and the UNLOCK Passport: collect stamps at interactive booths from our collaborators, partners and sponsors."
     }
   ],
   "livestreamUrl": "",

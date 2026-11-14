@@ -3467,3 +3467,17 @@ a.lt:hover {
     order: 2;
   }
 }
+
+/* ===== v15: performance (14 Nov 2026) ===== */
+/* reserve space for things that are filled in after load, so the page does not jump (layout shift) */
+.logo3d { aspect-ratio: 763 / 420; min-height: 0; }
+.rig img.front { width: 100%; height: auto; }
+#countdown { min-height: 66px; }
+#counters { min-height: 168px; }
+.stats { min-height: 96px; }
+.progress { width: 100%; transform: scaleX(0); transform-origin: 0 50%; will-change: transform; }
+@media (max-width: 640px) { #countdown { min-height: 50px; } .stats { min-height: 170px; } }
+#askChips { min-height: 64px; }
+.logo-row { min-height: 84px; }
+#heroChip { display: inline-block; min-height: 1.3em; }
+@media (max-width: 640px) { #askChips { min-height: 92px; } .logo-row { min-height: 66px; } }

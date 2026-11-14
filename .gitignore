@@ -1,3 +1,4 @@
-   *.report.html
-   *.report.json
-   node_modules/
+*.report.html
+*.report.json
+node_modules/
+Code.gs

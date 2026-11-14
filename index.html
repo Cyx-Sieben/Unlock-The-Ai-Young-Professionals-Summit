@@ -36,11 +36,12 @@
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%93%3C/text%3E%3C/svg%3E"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css?v=20261112" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- PERFORMANCE: fonts load without blocking the first paint -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" /></noscript>
+    <link rel="preload" as="image" href="assets/logo.png" fetchpriority="high" />
+    <link rel="stylesheet" href="style.css?v=20261114" />
     <link
       rel="canonical"
       href="https://unlock-the-ai-young-professionals-s.vercel.app/"
@@ -119,10 +120,10 @@
           <div class="logo3d" id="logo3d"></div>
           <span class="chip"
             ><i class="pulse"></i
-            ><span id="heroChip">Registration open</span></span
+            ><span id="heroChip">Pre-registration extended · closes 18 Nov 2026</span></span
           >
           <h1 id="heroTitle">UNLOCK: Create Beyond Boundaries</h1>
-          <p class="lead" id="heroSub"></p>
+          <p class="lead" id="heroSub">The AI &amp; Young Professionals Summit &amp; Innovation Challenge</p>
           <form class="ask" id="askForm">
             <span class="mono">&gt;</span
             ><input
@@ -200,19 +201,19 @@
               aria-label="Click to Meet Our Team"
               ><span class="tc-stack" aria-hidden="true"
                 ><img
-                  src="assets/team/syed-aiman-hafique.jpg"
+                  src="assets/team/syed-aiman-hafique.jpg" width="36" height="45" loading="lazy" decoding="async"
                   alt=""
                   onerror="this.remove()" /><img
-                  src="assets/team/syaza-athirah.jpg"
+                  src="assets/team/syaza-athirah.jpg" width="36" height="45" loading="lazy" decoding="async"
                   alt=""
                   onerror="this.remove()" /><img
-                  src="assets/team/adam.jpg"
+                  src="assets/team/adam.jpg" width="36" height="45" loading="lazy" decoding="async"
                   alt=""
                   onerror="this.remove()" /><img
-                  src="assets/team/izreena.jpg"
+                  src="assets/team/izreena.jpg" width="36" height="45" loading="lazy" decoding="async"
                   alt=""
                   onerror="this.remove()" /><img
-                  src="assets/team/haziq.jpg"
+                  src="assets/team/haziq.jpg" width="36" height="45" loading="lazy" decoding="async"
                   alt=""
                   onerror="this.remove()" /></span
               ><span class="tc-text"
@@ -413,6 +414,6 @@
       </section>
     </main>
     <div id="footMount"></div>
-    <script src="script.js?v=20261112"></script>
+    <script src="script.js?v=20261114"></script>
   </body>
 </html>
