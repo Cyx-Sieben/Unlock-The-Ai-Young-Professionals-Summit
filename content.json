@@ -53,13 +53,14 @@
       "Data & Decision-Making",
       "Sustainability & ESG"
     ],
-    "objective": "To enhance knowledge and understanding of Artificial Intelligence (AI) applications in the workplace, encourage the development of innovative ideas and practical AI-driven solutions, and strengthen strategic collaboration among universities, industries, and communities towards ethical, responsible, and sustainable AI adoption."
+    "objective": "To enhance knowledge and understanding of Artificial Intelligence (AI) applications in the workplace, encourage the development of innovative ideas and practical AI-driven solutions, and strengthen strategic collaboration among universities, industries, and communities towards ethical, responsible, and sustainable AI adoption.",
+    "tracksNote": "Tracks are assigned to each team by the committee."
   },
   "registration": {
     "prepare": [
       "Team leader's full name, email and WhatsApp or phone number",
       "Institution or organisation",
-      "Your chosen track (one of the 6)",
+      "Your team's track is assigned by the committee after registration, so there is no need to choose one",
       "Team name and the names of all 5 members",
       "Proposed project title and a short description of the innovation",
       "Confirmation that all members agree, agreement to the rules, and PDPA consent",
@@ -68,6 +69,7 @@
     "steps": [
       "Team leader completes the Student or Young Professional pre-registration form (once only)",
       "The leader and every member listed on the form receive a confirmation email with the Registration ID and the WhatsApp community link",
+      "The committee assigns your team's track (one of the 6) and emails it to you",
       "Join the WhatsApp community for announcements",
       "Pay later: we email the payment details after your pre-registration (RM65 Student, RM180 Young Professional, per team)",
       "Attend the three online workshops (Workshop 1 date to be announced, then Sat 21 and Sat 28 Nov) and submit your deliverables"
@@ -227,13 +229,13 @@
       "items": [
         "Active university students (undergraduate and postgraduate) join the Student Category. Early-career working adults join the Young Professional Category.",
         "Exactly 5 members per team.",
-        "Each participant joins one team and one industry track only."
+        "Each participant joins one team only. Tracks are assigned to each team by the committee."
       ]
     },
     {
       "t": "2. Theme and tracks",
       "items": [
-        "Solve a realistic workplace challenge with applied AI inside one of the 6 tracks.",
+        "Solve a realistic workplace challenge with applied AI inside the track the committee assigns to your team (one of the 6).",
         "Show the problem, a working AI architecture, user workflows and measurable business impact."
       ]
     },
@@ -287,8 +289,8 @@
     {
       "q": "What are the 6 tracks?",
       "kw": "tracks categories industry challenge",
-      "a": "Customer Experience & Support, HR & Talent Operations, Operations & Productivity, Marketing & Content, Data & Decision-Making, and Sustainability & ESG. Each team picks one.",
-      "alt": "Pick one of Customer Experience & Support, HR & Talent Operations, Operations & Productivity, Marketing & Content, Data & Decision-Making, or Sustainability & ESG."
+      "a": "Customer Experience & Support, HR & Talent Operations, Operations & Productivity, Marketing & Content, Data & Decision-Making, and Sustainability & ESG. The committee assigns one track to each team, so you do not need to choose. Ask me about any track (for example \"What is the Data & Decision-Making track?\") to see example ideas.",
+      "alt": "The 6 tracks are Customer Experience & Support, HR & Talent Operations, Operations & Productivity, Marketing & Content, Data & Decision-Making, and Sustainability & ESG. Teams do not choose: the committee assigns a track to every team."
     },
     {
       "q": "What are the dates?",
@@ -359,8 +361,8 @@
     {
       "q": "Can I join more than one team?",
       "kw": "multiple teams twice",
-      "a": "No. Each participant joins one team and one track only.",
-      "alt": "No. You can only be in one team and one track."
+      "a": "No. Each participant joins one team only, and each team works on the track the committee assigns to it.",
+      "alt": "No. You can only be in one team, and your team's track is assigned by the committee."
     },
     {
       "q": "Can we use private company data?",
@@ -549,7 +551,7 @@
     {
       "q": "What will we build?",
       "kw": "build project prototype create product idea innovation",
-      "a": "A working AI prototype or proof of concept that solves a realistic workplace problem in your chosen track, with clear user workflows and measurable business impact.",
+      "a": "A working AI prototype or proof of concept that solves a realistic workplace problem in the track assigned to your team, with clear user workflows and measurable business impact.",
       "alt": "Each team designs and builds an AI-powered solution for a real organisational challenge, showing the problem, the AI architecture, the user flows and the expected impact."
     },
     {
@@ -651,7 +653,7 @@
     },
     {
       "q": "Can I change my team members after registering?",
-      "kw": "change replace edit update withdraw cancel member swap tukar",
+      "kw": "change replace edit update withdraw cancel member swap tukar drop out leave quit",
       "a": "Please contact the committee as soon as possible so we can check what can be changed. An email is the fastest way.",
       "alt": "Changes to a registered team need the committee's approval. Contact us with your team name and the change you need.",
       "contact": true
@@ -691,6 +693,63 @@
       "kw": "apexelerate apex account platform project update brief pitch github code upload",
       "a": "Apexelerate (apexelerate.vercel.app) is where every team keeps its innovation after Workshop 1. Create a free account, then keep your brief, build instructions, pitch and app code (upload a ZIP or link GitHub) up to date there. It also gives AI help with your brief and pitch, and explains how your app's code works.",
       "alt": "It is the platform where your team keeps everything about its innovation updated after Workshop 1: brief, instructions, pitch and code. HackDev explains it in Workshop 1."
+    },
+    {
+      "q": "What is the Customer Experience & Support track?",
+      "kw": "customer experience support service chatbot helpdesk complaint ticket feedback client track elaborate explain example idea",
+      "a": "Customer Experience & Support: AI that helps an organisation answer and look after its customers faster and better. Examples: a support chatbot or FAQ assistant, a tool that sorts and prioritises complaint tickets, or one that sums up customer feedback into clear action points.",
+      "alt": "In the Customer Experience & Support track, teams build AI that helps an organisation answer and look after its customers faster and better. Examples: a support chatbot or FAQ assistant, a tool that sorts and prioritises complaint tickets, or one that sums up customer feedback into clear action points. The committee assigns tracks to teams."
+    },
+    {
+      "q": "What is the HR & Talent Operations track?",
+      "kw": "hr human resource talent hiring recruitment onboarding staff employee training interview resume track elaborate explain example idea",
+      "a": "HR & Talent Operations: AI for hiring, onboarding, training and staff support. Examples: a helper that screens resumes against a job description, an onboarding assistant for new staff, an HR policy Q&A bot, or a training plan generator.",
+      "alt": "In the HR & Talent Operations track, teams build AI for hiring, onboarding, training and staff support. Examples: a helper that screens resumes against a job description, an onboarding assistant for new staff, an HR policy Q&A bot, or a training plan generator. The committee assigns tracks to teams."
+    },
+    {
+      "q": "What is the Operations & Productivity track?",
+      "kw": "operations productivity workflow automation manual repetitive task meeting schedule efficiency track elaborate explain example idea",
+      "a": "Operations & Productivity: AI that cuts manual and repetitive work in daily operations. Examples: a meeting-notes summariser, a workflow or task automation tool, a document drafting assistant, or a smart scheduling tool.",
+      "alt": "In the Operations & Productivity track, teams build AI that cuts manual and repetitive work in daily operations. Examples: a meeting-notes summariser, a workflow or task automation tool, a document drafting assistant, or a smart scheduling tool. The committee assigns tracks to teams."
+    },
+    {
+      "q": "What is the Marketing & Content track?",
+      "kw": "marketing content social media campaign brand post copywriting advertising audience track elaborate explain example idea",
+      "a": "Marketing & Content: AI for content and campaigns. Examples: a social media post generator that keeps the brand voice, a campaign planner, a content calendar builder, or a tool that turns audience comments into insights.",
+      "alt": "In the Marketing & Content track, teams build AI for content and campaigns. Examples: a social media post generator that keeps the brand voice, a campaign planner, a content calendar builder, or a tool that turns audience comments into insights. The committee assigns tracks to teams."
+    },
+    {
+      "q": "What is the Data & Decision-Making track?",
+      "kw": "data decision making analytics dashboard forecast report insight trend analysis track elaborate explain example idea",
+      "a": "Data & Decision-Making: AI that turns data into clear decisions. Examples: a dashboard that explains trends in plain language, a sales or demand forecast, a survey analysis tool, or a report generator that answers \"what should we do next?\". Use made-up or public data only, because the rules do not allow private company or personal data without clearance.",
+      "alt": "In the Data & Decision-Making track, teams build AI that turns data into clear decisions. Examples: a dashboard that explains trends in plain language, a sales or demand forecast, a survey analysis tool, or a report generator that answers \"what should we do next?\". Use made-up or public data only, because the rules do not allow private company or personal data without clearance. The committee assigns tracks to teams."
+    },
+    {
+      "q": "What is the Sustainability & ESG track?",
+      "kw": "sustainability esg environment green energy waste carbon social governance climate track elaborate explain example idea",
+      "a": "Sustainability & ESG: AI that supports environmental, social and governance (ESG) goals at work. Examples: an energy or waste tracker, a carbon footprint estimator, an ESG report helper, or a tool that makes a paper-based process digital.",
+      "alt": "In the Sustainability & ESG track, teams build AI that supports environmental, social and governance (ESG) goals at work. Examples: an energy or waste tracker, a carbon footprint estimator, an ESG report helper, or a tool that makes a paper-based process digital. The committee assigns tracks to teams."
+    },
+    {
+      "q": "Who pays the registration fee: the team leader or each member?",
+      "kw": "pay payment fee leader separately split individually each person bayar yuran ketua rm65 rm180",
+      "a": "The fee is one payment per team, not per person: RM65 for a Student team and RM180 for a Young Professional team. The payment details are emailed to the team leader after pre-registration, and your team can decide how to share the cost.",
+      "alt": "It is RM180 per team (or RM65 for a Student team), paid once for the whole team. The payment details go to the team leader by email; how you split it inside the team is up to you.",
+      "contact": true
+    },
+    {
+      "q": "Can foundation (asasi), matriculation or diploma students join?",
+      "kw": "asasi foundation matriculation matrikulasi diploma pre-university age eligible",
+      "a": "The Student Category is for active university students (undergraduate and postgraduate). If you are in a foundation (asasi), matriculation or diploma programme, please email the committee before registering so we can confirm your eligibility.",
+      "alt": "The Student Category is for active university students. For foundation, matriculation or diploma students, please check with the committee by email first.",
+      "contact": true
+    },
+    {
+      "q": "Can we choose or change our track?",
+      "kw": "choose pick select change switch prefer want track category tukar pilih assigned assign",
+      "a": "Tracks are now assigned by the committee, so teams cannot choose or change their track. Your team's track will be emailed to you before Workshop 1.",
+      "alt": "Teams no longer choose a track. The committee assigns one of the 6 tracks to every team and will email it to you before Workshop 1.",
+      "contact": false
     }
   ],
   "team": {

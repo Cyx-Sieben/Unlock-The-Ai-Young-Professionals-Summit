@@ -139,25 +139,32 @@ function counters(cfg) {
 function askBar(c) {
   const form = $('askForm'); if (!form) return;
   const stop = 'the and for are you how what who when where can does this that with have from your our any about will there many much people some did not get got could would should been has was were its also into use need want tell give know please which they them their then than just more only each every here very really still sit'.split(' ');
-  const words = s => (s.toLowerCase().match(/[a-z0-9]{3,}/g) || []).map(w => w.length > 3 ? w.replace(/s$/, '') : w).filter(w => !stop.includes(w));
+  const words = s => (s.toLowerCase().replace(/\bhr\b/g, 'human resource').replace(/\besg\b/g, 'esg sustainability').match(/[a-z0-9]{3,}/g) || []).map(w => w.length > 3 ? w.replace(/s$/, '') : w).filter(w => !stop.includes(w));
   const all = c.faqs.concat(c.askOnly || []);
   const digits = String(c.contact.phone || '').replace(/\D/g, ''), wa = /EDIT/i.test(c.contact.phone || '') || digits.length < 9 ? '' : (digits[0] === '0' ? '6' + digits : digits);
   const mail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.contact.email || '') ? c.contact.email : '';
-  const fb = ['I am not sure about that one, but our team can help. Please send us an email and we will answer you personally.',
-              'That is a little outside what I can answer here. For help with this, please email the committee.'];
+  const at = mail ? ` at ${mail}` : '', ig = (c.socials || []).find(o => /instagram/i.test(o.name)), handle = ig ? ig.handle : '@unlockai.project';
+  const fb = [`I don't have the right answer for that one yet. Please email us${at} and our team will answer you personally, or message us on Instagram or TikTok (${handle}). Registered participants can also ask us in the official UNLOCK WhatsApp group.`,
+              `That is a little outside what I can answer here. Please email the committee${at}, or send us a message on Instagram or TikTok (${handle}). If you are a registered participant, you can also ask us in the official UNLOCK WhatsApp group.`];
+  const NOTE = `If this doesn't fully answer your question, email us${at} for a specific answer, or message us on Instagram or TikTok (${handle}). Registered participants can also ask us in the official UNLOCK WhatsApp group.`;   // shown under answers that may not fully fit
   let fbn = Math.random() * 2 | 0;
   const links = q => [wa ? `<a class="btn small" href="https://wa.me/${wa}?text=${encodeURIComponent('Hi UNLOCK team, I have a question: ' + q)}" target="_blank" rel="noopener">WhatsApp us</a>` : '',
-    mail ? `<a class="btn small" href="mailto:${mail}?subject=${encodeURIComponent('UNLOCK question')}&body=${encodeURIComponent(q)}">Email us</a>` : '', '<a class="btn small" href="#contact">Contacts</a>'].join('');
+    mail ? `<a class="btn small" href="mailto:${mail}?subject=${encodeURIComponent('UNLOCK question')}&body=${encodeURIComponent(q)}">Email us</a>` : '', ig ? `<a class="btn small" href="${ig.url}" target="_blank" rel="noopener">Instagram</a>` : '', '<a class="btn small" href="#contact">Contacts</a>'].join('');
   const answer = q => { const w = words(q);
     const cp = (p, q) => { let i = 0; while (i < p.length && i < q.length && p[i] === q[i]) i++; return i; };
     const hit = (x, list) => list.some(t => t === x || (Math.min(x.length, t.length) >= 5 && cp(x, t) >= 5));   // same word, or same stem (register / registration)
-    const scored = all.map(f => { const tt = words(f.q), kk = words(f.kw || ''), at = words(f.a);
-      const a = w.filter(x => hit(x, tt)).length, b = w.filter(x => hit(x, kk)).length, d = w.filter(x => at.includes(x)).length;
-      return { f, sc: a + b >= 1 || d >= 2 ? a * 4 + b * 3 + d - tt.length * .01 : 0 }; }).sort((a, b) => b.sc - a.sc);   // must match the question or keywords (or 2+ answer words)
-    if (scored[0].sc >= 3) { const f = scored[0].f, v = [f.a].concat(f.alt || []); f._n = f._n === undefined ? Math.random() * v.length | 0 : (f._n + 1) % v.length; return { text: v[f._n], contact: !!f.contact }; }
-    fbn = (fbn + 1) % 2; return { text: fb[fbn], contact: true }; };      // not related or no match: point to WhatsApp / email
-  const run = q => { if (!q.trim()) return; $('askInput').value = q; $('askOut').hidden = false; const t = $('askText'), r = answer(q); t.textContent = ''; $('askLinks').innerHTML = r.contact ? links(q) : ''; let i = 0;
-    clearInterval(run.t); run.t = setInterval(() => { t.textContent = r.text.slice(0, ++i); if (i >= r.text.length) clearInterval(run.t); }, 12); };
+    const scored = all.map(f => { const tt = words(f.q), kk = words(f.kw || ''), aw = words(f.a);
+      const a = w.filter(x => hit(x, tt)).length, b = w.filter(x => hit(x, kk)).length, d = w.filter(x => aw.includes(x)).length;
+      const m = w.filter(x => hit(x, tt) || hit(x, kk) || aw.includes(x)).length;   // how many of the visitor's words this answer covers
+      return { f, m, sc: a + b >= 1 || d >= 2 ? a * 4 + b * 3 + d - tt.length * .01 : 0 }; }).sort((a, b) => b.sc - a.sc);   // must match the question or keywords (or 2+ answer words)
+    const top = scored[0], cover = top.m / (w.length || 1), gap = top.sc - (scored[1] ? scored[1].sc : 0);
+    if (top.sc >= 3) { const f = top.f, v = [f.a].concat(f.alt || []); f._n = f._n === undefined ? Math.random() * v.length | 0 : (f._n + 1) % v.length;
+      const sure = cover >= .8 && gap >= 1 && !f.contact;   // sure = the visitor's words clearly match one answer; otherwise add the "contact us" note
+      return { text: v[f._n], contact: !sure, note: !sure }; }
+    fbn = (fbn + 1) % 2; return { text: fb[fbn], contact: true, note: false }; };      // not related or no match: the reply itself points to email / WhatsApp group
+  if (!$('askNote')) $('askLinks').insertAdjacentHTML('beforebegin', '<p class="ask-note" id="askNote" hidden></p>');
+  const run = q => { if (!q.trim()) return; $('askInput').value = q; $('askOut').hidden = false; const t = $('askText'), n = $('askNote'), r = answer(q); t.textContent = ''; n.hidden = true; n.textContent = NOTE; $('askLinks').innerHTML = ''; let i = 0;
+    clearInterval(run.t); run.t = setInterval(() => { t.textContent = r.text.slice(0, ++i); if (i >= r.text.length) { clearInterval(run.t); n.hidden = !r.note; $('askLinks').innerHTML = r.contact ? links(q) : ''; } }, 12); };
   form.onsubmit = e => { e.preventDefault(); run($('askInput').value); };
   $('askChips').innerHTML = c.hero.prompts.map(p => `<button type="button">${p}</button>`).join('');
   $('askChips').onclick = e => e.target.tagName === 'BUTTON' && run(e.target.textContent);
@@ -400,14 +407,8 @@ CONTENT.then(c => {
   const news = c.news || [];
   if ($('news')) { $('news').innerHTML = news.length ? news.map(n => `<article class="card hl news-i"><span class="mono label">${esc(n.date)}</span><h3 class="ttl">${esc(n.title)}</h3><p>${esc(n.body)}</p></article>`).join('') : '<p class="muted">No updates yet.</p>'; touchHighlight(); }
 
-  /* Track finder quiz */
-  const T = c.about.tracks, Q = [['What do you enjoy most?', [['Helping people', [0, 1]], ['Making things run smoothly', [2, 1]], ['Telling stories', [3]], ['Finding patterns', [4, 5]]]],
-    ['Which problem bothers you at work?', [['Slow replies and repeated questions', [0]], ['Hiring and onboarding friction', [1]], ['Manual, repetitive tasks', [2]], ['Waste and reporting burden', [5, 4]]]],
-    ['Your best skill?', [['Writing and design', [3]], ['Spreadsheets and analysis', [4, 2]], ['Communication', [0, 1]], ['Research and policy', [5]]]]];
-  const fin = $('finder'); if (fin) { const sc = Array(T.length).fill(0); let qi = 0;
-    const step = () => { if (qi >= Q.length) { const best = sc.indexOf(Math.max(...sc)); fin.innerHTML = `<p class="mono label">Your best fit</p><h3>${esc(T[best])}</h3><p class="muted">Based on ${Q.length} answers. You can pick any track when you register.</p><button class="btn small" type="button" id="fRe">Retake</button>`; $('fRe').onclick = () => { sc.fill(0); qi = 0; step(); }; return; }
-      fin.innerHTML = `<p class="mono label">Track finder · question ${qi + 1} of ${Q.length}</p><h3>${Q[qi][0]}</h3><div class="opts">${Q[qi][1].map((o, j) => `<button class="btn" type="button" data-j="${j}">${o[0]}</button>`).join('')}</div>`;
-      fin.querySelectorAll('[data-j]').forEach(b => b.onclick = () => { Q[qi][1][b.dataset.j][1].forEach(k => sc[k]++); qi++; step(); }); }; step(); }
+  /* Tracks are assigned by the committee, so the old "track finder" quiz is replaced by a short note */
+  const fin = $('finder'); if (fin) fin.innerHTML = `<p class="mono label">How tracks work</p><h3>Your track is assigned by the committee</h3><p class="muted">Teams do not choose a track. The committee assigns one of the 6 tracks to every team and emails it before Workshop 1. Curious about a track? Ask about it in the Ask UNLOCK box at the top of the page.</p>`;
 
   /* Footer policy links */
   const ft = document.querySelector('footer'); if (ft) ft.insertAdjacentHTML('beforeend', `<br><a href="${document.body.dataset.page === 'index' ? '' : 'index.html'}#faq">Rules, code of conduct &amp; AI-use rules</a>`);   // policies.html does not exist, so this points to the Rules & FAQ section

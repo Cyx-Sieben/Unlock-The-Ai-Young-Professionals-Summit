@@ -3481,3 +3481,4 @@ a.lt:hover {
 .logo-row { min-height: 84px; }
 #heroChip { display: inline-block; min-height: 1.3em; }
 @media (max-width: 640px) { #askChips { min-height: 92px; } .logo-row { min-height: 66px; } }
+.ask-note { margin: 12px 0 0 !important; padding: 8px 12px; font-size: 0.86rem; color: var(--muted); background: #fbf8f1; border-left: 3px solid var(--cyan); border-radius: 0 8px 8px 0; }
