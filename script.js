@@ -81,7 +81,7 @@ $('navMount').outerHTML = `<header class="nav"><a class="logo" href="${B || '#ho
 <button class="burger" aria-label="Menu" onclick="document.body.classList.toggle('menu')">&#9776;</button>
 <nav>${PAGES.map(p => `<a href="${Hf(p)}" class="${p[0]===here?'on':''}">${p[1]}</a>`).join('')}<a class="btn primary" href="${B}#register">Register Now!</a></nav></header>`;
 $('footMount').outerHTML = `<footer>&copy; 2026 UNLOCK &middot; UiTM Shah Alam</footer>`;
-// "Powered by" badge: fixed in the bottom-right corner on every page
+// "Powered by" badge: fixed at the top left (under the menu bar) on every page
 document.body.insertAdjacentHTML('beforeend', `<div class="powered-badge" aria-label="Powered by HackDev and Apexelerate"><span class="pb-by">POWERED BY</span>
 <a href="https://hackdev.my/" target="_blank" rel="noopener" aria-label="HackDev"><img src="assets/partners/hackdev.png" alt="HackDev" width="79" height="20"></a><span class="pb-bar"></span>
 <a href="https://apexelerate.vercel.app/" target="_blank" rel="noopener" aria-label="Apexelerate" class="ax">${AX_MARK}<span>APEXELERATE</span></a></div>`);

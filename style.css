@@ -3070,7 +3070,6 @@ body,
     linear-gradient(90deg, var(--bp) 1px, transparent 1px) 0 0/40px 40px,
     linear-gradient(180deg, #fff 0%, var(--bg) 100%);
 }
-.btn.primary,
 .hl:hover,
 .hl:active,
 .hl.hot,
@@ -3521,7 +3520,7 @@ a.lt:hover {
 @media (max-width: 560px) { .sp-row { flex-direction: column; gap: 18px; } .sp-bar { width: 60px; height: 1px; } }
 @keyframes spLoad { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
-.powered-badge { position: fixed; right: 18px; bottom: 18px; z-index: 40; display: flex; align-items: center; gap: 12px; padding: 9px 16px 9px 14px; border-radius: 14px; background: #150061; color: #fff; box-shadow: 0 10px 28px rgba(21, 0, 97, .3); white-space: nowrap; overflow: hidden; }
+.powered-badge { position: fixed; left: 18px; top: 84px; z-index: 40; display: flex; align-items: center; gap: 12px; padding: 9px 16px 9px 14px; border-radius: 14px; background: #150061; color: #fff; box-shadow: 0 10px 28px rgba(21, 0, 97, .3); white-space: nowrap; overflow: hidden; }
 .powered-badge::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .55;
   background: conic-gradient(from 90deg at 3px 3px, transparent 25%, rgba(255,255,255,.5) 0) 0 0 / 8px 8px;
   -webkit-mask: linear-gradient(90deg, #000 0 14px, transparent 34px calc(100% - 34px), #000 calc(100% - 14px)); mask: linear-gradient(90deg, #000 0 14px, transparent 34px calc(100% - 34px), #000 calc(100% - 14px)); }
@@ -3535,9 +3534,12 @@ a.lt:hover {
 .powered-badge a:focus-visible { outline: 2px solid #ffc400; outline-offset: 3px; }
 body.locked .powered-badge { display: none; }
 @media (max-width: 860px) {
-  .powered-badge { right: 10px; bottom: 10px; gap: 9px; padding: 7px 11px; border-radius: 12px; }
+  .powered-badge { left: 10px; top: 80px; gap: 9px; padding: 7px 11px; border-radius: 12px; }
   .pb-by, .powered-badge .ax span { display: none; }
   .powered-badge img { height: 16px; }
   .powered-badge .ax { font-size: 1rem; }
 }
 @media (prefers-reduced-motion: reduce) { .sp-logo, .sp-by, .sp-hd, .sp-row .ax { animation: none; opacity: 1; } .sp-load { animation-duration: .9s; } }
+
+/* v18: solid blue buttons, no blueprint lines (Register, Ask, forms, Instagram, TikTok) */
+.btn.primary { background-image: none; }
