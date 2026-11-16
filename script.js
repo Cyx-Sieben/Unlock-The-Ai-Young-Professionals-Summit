@@ -11,14 +11,41 @@ let LOGO = 'assets/logo.png';
 if (!sessionStorage.getItem('unlocked')) {
   document.body.classList.add('locked');
   document.body.insertAdjacentHTML('afterbegin', `<div id="gate"><div class="gate-center"><img src="${LOGO}" alt="UNLOCK"><button class="btn" id="unlockBtn" type="button">UNLOCK</button></div></div>`);
-  $('unlockBtn').addEventListener('click', () => { sessionStorage.setItem('unlocked', '1'); pixelReveal($('gate')); }, { once: true });
+  $('unlockBtn').addEventListener('click', () => { sessionStorage.setItem('unlocked', '1'); poweredSplash($('gate')); }, { once: true });
+}
+
+/* "Powered by HackDev & Apexelerate" splash: game-opener style, blue screen with white pixels.
+   Shows for SPLASH_MS after UNLOCK is clicked (Skip ends it early), then the blue/white pixel reveal opens the site. */
+const SPLASH_MS = matchMedia('(prefers-reduced-motion: reduce)').matches ? 900 : 1700;
+const AX_MARK = '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 36 36H27L20 21 13 36H4Z" fill="#ffc400"/></svg>';
+function poweredSplash(gate) {
+  gate.classList.add('powered');
+  gate.insertAdjacentHTML('beforeend', `<canvas id="spcv" aria-hidden="true"></canvas><div class="sp-in" role="status">
+    <img class="sp-logo" src="${LOGO}" alt="UNLOCK"><p class="sp-by">POWERED BY</p>
+    <div class="sp-row"><img class="sp-hd" src="assets/partners/hackdev.png" alt="HackDev"><span class="sp-bar"></span><span class="ax">${AX_MARK}APEXELERATE</span></div></div>
+    <div class="sp-foot"><span>UNLOCK 2026 · LOADING</span><button type="button" id="spSkip">SKIP ›</button></div><div class="sp-load"></div>`);
+  let done = false;
+  const go = () => { if (done) return; done = true; gate.querySelectorAll('#spcv,.sp-in,.sp-foot,.sp-load').forEach(e => e.remove()); gate.classList.remove('powered'); pixelReveal(gate, '#150061', ['255,255,255', '226,201,154']); };
+  $('spSkip').onclick = go;
+  setTimeout(go, SPLASH_MS);
+  // white pixels drift in from the edges
+  const cv = $('spcv'), W = innerWidth, H = innerHeight, d = Math.min(devicePixelRatio || 1, 2), C = Math.max(14, Math.round(Math.max(W, H) / 70));
+  cv.width = W * d; cv.height = H * d; const x = cv.getContext('2d'); x.scale(d, d);
+  const cells = [], E = Math.min(W, H) * .22;
+  for (let i = 0; i < W; i += C) for (let j = 0; j < H; j += C) { const e = 1 - Math.min(i, W - i, j, H - j) / E;
+    if (e > 0 && Math.random() < e * .75) cells.push({ i, j, t: Math.random() * .8 * (1 - e * .6), a: .25 + Math.random() * .7 }); }
+  const t0 = performance.now();
+  const draw = now => { if (done) return; const u = (now - t0) / SPLASH_MS; x.clearRect(0, 0, W, H);
+    cells.forEach(c => { const k = Math.min(1, Math.max(0, (u - c.t) / .25)); if (k) { x.fillStyle = `rgba(255,255,255,${c.a * k})`; x.fillRect(c.i, c.j, C - 2, C - 2); } });
+    requestAnimationFrame(draw); };
+  requestAnimationFrame(draw);
 }
 
 /* Pixel reveal. A canvas covers the screen with blue squares. From the centre, a ring of small squares
    spreads outward; inside the ring the blue is gone (the site shows through), and the ring dissolves as it nears the edges.
    Tweak: CELL (square size), BAND (ring thickness, in squares), MS (duration). */
-function pixelReveal(gate) {
-  const COVER = getComputedStyle(document.documentElement).getPropertyValue('--gate').trim() || '#ffffff', INK = ['21,0,97', '38,32,138'];   // white screen, blue pixels
+function pixelReveal(gate, cover, ink) {
+  const COVER = cover || getComputedStyle(document.documentElement).getPropertyValue('--gate').trim() || '#ffffff', INK = ink || ['21,0,97', '38,32,138'];   // default: white screen, blue pixels
   const MS = 1900, BAND = 7;
   const finish = () => { gate.remove(); document.body.classList.remove('locked'); };
   gate.classList.add('opening');
@@ -54,6 +81,10 @@ $('navMount').outerHTML = `<header class="nav"><a class="logo" href="${B || '#ho
 <button class="burger" aria-label="Menu" onclick="document.body.classList.toggle('menu')">&#9776;</button>
 <nav>${PAGES.map(p => `<a href="${Hf(p)}" class="${p[0]===here?'on':''}">${p[1]}</a>`).join('')}<a class="btn primary" href="${B}#register">Register Now!</a></nav></header>`;
 $('footMount').outerHTML = `<footer>&copy; 2026 UNLOCK &middot; UiTM Shah Alam</footer>`;
+// "Powered by" badge: fixed in the bottom-right corner on every page
+document.body.insertAdjacentHTML('beforeend', `<div class="powered-badge" aria-label="Powered by HackDev and Apexelerate"><span class="pb-by">POWERED BY</span>
+<a href="https://hackdev.my/" target="_blank" rel="noopener" aria-label="HackDev"><img src="assets/partners/hackdev.png" alt="HackDev" width="79" height="20"></a><span class="pb-bar"></span>
+<a href="https://apexelerate.vercel.app/" target="_blank" rel="noopener" aria-label="Apexelerate" class="ax">${AX_MARK}<span>APEXELERATE</span></a></div>`);
 document.body.insertAdjacentHTML('beforeend', `<div id="cmd"><div><input placeholder="Go to page..." aria-label="Go to page">${PAGES.map(p=>`<a href="${Hf(p)}">${p[1]}</a>`).join('')}</div></div>`);
 const cmd = $('cmd'), cin = cmd.querySelector('input');
 addEventListener('keydown', e => {
@@ -238,7 +269,7 @@ function titleFx(t) {
       : [{ filter: 'brightness(1)', transform: 'translateY(0)' }, { filter: 'brightness(1.7)', transform: 'translateY(-.08em)', offset: .5 }, { filter: 'brightness(1)', transform: 'translateY(0)' }];
     const wave = () => { if (document.hidden) return; chars.forEach((c, i) => c.animate(wkf, { duration: 900, delay: i * 55, easing: 'ease-in-out' })); };
     setTimeout(() => { wave(); setInterval(wave, lite ? 10000 : 8000); }, 3500); };
-  const btn = $('unlockBtn'); if (btn) btn.addEventListener('click', () => setTimeout(enter, 900)); else setTimeout(enter, 200);
+  const btn = $('unlockBtn'); if (btn) btn.addEventListener('click', () => setTimeout(enter, 900 + SPLASH_MS)); else setTimeout(enter, 200);
   if (!lite && !calm) { h.style.transition = 'transform .3s ease-out';   // cursor tilt (mouse devices only)
     addEventListener('mousemove', e => { h.style.transform = `perspective(900px) rotateY(${(e.clientX / innerWidth - .5) * 8}deg) rotateX(${-(e.clientY / innerHeight - .5) * 5}deg)`; }); }
 }
