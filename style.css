@@ -3482,3 +3482,18 @@ a.lt:hover {
 #heroChip { display: inline-block; min-height: 1.3em; }
 @media (max-width: 640px) { #askChips { min-height: 92px; } .logo-row { min-height: 66px; } }
 .ask-note { margin: 12px 0 0 !important; padding: 8px 12px; font-size: 0.86rem; color: var(--muted); background: #fbf8f1; border-left: 3px solid var(--cyan); border-radius: 0 8px 8px 0; }
+
+/* v16: notification bell with a yellow "new update" dot */
+.bell { order: 3; position: relative; display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; flex: none; border-radius: 50%; color: var(--dark); background: var(--bg); text-decoration: none; transition: background .2s, transform .2s; }
+.bell:hover { background: #ebe5d8; transform: rotate(-8deg); }
+.bell:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+.bell-dot { position: absolute; top: 7px; right: 8px; width: 11px; height: 11px; border-radius: 50%; background: #ffc400; box-shadow: 0 0 0 2px #fff; }
+.bell-dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #ffc400; animation: bellPing 1.8s ease-out infinite; }
+.bell-dot[hidden] { display: none; }
+@keyframes bellPing { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(2.6); opacity: 0; } }
+.nav nav { margin-left: auto; }
+#news-sec { scroll-margin-top: 90px; }
+#news-sec.flash .news-grid { animation: newsFlash 1.6s ease-out; border-radius: var(--r); }
+@keyframes newsFlash { 0% { box-shadow: 0 0 0 0 rgba(255, 196, 0, .7); } 100% { box-shadow: 0 0 0 18px rgba(255, 196, 0, 0); } }
+@media (max-width: 860px) { .bell { margin-left: auto; } .burger { order: 4; } }
+@media (prefers-reduced-motion: reduce) { .bell-dot::after, #news-sec.flash .news-grid { animation: none; } }

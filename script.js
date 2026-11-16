@@ -50,6 +50,7 @@ function pixelReveal(gate) {
 
 // ---- Shared nav, footer, command palette ----
 $('navMount').outerHTML = `<header class="nav"><a class="logo" href="${B || '#home'}"><img src="${LOGO}" alt="UNLOCK home"></a>
+<a class="bell" id="bell" href="${B}#news-sec" aria-label="News and updates" title="News and updates"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5.5-6.84V3.5a1.5 1.5 0 0 0-3 0v.66A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2Z" fill="currentColor"/></svg><span class="bell-dot" hidden></span></a>
 <button class="burger" aria-label="Menu" onclick="document.body.classList.toggle('menu')">&#9776;</button>
 <nav>${PAGES.map(p => `<a href="${Hf(p)}" class="${p[0]===here?'on':''}">${p[1]}</a>`).join('')}<a class="btn primary" href="${B}#register">Register Now!</a></nav></header>`;
 $('footMount').outerHTML = `<footer>&copy; 2026 UNLOCK &middot; UiTM Shah Alam</footer>`;
@@ -403,6 +404,15 @@ CONTENT.then(c => {
   /* Track call-outs TRK-01 to TRK-06 */
   ready('tracks', el => el.querySelectorAll('.trk i').forEach((i, n) => i.textContent = 'TRK-0' + (n + 1)));
 
+  /* Notification bell: yellow dot until the newest update has been opened (remembered in this browser) */
+  (() => { const bell = $('bell'), n0 = (c.news || [])[0]; if (!bell || !n0) return;
+    const key = 'unlockSeenNews', id = n0.date + '|' + n0.title, dot = bell.querySelector('.bell-dot');
+    let seen = ''; try { seen = localStorage.getItem(key) || ''; } catch (e) {}
+    if (seen !== id) { dot.hidden = false; bell.setAttribute('aria-label', 'New update: ' + n0.title); bell.title = 'New update: ' + n0.title; }
+    bell.addEventListener('click', () => { dot.hidden = true; bell.setAttribute('aria-label', 'News and updates'); bell.title = 'News and updates';
+      try { localStorage.setItem(key, id); } catch (e) {}
+      const sec = $('news-sec'); if (sec) { sec.classList.remove('flash'); void sec.offsetWidth; sec.classList.add('flash'); } });
+  })();
   /* News and updates (blue-on-hover cards) */
   const news = c.news || [];
   if ($('news')) { $('news').innerHTML = news.length ? news.map(n => `<article class="card hl news-i"><span class="mono label">${esc(n.date)}</span><h3 class="ttl">${esc(n.title)}</h3><p>${esc(n.body)}</p></article>`).join('') : '<p class="muted">No updates yet.</p>'; touchHighlight(); }
