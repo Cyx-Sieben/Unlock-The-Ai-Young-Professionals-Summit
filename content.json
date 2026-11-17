@@ -27,8 +27,8 @@
       "label": "talents"
     },
     {
-      "n": 3,
-      "label": "weeks online incubation"
+      "n": 2,
+      "label": "online workshops"
     },
     {
       "n": 1,
@@ -36,7 +36,7 @@
     }
   ],
   "about": {
-    "summary": "UNLOCK is an AI workplace innovation challenge and grand expo hosted at UiTM Shah Alam. Ten teams (five University Student teams and five Young Professional teams) join a 3-week online incubation sprint. The Top 2 teams from each category then pitch their working prototypes live at the UNLOCK Grand Finale on 6 December 2026 at Dewan Seroja, UiTM Shah Alam, where every visitor can explore interactive booths from our collaborators, partners and sponsors with the UNLOCK Passport.",
+    "summary": "UNLOCK is an AI workplace innovation challenge and grand expo hosted at UiTM Shah Alam. Ten teams (five University Student teams and five Young Professional teams) join an online incubation with 2 workshops. The Top 2 teams from each category then pitch their working prototypes live at the UNLOCK Grand Finale on 6 December 2026 at Dewan Seroja, UiTM Shah Alam, where every visitor can explore interactive booths from our collaborators, partners and sponsors with the UNLOCK Passport.",
     "vision": "To become a leading platform that bridges academia and industry in nurturing an innovative, AI-ready generation capable of shaping a sustainable, ethical and future-driven workforce.",
     "mission": "To empower students and young professionals with AI knowledge, innovative thinking, and practical problem-solving skills while fostering meaningful collaboration between academia and industry to promote ethical and responsible AI adoption in the workplace.",
     "cohort": [
@@ -72,7 +72,7 @@
       "The committee assigns your team's track (one of the 6) and emails it to you",
       "Join the WhatsApp community for announcements",
       "Pay later: we email the payment details after your pre-registration (RM65 Student, RM180 Young Professional, per team)",
-      "Attend the three online workshops (Workshop 1 date to be announced, then Sat 21 and Sat 28 Nov) and submit your deliverables"
+      "Attend the 2 online workshops (Workshop 1, full day: Sun 22 Nov; Workshop 2: Sat 28 Nov) and submit your deliverables"
     ]
   },
   "timeline": [
@@ -87,24 +87,14 @@
       ]
     },
     {
-      "date": "To be announced",
-      "title": "Workshop 1: Kickoff",
+      "date": "Sun, 22 Nov",
+      "title": "Workshop 1: Kickoff, Build & Ship (full day)",
       "type": "workshop",
       "points": [
-        "New date will be announced by email, WhatsApp and our socials",
-        "Virtual soft launch and Applied AI Literacy in the Workplace",
-        "Prototyping tools and the task scenario draw, guided by 5 mentors from our collaborator HackDev",
-        "Output: an Apexelerate account with your innovation brief, kept updated after the workshop"
-      ]
-    },
-    {
-      "date": "Sat, 21 Nov",
-      "title": "Workshop 2: System Architecture",
-      "type": "workshop",
-      "points": [
-        "Technical brief and VS Code session",
-        "Wireframing: system logic and user flows",
-        "Output: technical brief and framework"
+        "9:00 a.m. to 5:00 p.m. on Google Meet, led by HackDev",
+        "Morning: opening, Applied AI Literacy in the Workplace, challenge briefing, Build Quest World 1 (Arrive) and World 2 (Plan)",
+        "Afternoon: Build Quest World 3 (Build) and World 4 (Ship), with GitHub and Vercel",
+        "Output: a working prototype, live or recorded, and your innovation kept updated on Apexelerate"
       ]
     },
     {
@@ -113,17 +103,18 @@
       "type": "deadline",
       "audience": "All teams",
       "points": [
-        "Features, wireframes and system logic",
-        "A working prototype is not needed yet"
+        "Features, user flow and system logic, with screenshots of your prototype",
+        "Send 3 questions for the industry panel by Thu 26 Nov"
       ]
     },
     {
       "date": "Sat, 28 Nov",
-      "title": "Workshop 3: Prototype & Selection",
+      "title": "Workshop 2: Industry Q&A & Feedback",
       "type": "workshop",
       "points": [
-        "Refine and test your prototype with instructors",
-        "Industry panel evaluates all 10 teams",
+        "10:00 a.m. to 1:00 p.m. on Google Meet",
+        "Ask real industry representatives your questions and get feedback to improve your innovation",
+        "Industry panel scores all 10 teams",
         "Top 2 Student and Top 2 Young Professional teams selected as finalists for the Grand Finale"
       ]
     },
@@ -203,8 +194,8 @@
     {
       "title": "All teams, during the incubation",
       "items": [
-        "After Workshop 1: keep everything about your innovation updated on Apexelerate (apexelerate.vercel.app): brief, instructions, pitch and app code",
-        "Workshop 2: technical brief and wireframes",
+        "Workshop 1 (22 Nov): a working prototype, plus everything about your innovation kept updated on Apexelerate (apexelerate.vercel.app): brief, instructions, pitch and app code",
+        "Before Workshop 2: 3 questions for the industry panel by Thu 26 Nov",
         "Tue 24 Nov: prototype presentation slides (no working prototype needed yet)"
       ]
     },
@@ -295,20 +286,20 @@
     {
       "q": "What are the dates?",
       "kw": "when date tarikh schedule timeline deadline",
-      "a": "Pre-registration has been extended and now closes on Wednesday 18 November 2026. Workshop 1 (Kickoff) has moved: its new date will be announced soon by email, WhatsApp and our socials. Workshop 2 is on Saturday 21 November and Workshop 3 on Saturday 28 November. Prototype slides are due on Tuesday 24 November, the finalist pack is due on Tuesday 1 December, and the Grand Finale is on Sunday 6 December 2026.",
-      "alt": "Key dates: 18 Nov (pre-registration closes, extended), Workshop 1 (new date to be announced), 21 and 28 Nov (Workshops 2 and 3), 24 Nov (prototype slides due), 1 Dec (finalist pack due) and 6 Dec 2026 (Grand Finale)."
+      "a": "Pre-registration has been extended and closes on Wednesday 18 November 2026. Workshop 1 is a full-day workshop on Sunday 22 November, and Workshop 2 is on Saturday 28 November. Prototype slides are due on Tuesday 24 November, the finalist pack on Tuesday 1 December, and the Grand Finale is on Sunday 6 December 2026.",
+      "alt": "Key dates: 18 Nov (pre-registration closes), 22 Nov (Workshop 1, full day), 24 Nov (prototype slides due), 28 Nov (Workshop 2), 1 Dec (finalist pack due) and 6 Dec 2026 (Grand Finale)."
     },
     {
       "q": "Where is the summit venue?",
       "kw": "venue location lokasi where uitm held happening place address dewan finale grand summit",
-      "a": "The Grand Finale is at Dewan Seroja, UiTM Shah Alam. The 3-week workshop sprint is online on Google Meet.",
-      "alt": "The 3-week sprint is online. The Grand Finale on 6 December is in person at Dewan Seroja, UiTM Shah Alam."
+      "a": "The Grand Finale is at Dewan Seroja, UiTM Shah Alam. Both online workshops are on Google Meet.",
+      "alt": "The 2 workshops are online. The Grand Finale on 6 December is in person at Dewan Seroja, UiTM Shah Alam."
     },
     {
-      "q": "What happens each week?",
-      "kw": "week sprint workshop incubation",
-      "a": "Week 1: kickoff, applied AI literacy and prototyping tools. Week 2: system architecture and wireframing. Week 3: prototype refinement and selection of the Top 2 teams in each category.",
-      "alt": "Week 1 is the kickoff and AI literacy, Week 2 covers system architecture and wireframes, and Week 3 is prototype testing and the selection of the 4 finalists."
+      "q": "What happens in each workshop?",
+      "kw": "week sprint workshop incubation each what happens flow agenda schedule full day",
+      "a": "There are 2 online workshops, both on Google Meet. Workshop 1 (Sunday 22 November, full day): opening, Applied AI Literacy in the Workplace and the challenge briefing, then HackDev guides you through planning, building and shipping your prototype. Workshop 2 (Saturday 28 November): you ask real industry representatives your questions, get feedback to improve your innovation, and the finalists are selected.",
+      "alt": "There are 2 workshops, both online on Google Meet. Workshop 1 on 22 November is a full day where you plan, build and ship your prototype with HackDev. Workshop 2 on 28 November is industry Q&A and feedback, and the 4 finalists are selected."
     },
     {
       "q": "How is it judged?",
@@ -325,7 +316,7 @@
     {
       "q": "What do we have to submit?",
       "kw": "deliverables submission requirements apexelerate prototype slides video deadline 24 november 1 december finalist finalists only",
-      "a": "All teams: keep everything about your innovation updated on Apexelerate (apexelerate.vercel.app) after Workshop 1, a technical brief and wireframes (Workshop 2), and prototype presentation slides by Tuesday 24 November 2026 (no working prototype needed yet). Finalists only: presentation slides and a demo video of the refined prototype by Tuesday 1 December 2026. At the Grand Finale, the 4 finalists bring their working prototype and the AI-Use Declaration, and give a 10-minute pitch with a live demo.",
+      "a": "All teams: build a working prototype in Workshop 1 (22 November) and keep everything about your innovation updated on Apexelerate (apexelerate.vercel.app), submit prototype presentation slides by Tuesday 24 November 2026, and send 3 questions for the industry panel by Thursday 26 November. Finalists only: presentation slides and a demo video of the refined prototype by Tuesday 1 December 2026. At the Grand Finale, the 4 finalists bring their working prototype and the AI-Use Declaration, and give a 10-minute pitch with a live demo.",
       "alt": "All teams keep their innovation updated on Apexelerate, then submit a technical brief and prototype slides (due Tue 24 Nov). Only the 4 finalists submit slides and a demo video by Tue 1 Dec, then bring their prototype and AI-Use Declaration to the Grand Finale and pitch on stage."
     },
     {
@@ -513,8 +504,8 @@
     {
       "q": "What is UNLOCK?",
       "kw": "unlock about event summit challenge apa",
-      "a": "UNLOCK is an AI workplace innovation challenge and grand expo hosted at UiTM Shah Alam. Ten teams build AI prototypes in a 3-week online sprint, and the Top 2 teams from each category pitch them live at the Grand Finale on 6 December 2026 at Dewan Seroja, UiTM Shah Alam, alongside interactive booths from our collaborators, partners and sponsors.",
-      "alt": "It is the AI & Young Professionals Summit & Innovation Challenge: a 3-week online incubation for 10 teams, followed by a physical Grand Finale at Dewan Seroja, UiTM Shah Alam, where the 4 finalist teams pitch their AI prototypes and visitors collect UNLOCK Passport stamps at partner booths."
+      "a": "UNLOCK is an AI workplace innovation challenge and grand expo hosted at UiTM Shah Alam. Ten teams build AI prototypes in 2 online workshops, and the Top 2 teams from each category pitch them live at the Grand Finale on 6 December 2026 at Dewan Seroja, UiTM Shah Alam, alongside interactive booths from our collaborators, partners and sponsors.",
+      "alt": "It is the AI & Young Professionals Summit & Innovation Challenge: an online incubation with 2 workshops for 10 teams, followed by a physical Grand Finale at Dewan Seroja, UiTM Shah Alam, where the 4 finalist teams pitch their AI prototypes and visitors collect UNLOCK Passport stamps at partner booths."
     },
     {
       "q": "Who organises UNLOCK?",
@@ -531,8 +522,8 @@
     {
       "q": "Is the event online or physical?",
       "kw": "online physical hybrid venue location held",
-      "a": "Both. The 3-week workshop sprint is online on Google Meet, and the Grand Finale on 6 December 2026 is in person at Dewan Seroja, UiTM Shah Alam.",
-      "alt": "The workshops are online on Google Meet (Workshop 1's new date will be announced; Workshops 2 and 3 are on 21 and 28 November). The Grand Finale is physical at Dewan Seroja, UiTM Shah Alam."
+      "a": "Both. The 2 workshops are online on Google Meet, and the Grand Finale on 6 December 2026 is in person at Dewan Seroja, UiTM Shah Alam.",
+      "alt": "The workshops are online on Google Meet (Workshop 1 is a full day on 22 November, Workshop 2 is on 28 November). The Grand Finale is physical at Dewan Seroja, UiTM Shah Alam."
     },
     {
       "q": "How much is the registration fee?",
@@ -544,8 +535,8 @@
     {
       "q": "Do I need AI or coding experience?",
       "kw": "experience beginner coding skill programming pengalaman knowledge",
-      "a": "Week 1 teaches Applied AI Literacy in the Workplace and modern AI prototyping tools, and Week 2 guides you through wireframing and system design, so the workshops help you build your prototype. If you are unsure about your team's skills, ask us.",
-      "alt": "The sprint is guided: AI literacy and prototyping tools in Week 1, architecture and wireframing in Week 2, and prototype testing in Week 3. For specific concerns about skills, contact the committee.",
+      "a": "Workshop 1 is a full, guided day: HackDev teaches Applied AI Literacy and takes you step by step through planning, building and shipping your prototype with AI tools. Workshop 2 adds feedback from real industry. If you are unsure about your team's skills, ask us.",
+      "alt": "The workshops are guided: HackDev helps you plan, build and ship your prototype in Workshop 1, and industry gives feedback in Workshop 2. For specific concerns about skills, contact the committee.",
       "contact": true
     },
     {
@@ -571,8 +562,8 @@
     {
       "q": "How are the finalists chosen?",
       "kw": "finalist finalists selection select top 2 top 4 how many evaluate chosen",
-      "a": "In Workshop 3 on 28 November, industry panels evaluate all 10 prototypes. The Top 2 Student and Top 2 Young Professional teams are chosen to pitch live at the Grand Finale.",
-      "alt": "After the Workshop 3 evaluation, the judges score every team with the rubric, and the top 2 from each category go to the Grand Finale."
+      "a": "In Workshop 2 on 28 November, an industry panel gives feedback and scores all 10 teams. The Top 2 Student and Top 2 Young Professional teams are chosen to pitch live at the Grand Finale.",
+      "alt": "After Workshop 2, the judges score every team with the rubric, and the top 2 from each category go to the Grand Finale."
     },
     {
       "q": "Do all teams join the summit?",
@@ -602,13 +593,13 @@
       "q": "Where are the workshops held?",
       "kw": "workshop class link zoom online where how join",
       "a": "The workshops are online on Google Meet. The link is emailed 2 days before and on the day of each workshop, and shared in the WhatsApp community.",
-      "alt": "Classes run online on Google Meet. Workshop 1's new date will be announced, and Workshops 2 and 3 are on 21 and 28 November. You will receive the link by email 2 days before and on the day of each class."
+      "alt": "Classes run online on Google Meet: Workshop 1 is a full day on Sunday 22 November and Workshop 2 is on Saturday 28 November. You will receive the link by email 2 days before and on the day of each workshop."
     },
     {
       "q": "Do I have to attend every class?",
       "kw": "attendance absent compulsory miss required hadir attendance form",
-      "a": "Yes, teams are expected at all three workshops. Unapproved absence from required checkpoints can lead to disqualification, so please inform the committee in advance if you cannot attend.",
-      "alt": "Please attend all three online sessions (Workshop 1's new date will be announced, then 21 and 28 November). Missing a required checkpoint without approval risks disqualification, so tell us early.",
+      "a": "Yes, teams are expected at both workshops. Unapproved absence from required checkpoints can lead to disqualification, so please inform the committee in advance if you cannot attend.",
+      "alt": "Please attend both online workshops (22 and 28 November). Missing a required checkpoint without approval risks disqualification, so tell us early.",
       "contact": true
     },
     {
@@ -684,9 +675,15 @@
     },
     {
       "q": "When is Workshop 1?",
-      "kw": "workshop kickoff first postponed moved new date announce 15 november tba",
-      "a": "Workshop 1 (Kickoff) is no longer on 15 November. Its new date will be announced soon by email, in the WhatsApp community and on our socials.",
-      "alt": "The Kickoff workshop has been moved, and the new date will be announced shortly. Registered participants will be told by email and WhatsApp."
+      "kw": "kickoff first postponed moved new date announce 15 november tba 22 november full day combined merged",
+      "a": "Workshop 1 is now a full-day session on Sunday 22 November 2026, 9:00 a.m. to 5:00 p.m. on Google Meet. We combined the first two sessions into this one day. We are sorry for the earlier delays.",
+      "alt": "It is on Sunday 22 November 2026, a full day (9 a.m. to 5 p.m.) on Google Meet. The link is emailed to registered participants."
+    },
+    {
+      "q": "How many workshops are there?",
+      "kw": "how many number count two 2 combined merged sessions classes total",
+      "a": "There are 2 online workshops. Workshop 1 is a full day on Sunday 22 November 2026 (9:00 a.m. to 5:00 p.m.), where HackDev guides you to plan, build and ship your prototype. Workshop 2 is on Saturday 28 November (10:00 a.m. to 1:00 p.m.) for industry Q&A, feedback and finalist selection.",
+      "alt": "Just 2: a full-day Workshop 1 on 22 November, and Workshop 2 (industry Q&A and feedback) on 28 November. Both are on Google Meet."
     },
     {
       "q": "What is Apexelerate?",
@@ -894,6 +891,11 @@
     ]
   },
   "news": [
+    {
+      "date": "Update · 17 Nov 2026",
+      "title": "New workshop dates: 2 workshops only",
+      "body": "We have combined the first two workshops. Workshop 1 is now a full-day workshop on Sunday 22 November 2026 (9:00 a.m. to 5:00 p.m., Google Meet), and Workshop 2 (industry Q&A and feedback) is on Saturday 28 November. We sincerely apologise for the earlier delays. Payment will be made through a new Google Form: RM65 per Student team and RM180 per Young Professional team."
+    },
     {
       "date": "Update · 16 Nov 2026",
       "title": "Tracks, workshop date and payment",
