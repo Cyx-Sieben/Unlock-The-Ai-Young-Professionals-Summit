@@ -77,11 +77,11 @@
   },
   "timeline": [
     {
-      "date": "Wed, 18 Nov",
+      "date": "Thu, 19 Nov",
       "title": "Pre-registration Closes (Extended)",
       "type": "deadline",
       "points": [
-        "Extended from 11 November to Wednesday 18 November 2026",
+        "Extended to Thursday 19 November 2026, 11:59 p.m.",
         "Only 5 team spots per category, first come first served",
         "Pay later: payment details are emailed after you pre-register"
       ]
@@ -91,7 +91,7 @@
       "title": "Workshop 1: Kickoff, Build & Ship (full day)",
       "type": "workshop",
       "points": [
-        "9:00 a.m. to 5:00 p.m. on Google Meet, led by HackDev",
+        "9:00 a.m. to 4:30 p.m. on Google Meet, led by HackDev",
         "Morning: opening, Applied AI Literacy in the Workplace, challenge briefing, Build Quest World 1 (Arrive) and World 2 (Plan)",
         "Afternoon: Build Quest World 3 (Build) and World 4 (Ship), with GitHub and Vercel",
         "Output: a working prototype, live or recorded, and your innovation kept updated on Apexelerate"
@@ -114,7 +114,7 @@
       "points": [
         "10:00 a.m. to 1:00 p.m. on Google Meet",
         "Ask real industry representatives your questions and get feedback to improve your innovation",
-        "Industry panel scores all 10 teams",
+        "Industry panel scores every team",
         "Top 2 Student and Top 2 Young Professional teams selected as finalists for the Grand Finale"
       ]
     },
@@ -286,8 +286,8 @@
     {
       "q": "What are the dates?",
       "kw": "when date tarikh schedule timeline deadline",
-      "a": "Pre-registration has been extended and closes on Wednesday 18 November 2026. Workshop 1 is a full-day workshop on Sunday 22 November, and Workshop 2 is on Saturday 28 November. Prototype slides are due on Tuesday 24 November, the finalist pack on Tuesday 1 December, and the Grand Finale is on Sunday 6 December 2026.",
-      "alt": "Key dates: 18 Nov (pre-registration closes), 22 Nov (Workshop 1, full day), 24 Nov (prototype slides due), 28 Nov (Workshop 2), 1 Dec (finalist pack due) and 6 Dec 2026 (Grand Finale)."
+      "a": "Pre-registration has been extended and closes on Thursday 19 November 2026 at 11:59 p.m.. Workshop 1 is a full-day workshop on Sunday 22 November, and Workshop 2 is on Saturday 28 November. Prototype slides are due on Tuesday 24 November, the finalist pack on Tuesday 1 December, and the Grand Finale is on Sunday 6 December 2026.",
+      "alt": "Key dates: 19 Nov (pre-registration closes), 22 Nov (Workshop 1, full day), 24 Nov (prototype slides due), 28 Nov (Workshop 2), 1 Dec (finalist pack due) and 6 Dec 2026 (Grand Finale)."
     },
     {
       "q": "Where is the summit venue?",
@@ -466,7 +466,7 @@
     "email": "unlockai.project@gmail.com",
     "location": "Dewan Seroja, UiTM Shah Alam, Selangor"
   },
-  "regClose": "2026-11-18T23:59:00+08:00",
+  "regClose": "2026-11-19T23:59:00+08:00",
   "partners": [
     {
       "name": "Organizational Communication Management",
@@ -516,8 +516,8 @@
     {
       "q": "When does registration close?",
       "kw": "deadline closing last date tutup closes",
-      "a": "Pre-registration has been extended. It now closes on Wednesday 18 November 2026, or earlier if all 5 team places in a category are filled.",
-      "alt": "You have until 18 November 2026 (extended from 11 November), but each category has only 5 team places, so the form closes as soon as they are taken. Check the live team spots on this page."
+      "a": "Pre-registration has been extended. It now closes on Thursday 19 November 2026 at 11:59 p.m., or earlier if all 5 team places in a category are filled.",
+      "alt": "You have until 19 November 2026, 11:59 p.m., but each category has only 5 team places, so the form closes as soon as they are taken. Check the live team spots on this page."
     },
     {
       "q": "Is the event online or physical?",
@@ -676,13 +676,13 @@
     {
       "q": "When is Workshop 1?",
       "kw": "kickoff first postponed moved new date announce 15 november tba 22 november full day combined merged",
-      "a": "Workshop 1 is now a full-day session on Sunday 22 November 2026, 9:00 a.m. to 5:00 p.m. on Google Meet. We combined the first two sessions into this one day. We are sorry for the earlier delays.",
-      "alt": "It is on Sunday 22 November 2026, a full day (9 a.m. to 5 p.m.) on Google Meet. The link is emailed to registered participants."
+      "a": "Workshop 1 is now a full-day session on Sunday 22 November 2026, 9:00 a.m. to 4:30 p.m. on Google Meet. We combined the first two sessions into this one day. We are sorry for the earlier delays.",
+      "alt": "It is on Sunday 22 November 2026, a full day (9 a.m. to 4:30 p.m.) on Google Meet. The link is emailed to registered participants."
     },
     {
       "q": "How many workshops are there?",
       "kw": "how many number count two 2 combined merged sessions classes total",
-      "a": "There are 2 online workshops. Workshop 1 is a full day on Sunday 22 November 2026 (9:00 a.m. to 5:00 p.m.), where HackDev guides you to plan, build and ship your prototype. Workshop 2 is on Saturday 28 November (10:00 a.m. to 1:00 p.m.) for industry Q&A, feedback and finalist selection.",
+      "a": "There are 2 online workshops. Workshop 1 is a full day on Sunday 22 November 2026 (9:00 a.m. to 4:30 p.m.), where HackDev guides you to plan, build and ship your prototype. Workshop 2 is on Saturday 28 November (10:00 a.m. to 1:00 p.m.) for industry Q&A, feedback and finalist selection.",
       "alt": "Just 2: a full-day Workshop 1 on 22 November, and Workshop 2 (industry Q&A and feedback) on 28 November. Both are on Google Meet."
     },
     {
@@ -892,9 +892,14 @@
   },
   "news": [
     {
+      "date": "Update · 18 Nov 2026",
+      "title": "Pre-registration extended to 19 November",
+      "body": "Pre-registration now closes on Thursday 19 November 2026 at 11:59 p.m. Each category still has only 5 team places, so register early. Workshop 1 is on Sunday 22 November (9:00 a.m. to 4:30 p.m., Google Meet)."
+    },
+    {
       "date": "Update · 17 Nov 2026",
       "title": "New workshop dates: 2 workshops only",
-      "body": "We have combined the first two workshops. Workshop 1 is now a full-day workshop on Sunday 22 November 2026 (9:00 a.m. to 5:00 p.m., Google Meet), and Workshop 2 (industry Q&A and feedback) is on Saturday 28 November. We sincerely apologise for the earlier delays. Payment will be made through a new Google Form: RM65 per Student team and RM180 per Young Professional team."
+      "body": "We have combined the first two workshops. Workshop 1 is now a full-day workshop on Sunday 22 November 2026 (9:00 a.m. to 4:30 p.m., Google Meet), and Workshop 2 (industry Q&A and feedback) is on Saturday 28 November. We sincerely apologise for the earlier delays. Payment will be made through a new Google Form: RM65 per Student team and RM180 per Young Professional team."
     },
     {
       "date": "Update · 16 Nov 2026",
