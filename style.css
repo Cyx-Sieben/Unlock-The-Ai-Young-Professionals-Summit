@@ -3543,3 +3543,6 @@ body.locked .powered-badge { display: none; }
 
 /* v18: solid blue buttons, no blueprint lines (Register, Ask, forms, Instagram, TikTok) */
 .btn.primary { background-image: none; }
+
+/* v19: odd number of prizes: last card fills the row */
+#prizeGrid .prize:last-child:nth-child(odd) { grid-column: 1 / -1; }

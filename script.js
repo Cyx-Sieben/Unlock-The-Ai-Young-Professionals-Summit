@@ -217,7 +217,7 @@ function extra(c) {
   list('prepare', c.registration.prepare, t => `<li>${t}</li>`); list('regSteps', c.registration.steps, t => `<li>${t}</li>`);
   if ($('stuForm')) { $('stuForm').href = c.forms.student; $('proForm').href = c.forms.professional; }
   list('zones', c.summit.zones, z => `<div class="card accent hl"><h3>${z.t}</h3><p>${z.d}</p></div>`);
-  list('passport', c.summit.passport, p => `<span>${p}</span>`); set('passportText', c.summit.passportText); set('peoples', c.summit.peoples);
+  list('passport', c.summit.passport, p => `<span>${p}</span>`); set('passportText', c.summit.passportText);
   list('criteria', c.criteria, (x, i) => `<div class="crit rv"><i>${String(i + 1).padStart(2, '0')}</i><span>${x}</span></div>`);
   list('prizeGrid', c.awards, a => `<div class="prize rv"><b>${a.n}</b><strong>${a.label}</strong><small>${a.d}</small></div>`);
   list('submitList', c.submissions, g => typeof g === 'string' ? `<li>${g}</li>` : `<div class="sub-g${/finalist/i.test(g.title) ? ' fin' : ''}"><h4>${g.title}</h4><ul>${g.items.map(x => `<li>${x}</li>`).join('')}</ul></div>`);

@@ -156,8 +156,7 @@
       "Collect stamps",
       "Unlock rewards"
     ],
-    "passportText": "Everyone who comes to the Grand Finale gets an UNLOCK Passport. Visit the interactive booths of our collaborators, partners and sponsors on the exhibition floor, collect a stamp at each one, and complete your passport to redeem rewards.",
-    "peoples": "People's Choice Award: summit delegates vote for their favourite of the 4 finalist pitches, and the winning team receives a hamper."
+    "passportText": "Everyone who comes to the Grand Finale gets an UNLOCK Passport. Visit the interactive booths of our collaborators, partners and sponsors on the exhibition floor, collect a stamp at each one, and complete your passport to redeem rewards."
   },
   "criteria": [
     "Innovation and Originality",
@@ -173,11 +172,6 @@
       "n": 4,
       "label": "Official Trophies",
       "d": "Top 2 Student teams and Top 2 Young Professional teams"
-    },
-    {
-      "n": 1,
-      "label": "People's Choice Hamper",
-      "d": "The finalist team with the most delegate votes after the live pitches"
     },
     {
       "n": 6,
@@ -309,9 +303,9 @@
     },
     {
       "q": "What are the prizes?",
-      "kw": "prize award trophy hamper medal hadiah top 2 top 4 goodies participant",
-      "a": "4 official trophies for the finalists (Top 2 Student and Top 2 Young Professional teams), a hamper for the People's Choice winner, goodies for the other 6 teams, and a medal for all 50 participants.",
-      "alt": "The 4 finalist teams receive trophies, the People's Choice winner receives a hamper, the other 6 teams receive goodies, and every participant receives a medal."
+      "kw": "prize award trophy medal hadiah top 2 top 4 goodies participant",
+      "a": "4 official trophies for the finalists (Top 2 Student and Top 2 Young Professional teams), goodies for the other 6 teams, and a medal for all 50 participants.",
+      "alt": "The 4 finalist teams receive trophies, the other 6 teams receive goodies, and every participant receives a medal."
     },
     {
       "q": "What do we have to submit?",
@@ -336,12 +330,6 @@
       "kw": "passport stamp stamps collect booth booths reward rewards visitor sponsor collaborator partner",
       "a": "Everyone who comes to the Grand Finale gets an UNLOCK Passport. Visit the interactive booths of our collaborators, partners and sponsors on the exhibition floor, collect a stamp at each one, and complete your passport to redeem rewards.",
       "alt": "It is a stamp card for everyone at the Grand Finale: visit the interactive booths of our collaborators, partners and sponsors, collect a stamp at each, and complete it to redeem rewards."
-    },
-    {
-      "q": "How does the People's Choice Award work?",
-      "kw": "voting vote people choice hamper",
-      "a": "Summit delegates vote for their favourite of the 4 finalist pitches, and the winning team receives a hamper.",
-      "alt": "After the live pitches, delegates vote for their favourite finalist, and the most-voted team wins the People's Choice Award and a hamper."
     },
     {
       "q": "What is Zone A and Zone B?",
