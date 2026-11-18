@@ -47,7 +47,6 @@
     ],
     "tracks": [
       "Customer Experience & Support",
-      "HR & Talent Operations",
       "Operations & Productivity",
       "Marketing & Content",
       "Data & Decision-Making",
@@ -69,7 +68,7 @@
     "steps": [
       "Team leader completes the Student or Young Professional pre-registration form (once only)",
       "The leader and every member listed on the form receive a confirmation email with the Registration ID and the WhatsApp community link",
-      "The committee assigns your team's track (one of the 6) and emails it to you",
+      "The committee assigns your team's track (one of the 5) and emails it to you",
       "Join the WhatsApp community for announcements",
       "Pay later: we email the payment details after your pre-registration (RM65 Student, RM180 Young Professional, per team)",
       "Attend the 2 online workshops (Workshop 1, full day: Sun 22 Nov; Workshop 2: Sat 28 Nov) and submit your deliverables"
@@ -220,7 +219,7 @@
     {
       "t": "2. Theme and tracks",
       "items": [
-        "Solve a realistic workplace challenge with applied AI inside the track the committee assigns to your team (one of the 6).",
+        "Solve a realistic workplace challenge with applied AI inside the track the committee assigns to your team (one of the 5).",
         "Show the problem, a working AI architecture, user workflows and measurable business impact."
       ]
     },
@@ -272,10 +271,10 @@
       "alt": "There are 10 team places in total: 5 for students and 5 for young professionals. Each team must have exactly 5 people."
     },
     {
-      "q": "What are the 6 tracks?",
-      "kw": "tracks categories industry challenge",
-      "a": "Customer Experience & Support, HR & Talent Operations, Operations & Productivity, Marketing & Content, Data & Decision-Making, and Sustainability & ESG. The committee assigns one track to each team, so you do not need to choose. Ask me about any track (for example \"What is the Data & Decision-Making track?\") to see example ideas.",
-      "alt": "The 6 tracks are Customer Experience & Support, HR & Talent Operations, Operations & Productivity, Marketing & Content, Data & Decision-Making, and Sustainability & ESG. Teams do not choose: the committee assigns a track to every team."
+      "q": "What are the 5 tracks?",
+      "kw": "tracks categories industry challenge five 5",
+      "a": "Customer Experience & Support, Operations & Productivity, Marketing & Content, Data & Decision-Making, and Sustainability & ESG. The committee assigns one track to each team, so you do not need to choose. Ask me about any track (for example \"What is the Data & Decision-Making track?\") to see example ideas.",
+      "alt": "The 5 tracks are Customer Experience & Support, Operations & Productivity, Marketing & Content, Data & Decision-Making, and Sustainability & ESG. Teams do not choose: the committee assigns a track to every team."
     },
     {
       "q": "What are the dates?",
@@ -686,16 +685,16 @@
       "alt": "In the Customer Experience & Support track, teams build AI that helps an organisation answer and look after its customers faster and better. Examples: a support chatbot or FAQ assistant, a tool that sorts and prioritises complaint tickets, or one that sums up customer feedback into clear action points. The committee assigns tracks to teams."
     },
     {
-      "q": "What is the HR & Talent Operations track?",
-      "kw": "hr human resource talent hiring recruitment onboarding staff employee training interview resume track elaborate explain example idea",
-      "a": "HR & Talent Operations: AI for hiring, onboarding, training and staff support. Examples: a helper that screens resumes against a job description, an onboarding assistant for new staff, an HR policy Q&A bot, or a training plan generator.",
-      "alt": "In the HR & Talent Operations track, teams build AI for hiring, onboarding, training and staff support. Examples: a helper that screens resumes against a job description, an onboarding assistant for new staff, an HR policy Q&A bot, or a training plan generator. The committee assigns tracks to teams."
+      "q": "Is there an HR track?",
+      "kw": "hr human resource talent hiring recruitment onboarding staff employee training interview resume track removed sixth 6",
+      "a": "There are now 5 tracks, and HR & Talent Operations is no longer a separate track. HR ideas such as onboarding, staff training or an HR policy assistant fit under the Operations & Productivity track.",
+      "alt": "HR & Talent Operations has been merged into Operations & Productivity, so HR-related ideas (onboarding, training, staff support) now belong in that track."
     },
     {
       "q": "What is the Operations & Productivity track?",
-      "kw": "operations productivity workflow automation manual repetitive task meeting schedule efficiency track elaborate explain example idea",
-      "a": "Operations & Productivity: AI that cuts manual and repetitive work in daily operations. Examples: a meeting-notes summariser, a workflow or task automation tool, a document drafting assistant, or a smart scheduling tool.",
-      "alt": "In the Operations & Productivity track, teams build AI that cuts manual and repetitive work in daily operations. Examples: a meeting-notes summariser, a workflow or task automation tool, a document drafting assistant, or a smart scheduling tool. The committee assigns tracks to teams."
+      "kw": "operations productivity workflow automation manual repetitive task meeting schedule efficiency track elaborate explain example idea hr onboarding staff training employee",
+      "a": "Operations & Productivity: AI that cuts manual and repetitive work in daily operations and supports staff. Examples: a meeting-notes summariser, a workflow or task automation tool, a document drafting assistant, a smart scheduling tool, or an onboarding and training assistant for new staff.",
+      "alt": "In the Operations & Productivity track, teams build AI that cuts manual and repetitive work and supports staff. Examples: a meeting-notes summariser, a workflow or task automation tool, a document drafting assistant, a smart scheduling tool, or an onboarding and training assistant. The committee assigns tracks to teams."
     },
     {
       "q": "What is the Marketing & Content track?",
@@ -733,7 +732,7 @@
       "q": "Can we choose or change our track?",
       "kw": "choose pick select change switch prefer want track category tukar pilih assigned assign",
       "a": "Tracks are now assigned by the committee, so teams cannot choose or change their track. Your team's track will be emailed to you before Workshop 1.",
-      "alt": "Teams no longer choose a track. The committee assigns one of the 6 tracks to every team and will email it to you before Workshop 1.",
+      "alt": "Teams no longer choose a track. The committee assigns one of the 5 tracks to every team and will email it to you before Workshop 1.",
       "contact": false
     }
   ],

@@ -449,7 +449,7 @@ CONTENT.then(c => {
   if ($('news')) { $('news').innerHTML = news.length ? news.map(n => `<article class="card hl news-i"><span class="mono label">${esc(n.date)}</span><h3 class="ttl">${esc(n.title)}</h3><p>${esc(n.body)}</p></article>`).join('') : '<p class="muted">No updates yet.</p>'; touchHighlight(); }
 
   /* Tracks are assigned by the committee, so the old "track finder" quiz is replaced by a short note */
-  const fin = $('finder'); if (fin) fin.innerHTML = `<p class="mono label">How tracks work</p><h3>Your track is assigned by the committee</h3><p class="muted">Teams do not choose a track. The committee assigns one of the 6 tracks to every team and emails it before Workshop 1. Curious about a track? Ask about it in the Ask UNLOCK box at the top of the page.</p>`;
+  const fin = $('finder'); if (fin) fin.innerHTML = `<p class="mono label">How tracks work</p><h3>Your track is assigned by the committee</h3><p class="muted">Teams do not choose a track. The committee assigns one of the 5 tracks to every team and emails it before Workshop 1. Curious about a track? Ask about it in the Ask UNLOCK box at the top of the page.</p>`;
 
   /* Footer policy links */
   const ft = document.querySelector('footer'); if (ft) ft.insertAdjacentHTML('beforeend', `<br><a href="${document.body.dataset.page === 'index' ? '' : 'index.html'}#faq">Rules, code of conduct &amp; AI-use rules</a>`);   // policies.html does not exist, so this points to the Rules & FAQ section
