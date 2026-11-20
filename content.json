@@ -418,6 +418,12 @@
   ],
   "sponsors": [
     {
+      "name": "YTL AI Labs",
+      "role": "Confirmed sponsor",
+      "logo": "assets/sponsors/ytl-ai-labs.svg",
+      "url": "https://www.ytlailabs.com/"
+    },
+    {
       "name": "ZUS Coffee",
       "role": "Confirmed sponsor",
       "logo": "assets/sponsors/zus-coffee.png",
@@ -442,6 +448,12 @@
       "role": "Confirmed sponsor",
       "logo": "assets/sponsors/bean-and-green.png",
       "url": "https://www.instagram.com/beanandgreen_/"
+    },
+    {
+      "name": "Ombak Exclusive",
+      "role": "Confirmed sponsor",
+      "logo": "assets/sponsors/ombak-exclusive.webp",
+      "url": "https://www.ombakexclusive.com.my/"
     }
   ],
   "live": {
@@ -734,6 +746,12 @@
       "a": "Tracks are now assigned by the committee, so teams cannot choose or change their track. Your team's track will be emailed to you before Workshop 1.",
       "alt": "Teams no longer choose a track. The committee assigns one of the 5 tracks to every team and will email it to you before Workshop 1.",
       "contact": false
+    },
+    {
+      "q": "Who are the sponsors?",
+      "kw": "sponsor sponsors sponsorship ytl ytl ai labs ilmu ombak ombak exclusive zus bookdoc bean green",
+      "a": "Our confirmed sponsors are YTL AI Labs, ZUS Coffee, BookDoc, Bean & Green and Ombak Exclusive. Tap any logo in the Sponsors section to visit them.",
+      "alt": "UNLOCK is sponsored by YTL AI Labs, ZUS Coffee, BookDoc, Bean & Green and Ombak Exclusive."
     }
   ],
   "team": {
@@ -878,6 +896,11 @@
     ]
   },
   "news": [
+    {
+      "date": "Update · 20 Nov 2026",
+      "title": "Welcome, YTL AI Labs and Ombak Exclusive!",
+      "body": "YTL AI Labs, the team behind Malaysia's ILMU AI models, and Ombak Exclusive join UNLOCK as confirmed sponsors."
+    },
     {
       "date": "Update · 18 Nov 2026",
       "title": "Pre-registration extended to 19 November",
