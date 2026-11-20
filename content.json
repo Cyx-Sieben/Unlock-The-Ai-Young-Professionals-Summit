@@ -50,16 +50,18 @@
       "Operations & Productivity",
       "Marketing & Content",
       "Data & Decision-Making",
-      "Sustainability & ESG"
+      "Sustainability & ESG",
+      "Finance & Accounting",
+      "Logistics & Supply Chain"
     ],
     "objective": "To enhance knowledge and understanding of Artificial Intelligence (AI) applications in the workplace, encourage the development of innovative ideas and practical AI-driven solutions, and strengthen strategic collaboration among universities, industries, and communities towards ethical, responsible, and sustainable AI adoption.",
-    "tracksNote": "Tracks are assigned to each team by the committee."
+    "tracksNote": "Each team gets one of the 7 tracks by random draw, revealed live at Workshop 1."
   },
   "registration": {
     "prepare": [
       "Team leader's full name, email and WhatsApp or phone number",
       "Institution or organisation",
-      "Your team's track is assigned by the committee after registration, so there is no need to choose one",
+      "Your team's track is drawn randomly and revealed live at Workshop 1, so there is no need to choose one",
       "Team name and the names of all 5 members",
       "Proposed project title and a short description of the innovation",
       "Confirmation that all members agree, agreement to the rules, and PDPA consent",
@@ -68,7 +70,7 @@
     "steps": [
       "Team leader completes the Student or Young Professional pre-registration form (once only)",
       "The leader and every member listed on the form receive a confirmation email with the Registration ID and the WhatsApp community link",
-      "The committee assigns your team's track (one of the 5) and emails it to you",
+      "Find out your team's track (one of the 7) in the live random draw at Workshop 1",
       "Join the WhatsApp community for announcements",
       "Pay later: we email the payment details after your pre-registration (RM65 Student, RM180 Young Professional, per team)",
       "Attend the 2 online workshops (Workshop 1, full day: Sun 22 Nov; Workshop 2: Sat 28 Nov) and submit your deliverables"
@@ -213,13 +215,13 @@
       "items": [
         "Active university students (undergraduate and postgraduate) join the Student Category. Early-career working adults join the Young Professional Category.",
         "Exactly 5 members per team.",
-        "Each participant joins one team only. Tracks are assigned to each team by the committee."
+        "Each participant joins one team only. Each team gets one track by random draw at Workshop 1."
       ]
     },
     {
       "t": "2. Theme and tracks",
       "items": [
-        "Solve a realistic workplace challenge with applied AI inside the track the committee assigns to your team (one of the 5).",
+        "Solve a realistic workplace challenge with applied AI inside the track your team gets in the random draw at Workshop 1 (one of the 7).",
         "Show the problem, a working AI architecture, user workflows and measurable business impact."
       ]
     },
@@ -271,10 +273,10 @@
       "alt": "There are 10 team places in total: 5 for students and 5 for young professionals. Each team must have exactly 5 people."
     },
     {
-      "q": "What are the 5 tracks?",
-      "kw": "tracks categories industry challenge five 5",
-      "a": "Customer Experience & Support, Operations & Productivity, Marketing & Content, Data & Decision-Making, and Sustainability & ESG. The committee assigns one track to each team, so you do not need to choose. Ask me about any track (for example \"What is the Data & Decision-Making track?\") to see example ideas.",
-      "alt": "The 5 tracks are Customer Experience & Support, Operations & Productivity, Marketing & Content, Data & Decision-Making, and Sustainability & ESG. Teams do not choose: the committee assigns a track to every team."
+      "q": "What are the 7 tracks?",
+      "kw": "tracks categories industry challenge seven 7 five 5",
+      "a": "Customer Experience & Support, Operations & Productivity, Marketing & Content, Data & Decision-Making, Sustainability & ESG, Finance & Accounting, and Logistics & Supply Chain. Each team gets one track by random draw, revealed live at Workshop 1, so you do not need to choose. Ask me about any track (for example \"What is the Data & Decision-Making track?\") to see example ideas.",
+      "alt": "The 7 tracks are Customer Experience & Support, Operations & Productivity, Marketing & Content, Data & Decision-Making, Sustainability & ESG, Finance & Accounting, and Logistics & Supply Chain. Teams do not choose: every team gets a track by random draw at Workshop 1."
     },
     {
       "q": "What are the dates?",
@@ -339,8 +341,8 @@
     {
       "q": "Can I join more than one team?",
       "kw": "multiple teams twice",
-      "a": "No. Each participant joins one team only, and each team works on the track the committee assigns to it.",
-      "alt": "No. You can only be in one team, and your team's track is assigned by the committee."
+      "a": "No. Each participant joins one team only, and each team works on the track it gets in the random draw at Workshop 1.",
+      "alt": "No. You can only be in one team, and your team's track is drawn randomly at Workshop 1."
     },
     {
       "q": "Can we use private company data?",
@@ -454,6 +456,12 @@
       "role": "Confirmed sponsor",
       "logo": "assets/sponsors/ombak-exclusive.webp",
       "url": "https://www.ombakexclusive.com.my/"
+    },
+    {
+      "name": "Wonderbake & Friends",
+      "role": "Confirmed sponsor",
+      "logo": "assets/sponsors/wonderbake-n-friends.png",
+      "url": "https://www.instagram.com/wonderbake_n_friends/"
     }
   ],
   "live": {
@@ -694,37 +702,49 @@
       "q": "What is the Customer Experience & Support track?",
       "kw": "customer experience support service chatbot helpdesk complaint ticket feedback client track elaborate explain example idea",
       "a": "Customer Experience & Support: AI that helps an organisation answer and look after its customers faster and better. Examples: a support chatbot or FAQ assistant, a tool that sorts and prioritises complaint tickets, or one that sums up customer feedback into clear action points.",
-      "alt": "In the Customer Experience & Support track, teams build AI that helps an organisation answer and look after its customers faster and better. Examples: a support chatbot or FAQ assistant, a tool that sorts and prioritises complaint tickets, or one that sums up customer feedback into clear action points. The committee assigns tracks to teams."
+      "alt": "In the Customer Experience & Support track, teams build AI that helps an organisation answer and look after its customers faster and better. Examples: a support chatbot or FAQ assistant, a tool that sorts and prioritises complaint tickets, or one that sums up customer feedback into clear action points. Tracks are drawn randomly at Workshop 1."
     },
     {
       "q": "Is there an HR track?",
       "kw": "hr human resource talent hiring recruitment onboarding staff employee training interview resume track removed sixth 6",
-      "a": "There are now 5 tracks, and HR & Talent Operations is no longer a separate track. HR ideas such as onboarding, staff training or an HR policy assistant fit under the Operations & Productivity track.",
+      "a": "There are now 7 tracks, and HR & Talent Operations is no longer a separate track. HR ideas such as onboarding, staff training or an HR policy assistant fit under the Operations & Productivity track.",
       "alt": "HR & Talent Operations has been merged into Operations & Productivity, so HR-related ideas (onboarding, training, staff support) now belong in that track."
     },
     {
       "q": "What is the Operations & Productivity track?",
       "kw": "operations productivity workflow automation manual repetitive task meeting schedule efficiency track elaborate explain example idea hr onboarding staff training employee",
       "a": "Operations & Productivity: AI that cuts manual and repetitive work in daily operations and supports staff. Examples: a meeting-notes summariser, a workflow or task automation tool, a document drafting assistant, a smart scheduling tool, or an onboarding and training assistant for new staff.",
-      "alt": "In the Operations & Productivity track, teams build AI that cuts manual and repetitive work and supports staff. Examples: a meeting-notes summariser, a workflow or task automation tool, a document drafting assistant, a smart scheduling tool, or an onboarding and training assistant. The committee assigns tracks to teams."
+      "alt": "In the Operations & Productivity track, teams build AI that cuts manual and repetitive work and supports staff. Examples: a meeting-notes summariser, a workflow or task automation tool, a document drafting assistant, a smart scheduling tool, or an onboarding and training assistant. Tracks are drawn randomly at Workshop 1."
     },
     {
       "q": "What is the Marketing & Content track?",
       "kw": "marketing content social media campaign brand post copywriting advertising audience track elaborate explain example idea",
       "a": "Marketing & Content: AI for content and campaigns. Examples: a social media post generator that keeps the brand voice, a campaign planner, a content calendar builder, or a tool that turns audience comments into insights.",
-      "alt": "In the Marketing & Content track, teams build AI for content and campaigns. Examples: a social media post generator that keeps the brand voice, a campaign planner, a content calendar builder, or a tool that turns audience comments into insights. The committee assigns tracks to teams."
+      "alt": "In the Marketing & Content track, teams build AI for content and campaigns. Examples: a social media post generator that keeps the brand voice, a campaign planner, a content calendar builder, or a tool that turns audience comments into insights. Tracks are drawn randomly at Workshop 1."
     },
     {
       "q": "What is the Data & Decision-Making track?",
       "kw": "data decision making analytics dashboard forecast report insight trend analysis track elaborate explain example idea",
       "a": "Data & Decision-Making: AI that turns data into clear decisions. Examples: a dashboard that explains trends in plain language, a sales or demand forecast, a survey analysis tool, or a report generator that answers \"what should we do next?\". Use made-up or public data only, because the rules do not allow private company or personal data without clearance.",
-      "alt": "In the Data & Decision-Making track, teams build AI that turns data into clear decisions. Examples: a dashboard that explains trends in plain language, a sales or demand forecast, a survey analysis tool, or a report generator that answers \"what should we do next?\". Use made-up or public data only, because the rules do not allow private company or personal data without clearance. The committee assigns tracks to teams."
+      "alt": "In the Data & Decision-Making track, teams build AI that turns data into clear decisions. Examples: a dashboard that explains trends in plain language, a sales or demand forecast, a survey analysis tool, or a report generator that answers \"what should we do next?\". Use made-up or public data only, because the rules do not allow private company or personal data without clearance. Tracks are drawn randomly at Workshop 1."
     },
     {
       "q": "What is the Sustainability & ESG track?",
       "kw": "sustainability esg environment green energy waste carbon social governance climate track elaborate explain example idea",
       "a": "Sustainability & ESG: AI that supports environmental, social and governance (ESG) goals at work. Examples: an energy or waste tracker, a carbon footprint estimator, an ESG report helper, or a tool that makes a paper-based process digital.",
-      "alt": "In the Sustainability & ESG track, teams build AI that supports environmental, social and governance (ESG) goals at work. Examples: an energy or waste tracker, a carbon footprint estimator, an ESG report helper, or a tool that makes a paper-based process digital. The committee assigns tracks to teams."
+      "alt": "In the Sustainability & ESG track, teams build AI that supports environmental, social and governance (ESG) goals at work. Examples: an energy or waste tracker, a carbon footprint estimator, an ESG report helper, or a tool that makes a paper-based process digital. Tracks are drawn randomly at Workshop 1."
+    },
+    {
+      "q": "What is the Finance & Accounting track?",
+      "kw": "finance accounting money budget expense claim invoice payment audit fraud cash flow bookkeeping financial report track elaborate explain example idea",
+      "a": "Finance & Accounting: AI that makes money matters at work faster, clearer and more accurate. Examples: a tool that reads receipts and invoices to fill expense claims, a budget or cash-flow forecaster, an assistant that explains financial reports in plain language, or a checker that flags unusual transactions.",
+      "alt": "In the Finance & Accounting track, teams build AI that makes money matters at work faster, clearer and more accurate. Examples: a receipt and invoice reader for expense claims, a budget or cash-flow forecaster, a plain-language financial report explainer, or a tool that flags unusual transactions. Use made-up or public data only. Tracks are drawn randomly at Workshop 1."
+    },
+    {
+      "q": "What is the Logistics & Supply Chain track?",
+      "kw": "logistics supply chain delivery shipping inventory stock warehouse route transport procurement supplier order tracking track elaborate explain example idea",
+      "a": "Logistics & Supply Chain: AI that helps goods, stock and deliveries move smoothly. Examples: a stock-level predictor that warns before items run out, a delivery route planner, an order-tracking assistant that answers \"where is my parcel?\", or a tool that compares suppliers.",
+      "alt": "In the Logistics & Supply Chain track, teams build AI that helps goods, stock and deliveries move smoothly. Examples: a stock-level predictor, a delivery route planner, an order-tracking assistant, or a supplier comparison tool. Tracks are drawn randomly at Workshop 1."
     },
     {
       "q": "Who pays the registration fee: the team leader or each member?",
@@ -742,9 +762,9 @@
     },
     {
       "q": "Can we choose or change our track?",
-      "kw": "choose pick select change switch prefer want track category tukar pilih assigned assign",
-      "a": "Tracks are now assigned by the committee, so teams cannot choose or change their track. Your team's track will be emailed to you before Workshop 1.",
-      "alt": "Teams no longer choose a track. The committee assigns one of the 5 tracks to every team and will email it to you before Workshop 1.",
+      "kw": "choose pick select change switch prefer want track category tukar pilih assigned assign random draw randomly when know reveal",
+      "a": "Tracks are now given by random draw, so teams cannot choose or change their track. The draw happens live at Workshop 1 on Sunday 22 November.",
+      "alt": "Teams no longer choose a track. Every team gets one of the 7 tracks in a live random draw at Workshop 1 on 22 November.",
       "contact": false
     },
     {
@@ -896,6 +916,11 @@
     ]
   },
   "news": [
+    {
+      "date": "Update · 20 Nov 2026",
+      "title": "7 tracks, drawn randomly at Workshop 1",
+      "body": "UNLOCK now has 7 tracks: Finance & Accounting and Logistics & Supply Chain join the original 5. Each team gets one track by random draw, revealed live at Workshop 1 on Sunday 22 November. Ask UNLOCK about any track to see example ideas."
+    },
     {
       "date": "Update · 20 Nov 2026",
       "title": "Welcome, YTL AI Labs and Ombak Exclusive!",

@@ -3546,3 +3546,6 @@ body.locked .powered-badge { display: none; }
 
 /* v19: odd number of prizes: last card fills the row */
 #prizeGrid .prize:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* v20: 7 tracks: the lone last card sits in the middle column */
+.trks .trk:last-child:nth-child(3n+1) { grid-column: 2; }
