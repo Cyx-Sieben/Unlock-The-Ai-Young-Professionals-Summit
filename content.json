@@ -99,33 +99,23 @@
       ]
     },
     {
-      "date": "Tue, 24 Nov",
-      "title": "Prototype Slides Due",
-      "type": "deadline",
-      "audience": "All teams",
-      "points": [
-        "Features, user flow and system logic, with screenshots of your prototype",
-        "Send 3 questions for the industry panel by Thu 26 Nov"
-      ]
-    },
-    {
       "date": "Sat, 28 Nov",
       "title": "Workshop 2: Industry Q&A & Feedback",
       "type": "workshop",
       "points": [
         "10:00 a.m. to 1:00 p.m. on Google Meet",
-        "Ask real industry representatives your questions and get feedback to improve your innovation",
+        "Ask real industry representatives questions live and get feedback to improve your innovation",
         "Industry panel scores every team",
         "Top 2 Student and Top 2 Young Professional teams selected as finalists for the Grand Finale"
       ]
     },
     {
-      "date": "Tue, 1 Dec",
-      "title": "Finalist Pack Due",
+      "date": "Wed, 2 Dec",
+      "title": "Prototype Slides Due",
       "type": "deadline",
       "audience": "Finalists only",
       "points": [
-        "The 4 finalist teams submit presentation slides and a demo video of their refined prototype"
+        "The 4 finalist teams submit their prototype slides, based on their innovation"
       ]
     },
     {
@@ -189,15 +179,13 @@
     {
       "title": "All teams, during the incubation",
       "items": [
-        "Workshop 1 (22 Nov): a working prototype, plus everything about your innovation kept updated on Apexelerate (apexelerate.vercel.app): brief, instructions, pitch and app code",
-        "Before Workshop 2: 3 questions for the industry panel by Thu 26 Nov",
-        "Tue 24 Nov: prototype presentation slides (no working prototype needed yet)"
+        "Workshop 1 (22 Nov): a working prototype, plus everything about your innovation kept updated on Apexelerate (apexelerate.vercel.app): brief, instructions, pitch and app code"
       ]
     },
     {
       "title": "Finalists only (Top 2 per category)",
       "items": [
-        "Tue 1 Dec: presentation slides and a demo video of your refined prototype",
+        "Wed 2 Dec: prototype slides based on your innovation",
         "Grand Finale: 10-minute pitch on the Main Stage (Zone A), no Q&A"
       ]
     },
@@ -281,8 +269,8 @@
     {
       "q": "What are the dates?",
       "kw": "when date tarikh schedule timeline deadline",
-      "a": "Pre-registration has been extended and closes on Thursday 19 November 2026 at 11:59 p.m.. Workshop 1 is a full-day workshop on Sunday 22 November, and Workshop 2 is on Saturday 28 November. Prototype slides are due on Tuesday 24 November, the finalist pack on Tuesday 1 December, and the Grand Finale is on Sunday 6 December 2026.",
-      "alt": "Key dates: 19 Nov (pre-registration closes), 22 Nov (Workshop 1, full day), 24 Nov (prototype slides due), 28 Nov (Workshop 2), 1 Dec (finalist pack due) and 6 Dec 2026 (Grand Finale)."
+      "a": "Pre-registration has been extended and closes on Thursday 19 November 2026 at 11:59 p.m.. Workshop 1 is a full-day workshop on Sunday 22 November, and Workshop 2 is on Saturday 28 November. The 4 finalist teams submit their prototype slides by Wednesday 2 December, and the Grand Finale is on Sunday 6 December 2026.",
+      "alt": "Key dates: 19 Nov (pre-registration closes), 22 Nov (Workshop 1, full day), 28 Nov (Workshop 2), 2 Dec (finalists' prototype slides due) and 6 Dec 2026 (Grand Finale)."
     },
     {
       "q": "Where is the summit venue?",
@@ -293,7 +281,7 @@
     {
       "q": "What happens in each workshop?",
       "kw": "week sprint workshop incubation each what happens flow agenda schedule full day",
-      "a": "There are 2 online workshops, both on Google Meet. Workshop 1 (Sunday 22 November, full day): opening, Applied AI Literacy in the Workplace and the challenge briefing, then HackDev guides you through planning, building and shipping your prototype. Workshop 2 (Saturday 28 November): you ask real industry representatives your questions, get feedback to improve your innovation, and the finalists are selected.",
+      "a": "There are 2 online workshops, both on Google Meet. Workshop 1 (Sunday 22 November, full day): opening, Applied AI Literacy in the Workplace and the challenge briefing, then HackDev guides you through planning, building and shipping your prototype. Workshop 2 (Saturday 28 November): you ask real industry representatives questions live, get feedback to improve your innovation, and the finalists are selected.",
       "alt": "There are 2 workshops, both online on Google Meet. Workshop 1 on 22 November is a full day where you plan, build and ship your prototype with HackDev. Workshop 2 on 28 November is industry Q&A and feedback, and the 4 finalists are selected."
     },
     {
@@ -310,9 +298,9 @@
     },
     {
       "q": "What do we have to submit?",
-      "kw": "deliverables submission requirements apexelerate prototype slides video deadline 24 november 1 december finalist finalists only",
-      "a": "All teams: build a working prototype in Workshop 1 (22 November) and keep everything about your innovation updated on Apexelerate (apexelerate.vercel.app), submit prototype presentation slides by Tuesday 24 November 2026, and send 3 questions for the industry panel by Thursday 26 November. Finalists only: presentation slides and a demo video of the refined prototype by Tuesday 1 December 2026. At the Grand Finale, the 4 finalists bring their working prototype and the AI-Use Declaration, and give a 10-minute pitch with a live demo.",
-      "alt": "All teams keep their innovation updated on Apexelerate, then submit a technical brief and prototype slides (due Tue 24 Nov). Only the 4 finalists submit slides and a demo video by Tue 1 Dec, then bring their prototype and AI-Use Declaration to the Grand Finale and pitch on stage."
+      "kw": "deliverables submission requirements apexelerate prototype slides deadline 2 december finalist finalists only",
+      "a": "All teams: build a working prototype in Workshop 1 (22 November) and keep everything about your innovation updated on Apexelerate (apexelerate.vercel.app). There is nothing to submit before Workshop 2. Finalists only: submit your prototype slides, based on your innovation, by Wednesday 2 December 2026. At the Grand Finale, the 4 finalists bring their working prototype and the AI-Use Declaration, and give a 10-minute pitch with a live demo.",
+      "alt": "All teams keep their innovation updated on Apexelerate, with nothing to submit before Workshop 2. Only the 4 finalists submit prototype slides based on their innovation by Wed 2 Dec, then bring their prototype and AI-Use Declaration to the Grand Finale and pitch on stage."
     },
     {
       "q": "What is the AI-Use Declaration?",
@@ -916,6 +904,11 @@
     ]
   },
   "news": [
+    {
+      "date": "Update · 23 Nov 2026",
+      "title": "Updated submission dates",
+      "body": "There is no submission on 24 November, and teams no longer need to send questions by 26 November. The 4 finalist teams will submit their prototype slides, based on their innovation, by Wednesday 2 December 2026."
+    },
     {
       "date": "Update · 20 Nov 2026",
       "title": "7 tracks, drawn randomly at Workshop 1",
