@@ -444,24 +444,39 @@ CONTENT.then(c => {
       try { localStorage.setItem(key, id); } catch (e) {}
       const sec = $('news-sec'); if (sec) { sec.classList.remove('flash'); void sec.offsetWidth; sec.classList.add('flash'); } });
   })();
-  /* News and updates: a swipeable carousel, oldest on the left and the latest on the right; 3 cards show at a time */
+  /* News and updates: a swipeable carousel, the latest on the left and older ones to the right; 3 cards show at a time */
   const news = c.news || [];
   const nb = $('news');
   if (nb) {
     if (!news.length) nb.innerHTML = '<p class="muted">No updates yet.</p>';
     else {
-      const items = news.slice().reverse();   // content.json lists the newest first; the carousel reads left (old) to right (new)
-      nb.innerHTML = `<div class="news-track" id="newsTrack" tabindex="0" aria-label="News and updates, oldest to latest">${items.map((n, i) => `<article class="card hl news-i"><span class="mono label">${esc(n.date)}${i === items.length - 1 ? ' <b class="nc-new">LATEST</b>' : ''}</span><h3 class="ttl">${esc(n.title)}</h3><p>${esc(n.body)}</p></article>`).join('')}</div>
-        <div class="nc-bar"><button type="button" class="nc-btn" id="ncPrev" aria-label="Older updates">&#8249; Older</button><span class="nc-hint mono">Swipe to see older updates</span><button type="button" class="nc-btn" id="ncNext" aria-label="Newer updates">Newer &#8250;</button></div>`;
-      const tr = $('newsTrack'), prev = $('ncPrev'), next = $('ncNext');
-      const step = () => { const a = tr.querySelector('.news-i'); return a ? a.getBoundingClientRect().width + 16 : tr.clientWidth; };
-      const upd = () => { prev.disabled = tr.scrollLeft <= 2; next.disabled = tr.scrollLeft >= tr.scrollWidth - tr.clientWidth - 2; };
-      prev.addEventListener('click', () => tr.scrollBy({ left: -step(), behavior: 'smooth' }));
-      next.addEventListener('click', () => tr.scrollBy({ left: step(), behavior: 'smooth' }));
+      nb.innerHTML = `<div class="news-track" id="newsTrack" tabindex="0" aria-label="News and updates, latest first">${news.map((n, i) => `<article class="card hl news-i"><span class="mono label">${esc(n.date)}${i === 0 ? ' <b class="nc-new">LATEST</b>' : ''}</span><h3 class="ttl">${esc(n.title)}</h3><p>${esc(n.body)}</p></article>`).join('')}</div>
+        <div class="nc-bar"><button type="button" class="nc-btn" id="ncPrev" aria-label="Newer updates">&#8249; Newer</button><span class="nc-hint mono">Swipe to see older updates</span><button type="button" class="nc-btn" id="ncNext" aria-label="Older updates">Older &#8250;</button></div>`;
+      const tr = $('newsTrack'), prev = $('ncPrev'), next = $('ncNext'), cards = [...tr.children];
+      const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const step = () => cards[0].getBoundingClientRect().width + 16;
+      const max = () => tr.scrollWidth - tr.clientWidth;
+      const upd = () => { prev.disabled = tr.scrollLeft <= 2; next.disabled = tr.scrollLeft >= max() - 2; };
+      let anim = 0;
+      const glide = dir => {   // eased glide by one card; snapping is paused while it runs so the two never fight
+        cancelAnimationFrame(anim);
+        const from = tr.scrollLeft, to = Math.max(0, Math.min(max(), Math.round((from + dir * step()) / step()) * step()));
+        if (calm) { tr.scrollLeft = to; return upd(); }
+        const t0 = performance.now(), dur = 650, ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        tr.classList.add('gliding');
+        const tick = now => { const k = Math.min(1, (now - t0) / dur); tr.scrollLeft = from + (to - from) * ease(k);
+          if (k < 1) anim = requestAnimationFrame(tick); else { tr.classList.remove('gliding'); upd(); } };
+        anim = requestAnimationFrame(tick);
+      };
+      prev.addEventListener('click', () => glide(-1));
+      next.addEventListener('click', () => glide(1));
       tr.addEventListener('scroll', upd, { passive: true });
-      tr.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') { e.preventDefault(); prev.click(); } if (e.key === 'ArrowRight') { e.preventDefault(); next.click(); } });
-      const toLatest = () => { tr.scrollLeft = tr.scrollWidth; upd(); };   // start on the 3 latest updates
-      requestAnimationFrame(toLatest); window.addEventListener('load', toLatest, { once: true });
+      tr.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') { e.preventDefault(); glide(-1); } if (e.key === 'ArrowRight') { e.preventDefault(); glide(1); } });
+      if ('IntersectionObserver' in window) {   // cards fade and settle in as they slide into view
+        const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('in', e.isIntersecting)), { root: tr, threshold: 0.55 });
+        cards.forEach(cd => io.observe(cd));
+      } else cards.forEach(cd => cd.classList.add('in'));
+      tr.scrollLeft = 0; requestAnimationFrame(upd);
     }
     touchHighlight();
   }
