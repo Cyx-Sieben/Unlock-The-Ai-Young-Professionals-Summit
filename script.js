@@ -142,11 +142,11 @@ function teamLine(T) {   // committee = leadership + HODs + bureau members; advi
 }
 
 // ---- Countdown ----
-function countdown(c) {   // counts down to the pre-registration deadline first, then switches to the Grand Finale by itself
+function countdown(c) {   // counts down to the pre-registration deadline first, then switches to Summit Day by itself
   const el = $('countdown'); if (!el) return;
   const lbl = $('countLabel'), fmt = d => new Date(d).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Kuala_Lumpur' });
   const tick = () => { const regOpen = c.regClose && new Date(c.regClose) > Date.now(), date = regOpen ? c.regClose : c.eventDate;
-    if (lbl) lbl.textContent = regOpen ? `Pre-registration ${c.regExtended ? 'extended, ' : ''}closes: ${fmt(c.regClose)}, 11:59 pm` : `Countdown to the Grand Finale: ${fmt(c.eventDate)}`;
+    if (lbl) lbl.textContent = regOpen ? `Pre-registration ${c.regExtended ? 'extended, ' : ''}closes: ${fmt(c.regClose)}, 11:59 pm` : `Countdown to Summit Day: ${fmt(c.eventDate)}`;
     let s = Math.max(0, (new Date(date) - Date.now()) / 1000);
     const v = [['days',86400],['hrs',3600],['min',60],['sec',1]].map(([n,d]) => { const x = Math.floor(s / d); s -= x * d; return `<div><b>${String(x).padStart(2,'0')}</b><small>${n}</small></div>`; });
     el.innerHTML = v.join(''); };
