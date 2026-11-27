@@ -444,9 +444,27 @@ CONTENT.then(c => {
       try { localStorage.setItem(key, id); } catch (e) {}
       const sec = $('news-sec'); if (sec) { sec.classList.remove('flash'); void sec.offsetWidth; sec.classList.add('flash'); } });
   })();
-  /* News and updates (blue-on-hover cards) */
+  /* News and updates: a swipeable carousel, oldest on the left and the latest on the right; 3 cards show at a time */
   const news = c.news || [];
-  if ($('news')) { $('news').innerHTML = news.length ? news.map(n => `<article class="card hl news-i"><span class="mono label">${esc(n.date)}</span><h3 class="ttl">${esc(n.title)}</h3><p>${esc(n.body)}</p></article>`).join('') : '<p class="muted">No updates yet.</p>'; touchHighlight(); }
+  const nb = $('news');
+  if (nb) {
+    if (!news.length) nb.innerHTML = '<p class="muted">No updates yet.</p>';
+    else {
+      const items = news.slice().reverse();   // content.json lists the newest first; the carousel reads left (old) to right (new)
+      nb.innerHTML = `<div class="news-track" id="newsTrack" tabindex="0" aria-label="News and updates, oldest to latest">${items.map((n, i) => `<article class="card hl news-i"><span class="mono label">${esc(n.date)}${i === items.length - 1 ? ' <b class="nc-new">LATEST</b>' : ''}</span><h3 class="ttl">${esc(n.title)}</h3><p>${esc(n.body)}</p></article>`).join('')}</div>
+        <div class="nc-bar"><button type="button" class="nc-btn" id="ncPrev" aria-label="Older updates">&#8249; Older</button><span class="nc-hint mono">Swipe to see older updates</span><button type="button" class="nc-btn" id="ncNext" aria-label="Newer updates">Newer &#8250;</button></div>`;
+      const tr = $('newsTrack'), prev = $('ncPrev'), next = $('ncNext');
+      const step = () => { const a = tr.querySelector('.news-i'); return a ? a.getBoundingClientRect().width + 16 : tr.clientWidth; };
+      const upd = () => { prev.disabled = tr.scrollLeft <= 2; next.disabled = tr.scrollLeft >= tr.scrollWidth - tr.clientWidth - 2; };
+      prev.addEventListener('click', () => tr.scrollBy({ left: -step(), behavior: 'smooth' }));
+      next.addEventListener('click', () => tr.scrollBy({ left: step(), behavior: 'smooth' }));
+      tr.addEventListener('scroll', upd, { passive: true });
+      tr.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') { e.preventDefault(); prev.click(); } if (e.key === 'ArrowRight') { e.preventDefault(); next.click(); } });
+      const toLatest = () => { tr.scrollLeft = tr.scrollWidth; upd(); };   // start on the 3 latest updates
+      requestAnimationFrame(toLatest); window.addEventListener('load', toLatest, { once: true });
+    }
+    touchHighlight();
+  }
 
   /* Tracks are given by random draw, so the old "track finder" quiz is replaced by a short note */
   const fin = $('finder'); if (fin) fin.innerHTML = `<p class="mono label">How tracks work</p><h3>Your track is drawn randomly</h3><p class="muted">Teams do not choose a track. Every team gets one of the 7 tracks in a live random draw at Workshop 1 on Sunday 22 November. Curious about a track? Ask about it in the Ask UNLOCK box at the top of the page.</p>`;
